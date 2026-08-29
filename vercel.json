@@ -1,4 +1,7 @@
 {
+  "version": 2,
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
@@ -13,8 +16,5 @@
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/admin.html", "destination": "/admin.html" }
-  ],
-  "env": {
-    "BUILD_TIMESTAMP": "2026-08-30T02:11:45"
-  }
+  ]
 }
