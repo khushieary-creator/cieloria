@@ -3653,10 +3653,10 @@ function renderAccountDashboardView() {
         <div class="max-w-md mx-auto bg-white border border-[#E6E1D7] rounded-3xl p-8 shadow-xs space-y-5">
           <span class="text-5xl block">👤⚡</span>
           <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Please Login to View Account</h2>
-          <p class="text-xs text-slate-500 leading-relaxed">Login via KwikPass 1-Click Mobile OTP to access your orders, saved addresses, and live shipment tracking.</p>
+          <p class="text-xs text-slate-500 leading-relaxed">Login / Register 1-Click Mobile OTP to access your orders, saved addresses, and live shipment tracking.</p>
           <div class="pt-2">
             <button onclick="triggerGoKwikSDKLogin()" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
-              Login via GoKwik ⚡
+              Login to Account ⚡
             </button>
           </div>
         </div>
@@ -4400,7 +4400,7 @@ function renderPDPView() {
 
             <button onclick="addToCart('${p.id}'); triggerGoKwikCheckout();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm flex items-center justify-center gap-2">
               <span class="text-amber-600">⚡</span>
-              <span>BUY IT NOW (KwikPass Fast Checkout)</span>
+              <span>BUY IT NOW ⚡</span>
             </button>
           </div>
 
@@ -4546,7 +4546,7 @@ function renderModals() {
               </div>
             </div>
 
-            <div class="text-[9px] text-slate-400 font-medium text-center md:text-left">Merchant ID: 2yyq6ziimeofq998 • GoKwik Verified</div>
+            <div class="text-[9px] text-slate-400 font-medium text-center md:text-left">100% Encrypted & Secure Checkout</div>
           </div>
 
           <!-- Right Side: Clean Form -->
@@ -4662,7 +4662,7 @@ function renderModals() {
               </button>
 
               <button onclick="state.isMobileMenuOpen=false; handleProfileIconClick();" class="w-full text-left py-2 font-bold text-[#1A1A1A] flex items-center justify-between">
-                <span>👤 ${state.isLoggedIn ? 'My Account & Orders' : 'Login via KwikPass'}</span>
+                <span>👤 ${state.isLoggedIn ? 'My Account & Orders' : 'Login / Register'}</span>
                 <span class="text-amber-500">⚡</span>
               </button>
             </div>
@@ -4754,7 +4754,7 @@ function renderModals() {
               </div>
 
               <button onclick="toggleCart(false); triggerGoKwikCheckout();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
-                <span>Proceed To KwikPass Checkout</span>
+                <span>Proceed To Checkout ⚡</span>
                 <span>•</span>
                 <span>₹${finalTotal.toLocaleString()}.00</span>
                 <span>→</span>
@@ -4779,7 +4779,7 @@ function renderModals() {
               <button onclick="state.isCheckoutOpen=false; renderApp();" class="text-slate-400 hover:text-black font-bold text-base">❮</button>
               <div>
                 <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">CIELORIA</h3>
-                <span class="text-[9px] text-emerald-700 font-bold block">GoKwik KwikPass Integrated • ID: ${GOKWIK_CREDENTIALS.merchantId}</span>
+                <span class="text-[9px] text-emerald-700 font-bold block">CIELORIA Direct 1-Click Checkout • ID: ${GOKWIK_CREDENTIALS.merchantId}</span>
               </div>
             </div>
             <div class="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
@@ -4800,8 +4800,8 @@ function renderModals() {
                 <div class="bg-[#FAF8F5] border border-amber-200 p-3 rounded-2xl flex items-center gap-3">
                   <span class="text-2xl">⚡</span>
                   <div>
-                    <h5 class="font-bold text-xs text-[#1A1A1A]">KwikPass 1-Click OTP Verification</h5>
-                    <p class="text-[10px] text-slate-500">Enter mobile number to auto-fill saved address from GoKwik Network</p>
+                    <h5 class="font-bold text-xs text-[#1A1A1A]">1-Click Mobile OTP Verification</h5>
+                    <p class="text-[10px] text-slate-500">Enter mobile number to auto-fill your saved address</p>
                   </div>
                 </div>
 
@@ -4825,7 +4825,7 @@ function renderModals() {
             <!-- Step 2: Address Input -->
             ${state.checkoutStep === 2 ? `
               <div class="space-y-4">
-                <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">DELIVERY ADDRESS (GOKWIK NETWORK)</h4>
+                <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">DELIVERY ADDRESS</h4>
                 <div class="space-y-3 bg-white border border-slate-200 p-4 rounded-2xl">
                   <div>
                     <label class="text-[10px] font-bold text-slate-500 block mb-1">Full Name</label>
@@ -4853,7 +4853,7 @@ function renderModals() {
             ${state.checkoutStep === 3 ? `
               <div class="space-y-5 text-center">
                 <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
-                  <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">INSTANT UPI QR SCANNER (GOKWIK PASS)</h4>
+                  <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">INSTANT UPI QR SCANNER</h4>
                   <div class="w-36 h-36 bg-white rounded-xl p-2 mx-auto flex items-center justify-center border shadow-xs">
                     <img src="${PRODUCTS[0].image}" class="w-full h-full object-cover rounded" />
                   </div>
@@ -4959,7 +4959,7 @@ window.handleKwikPassSendOTP = function(e) {
   }
 
   setStoredData('cieloria_cust_phone', state.customerPhone);
-  alert(`📲 SMS OTP Sent to +91 ${state.customerPhone} via GoKwik Gateway!`);
+  alert(`📲 SMS OTP Sent to +91 ${state.customerPhone} via Secure SMS Gateway!`);
   state.kwikPassStep = 2;
   state.otpDigits = ["", "", "", ""];
   renderApp();
