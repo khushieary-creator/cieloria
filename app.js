@@ -3425,15 +3425,22 @@ function renderApp() {
       <nav class="border-t border-[#E6E1D7] bg-white py-2.5 overflow-x-auto whitespace-nowrap">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-5 sm:gap-8 text-xs font-medium text-[#1A1A1A]">
           ${SUBHEADER_NAV.map(nav => {
-            const navCat = (nav.cat || '').toLowerCase();
-            const viewMode = (state.viewMode || '').toLowerCase();
-            const plpCat = (state.plpCategory || '').toLowerCase();
-            const isActive = (viewMode === 'about' && navCat === 'about') || (viewMode === 'plp' && plpCat === navCat) || (viewMode === navCat);
+            const isAboutActive = (state.viewMode === 'about' || state.plpCategory === 'About') && (nav.cat === 'About' || nav.name === 'About Us');
+            const isPlpActive = state.viewMode === 'plp' && state.plpCategory === nav.cat;
+            const isCurrentActive = isAboutActive || isPlpActive;
+
+            const btnStyle = isCurrentActive 
+              ? "color: #C5A059 !important; font-weight: 700 !important; border-bottom: 2px solid #C5A059 !important; padding-bottom: 2px !important;"
+              : "color: #1A1A1A !important; font-weight: 500 !important; border-bottom: 2px solid transparent !important; padding-bottom: 2px !important;";
+
             return `
               <div class="relative py-1 cursor-pointer shrink-0">
                 <button 
                   onclick="openPLPCategory('${nav.cat}')" 
-                  class="cieloria-nav-btn ${isActive ? 'active' : ''}"
+                  style="${btnStyle}"
+                  onmouseover="if(!${isCurrentActive}) this.style.color='#C5A059';"
+                  onmouseout="if(!${isCurrentActive}) this.style.color='#1A1A1A';"
+                  class="transition-colors cursor-pointer text-xs"
                 >
                   ${nav.name}
                 </button>
