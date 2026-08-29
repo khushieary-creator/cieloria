@@ -1,6 +1,6 @@
 // CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Live Google Cloud Serverless Integration)
 
-const GOKWIK_CREDENTIALS = {
+const CIELORIA_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
   appId: "app_id_93a59e4095c7408f9b7ebeb50bcdeda9",
   appSecret: "app_secret_2ffb4ee8695d4188a75fd7bcfca5fc5e",
@@ -3088,8 +3088,8 @@ let state = {
 
   isCartOpen: false,
   isCheckoutOpen: false,
-  isKwikPassAuthOpen: false,
-  kwikPassStep: 1,
+  isCIELORIAAuthOpen: false,
+  authModalStep: 1,
   otpDigits: ["", "", "", ""],
   checkoutStep: 1,
   isOrderSummaryOpen: false,
@@ -3402,7 +3402,7 @@ function renderApp() {
               </span>
             </button>
 
-            <button onclick="handleProfileIconClick()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="${state.isLoggedIn ? 'My Account' : 'KwikPass Login'}">
+            <button onclick="handleProfileIconClick()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="${state.isLoggedIn ? 'My Account' : 'Account Login'}">
               <div class="relative">
                 <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="${state.isLoggedIn ? '#1A1A1A' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -3655,7 +3655,7 @@ function renderAccountDashboardView() {
           <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Please Login to View Account</h2>
           <p class="text-xs text-slate-500 leading-relaxed">Login / Register 1-Click Mobile OTP to access your orders, saved addresses, and live shipment tracking.</p>
           <div class="pt-2">
-            <button onclick="triggerGoKwikSDKLogin()" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
+            <button onclick="triggerCIELORIASDKLogin()" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
               Login to Account ⚡
             </button>
           </div>
@@ -3676,7 +3676,7 @@ function renderAccountDashboardView() {
             <div>
               <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${state.customerName || 'Customer Account'}</h1>
               <p class="text-xs text-slate-500 font-medium">${state.customerPhone ? `+91 ${state.customerPhone}` : 'Guest'} ${state.customerEmail ? `• ${state.customerEmail}` : ''}</p>
-              <span class="inline-block bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded mt-1">⚡ Verified KwikPass Member</span>
+              <span class="inline-block bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded mt-1">⚡ Verified CIELORIA Member</span>
             </div>
           </div>
 
@@ -4398,7 +4398,7 @@ function renderPDPView() {
               </button>
             </div>
 
-            <button onclick="addToCart('${p.id}'); triggerGoKwikCheckout();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm flex items-center justify-center gap-2">
+            <button onclick="addToCart('${p.id}'); triggerCIELORIACheckout();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm flex items-center justify-center gap-2">
               <span class="text-amber-600">⚡</span>
               <span>BUY IT NOW ⚡</span>
             </button>
@@ -4493,7 +4493,7 @@ function renderPDPView() {
   `;
 }
 
-// Modals, Cart Drawer & KwikPass Auth
+// Modals, Cart Drawer & CIELORIA Auth
 function renderModals() {
   let html = '';
 
@@ -4502,21 +4502,21 @@ function renderModals() {
   const finalTotal = calculateCartFinalTotal();
   const cartTotalItems = calculateCartTotalCount();
 
-  // 1. KwikPass Auth & Login Popup Modal
-  if (state.isKwikPassAuthOpen) {
+  // 1. CIELORIA Auth & Login Popup Modal
+  if (state.isCIELORIAAuthOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/65 backdrop-blur-xs">
         <div class="relative w-full max-w-3xl bg-[#FDF0F5] border border-rose-200 rounded-3xl overflow-hidden shadow-2xl text-left flex flex-col md:flex-row">
           
-          <button onclick="state.isKwikPassAuthOpen=false; renderApp();" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-500 hover:text-black flex items-center justify-center text-sm font-bold shadow-sm">✕</button>
+          <button onclick="state.isCIELORIAAuthOpen=false; renderApp();" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-500 hover:text-black flex items-center justify-center text-sm font-bold shadow-sm">✕</button>
 
-          <!-- Left Side: Cieloria KwikPass Brand Welcome Panel -->
+          <!-- Left Side: Cieloria CIELORIA Brand Welcome Panel -->
           <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-b from-[#FDF0F5] to-[#F7DCE6] text-center md:text-left">
             <div class="space-y-4">
               <div class="flex items-center justify-center md:justify-start gap-3">
                 <span class="font-serif text-2xl font-bold tracking-[0.15em] text-[#1A1A1A] uppercase">CIELORIA</span>
                 <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/80 border border-rose-200 px-2 py-0.5 rounded text-slate-800 flex items-center gap-1">
-                  Kwik<span class="text-amber-500 font-bold">⚡</span>Pass
+                  CIELORIA <span class="text-amber-500 font-bold">🔐</span> Account
                 </span>
               </div>
 
@@ -4552,13 +4552,13 @@ function renderModals() {
           <!-- Right Side: Clean Form -->
           <div class="md:w-1/2 bg-white p-6 sm:p-8 flex flex-col justify-center text-center space-y-5">
             
-            ${state.kwikPassStep === 1 ? `
+            ${state.authModalStep === 1 ? `
               <div class="space-y-1">
                 <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Explore Cieloria</h3>
                 <p class="text-xs text-slate-500">Affordable Luxury, Made for Every Day!</p>
               </div>
 
-              <form onsubmit="handleKwikPassSendOTP(event)" class="space-y-4 pt-2">
+              <form onsubmit="handleCIELORIASendOTP(event)" class="space-y-4 pt-2">
                 <div class="flex items-center border border-slate-300 rounded-xl px-3.5 py-3 bg-white focus-within:border-black transition-colors">
                   <span class="flex items-center gap-1.5 text-xs font-bold text-slate-700 mr-2 pr-2 border-r border-slate-200">
                     <span>🇮🇳</span>
@@ -4566,7 +4566,7 @@ function renderModals() {
                   </span>
                   <input 
                     type="tel" 
-                    id="kwikpass-phone-input"
+                    id="cieloria-phone-input"
                     value="${state.customerPhone}"
                     oninput="state.customerPhone=this.value"
                     placeholder="Enter Mobile Number" 
@@ -4590,16 +4590,16 @@ function renderModals() {
               </p>
             ` : ''}
 
-            ${state.kwikPassStep === 2 ? `
+            ${state.authModalStep === 2 ? `
               <div class="space-y-2">
-                <button onclick="state.kwikPassStep=1; renderApp();" class="text-xs font-bold text-slate-400 hover:text-black flex items-center gap-1 justify-center mx-auto">
+                <button onclick="state.authModalStep=1; renderApp();" class="text-xs font-bold text-slate-400 hover:text-black flex items-center gap-1 justify-center mx-auto">
                   <span>❮</span> <span>Change Number (+91 ${state.customerPhone})</span>
                 </button>
                 <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Verify SMS OTP</h3>
                 <p class="text-xs text-slate-500">Enter 4-digit OTP sent to <strong>+91 ${state.customerPhone}</strong></p>
               </div>
 
-              <form onsubmit="handleKwikPassVerifyOTP(event)" class="space-y-5 pt-2">
+              <form onsubmit="handleCIELORIAVerifyOTP(event)" class="space-y-5 pt-2">
                 <div class="flex justify-center gap-3">
                   ${[0, 1, 2, 3].map(idx => `
                     <input 
@@ -4753,14 +4753,14 @@ function renderModals() {
                 </div>
               </div>
 
-              <button onclick="toggleCart(false); triggerGoKwikCheckout();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+              <button onclick="toggleCart(false); triggerCIELORIACheckout();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
                 <span>Proceed To Checkout ⚡</span>
                 <span>•</span>
                 <span>₹${finalTotal.toLocaleString()}.00</span>
                 <span>→</span>
               </button>
 
-              <p class="text-[10px] text-slate-400 text-center font-medium">⚡ Merchant ID: ${GOKWIK_CREDENTIALS.merchantId} • Powered by GoKwik</p>
+              <p class="text-[10px] text-slate-400 text-center font-medium">⚡ Merchant ID: ${CIELORIA_CREDENTIALS.merchantId} • CIELORIA Secure</p>
             </div>
           ` : ''}
         </div>
@@ -4768,7 +4768,7 @@ function renderModals() {
     `;
   }
 
-  // 3. Official GoKwik / KwikPass Fast Checkout Popup Modal
+  // 3. Official CIELORIA / CIELORIA Fast Checkout Popup Modal
   if (state.isCheckoutOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
@@ -4779,7 +4779,7 @@ function renderModals() {
               <button onclick="state.isCheckoutOpen=false; renderApp();" class="text-slate-400 hover:text-black font-bold text-base">❮</button>
               <div>
                 <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">CIELORIA</h3>
-                <span class="text-[9px] text-emerald-700 font-bold block">CIELORIA Direct 1-Click Checkout • ID: ${GOKWIK_CREDENTIALS.merchantId}</span>
+                <span class="text-[9px] text-emerald-700 font-bold block">CIELORIA Direct 1-Click Checkout • ID: ${CIELORIA_CREDENTIALS.merchantId}</span>
               </div>
             </div>
             <div class="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
@@ -4794,7 +4794,7 @@ function renderModals() {
 
           <div class="flex-1 overflow-y-auto p-5 space-y-5 text-xs">
             
-            <!-- Step 1: KwikPass Mobile OTP Login -->
+            <!-- Step 1: CIELORIA Mobile OTP Login -->
             ${state.checkoutStep === 1 ? `
               <div class="space-y-4">
                 <div class="bg-[#FAF8F5] border border-amber-200 p-3 rounded-2xl flex items-center gap-3">
@@ -4886,28 +4886,28 @@ window.handleOtpBoxInput = function(idx, val) {
   }
   // Auto verify when 4 digits typed
   if (state.otpDigits.join('').length === 4) {
-    handleKwikPassVerifyOTP();
+    handleCIELORIAVerifyOTP();
   }
 };
 
 window.handleResendSMSOTP = function() {
-  alert(`📲 Real SMS OTP requested for +91 ${state.customerPhone} via GoKwik Telecom Gateway (Merchant: 2yyq6ziimeofq998)`);
+  alert(`📲 Real SMS OTP requested for +91 ${state.customerPhone} via Secure Telecom Gateway (Merchant: 2yyq6ziimeofq998)`);
 };
 
 window.handleProfileIconClick = function() {
   if (state.isLoggedIn) {
     switchViewMode('account');
   } else {
-    triggerGoKwikSDKLogin();
+    triggerCIELORIASDKLogin();
   }
 };
 
-window.triggerGoKwikSDKLogin = function() {
-  if (typeof window !== 'undefined' && window.GokwikSdk && typeof window.GokwikSdk.initCheckout === 'function') {
+window.triggerCIELORIASDKLogin = function() {
+  if (typeof window !== 'undefined' && window.CieloriaSdk && typeof window.CieloriaSdk.initCheckout === 'function') {
     try {
-      window.GokwikSdk.initCheckout({
-        merchantId: GOKWIK_CREDENTIALS.merchantId,
-        appId: GOKWIK_CREDENTIALS.appId,
+      window.CieloriaSdk.initCheckout({
+        merchantId: CIELORIA_CREDENTIALS.merchantId,
+        appId: CIELORIA_CREDENTIALS.appId,
         type: 'login',
         onSuccess: function(res) {
           const cleanPh = getCleanPhone(res.phone || '9876543210');
@@ -4920,11 +4920,11 @@ window.triggerGoKwikSDKLogin = function() {
         }
       });
       return;
-    } catch(e) { console.log('GokwikSdk:', e); }
+    } catch(e) { console.log('CieloriaSdk:', e); }
   }
 
-  state.isKwikPassAuthOpen = true;
-  state.kwikPassStep = 1;
+  state.isCIELORIAAuthOpen = true;
+  state.authModalStep = 1;
   state.otpDigits = ["", "", "", ""];
   renderApp();
 };
@@ -4946,9 +4946,9 @@ window.handleUserLogout = function() {
   switchViewMode('homepage');
 };
 
-window.handleKwikPassSendOTP = function(e) {
+window.handleCIELORIASendOTP = function(e) {
   if (e) e.preventDefault();
-  const phoneInput = document.getElementById('kwikpass-phone-input');
+  const phoneInput = document.getElementById('cieloria-phone-input');
   if (phoneInput && phoneInput.value) {
     state.customerPhone = getCleanPhone(phoneInput.value);
   }
@@ -4960,7 +4960,7 @@ window.handleKwikPassSendOTP = function(e) {
 
   setStoredData('cieloria_cust_phone', state.customerPhone);
   alert(`📲 SMS OTP Sent to +91 ${state.customerPhone} via Secure SMS Gateway!`);
-  state.kwikPassStep = 2;
+  state.authModalStep = 2;
   state.otpDigits = ["", "", "", ""];
   renderApp();
 
@@ -4970,7 +4970,7 @@ window.handleKwikPassSendOTP = function(e) {
   }, 100);
 };
 
-window.handleKwikPassVerifyOTP = function(e) {
+window.handleCIELORIAVerifyOTP = function(e) {
   if (e) e.preventDefault();
   const cleanPh = getCleanPhone(state.customerPhone);
   if (!cleanPh || cleanPh.length < 10) {
@@ -4981,7 +4981,7 @@ window.handleKwikPassVerifyOTP = function(e) {
   state.isLoggedIn = true;
   state.customerPhone = cleanPh;
   if (!state.customerName) state.customerName = "Valued Customer";
-  state.isKwikPassAuthOpen = false;
+  state.isCIELORIAAuthOpen = false;
 
   setStoredData('cieloria_is_logged_in', true);
   setStoredData('cieloria_cust_name', state.customerName);
@@ -4993,18 +4993,18 @@ window.handleKwikPassVerifyOTP = function(e) {
   switchViewMode('account');
 };
 
-window.triggerGoKwikCheckout = function() {
-  if (typeof window !== 'undefined' && window.GokwikSdk && typeof window.GokwikSdk.initCheckout === 'function') {
+window.triggerCIELORIACheckout = function() {
+  if (typeof window !== 'undefined' && window.CieloriaSdk && typeof window.CieloriaSdk.initCheckout === 'function') {
     try {
-      window.GokwikSdk.initCheckout({
-        merchantId: GOKWIK_CREDENTIALS.merchantId,
-        appId: GOKWIK_CREDENTIALS.appId,
+      window.CieloriaSdk.initCheckout({
+        merchantId: CIELORIA_CREDENTIALS.merchantId,
+        appId: CIELORIA_CREDENTIALS.appId,
         cart: state.cart,
         subtotal: calculateCartSubtotal(),
         onSuccess: function() { completeUserOrder(); }
       });
       return;
-    } catch(e) { console.log('GoKwik SDK:', e); }
+    } catch(e) { console.log('CIELORIA SDK:', e); }
   }
 
   openCheckoutModal();
