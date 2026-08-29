@@ -91,7 +91,7 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Cloud Database & KwikPass Integration)
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Strict Account Wishlist Persistence)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -344,18 +344,6 @@ function getCleanPhone(phoneStr) {
   return digits.length >= 10 ? digits.slice(-10) : digits;
 }
 
-function getWishlistStorageKey() {
-  const isLoggedIn = getStoredData('cieloria_is_logged_in', false);
-  const phone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
-  return (isLoggedIn && phone) ? `cieloria_wishlist_${phone}` : `cieloria_wishlist_guest`;
-}
-
-function getOrdersStorageKey() {
-  const isLoggedIn = getStoredData('cieloria_is_logged_in', false);
-  const phone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
-  return (isLoggedIn && phone) ? `cieloria_orders_${phone}` : `cieloria_orders_guest`;
-}
-
 const currentIsLoggedIn = getStoredData('cieloria_is_logged_in', false);
 const currentCleanPhone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
 
@@ -383,7 +371,7 @@ let state = {
   plpSortBy: 'featured',
 
   cart: getStoredData('cieloria_cart', []),
-  wishlist: getStoredData(getWishlistStorageKey(), []),
+  wishlist: [], // Will be loaded dynamically based on active state
   appliedCoupon: '',
   discountPercentage: 0,
   activeCurrency: 'INR',
@@ -398,7 +386,7 @@ let state = {
   customerEmail: getStoredData('cieloria_cust_email', ''),
   pincode: getStoredData('cieloria_pincode', ''),
   customerAddress: getStoredData('cieloria_address', ''),
-  ordersList: getStoredData(getOrdersStorageKey(), []),
+  ordersList: [],
   rewardsCoins: getStoredData('cieloria_coins', 0),
 
   merchantAllOrders: getStoredData('cieloria_merchant_all_orders', []),
@@ -414,54 +402,85 @@ let state = {
   lastPlacedOrder: null
 };
 
-// Real-Time Cloud Database Syncing
+// Directly compute active storage keys based on live state in JS memory
+function getActiveWishlistKey() {
+  const cleanPh = getCleanPhone(state.customerPhone);
+  if (state.isLoggedIn && cleanPh) {
+    return `cieloria_wishlist_${cleanPh}`;
+  }
+  return `cieloria_wishlist_guest`;
+}
+
+function getActiveOrdersKey() {
+  const cleanPh = getCleanPhone(state.customerPhone);
+  if (state.isLoggedIn && cleanPh) {
+    return `cieloria_orders_${cleanPh}`;
+  }
+  return `cieloria_orders_guest`;
+}
+
+// Real-Time Cloud Database & Account Syncing
 function syncAccountStorage() {
-  const wKey = getWishlistStorageKey();
-  const oKey = getOrdersStorageKey();
+  const wKey = getActiveWishlistKey();
+  const oKey = getActiveOrdersKey();
+  
   state.wishlist = getStoredData(wKey, []);
   state.ordersList = getStoredData(oKey, []);
 
   const phone = getCleanPhone(state.customerPhone);
-  if (state.isLoggedIn && phone && db) {
-    // Fetch Customer Profile, Wishlist & Orders from Cloud Database
-    db.collection("customers").doc(phone).get().then(doc => {
-      if (doc.exists) {
-        const cloudData = doc.data();
-        if (cloudData.wishlist && Array.isArray(cloudData.wishlist)) {
-          state.wishlist = cloudData.wishlist;
-          setStoredData(wKey, state.wishlist);
-        }
-        if (cloudData.name) {
-          state.customerName = cloudData.name;
-          setStoredData('cieloria_cust_name', cloudData.name);
-        }
-        if (cloudData.address) {
-          state.customerAddress = cloudData.address;
-          setStoredData('cieloria_address', cloudData.address);
-        }
-        renderApp();
-      } else {
-        // Create initial cloud doc
-        db.collection("customers").doc(phone).set({
-          phone: phone,
-          name: state.customerName || "Valued Customer",
-          wishlist: state.wishlist,
-          createdAt: new Date().toISOString()
-        }, { merge: true });
-      }
-    }).catch(e => console.log("Cloud Read Note:", e));
 
-    // Listen to real-time order updates for this customer
-    db.collection("orders").where("customerPhone", "==", phone).onSnapshot(snapshot => {
-      if (snapshot && !snapshot.empty) {
-        const cloudOrders = [];
-        snapshot.forEach(doc => cloudOrders.push(doc.data()));
-        cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-        state.ordersList = cloudOrders;
-        setStoredData(oKey, cloudOrders);
-        renderApp();
-      }
-    }, err => console.log("Cloud Live Orders Listener Note:", err));
+  if (state.isLoggedIn && phone) {
+    // Also merge any items that were added as guest before login!
+    const guestWishlist = getStoredData('cieloria_wishlist_guest', []);
+    if (guestWishlist.length > 0) {
+      const merged = Array.from(new Set([...state.wishlist, ...guestWishlist]));
+      state.wishlist = merged;
+      setStoredData(wKey, merged);
+      setStoredData('cieloria_wishlist_guest', []); // clear guest queue
+    }
+
+    if (db) {
+      // Fetch Customer Profile, Wishlist & Orders from Cloud Database
+      db.collection("customers").doc(phone).get().then(doc => {
+        if (doc.exists) {
+          const cloudData = doc.data();
+          if (cloudData.wishlist && Array.isArray(cloudData.wishlist)) {
+            const combined = Array.from(new Set([...state.wishlist, ...cloudData.wishlist]));
+            state.wishlist = combined;
+            setStoredData(wKey, combined);
+          }
+          if (cloudData.name && !state.customerName) {
+            state.customerName = cloudData.name;
+            setStoredData('cieloria_cust_name', cloudData.name);
+          }
+          if (cloudData.address && !state.customerAddress) {
+            state.customerAddress = cloudData.address;
+            setStoredData('cieloria_address', cloudData.address);
+          }
+          renderApp();
+        } else {
+          // Create initial cloud doc
+          db.collection("customers").doc(phone).set({
+            phone: phone,
+            name: state.customerName || "Valued Customer",
+            wishlist: state.wishlist,
+            createdAt: new Date().toISOString()
+          }, { merge: true });
+        }
+      }).catch(e => console.log("Cloud Read Note:", e));
+
+      // Listen to real-time order updates for this customer
+      db.collection("orders").where("customerPhone", "==", phone).onSnapshot(snapshot => {
+        if (snapshot && !snapshot.empty) {
+          const cloudOrders = [];
+          snapshot.forEach(doc => cloudOrders.push(doc.data()));
+          cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+          state.ordersList = cloudOrders;
+          setStoredData(oKey, cloudOrders);
+          renderApp();
+        }
+      }, err => console.log("Cloud Live Orders Listener Note:", err));
+    }
   }
 }
 
@@ -1051,7 +1070,7 @@ function renderAccountDashboardView() {
                 </div>
 
                 <div class="pt-4">
-                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); pushCloudCustomerUpdate(); alert('Profile Details Saved & Synced to Cloud DB!')" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
+                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); pushCloudCustomerUpdate(); alert('Profile Details Saved & Synced to Cloud DB!')" class="bg-black text-[#FFFFFF] px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
                 </div>
               </div>
             ` : ''}
@@ -2128,10 +2147,11 @@ window.triggerGoKwikSDKLogin = function() {
         appId: GOKWIK_CREDENTIALS.appId,
         type: 'login',
         onSuccess: function(res) {
+          const cleanPh = getCleanPhone(res.phone || '9876543210');
           state.isLoggedIn = true;
-          state.customerPhone = getCleanPhone(res.phone || '9876543210');
+          state.customerPhone = cleanPh;
           setStoredData('cieloria_is_logged_in', true);
-          setStoredData('cieloria_cust_phone', state.customerPhone);
+          setStoredData('cieloria_cust_phone', cleanPh);
           syncAccountStorage();
           switchViewMode('account');
         }
@@ -2158,7 +2178,6 @@ window.handleUserLogout = function() {
   setStoredData('cieloria_is_logged_in', false);
   setStoredData('cieloria_cust_name', '');
   setStoredData('cieloria_cust_phone', '');
-  setStoredData('cieloria_cart', []);
 
   alert("🚪 You have logged out successfully!");
   switchViewMode('homepage');
@@ -2190,12 +2209,16 @@ window.handleKwikPassSendOTP = function(e) {
 
 window.handleKwikPassVerifyOTP = function(e) {
   if (e) e.preventDefault();
+  const cleanPh = getCleanPhone(state.customerPhone);
+  if (!cleanPh || cleanPh.length < 10) {
+    alert('Please enter a valid mobile number!');
+    return;
+  }
+
   state.isLoggedIn = true;
+  state.customerPhone = cleanPh;
   if (!state.customerName) state.customerName = "Valued Customer";
   state.isKwikPassAuthOpen = false;
-
-  const cleanPh = getCleanPhone(state.customerPhone);
-  state.customerPhone = cleanPh;
 
   setStoredData('cieloria_is_logged_in', true);
   setStoredData('cieloria_cust_name', state.customerName);
@@ -2349,7 +2372,7 @@ window.toggleWishlist = function(id) {
     state.wishlist.push(id); 
   }
   
-  const wKey = getWishlistStorageKey();
+  const wKey = getActiveWishlistKey();
   setStoredData(wKey, state.wishlist);
   pushCloudCustomerUpdate();
   
@@ -2372,16 +2395,16 @@ window.openCheckoutModal = function() { state.isCheckoutOpen = true; state.check
 window.handleNewsletter = function(e) { e.preventDefault(); state.isSubscribed = true; renderApp(); };
 
 document.addEventListener('DOMContentLoaded', () => { 
-  renderApp(); 
   syncAccountStorage();
+  renderApp(); 
 });
 try { 
-  renderApp(); 
   syncAccountStorage();
+  renderApp(); 
 } catch(err) { console.error('Render error:', err); }
 """
 
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully integrated Firebase Cloud DB in build_palmonas_app_js.py and app.js!")
+print("Successfully updated app.js with bulletproof Wishlist merge & persistence!")
