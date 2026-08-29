@@ -3430,7 +3430,7 @@ function renderApp() {
               <div class="relative py-1 cursor-pointer shrink-0">
                 <button 
                   onclick="openPLPCategory('${nav.cat}')" 
-                  class="hover:text-[#C5A059] font-medium transition-all ${isActive ? 'font-bold text-[#C5A059] border-b-2 border-[#C5A059] pb-0.5' : 'text-[#1A1A1A]'}"
+                  class="subnav-btn ${isActive ? 'active' : ''}"
                 >
                   ${nav.name}
                 </button>
