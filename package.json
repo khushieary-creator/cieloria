@@ -1,8 +1,5 @@
 {
-  "name": "cieloria-store",
-  "private": true,
-  "version": "1.0.1",
-  "scripts": {
-    "build": "echo 'Building CIELORIA Production Bundle v1.0.1'"
-  }
+  "name": "cieloria",
+  "version": "1.0.0",
+  "private": true
 }
