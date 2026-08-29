@@ -1,4 +1,4 @@
-// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Clean Customer App - No Admin Links)
+// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Strict Account-Bound Wishlist & Cart Storage)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -3033,6 +3033,28 @@ function setStoredData(key, val) {
   } catch(e) {}
 }
 
+function removeStoredData(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch(e) {}
+}
+
+// Initial Account Check
+const initialIsLoggedIn = getStoredData('cieloria_is_logged_in', false);
+const initialPhone = getStoredData('cieloria_cust_phone', '');
+
+// Account-Specific Storage Keys
+function getWishlistStorageKey() {
+  const phone = getStoredData('cieloria_cust_phone', '');
+  return (initialIsLoggedIn && phone) ? `cieloria_wishlist_${phone}` : `cieloria_wishlist_guest`;
+}
+
+function getOrdersStorageKey() {
+  const phone = getStoredData('cieloria_cust_phone', '');
+  return (initialIsLoggedIn && phone) ? `cieloria_orders_${phone}` : `cieloria_orders_guest`;
+}
+
+// Global Application State
 let state = {
   viewMode: 'homepage',
   accountTab: 'orders',
@@ -3056,7 +3078,7 @@ let state = {
   plpSortBy: 'featured',
 
   cart: getStoredData('cieloria_cart', []),
-  wishlist: getStoredData('cieloria_wishlist', []),
+  wishlist: getStoredData(getWishlistStorageKey(), []), // Clean per-account or guest wishlist
   appliedCoupon: '',
   discountPercentage: 0,
   activeCurrency: 'INR',
@@ -3065,13 +3087,13 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  isLoggedIn: getStoredData('cieloria_is_logged_in', false),
+  isLoggedIn: initialIsLoggedIn,
   customerName: getStoredData('cieloria_cust_name', ''),
-  customerPhone: getStoredData('cieloria_cust_phone', ''),
+  customerPhone: initialPhone,
   customerEmail: getStoredData('cieloria_cust_email', ''),
   pincode: getStoredData('cieloria_pincode', ''),
   customerAddress: getStoredData('cieloria_address', ''),
-  ordersList: getStoredData('cieloria_orders', []),
+  ordersList: getStoredData(getOrdersStorageKey(), []),
   rewardsCoins: getStoredData('cieloria_coins', 0),
 
   merchantAllOrders: getStoredData('cieloria_merchant_all_orders', []),
@@ -3086,6 +3108,16 @@ let state = {
   isSubscribed: false,
   lastPlacedOrder: null
 };
+
+function syncAccountStorage() {
+  if (state.isLoggedIn && state.customerPhone) {
+    state.wishlist = getStoredData(`cieloria_wishlist_${state.customerPhone}`, []);
+    state.ordersList = getStoredData(`cieloria_orders_${state.customerPhone}`, []);
+  } else {
+    state.wishlist = getStoredData(`cieloria_wishlist_guest`, []);
+    state.ordersList = [];
+  }
+}
 
 function formatPrice(inrPrice) {
   const curr = CURRENCIES[state.activeCurrency] || CURRENCIES.INR;
@@ -4740,6 +4772,7 @@ window.triggerGoKwikSDKLogin = function() {
           state.customerPhone = res.phone || '9876543210';
           setStoredData('cieloria_is_logged_in', true);
           setStoredData('cieloria_cust_phone', state.customerPhone);
+          syncAccountStorage();
           switchViewMode('account');
         }
       });
@@ -4760,10 +4793,14 @@ window.handleUserLogout = function() {
   state.customerEmail = "";
   state.customerAddress = "";
   state.ordersList = [];
+  state.wishlist = []; // Clear active wishlist on logout!
+  state.cart = []; // Clear active cart on logout!
+
   setStoredData('cieloria_is_logged_in', false);
   setStoredData('cieloria_cust_name', '');
   setStoredData('cieloria_cust_phone', '');
-  setStoredData('cieloria_orders', []);
+  setStoredData('cieloria_cart', []);
+
   alert("🚪 You have logged out successfully!");
   switchViewMode('homepage');
 };
@@ -4801,6 +4838,8 @@ window.handleKwikPassVerifyOTP = function(e) {
   setStoredData('cieloria_is_logged_in', true);
   setStoredData('cieloria_cust_name', state.customerName);
   setStoredData('cieloria_cust_phone', state.customerPhone);
+
+  syncAccountStorage();
 
   alert(`🎉 Verified! Logged in successfully for +91 ${state.customerPhone}!`);
   switchViewMode('account');
@@ -4846,7 +4885,9 @@ window.completeUserOrder = function() {
   state.ordersList.unshift(newOrder);
   state.merchantAllOrders.unshift(newOrder);
 
-  setStoredData('cieloria_orders', state.ordersList);
+  if (state.customerPhone) {
+    setStoredData(`cieloria_orders_${state.customerPhone}`, state.ordersList);
+  }
   setStoredData('cieloria_merchant_all_orders', state.merchantAllOrders);
 
   state.lastPlacedOrder = newOrder;
@@ -4930,7 +4971,13 @@ window.toggleWishlist = function(id) {
   } else { 
     state.wishlist.push(id); 
   }
-  setStoredData('cieloria_wishlist', state.wishlist);
+  
+  if (state.isLoggedIn && state.customerPhone) {
+    setStoredData(`cieloria_wishlist_${state.customerPhone}`, state.wishlist);
+  } else {
+    setStoredData(`cieloria_wishlist_guest`, state.wishlist);
+  }
+  
   renderApp();
 };
 
