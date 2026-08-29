@@ -5062,10 +5062,11 @@ window.openPDP = function(id) {
   renderApp(); 
 };
 window.openPLPCategory = function(cat) { 
-  state.plpCategory = cat; 
-  if (cat === 'About') {
+  if (cat && cat.toLowerCase() === 'about') {
     state.viewMode = 'about';
+    state.plpCategory = 'About';
   } else {
+    state.plpCategory = cat; 
     state.plpSubFilter = '';
     state.viewMode = 'plp'; 
   }
