@@ -3430,7 +3430,10 @@ function renderApp() {
               <div class="relative py-1 cursor-pointer shrink-0">
                 <button 
                   onclick="openPLPCategory('${nav.cat}')" 
-                  class="subnav-btn ${isActive ? 'active' : ''}"
+                  style="${isActive ? 'color: #C5A059 !important; font-weight: 700 !important; border-bottom: 2px solid #C5A059 !important; padding-bottom: 2px !important;' : 'color: #1A1A1A !important; font-weight: 500 !important;'}"
+                  onmouseover="this.style.color='#C5A059';"
+                  onmouseout="if(!${isActive}) this.style.color='#1A1A1A';"
+                  class="transition-colors cursor-pointer text-xs"
                 >
                   ${nav.name}
                 </button>
@@ -5043,6 +5046,11 @@ window.completeUserOrder = function() {
 
 window.switchViewMode = function(mode) { 
   state.viewMode = mode; 
+  if (mode === 'about') {
+    state.plpCategory = 'About';
+  } else if (mode === 'homepage') {
+    state.plpCategory = '';
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
   renderApp(); 
 };
