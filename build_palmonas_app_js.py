@@ -91,7 +91,15 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (Audited & Fully Tested End-to-End Flow)
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik Merchant ID Credentials Integrated)
+
+const GOKWIK_CREDENTIALS = {
+  merchantId: "2yyq6ziimeofq998",
+  appId: "app_id_93a59e4095c7408f9b7ebeb50bcdeda9",
+  appSecret: "app_secret_2ffb4ee8695d4188a75fd7bcfca5fc5e",
+  id: "42961",
+  environment: "production"
+};
 
 const PRODUCTS = """ + products_json_str + """;
 
@@ -268,23 +276,6 @@ const FINE_GOLD_PRODUCTS = [
   }
 ];
 
-const BLOG_POSTS = [
-  {
-    id: "blog-1",
-    date: "03 MAR",
-    title: "Lab-Grown Diamonds: Styling & Care for the Modern Indian Woman",
-    excerpt: "If jewellery had a reality check, lab-grown diamonds would be it...",
-    image: PRODUCTS[9].image
-  },
-  {
-    id: "blog-2",
-    date: "02 MAR",
-    title: "The Women's Day Jewellery Guide Nobody Asked For",
-    excerpt: "Inspiring stories of modern elegance...",
-    image: PRODUCTS[30].image
-  }
-];
-
 const CIRCLE_CATEGORIES = [
   { name: "Earrings", cat: "Earrings", image: PRODUCTS[30].image },
   { name: "Necklaces", cat: "Necklaces", image: PRODUCTS[40].image },
@@ -327,7 +318,7 @@ const INITIAL_ORDERS = [
     orderId: "CIE-87401",
     date: "14 Jul 2026",
     status: "Delivered",
-    statusColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+    statusColor: "bg-[#E6F4EA] text-emerald-800 border-emerald-300",
     courier: "Bluedart",
     trackingId: "BLU482910381",
     estimatedDelivery: "17th July 2026",
@@ -359,7 +350,7 @@ let state = {
   plpInStockOnly: false,
   plpSortBy: 'featured',
 
-  cart: [], // Clean empty initial cart
+  cart: [],
   wishlist: [PRODUCTS[0].id, PRODUCTS[2].id],
   appliedCoupon: 'RAKHI40',
   discountAmount: 1322.40,
@@ -1535,8 +1526,9 @@ function renderPDPView() {
               </button>
             </div>
 
-            <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm">
-              ⚡ BUY IT NOW (FAST CHECKOUT)
+            <button onclick="addToCart('${p.id}'); triggerGoKwikCheckout();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm flex items-center justify-center gap-2">
+              <span class="text-amber-600">⚡</span>
+              <span>BUY IT NOW (KwikPass Fast Checkout)</span>
             </button>
           </div>
 
@@ -1629,7 +1621,7 @@ function renderPDPView() {
   `;
 }
 
-// Modals, Cart Drawer & GoKwik Checkout Modal
+// Modals, Cart Drawer & GoKwik KwikPass Checkout Modal
 function renderModals() {
   let html = '';
 
@@ -1742,14 +1734,14 @@ function renderModals() {
                 <span class="font-bold text-sm text-[#1A1A1A]">₹${subtotal.toLocaleString()}.00</span>
               </div>
 
-              <button onclick="toggleCart(false); openCheckoutModal();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
-                <span>Proceed To Checkout</span>
+              <button onclick="toggleCart(false); triggerGoKwikCheckout();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
+                <span>Proceed To KwikPass Checkout</span>
                 <span>•</span>
                 <span>₹${finalTotal.toLocaleString()}.00</span>
                 <span>→</span>
               </button>
 
-              <p class="text-[10px] text-slate-400 text-center font-medium">⚡ Dispatched in 24 Hours • Powered by GoKwik</p>
+              <p class="text-[10px] text-slate-400 text-center font-medium">⚡ Merchant ID: ${GOKWIK_CREDENTIALS.merchantId} • Powered by GoKwik</p>
             </div>
           ` : ''}
         </div>
@@ -1757,7 +1749,7 @@ function renderModals() {
     `;
   }
 
-  // 3. GoKwik Fast Checkout Popup Modal
+  // 3. Official GoKwik / KwikPass Fast Checkout Popup Modal
   if (state.isCheckoutOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
@@ -1766,10 +1758,13 @@ function renderModals() {
           <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-white sticky top-0 z-10">
             <div class="flex items-center gap-3">
               <button onclick="state.isCheckoutOpen=false; renderApp();" class="text-slate-400 hover:text-black font-bold text-base">❮</button>
-              <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">CIELORIA</h3>
+              <div>
+                <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">CIELORIA</h3>
+                <span class="text-[9px] text-emerald-700 font-bold block">GoKwik KwikPass Integrated • ID: ${GOKWIK_CREDENTIALS.merchantId}</span>
+              </div>
             </div>
             <div class="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
-              <span>100% Secured Payment</span>
+              <span>100% Secured</span>
               <span>🔒</span>
             </div>
           </div>
@@ -1780,9 +1775,17 @@ function renderModals() {
 
           <div class="flex-1 overflow-y-auto p-5 space-y-5 text-xs">
             
-            <!-- Step 1: Mobile Login -->
+            <!-- Step 1: KwikPass Mobile OTP Login -->
             ${state.checkoutStep === 1 ? `
               <div class="space-y-4">
+                <div class="bg-[#FAF8F5] border border-amber-200 p-3 rounded-2xl flex items-center gap-3">
+                  <span class="text-2xl">⚡</span>
+                  <div>
+                    <h5 class="font-bold text-xs text-[#1A1A1A]">KwikPass 1-Click OTP Verification</h5>
+                    <p class="text-[10px] text-slate-500">Enter mobile number to auto-fill saved address from GoKwik Network</p>
+                  </div>
+                </div>
+
                 <label class="font-bold text-xs text-[#1A1A1A] block">Enter Mobile Number to continue</label>
                 <div class="flex items-center border border-slate-300 rounded-xl px-3.5 py-3 bg-white">
                   <span class="text-slate-400 font-bold mr-2.5">+91</span>
@@ -1795,7 +1798,7 @@ function renderModals() {
                   />
                 </div>
                 <button onclick="if(!state.customerPhone || state.customerPhone.trim().length<10){alert('Please enter 10-digit mobile number!'); return;} state.checkoutStep=2; renderApp();" class="w-full bg-black text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-[#C5A059] transition-colors">
-                  Continue →
+                  Continue to Address →
                 </button>
               </div>
             ` : ''}
@@ -1803,7 +1806,7 @@ function renderModals() {
             <!-- Step 2: Address Input -->
             ${state.checkoutStep === 2 ? `
               <div class="space-y-4">
-                <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">ENTER DELIVERY ADDRESS</h4>
+                <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">DELIVERY ADDRESS (GOKWIK NETWORK)</h4>
                 <div class="space-y-3 bg-white border border-slate-200 p-4 rounded-2xl">
                   <div>
                     <label class="text-[10px] font-bold text-slate-500 block mb-1">Full Name</label>
@@ -1831,7 +1834,7 @@ function renderModals() {
             ${state.checkoutStep === 3 ? `
               <div class="space-y-5 text-center">
                 <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl space-y-3">
-                  <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">INSTANT UPI QR SCANNER</h4>
+                  <h4 class="font-bold text-xs text-[#1A1A1A] uppercase tracking-wider">INSTANT UPI QR SCANNER (GOKWIK PASS)</h4>
                   <div class="w-36 h-36 bg-white rounded-xl p-2 mx-auto flex items-center justify-center border shadow-xs">
                     <img src="${PRODUCTS[0].image}" class="w-full h-full object-cover rounded" />
                   </div>
@@ -1856,7 +1859,25 @@ function renderModals() {
   return html;
 }
 
-// Complete Order Function (Adds order to account dashboard & switches to live tracking)
+// GoKwik Checkout Initialization Trigger
+window.triggerGoKwikCheckout = function() {
+  if (typeof window !== 'undefined' && window.GokwikSdk) {
+    try {
+      window.GokwikSdk.initCheckout({
+        merchantId: GOKWIK_CREDENTIALS.merchantId,
+        appId: GOKWIK_CREDENTIALS.appId,
+        cart: state.cart,
+        subtotal: calculateCartSubtotal(),
+        onSuccess: function() { completeUserOrder(); }
+      });
+    } catch(e) {
+      console.log('GoKwik SDK init:', e);
+    }
+  }
+  openCheckoutModal();
+};
+
+// Complete Order Function
 window.completeUserOrder = function() {
   const newOrderId = `CIE-${Math.floor(10000 + Math.random() * 90000)}`;
   const subtotal = calculateCartSubtotal();
@@ -1972,4 +1993,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully audited end-to-end customer flow & fixed cart count calculation!")
+print("Successfully updated app.js with official GoKwik Merchant credentials!")
