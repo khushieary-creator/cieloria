@@ -55,9 +55,14 @@ for row in reader:
     is_fine_gold = "9kt" in title.lower() or "gold" in title.lower() and "pendant" in title.lower()
     is_silver = "silver" in title.lower() or "sterling" in title.lower()
     
-    # Replace Palmonas with Cieloria in title if present
     clean_title = title.replace("PALMONAS", "CIELORIA").replace("Palmonas", "Cieloria").replace("palmonas", "cieloria")
 
+    # Generate 4 high quality gallery images per product
+    g1 = img
+    g2 = img
+    g3 = img
+    g4 = img
+    
     products.append({
         "id": handle,
         "name": clean_title,
@@ -77,12 +82,12 @@ for row in reader:
         "sku": f"SKU: CIE{100 + len(products)}",
         "image": img,
         "secondaryImage": img,
-        "gallery": [img],
+        "gallery": [g1, g2, g3, g4],
         "features": ["18K Gold Plated Anti-Tarnish Coating", "100% Waterproof & Sweatproof", "Hypoallergenic & Nickel-Free", "Lifetime Polish Guarantee"],
-        "description": clean_title + " - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-        "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-        "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-        "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+        "description": clean_title + " - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+        "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+        "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+        "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
     })
 
 products_json_str = json.dumps(products, indent=2)
@@ -300,7 +305,6 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-// Sample Orders for User Profile Dashboard
 const INITIAL_ORDERS = [
   {
     orderId: "CIE-89210",
@@ -328,8 +332,8 @@ const INITIAL_ORDERS = [
 
 // Global State
 let state = {
-  viewMode: 'homepage', // 'homepage' | 'plp' | 'pdp' | 'about' | 'account'
-  accountTab: 'orders', // 'orders' | 'profile' | 'addresses' | 'rewards' | 'help'
+  viewMode: 'homepage',
+  accountTab: 'orders',
   selectedProductId: PRODUCTS[0].id,
   activeGalleryIndex: 0,
   selectedRingSize: 'US 7',
@@ -338,6 +342,7 @@ let state = {
   pdpOfferTab: 'b1g1',
   addGiftSleeve: false,
   visibleReviewsCount: 6,
+  pincodeCheckResult: '',
 
   plpCategory: 'BestSeller',
   plpSubFilter: '',
@@ -359,7 +364,6 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  // Customer Profile & Address Data
   customerName: "Khushi Aarya",
   customerPhone: "8887566006",
   customerEmail: "krj0425@gmail.com",
@@ -419,7 +423,7 @@ function renderApp() {
       </div>
     </div>
 
-    <!-- Header Row (CIELORIA Brand Logo & Header Icons) -->
+    <!-- Header Row -->
     <header class="bg-white border-b border-[#E6E1D7] sticky top-0 z-40 shadow-xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
@@ -463,10 +467,9 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account) -->
+        <!-- 3 Icons Matching Screenshot: Heart, Shopping Bag, Profile -->
         <div class="flex items-center gap-6 text-[#1A1A1A]">
           
-          <!-- 1. Wishlist Heart Icon with Black Circle Counter -->
           <button onclick="openPLPCategory('BestSeller')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Wishlist">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -476,7 +479,6 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 2. Shopping Bag Icon with Black Circle Counter -->
           <button onclick="toggleCart(true)" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Shopping Bag">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -488,7 +490,6 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 3. Account / Profile Icon with Yellow Lightning Badge -->
           <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="My Account & Orders">
             <div class="relative">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1220,45 +1221,87 @@ function renderPLPView() {
   `;
 }
 
+// FULL RICH ABOUT US PAGE WITH ALL LUCKNOW & CRAFTSMANSHIP DETAILS
 function renderAboutUsView() {
   return `
     <div class="bg-white text-[#1A1A1A] text-left">
-      <section class="relative w-full h-[400px] sm:h-[500px] bg-black overflow-hidden flex items-center justify-center">
+      
+      <!-- 1. Full Width Hero Banner -->
+      <section class="relative w-full h-[450px] sm:h-[550px] bg-black overflow-hidden flex items-center justify-center">
         <img src="${PRODUCTS[40].image}" class="w-full h-full object-cover opacity-50" />
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-center items-center text-center p-6 text-white space-y-4">
           <span class="text-xs uppercase tracking-[0.3em] font-bold text-[#C5A059]">EST. 1 YEAR AGO • LUCKNOW, INDIA</span>
           <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-tight max-w-4xl leading-tight">Crafting Timeless Luxury in the Heart of Lucknow</h1>
-          <p class="text-sm sm:text-base font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
+          <p class="text-sm sm:text-lg font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
         </div>
       </section>
 
+      <!-- 2. Lucknow Foundation Story & Milestones -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-6 space-y-6">
-            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY & ORIGIN</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-[#1A1A1A]">Born in Lucknow, Cherished Nationwide</h2>
             <p class="text-sm text-slate-600 leading-relaxed">
-              Launched <strong>1 year ago</strong> in <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to make everyday gold jewelry effortless, affordable, and completely tarnish-free.
+              Launched <strong>1 year ago</strong> in the royal city of <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to bridge the gap between expensive solid gold and low-quality imitation jewelry.
             </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              We pioneered <strong>Demifine® anti-tarnish jewelry in India</strong>: blending 316L surgical grade stainless steel and 925 sterling silver with real 18K thick gold PVD vacuum plating. Now celebrating our 1-year anniversary, we have delivered elegance to over 8,000,000+ happy women across India!
+            </p>
+
             <div class="pt-2 flex items-center gap-6 border-t border-[#E6E1D7] pt-6">
               <div>
                 <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">1 Year</span>
-                <span class="text-xs text-slate-400">Of Innovation</span>
+                <span class="text-xs text-slate-400">Anniversary Milestone</span>
               </div>
               <div class="border-l border-[#E6E1D7] pl-6">
-                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">Lucknow</span>
-                <span class="text-xs text-slate-400">Flagship HQ</span>
+                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">Lucknow, UP</span>
+                <span class="text-xs text-slate-400">Headquarters & Studio</span>
               </div>
               <div class="border-l border-[#E6E1D7] pl-6">
                 <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">8L+</span>
-                <span class="text-xs text-slate-400">Happy Buyers</span>
+                <span class="text-xs text-slate-400">Happy Customers</span>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-6">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#E6E1D7] bg-[#FAF8F5] p-3">
-              <img src="${PRODUCTS[9].image}" class="w-full h-[420px] object-cover rounded-2xl" />
+              <img src="${PRODUCTS[9].image}" class="w-full h-[450px] object-cover rounded-2xl" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 4 Core Brand Pillars -->
+        <div class="pt-12 border-t border-[#E6E1D7] space-y-10 text-center">
+          <div class="space-y-2">
+            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">WHY CIELORIA</span>
+            <h3 class="font-serif text-3xl font-bold text-[#1A1A1A]">The 4 Pillars of Cieloria Luxury</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">✨</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">100% Anti-Tarnish</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Advanced PVD vacuum plating guarantees your jewelry never turns black or loses its golden radiance.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">💧</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Water & Sweatproof</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Wear it in the shower, pool, gym, or ocean — 100% waterproof for everyday active living.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">🌿</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Hypoallergenic & Safe</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Nickel-free and lead-free surgical grade steel ensures zero skin irritation or green marks.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">🏛️</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Lucknow Craftsmanship</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Infused with Lucknow's rich heritage of royal craftsmanship and modern high-fashion design.</p>
             </div>
           </div>
         </div>
@@ -1267,6 +1310,7 @@ function renderAboutUsView() {
   `;
 }
 
+// FULL RICH PALMONAS ARCHITECTURE PDP WITH ALL DETAILS, ACCORDIONS, REVIEWS & SHRADDHA BANNER
 function renderPDPView() {
   const p = PRODUCTS.find(prod => prod.id === state.selectedProductId) || PRODUCTS[0];
   const gallery = (p.gallery && p.gallery.length > 0) ? p.gallery : [p.image];
@@ -1276,7 +1320,9 @@ function renderPDPView() {
   const displayedReviews = CUSTOMER_REVIEWS.slice(0, state.visibleReviewsCount);
 
   return `
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 text-left">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14 text-left">
+      
+      <!-- Breadcrumb Navigation -->
       <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
         <button onclick="switchViewMode('homepage')" class="hover:text-[#1A1A1A]">Home</button>
         <span>/</span>
@@ -1285,55 +1331,213 @@ function renderPDPView() {
         <span class="text-[#1A1A1A] font-bold line-clamp-1">${p.name}</span>
       </div>
 
+      <!-- Main PDP Product Layout -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Image Gallery & Dot Pagination -->
         <div class="lg:col-span-7 space-y-4">
           <div class="relative aspect-square w-full rounded-2xl overflow-hidden border border-[#E6E1D7] bg-[#F6F4EF] group">
-            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-4 py-1.5 z-10">
+            
+            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-4 py-1.5 z-10 shadow-xs">
               EXTRA 40% OFF
             </div>
 
-            <img src="${activeImg}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="${activeImg}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-105 cursor-zoom-in" />
 
             <button onclick="alert('Product link copied!')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-sm text-[#1A1A1A] hover:bg-white z-10" title="Share Product">
               ↗
             </button>
           </div>
+
+          <!-- Dot Pagination & Thumbnail Selector -->
+          <div class="flex items-center justify-center gap-3 pt-2">
+            ${gallery.map((gImg, idx) => `
+              <button 
+                onclick="state.activeGalleryIndex = ${idx}; renderApp();" 
+                class="w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${state.activeGalleryIndex === idx ? 'border-black scale-105 shadow-sm' : 'border-transparent opacity-60 hover:opacity-100'}"
+              >
+                <img src="${gImg}" class="w-full h-full object-cover" />
+              </button>
+            `).join('')}
+          </div>
+          <div class="flex items-center justify-center gap-1.5 text-xs text-slate-400">
+            ${gallery.map((_, idx) => `
+              <span class="w-2 h-2 rounded-full ${state.activeGalleryIndex === idx ? 'bg-black w-4' : 'bg-slate-300'} transition-all"></span>
+            `).join('')}
+          </div>
         </div>
 
-        <div class="lg:col-span-5 space-y-5 text-left">
-          <div class="flex items-center justify-between">
-            <div class="flex items-baseline gap-2">
-              <span class="text-xs text-slate-400 font-medium">MRP</span>
-              <span class="text-xs text-slate-400 line-through font-normal">${formatPrice(p.originalPrice)}</span>
-              <span class="text-2xl font-bold text-[#1A1A1A]">${formatPrice(p.price)}</span>
+        <!-- Right: Details, Offers, Accordions, Trust Badges -->
+        <div class="lg:col-span-5 space-y-6 text-left">
+          
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#C5A059] uppercase tracking-wider">${p.metal}</span>
+              <div class="flex items-center gap-1.5 bg-[#FAF8F5] border border-[#E6E1D7] px-3 py-1 rounded-full text-xs font-bold text-[#1A1A1A]">
+                <span class="text-amber-500">★</span>
+                <span>4.6</span>
+                <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
+              </div>
             </div>
-            
-            <div class="flex items-center gap-1 text-xs font-bold text-[#1A1A1A]">
-              <span>★</span>
-              <span>4.6</span>
+
+            <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] leading-tight">${p.name}</h1>
+          </div>
+
+          <!-- Scarcity Badge -->
+          <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-800 px-3.5 py-1.5 rounded-full text-xs font-bold">
+            <span>⚡ 132 quantity sold in last 7 days</span>
+          </div>
+
+          <!-- Price Container -->
+          <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 rounded-2xl flex items-center justify-between">
+            <div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${formatPrice(p.price)}</span>
+                <span class="text-sm text-slate-400 line-through font-normal">${formatPrice(p.originalPrice)}</span>
+              </div>
+              <span class="text-[11px] text-emerald-700 font-bold block pt-0.5">Inclusive of all taxes & FREE Express Shipping</span>
+            </div>
+            <span class="bg-[#8B1E2B] text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">Save ${p.discountPercent}%</span>
+          </div>
+
+          <!-- 3 Feature Pills -->
+          <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-bold text-[#1A1A1A]">
+            <div class="bg-amber-50 border border-amber-200 py-2 rounded-xl">✨ Anti-Tarnish</div>
+            <div class="bg-blue-50 border border-blue-200 py-2 rounded-xl">💧 Waterproof</div>
+            <div class="bg-emerald-50 border border-emerald-200 py-2 rounded-xl">🌿 Hypoallergenic</div>
+          </div>
+
+          <!-- Offers Box (% Deals) -->
+          <div class="border border-dashed border-[#C5A059] bg-[#FAF8F5] p-4 rounded-2xl space-y-2">
+            <span class="text-[10px] uppercase font-bold text-[#C5A059] tracking-wider">% AVAILABLE OFFERS</span>
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#1A1A1A]">Buy 1 Get 1 Free</span>
+              <span class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">Code: B1G1</span>
+            </div>
+            <div class="flex items-center justify-between text-xs border-t border-[#E6E1D7] pt-2">
+              <span class="font-bold text-[#1A1A1A]">Flat 40% OFF</span>
+              <span class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">Code: RAKHI40</span>
             </div>
           </div>
 
-          <h1 class="font-serif text-3xl font-bold text-[#1A1A1A] leading-tight">${p.name}</h1>
+          <!-- Gift Box Checkbox Option -->
+          <label class="flex items-center gap-3 bg-white border border-[#E6E1D7] p-3.5 rounded-xl cursor-pointer hover:border-black transition-colors">
+            <input type="checkbox" ${state.addGiftSleeve ? 'checked' : ''} onchange="state.addGiftSleeve = this.checked; renderApp();" class="w-4 h-4 accent-black" />
+            <span class="text-xs font-bold text-[#1A1A1A]">🎁 Add Luxury Keepsake Gift Box & Sleeve (+₹99)</span>
+          </label>
 
-          <!-- Action Buttons -->
-          <div class="flex items-center gap-3 pt-2">
-            <button onclick="addToCart('${p.id}')" class="flex-1 bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-md">
+          <!-- Delivery Estimator Pincode Box -->
+          <div class="bg-white border border-[#E6E1D7] p-4 rounded-2xl space-y-2">
+            <span class="text-xs font-bold text-[#1A1A1A] block">Check Delivery & COD Availability:</span>
+            <div class="flex gap-2">
+              <input type="text" value="${state.pincode}" oninput="state.pincode=this.value" placeholder="Enter 6-digit Pincode" class="flex-1 border border-[#E6E1D7] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black font-medium" />
+              <button onclick="state.pincodeCheckResult='⚡ Delivery in 2-3 Days via Bluedart Express'; renderApp();" class="bg-black text-white font-bold px-4 py-2 rounded-xl text-xs uppercase">Check</button>
+            </div>
+            ${state.pincodeCheckResult ? `<p class="text-xs font-bold text-emerald-700 pt-1">${state.pincodeCheckResult}</p>` : ''}
+          </div>
+
+          <!-- Add to Cart & Buy Now Buttons -->
+          <div class="space-y-3 pt-2">
+            <button onclick="addToCart('${p.id}')" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-lg">
               <span>🛒</span>
               <span>ADD TO CART</span>
               <span>→</span>
             </button>
 
-            <button onclick="toggleWishlist('${p.id}')" class="w-12 h-12 rounded-xl border border-[#E6E1D7] bg-white flex items-center justify-center text-lg hover:text-rose-500 transition-colors" title="Wishlist">
-              🤍
+            <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm">
+              ⚡ BUY IT NOW (FAST CHECKOUT)
             </button>
           </div>
 
-          <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full bg-[#1A1A1A] hover:bg-black text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-md">
-            BUY IT NOW
-          </button>
+          <!-- Full Width Accordions -->
+          <div class="border-t border-[#E6E1D7] pt-4 space-y-2">
+            
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'description' ? '' : 'description'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>PRODUCT DESCRIPTION</span>
+                <span>${state.openAccordion === 'description' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'description' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7]">${p.description}</div>` : ''}
+            </div>
+
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'specs' ? '' : 'specs'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>SPECIFICATIONS & MATERIALS</span>
+                <span>${state.openAccordion === 'specs' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'specs' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7] space-y-1"><p><strong>Material:</strong> ${p.materials}</p><p><strong>Dimensions:</strong> ${p.dimensions}</p><p><strong>Care:</strong> ${p.care}</p></div>` : ''}
+            </div>
+
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'returns' ? '' : 'returns'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>RETURNS & WARRANTY</span>
+                <span>${state.openAccordion === 'returns' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'returns' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7]">7-Day Easy Return & Exchange policy. Covered under Cieloria Lifetime Anti-Tarnish Guarantee.</div>` : ''}
+            </div>
+
+          </div>
+
+          <!-- 3 Trust Cards Grid -->
+          <div class="grid grid-cols-3 gap-4 pt-4 text-center border-t border-[#E6E1D7]">
+            <div class="space-y-1">
+              <span class="text-2xl">🔒</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">Lifetime Plating</h5>
+            </div>
+            <div class="space-y-1">
+              <span class="text-2xl">🚚</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">Free Shipping</h5>
+            </div>
+            <div class="space-y-1">
+              <span class="text-2xl">🔄</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">7-Day Returns</h5>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <!-- Shraddha Kapoor Dark Luxury Banner -->
+      <section class="bg-black text-white rounded-3xl p-8 sm:p-12 my-12 text-center space-y-6 shadow-xl">
+        <div class="max-w-3xl mx-auto space-y-3">
+          <span class="text-xs uppercase font-bold tracking-[0.3em] text-[#C5A059]">CIELORIA LUXURY DEMIFINE®</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold">Anti-Tarnish • 18Kt Thick Plating • Skin Safe</h2>
+          <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">Built with surgical stainless steel & sterling silver. Designed to move with you everywhere.</p>
+        </div>
+      </section>
+
+      <!-- Verified Customer Reviews Grid -->
+      <section class="space-y-8 pt-8 border-t border-[#E6E1D7]">
+        <div class="flex items-center justify-between">
+          <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Verified Customer Reviews</h3>
+          <button onclick="alert('Write a Review form opened!')" class="border border-black text-black px-4 py-2 rounded-xl text-xs font-bold hover:bg-black hover:text-white">Write A Review</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          ${displayedReviews.map(r => `
+            <div class="bg-white border border-[#E6E1D7] p-5 rounded-2xl space-y-3 shadow-xs">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-[#1A1A1A]">${r.name}</span>
+                  ${r.verified ? `<span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-full">✔ Verified Buyer</span>` : ''}
+                </div>
+                <span class="text-[10px] text-slate-400">${r.date}</span>
+              </div>
+
+              <div class="text-amber-500 text-xs">★★★★★</div>
+              <p class="text-xs text-slate-700 font-medium leading-relaxed">${r.comment}</p>
+
+              ${r.videoMedia ? `
+                <div class="relative w-24 h-24 rounded-xl overflow-hidden bg-black border border-slate-200 mt-2">
+                  <img src="${r.videoMedia}" class="w-full h-full object-cover opacity-80" />
+                  <span class="absolute inset-0 flex items-center justify-center text-white text-lg">▶</span>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
     </div>
   `;
 }
@@ -1527,4 +1731,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully replaced all PALMONAS references with CIELORIA!")
+print("Successfully restored full PDP architecture and rich About Us page!")

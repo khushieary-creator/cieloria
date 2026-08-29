@@ -21,6 +21,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377"
     ],
     "features": [
@@ -29,10 +32,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luxury Gold-Plated Anti-Tarnish Stone Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luxury Gold-Plated Anti-Tarnish Stone Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "elegant-22k-gold-textured-bangle",
@@ -54,6 +57,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_15_00PM.png?v=1758182007"
     ],
     "features": [
@@ -62,10 +68,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Traditional Engraved Gold Kada - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Traditional Engraved Gold Kada - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "luxury-black-silicone-rose-gold-plated-crystal-bracelet",
@@ -87,6 +93,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292"
     ],
     "features": [
@@ -95,10 +104,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luxury Black Silicone & Rose Gold-Plated Crystal Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luxury Black Silicone & Rose Gold-Plated Crystal Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "luxury-geometric-18k-gold-plated-zircon-bangle-bracelet",
@@ -120,6 +129,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_10_56_15AM.png?v=1758954114"
     ],
     "features": [
@@ -128,10 +140,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luxury Geometric 18K Gold-Plated Zircon Bangle Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luxury Geometric 18K Gold-Plated Zircon Bangle Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "luxury-18k-gold-plated-diamond-bangle-ring-set",
@@ -153,6 +165,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_01_46_16PM.png?v=1758181451"
     ],
     "features": [
@@ -161,10 +176,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luxury 18K Gold-Plated Diamond Bangle & Ring Set - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luxury 18K Gold-Plated Diamond Bangle & Ring Set - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "nail-gold-plated-bracelet-rhinestones-jewelry",
@@ -186,6 +201,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/nail-gold-plated-bracelet-rhinestones-jewelry-2209255.png?v=1758954085"
     ],
     "features": [
@@ -194,10 +212,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Nail gold plated bracelet rhinestones Jewelry - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Nail gold plated bracelet rhinestones Jewelry - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-kada-bracelet",
@@ -219,6 +237,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-bracelet-8848356.png?v=1756056754"
     ],
     "features": [
@@ -227,10 +248,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "18KT Gold Plated Stainless Tarnish Free Waterproof Demi-Fine Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "18KT Gold Plated Stainless Tarnish Free Waterproof Demi-Fine Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "stainless-steel-contemporary-gold-plated-love-ad-anti-tarnish-bracelet-for-women",
@@ -252,6 +273,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/9022a705161ff42b7879d88f1fd6d0e8.png?v=1758954333"
     ],
     "features": [
@@ -260,10 +284,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Stainless Steel Contemporary Gold Plated Love AD Anti-Tarnish Bracelet For Women - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Stainless Steel Contemporary Gold Plated Love AD Anti-Tarnish Bracelet For Women - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women",
@@ -285,6 +309,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women-9126826.png?v=1756056755"
     ],
     "features": [
@@ -293,10 +320,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Stainless Steel Gold Plated Mother of Pearls Clover Wraparound Anti-Tarnish Bracelet For Women - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Stainless Steel Gold Plated Mother of Pearls Clover Wraparound Anti-Tarnish Bracelet For Women - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "the-maharani-touch-luxe-gold-sapphire-ring",
@@ -318,6 +345,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-maharani-touch-luxe-gold-sapphire-ring-4884489.png?v=1756617959"
     ],
     "features": [
@@ -326,10 +356,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "The Maharani Touch: Luxe Gold Sapphire Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "The Maharani Touch: Luxe Gold Sapphire Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "luxe-loop-18k-gold-plated-diamond-bow-ring",
@@ -351,6 +381,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luxe-loop-18k-gold-plated-diamond-bow-ring-8821816.png?v=1756056758"
     ],
     "features": [
@@ -359,10 +392,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luxe Loop: 18K Gold Plated Diamond Bow Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luxe Loop: 18K Gold Plated Diamond Bow Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "dual-dazzle-black-white-stone-designer-ring",
@@ -384,6 +417,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-dazzle-black-white-stone-designer-ring-7920742.png?v=1756056753"
     ],
     "features": [
@@ -392,10 +428,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Dual Dazzle: Black & White Stone Designer Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Dual Dazzle: Black & White Stone Designer Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "emerald-whirl-gold-ring-with-radiant-sparkle",
@@ -417,6 +453,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-whirl-gold-ring-with-radiant-sparkle-8993970.png?v=1756617827"
     ],
     "features": [
@@ -425,10 +464,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Emerald Whirl: Gold Ring with Radiant Sparkle - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Emerald Whirl: Gold Ring with Radiant Sparkle - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "natures-embrace-gold-ring-with-sparkling-petals",
@@ -450,6 +489,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/natures-embrace-gold-ring-with-sparkling-petals-1026972.png?v=1756056753"
     ],
     "features": [
@@ -458,10 +500,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Nature's Embrace \u2013 Gold Ring with Sparkling Petals - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Nature's Embrace \u2013 Gold Ring with Sparkling Petals - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "infinity-grace-gold-ring-with-floating-diamonds",
@@ -483,6 +525,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/infinity-grace-gold-ring-with-floating-diamonds-7715030.png?v=1756056753"
     ],
     "features": [
@@ -491,10 +536,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Infinity Grace \u2013 Gold Ring with Floating Diamonds - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Infinity Grace \u2013 Gold Ring with Floating Diamonds - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "gilded-glory-a-crown-of-light-on-your-finger",
@@ -516,6 +561,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-glory-a-crown-of-light-on-your-finger-8502053.png?v=1756056755"
     ],
     "features": [
@@ -524,10 +572,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Gilded Glory \u2013 A Crown of Light on Your Finger - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Gilded Glory \u2013 A Crown of Light on Your Finger - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "architect-of-elegance-geometric-gold-glam-ring",
@@ -549,6 +597,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/architect-of-elegance-geometric-gold-glam-ring-9923044.png?v=1756056757"
     ],
     "features": [
@@ -557,10 +608,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Architect of Elegance \u2013 Geometric Gold Glam Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Architect of Elegance \u2013 Geometric Gold Glam Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "tide-of-glamour-gold-ring-with-flowing-design",
@@ -582,6 +633,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/tide-of-glamour-gold-ring-with-flowing-design-6343048.png?v=1756056756"
     ],
     "features": [
@@ -590,10 +644,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Tide of Glamour \u2013 Gold Ring with Flowing Design - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Tide of Glamour \u2013 Gold Ring with Flowing Design - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "the-empress-band-elegant-triple-row-ring",
@@ -615,6 +669,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/the-empress-band-elegant-triple-row-ring-8929622.png?v=1756056754"
     ],
     "features": [
@@ -623,10 +680,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "The Empress Band \u2013 Elegant Triple Row Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "The Empress Band \u2013 Elegant Triple Row Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "midnight-glow-blue-stone-halo-ring",
@@ -648,6 +705,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-glow-blue-stone-halo-ring-4446686.png?v=1756056778"
     ],
     "features": [
@@ -656,10 +716,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Midnight Glow \u2013 Blue Stone Halo Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Midnight Glow \u2013 Blue Stone Halo Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "rosy-orbit-bold-sparkle-delicate-heart",
@@ -681,6 +741,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/rosy-orbit-bold-sparkle-delicate-heart-3423543.png?v=1756618074"
     ],
     "features": [
@@ -689,10 +752,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Rosy Orbit \u2013 Bold Sparkle - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Rosy Orbit \u2013 Bold Sparkle - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "moonlit-grace-classic-silver-twist-ring",
@@ -714,6 +777,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-grace-classic-silver-twist-ring-3952516.png?v=1756056754"
     ],
     "features": [
@@ -722,10 +788,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Moonlit Grace \u2013 Classic Silver Twist Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Moonlit Grace \u2013 Classic Silver Twist Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "crystal-vow-infinity-loop-ring-in-silver",
@@ -747,6 +813,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-vow-infinity-loop-ring-in-silver-8446780.png?v=1756056774"
     ],
     "features": [
@@ -755,10 +824,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Crystal Vow \u2013 Infinity Loop Ring in Silver - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Crystal Vow \u2013 Infinity Loop Ring in Silver - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "silver-petal-sparkle-cluster-designer-ring",
@@ -780,6 +849,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/silver-petal-sparkle-cluster-designer-ring-1844192.png?v=1756056909"
     ],
     "features": [
@@ -788,10 +860,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Silver Petal \u2013 Sparkle Cluster Designer Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Silver Petal \u2013 Sparkle Cluster Designer Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "steel-luxe-cubic-diamond-inlay-ring",
@@ -813,6 +885,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/steel-luxe-cubic-diamond-inlay-ring-3656466.png?v=1756056755"
     ],
     "features": [
@@ -821,10 +896,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Steel Luxe \u2013 Cubic Diamond Inlay Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Steel Luxe \u2013 Cubic Diamond Inlay Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "everlight-silver-sparkle-dots-ring",
@@ -846,6 +921,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/everlight-silver-sparkle-dots-ring-5732023.png?v=1756056757"
     ],
     "features": [
@@ -854,10 +932,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Everlight \u2013 Silver Sparkle Dots Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Everlight \u2013 Silver Sparkle Dots Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "moonlit-blossom-curved-silver-flower-ring",
@@ -879,6 +957,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonlit-blossom-curved-silver-flower-ring-5375929.png?v=1756056755"
     ],
     "features": [
@@ -887,10 +968,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Moonlit Blossom \u2013 Curved Silver Flower Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Moonlit Blossom \u2013 Curved Silver Flower Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "queen-s-tear-marquise-halo-silver-ring",
@@ -912,6 +993,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/queens-tear-marquise-halo-silver-ring-9741809.png?v=1756056757"
     ],
     "features": [
@@ -920,10 +1004,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Queen\u2019s Tear \u2013 Marquise Halo Silver Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Queen\u2019s Tear \u2013 Marquise Halo Silver Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "moonleaf-dual-petal-sparkle-band",
@@ -945,6 +1029,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/moonleaf-dual-petal-sparkle-band-5992710.png?v=1756056776"
     ],
     "features": [
@@ -953,10 +1040,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Moonleaf \u2013 Dual Petal Sparkle Band - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Moonleaf \u2013 Dual Petal Sparkle Band - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "orbit-spark-contemporary-cluster-band",
@@ -978,6 +1065,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/orbit-spark-contemporary-cluster-band-8194147.png?v=1756056775"
     ],
     "features": [
@@ -986,10 +1076,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Orbit Spark \u2013 Contemporary Cluster Band - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Orbit Spark \u2013 Contemporary Cluster Band - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "starlight-crown-timeless-cz-engagement-ring",
@@ -1011,6 +1101,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/starlight-crown-timeless-cz-engagement-ring-4856014.png?v=1756056776"
     ],
     "features": [
@@ -1019,10 +1112,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Starlight Crown \u2013 Timeless CZ Engagement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Starlight Crown \u2013 Timeless CZ Engagement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "luna-light-classic-sparkle-engagement-ring",
@@ -1044,6 +1137,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/luna-light-classic-sparkle-engagement-ring-6019156.png?v=1756056755"
     ],
     "features": [
@@ -1052,10 +1148,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Luna Light \u2013 Classic Sparkle Engagement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Luna Light \u2013 Classic Sparkle Engagement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "glacier-gleam-princess-sparkle-ring",
@@ -1077,6 +1173,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/glacier-gleam-princess-sparkle-ring-5657175.png?v=1756056755"
     ],
     "features": [
@@ -1085,10 +1184,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Glacier Gleam \u2013 Princess Sparkle Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Glacier Gleam \u2013 Princess Sparkle Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "dual-point-ring",
@@ -1110,6 +1209,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/dual-point-ring-8420573.png?v=1756617663"
     ],
     "features": [
@@ -1118,10 +1220,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Dual Point Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Dual Point Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "rose-gold-clover",
@@ -1143,6 +1245,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/blush-charm-rose-gold-clover-ring-7022343.png?v=1758953071"
     ],
     "features": [
@@ -1151,10 +1256,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Blush Charm Rose Gold Clover Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Blush Charm Rose Gold Clover Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "radiant-bloom-rose-gold-diamond-ring",
@@ -1176,6 +1281,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/radiant-bloom-rose-gold-diamond-ring-7930669.png?v=1756618126"
     ],
     "features": [
@@ -1184,10 +1292,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Radiant Bloom Rose Gold Diamond Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Radiant Bloom Rose Gold Diamond Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-aura-crossover-statement-ring",
@@ -1209,6 +1317,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-aura-crossover-statement-ring-8589265.png?v=1756617743"
     ],
     "features": [
@@ -1217,10 +1328,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Aura Crossover Statement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Aura Crossover Statement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "liquid-gold-organic-band-ring",
@@ -1242,6 +1353,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/liquid-gold-organic-band-ring-3431866.png?v=1756617706"
     ],
     "features": [
@@ -1250,10 +1364,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Liquid Gold Organic Band Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Liquid Gold Organic Band Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "gilded-flame-sculptural-earrings",
@@ -1275,6 +1389,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/gilded-flame-sculptural-earrings-4135706.png?v=1758953814"
     ],
     "features": [
@@ -1283,10 +1400,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Gilded Flame Sculptural Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Gilded Flame Sculptural Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "eternal-time-roman-dial-hoop-earrings",
@@ -1308,6 +1425,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-time-roman-dial-hoop-earrings-1081657.png?v=1758953698"
     ],
     "features": [
@@ -1316,10 +1436,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Eternal Time Roman Dial Hoop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Eternal Time Roman Dial Hoop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "linear-muse-geometric-drop-earrings",
@@ -1341,6 +1461,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/linear-muse-geometric-drop-earrings-8640731.png?v=1758954131"
     ],
     "features": [
@@ -1349,10 +1472,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Linear Muse Geometric Drop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Linear Muse Geometric Drop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-whisper-butterfly-drop-earrings",
@@ -1374,6 +1497,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whisper-butterfly-drop-earrings-8749999.png?v=1758953916"
     ],
     "features": [
@@ -1382,10 +1508,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Whisper Butterfly Drop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Whisper Butterfly Drop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "honey-love-marble-heart-studs",
@@ -1407,6 +1533,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/honey-love-marble-heart-studs-8479731.png?v=1758953637"
     ],
     "features": [
@@ -1415,10 +1544,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Honey Love Marble Heart Studs - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Honey Love Marble Heart Studs - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-helix-classic-twist-hoops",
@@ -1440,6 +1569,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-helix-classic-twist-hoops-7344063.png?v=1758953829"
     ],
     "features": [
@@ -1448,10 +1580,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Helix Classic Twist Hoops - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Helix Classic Twist Hoops - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "sona-shakti-temple-coin-hoop-earrings",
@@ -1473,6 +1605,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sona-shakti-temple-coin-hoop-earrings-1604712.png?v=1758953647"
     ],
     "features": [
@@ -1481,10 +1616,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Sona Shakti Temple Coin Hoop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Sona Shakti Temple Coin Hoop Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs",
@@ -1506,6 +1641,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/eternal-roots-rose-gold-tree-of-life-earring-set-3-pairs-3914323.png?v=1758953962"
     ],
     "features": [
@@ -1514,10 +1652,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Eternal Roots \u2013 Rose Gold Tree of Life Earring Set (3 Pairs) - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Eternal Roots \u2013 Rose Gold Tree of Life Earring Set (3 Pairs) - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "melted-heart-sculpted-gold-studs",
@@ -1539,6 +1677,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/melted-heart-sculpted-gold-studs-9215584.png?v=1758954100"
     ],
     "features": [
@@ -1547,10 +1688,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Melted Heart Sculpted Gold Studs - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Melted Heart Sculpted Gold Studs - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "lunar-luxe-bold-crescent-hoops",
@@ -1572,6 +1713,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/lunar-luxe-bold-crescent-hoops-5454648.png?v=1758953613"
     ],
     "features": [
@@ -1580,10 +1724,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Lunar Luxe Bold Crescent Hoops - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Lunar Luxe Bold Crescent Hoops - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "fleur-de-lune-crystal-crescent-earrings",
@@ -1605,6 +1749,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/fleur-de-lune-crystal-crescent-earrings-3913562.png?v=1758953622"
     ],
     "features": [
@@ -1613,10 +1760,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Fleur de Lune Crystal Crescent Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Fleur de Lune Crystal Crescent Earrings - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "emerald-aura-clover-cable-bracelet",
@@ -1638,6 +1785,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-aura-clover-cable-bracelet-4415871.png?v=1758953422"
     ],
     "features": [
@@ -1646,10 +1796,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Emerald Aura Clover Cable Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Emerald Aura Clover Cable Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "elysian-flow-22k-gold-statement-ring",
@@ -1671,6 +1821,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860"
     ],
     "features": [
@@ -1679,10 +1832,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Elysian Flow 22K Gold Statement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Elysian Flow 22K Gold Statement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-\u2728",
@@ -1704,6 +1857,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/sparkle-vibe-18k-gold-plated-open-v-curve-diamond-ring-7676924.png?v=1756617998"
     ],
     "features": [
@@ -1712,10 +1868,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Sparkle Vibe | 18K Gold Plated Open V-Curve Diamond Ring \u2728 - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Sparkle Vibe | 18K Gold Plated Open V-Curve Diamond Ring \u2728 - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes",
@@ -1737,6 +1893,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/serpent-of-grace-diamond-ring-sterling-elegance-with-emerald-eyes-5196585.png?v=1756618035"
     ],
     "features": [
@@ -1745,10 +1904,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Serpent of Grace Diamond Ring \u2013 Sterling Elegance with Emerald Eyes - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Serpent of Grace Diamond Ring \u2013 Sterling Elegance with Emerald Eyes - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "floral-radiance-gold-toned-designer-bracelet",
@@ -1770,6 +1929,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/floral-radiance-gold-toned-designer-bracelet-6234231.png?v=1756056774"
     ],
     "features": [
@@ -1778,10 +1940,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Floral Radiance Gold-Toned Designer Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Floral Radiance Gold-Toned Designer Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-luxe-bold-link-bracelet",
@@ -1803,6 +1965,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-luxe-bold-link-bracelet-5793520.png?v=1758953842"
     ],
     "features": [
@@ -1811,10 +1976,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Luxe Bold Link Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Luxe Bold Link Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "celestial-charm-star-link-bracelet",
@@ -1836,6 +2001,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-charm-star-link-bracelet-5612753.png?v=1758953157"
     ],
     "features": [
@@ -1844,10 +2012,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Celestial Charm Star Link Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Celestial Charm Star Link Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-harmony-dual-strand-bracelet",
@@ -1869,6 +2037,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-harmony-dual-strand-bracelet-9285314.png?v=1758953812"
     ],
     "features": [
@@ -1877,10 +2048,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Harmony Dual-Strand Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Harmony Dual-Strand Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "crystal-luxe-baguette-tennis-bracelet",
@@ -1902,6 +2073,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-luxe-baguette-tennis-bracelet-5456821.png?v=1758953319"
     ],
     "features": [
@@ -1910,10 +2084,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Crystal Luxe Baguette Tennis Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Crystal Luxe Baguette Tennis Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "enchanted-clover-charm-bracelet",
@@ -1935,6 +2109,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/enchanted-clover-charm-bracelet-7505707.png?v=1758953411"
     ],
     "features": [
@@ -1943,10 +2120,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Enchanted Clover Charm Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Enchanted Clover Charm Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-grace-clover-pearl-necklace",
@@ -1968,6 +2145,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-grace-clover-pearl-necklace-9625323.png?v=1756618466"
     ],
     "features": [
@@ -1976,10 +2156,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Grace Clover & Pearl Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Grace Clover & Pearl Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-flutter-butterfly-drop-necklace",
@@ -2001,6 +2181,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-flutter-butterfly-drop-necklace-8184072.png?v=1756224340"
     ],
     "features": [
@@ -2009,10 +2192,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Flutter Butterfly Drop Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Flutter Butterfly Drop Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "midnight-bloom-petal-charm-necklace",
@@ -2034,6 +2217,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-bloom-petal-charm-necklace-8578224.png?v=1756224333"
     ],
     "features": [
@@ -2042,10 +2228,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Midnight Bloom Petal Charm Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Midnight Bloom Petal Charm Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-emblem-luxe-layered-necklace",
@@ -2067,6 +2253,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-emblem-luxe-layered-necklace-8924108.png?v=1756224326"
     ],
     "features": [
@@ -2075,10 +2264,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Emblem Luxe Layered Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Emblem Luxe Layered Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "ivory-whisper-petal-necklace",
@@ -2100,6 +2289,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-whisper-petal-necklace-3044131.png?v=1756224323"
     ],
     "features": [
@@ -2108,10 +2300,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Ivory Whisper Petal Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Ivory Whisper Petal Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "midnight-hearts-gold-plated-love-lariat-necklace",
@@ -2133,6 +2325,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/midnight-hearts-gold-plated-love-lariat-necklace-4445810.png?v=1756224317"
     ],
     "features": [
@@ -2141,10 +2336,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Midnight Hearts Gold-Plated Love Lariat Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Midnight Hearts Gold-Plated Love Lariat Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "urban-pulse-gold-plated-rectangular-link-chain-necklace",
@@ -2166,6 +2361,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/urban-pulse-gold-plated-rectangular-link-chain-necklace-7591197.png?v=1756224311"
     ],
     "features": [
@@ -2174,10 +2372,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Urban Pulse Gold-Plated Rectangular Link Chain Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Urban Pulse Gold-Plated Rectangular Link Chain Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "noir-panther-bold-black-panther-pendant-necklace",
@@ -2199,6 +2397,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/noir-panther-bold-black-panther-pendant-necklace-9654176.png?v=1756224304"
     ],
     "features": [
@@ -2207,10 +2408,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Noir Panther Bold Black Panther Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Noir Panther Bold Black Panther Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "ivory-hearts-gold-plated-lariat-necklace",
@@ -2232,6 +2433,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ivory-hearts-gold-plated-lariat-necklace-7841339.png?v=1756224294"
     ],
     "features": [
@@ -2240,10 +2444,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Ivory Hearts Gold-Plated Lariat Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Ivory Hearts Gold-Plated Lariat Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-whimsy-bow-pendant-necklace",
@@ -2265,6 +2469,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-whimsy-bow-pendant-necklace-2518506.png?v=1758181077"
     ],
     "features": [
@@ -2273,10 +2480,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Whimsy Bow Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Whimsy Bow Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-drizzle-twin-drop-pendant-necklace",
@@ -2298,6 +2505,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-drizzle-twin-drop-pendant-necklace-2207145.png?v=1758181113"
     ],
     "features": [
@@ -2306,10 +2516,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Drizzle Twin Drop Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Drizzle Twin Drop Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "iconic-muse-bold-cc-pendant-necklace",
@@ -2331,6 +2541,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/iconic-muse-bold-cc-pendant-necklace-6377947.png?v=1758181203"
     ],
     "features": [
@@ -2339,10 +2552,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Iconic Muse Bold CC Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Iconic Muse Bold CC Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "molten-muse-sculpted-pendant-teardrop-earring-set",
@@ -2364,6 +2577,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/molten-muse-sculpted-pendant-teardrop-earring-set-4298285.png?v=1756224255"
     ],
     "features": [
@@ -2372,10 +2588,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Molten Muse Sculpted Pendant & Teardrop Earring Set - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Molten Muse Sculpted Pendant & Teardrop Earring Set - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "emerald-pirouette-dancing-ballerina-pendant-necklace",
@@ -2397,6 +2613,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/emerald-pirouette-dancing-ballerina-pendant-necklace-9697600.png?v=1756224247"
     ],
     "features": [
@@ -2405,10 +2624,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Emerald Pirouette Dancing Ballerina Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Emerald Pirouette Dancing Ballerina Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "golden-bean-fluid-sculpt-pendant-necklace",
@@ -2430,6 +2649,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/golden-bean-fluid-sculpt-pendant-necklace-6495439.png?v=1756224242"
     ],
     "features": [
@@ -2438,10 +2660,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Golden Bean Fluid Sculpt Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Golden Bean Fluid Sculpt Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "pop-pup-balloon-dog-pendant-necklace",
@@ -2463,6 +2685,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/pop-pup-balloon-dog-pendant-necklace-8995228.png?v=1758181262"
     ],
     "features": [
@@ -2471,10 +2696,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Pop Pup Balloon Dog Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Pop Pup Balloon Dog Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "crystal-charme-bow-baguette-pendant-necklace",
@@ -2496,6 +2721,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/crystal-charme-bow-baguette-pendant-necklace-7190443.png?v=1756224230"
     ],
     "features": [
@@ -2504,10 +2732,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Crystal Charme Bow & Baguette Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Crystal Charme Bow & Baguette Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "magnetique-amour-heart-clover-convertible-pendant-necklace",
@@ -2529,6 +2757,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/magnetique-amour-heart-clover-convertible-pendant-necklace-6900898.png?v=1756224225"
     ],
     "features": [
@@ -2537,10 +2768,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Magnetique Amour Heart-Clover Convertible Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Magnetique Amour Heart-Clover Convertible Pendant Necklace - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   },
   {
     "id": "celestial-radiance-adjustable-gold-bracelet",
@@ -2562,6 +2793,9 @@ const PRODUCTS = [
     "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255",
     "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255",
     "gallery": [
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255",
+      "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255",
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/celestial-radiance-adjustable-gold-bracelet-8797428.png?v=1758953255"
     ],
     "features": [
@@ -2570,10 +2804,10 @@ const PRODUCTS = [
       "Hypoallergenic & Nickel-Free",
       "Lifetime Polish Guarantee"
     ],
-    "description": "Celestial Radiance Adjustable Gold Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
-    "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
-    "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
-    "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
+    "description": "Celestial Radiance Adjustable Gold Bracelet - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+    "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+    "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+    "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   }
 ];
 
@@ -2786,7 +3020,6 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-// Sample Orders for User Profile Dashboard
 const INITIAL_ORDERS = [
   {
     orderId: "CIE-89210",
@@ -2814,8 +3047,8 @@ const INITIAL_ORDERS = [
 
 // Global State
 let state = {
-  viewMode: 'homepage', // 'homepage' | 'plp' | 'pdp' | 'about' | 'account'
-  accountTab: 'orders', // 'orders' | 'profile' | 'addresses' | 'rewards' | 'help'
+  viewMode: 'homepage',
+  accountTab: 'orders',
   selectedProductId: PRODUCTS[0].id,
   activeGalleryIndex: 0,
   selectedRingSize: 'US 7',
@@ -2824,6 +3057,7 @@ let state = {
   pdpOfferTab: 'b1g1',
   addGiftSleeve: false,
   visibleReviewsCount: 6,
+  pincodeCheckResult: '',
 
   plpCategory: 'BestSeller',
   plpSubFilter: '',
@@ -2845,7 +3079,6 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  // Customer Profile & Address Data
   customerName: "Khushi Aarya",
   customerPhone: "8887566006",
   customerEmail: "krj0425@gmail.com",
@@ -2905,7 +3138,7 @@ function renderApp() {
       </div>
     </div>
 
-    <!-- Header Row (CIELORIA Brand Logo & Header Icons) -->
+    <!-- Header Row -->
     <header class="bg-white border-b border-[#E6E1D7] sticky top-0 z-40 shadow-xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
@@ -2949,10 +3182,9 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account) -->
+        <!-- 3 Icons Matching Screenshot: Heart, Shopping Bag, Profile -->
         <div class="flex items-center gap-6 text-[#1A1A1A]">
           
-          <!-- 1. Wishlist Heart Icon with Black Circle Counter -->
           <button onclick="openPLPCategory('BestSeller')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Wishlist">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -2962,7 +3194,6 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 2. Shopping Bag Icon with Black Circle Counter -->
           <button onclick="toggleCart(true)" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Shopping Bag">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -2974,7 +3205,6 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 3. Account / Profile Icon with Yellow Lightning Badge -->
           <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="My Account & Orders">
             <div class="relative">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -3706,45 +3936,87 @@ function renderPLPView() {
   `;
 }
 
+// FULL RICH ABOUT US PAGE WITH ALL LUCKNOW & CRAFTSMANSHIP DETAILS
 function renderAboutUsView() {
   return `
     <div class="bg-white text-[#1A1A1A] text-left">
-      <section class="relative w-full h-[400px] sm:h-[500px] bg-black overflow-hidden flex items-center justify-center">
+      
+      <!-- 1. Full Width Hero Banner -->
+      <section class="relative w-full h-[450px] sm:h-[550px] bg-black overflow-hidden flex items-center justify-center">
         <img src="${PRODUCTS[40].image}" class="w-full h-full object-cover opacity-50" />
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-center items-center text-center p-6 text-white space-y-4">
           <span class="text-xs uppercase tracking-[0.3em] font-bold text-[#C5A059]">EST. 1 YEAR AGO • LUCKNOW, INDIA</span>
           <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-tight max-w-4xl leading-tight">Crafting Timeless Luxury in the Heart of Lucknow</h1>
-          <p class="text-sm sm:text-base font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
+          <p class="text-sm sm:text-lg font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
         </div>
       </section>
 
+      <!-- 2. Lucknow Foundation Story & Milestones -->
       <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div class="lg:col-span-6 space-y-6">
-            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY</span>
+            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY & ORIGIN</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-[#1A1A1A]">Born in Lucknow, Cherished Nationwide</h2>
             <p class="text-sm text-slate-600 leading-relaxed">
-              Launched <strong>1 year ago</strong> in <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to make everyday gold jewelry effortless, affordable, and completely tarnish-free.
+              Launched <strong>1 year ago</strong> in the royal city of <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to bridge the gap between expensive solid gold and low-quality imitation jewelry.
             </p>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              We pioneered <strong>Demifine® anti-tarnish jewelry in India</strong>: blending 316L surgical grade stainless steel and 925 sterling silver with real 18K thick gold PVD vacuum plating. Now celebrating our 1-year anniversary, we have delivered elegance to over 8,000,000+ happy women across India!
+            </p>
+
             <div class="pt-2 flex items-center gap-6 border-t border-[#E6E1D7] pt-6">
               <div>
                 <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">1 Year</span>
-                <span class="text-xs text-slate-400">Of Innovation</span>
+                <span class="text-xs text-slate-400">Anniversary Milestone</span>
               </div>
               <div class="border-l border-[#E6E1D7] pl-6">
-                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">Lucknow</span>
-                <span class="text-xs text-slate-400">Flagship HQ</span>
+                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">Lucknow, UP</span>
+                <span class="text-xs text-slate-400">Headquarters & Studio</span>
               </div>
               <div class="border-l border-[#E6E1D7] pl-6">
                 <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">8L+</span>
-                <span class="text-xs text-slate-400">Happy Buyers</span>
+                <span class="text-xs text-slate-400">Happy Customers</span>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-6">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#E6E1D7] bg-[#FAF8F5] p-3">
-              <img src="${PRODUCTS[9].image}" class="w-full h-[420px] object-cover rounded-2xl" />
+              <img src="${PRODUCTS[9].image}" class="w-full h-[450px] object-cover rounded-2xl" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 4 Core Brand Pillars -->
+        <div class="pt-12 border-t border-[#E6E1D7] space-y-10 text-center">
+          <div class="space-y-2">
+            <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">WHY CIELORIA</span>
+            <h3 class="font-serif text-3xl font-bold text-[#1A1A1A]">The 4 Pillars of Cieloria Luxury</h3>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">✨</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">100% Anti-Tarnish</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Advanced PVD vacuum plating guarantees your jewelry never turns black or loses its golden radiance.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">💧</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Water & Sweatproof</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Wear it in the shower, pool, gym, or ocean — 100% waterproof for everyday active living.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">🌿</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Hypoallergenic & Safe</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Nickel-free and lead-free surgical grade steel ensures zero skin irritation or green marks.</p>
+            </div>
+
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
+              <span class="text-3xl">🏛️</span>
+              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Lucknow Craftsmanship</h4>
+              <p class="text-xs text-slate-600 leading-relaxed">Infused with Lucknow's rich heritage of royal craftsmanship and modern high-fashion design.</p>
             </div>
           </div>
         </div>
@@ -3753,6 +4025,7 @@ function renderAboutUsView() {
   `;
 }
 
+// FULL RICH PALMONAS ARCHITECTURE PDP WITH ALL DETAILS, ACCORDIONS, REVIEWS & SHRADDHA BANNER
 function renderPDPView() {
   const p = PRODUCTS.find(prod => prod.id === state.selectedProductId) || PRODUCTS[0];
   const gallery = (p.gallery && p.gallery.length > 0) ? p.gallery : [p.image];
@@ -3762,7 +4035,9 @@ function renderPDPView() {
   const displayedReviews = CUSTOMER_REVIEWS.slice(0, state.visibleReviewsCount);
 
   return `
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12 text-left">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14 text-left">
+      
+      <!-- Breadcrumb Navigation -->
       <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
         <button onclick="switchViewMode('homepage')" class="hover:text-[#1A1A1A]">Home</button>
         <span>/</span>
@@ -3771,55 +4046,213 @@ function renderPDPView() {
         <span class="text-[#1A1A1A] font-bold line-clamp-1">${p.name}</span>
       </div>
 
+      <!-- Main PDP Product Layout -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left: Image Gallery & Dot Pagination -->
         <div class="lg:col-span-7 space-y-4">
           <div class="relative aspect-square w-full rounded-2xl overflow-hidden border border-[#E6E1D7] bg-[#F6F4EF] group">
-            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-4 py-1.5 z-10">
+            
+            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-4 py-1.5 z-10 shadow-xs">
               EXTRA 40% OFF
             </div>
 
-            <img src="${activeImg}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+            <img src="${activeImg}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:brightness-105 cursor-zoom-in" />
 
             <button onclick="alert('Product link copied!')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-sm text-[#1A1A1A] hover:bg-white z-10" title="Share Product">
               ↗
             </button>
           </div>
+
+          <!-- Dot Pagination & Thumbnail Selector -->
+          <div class="flex items-center justify-center gap-3 pt-2">
+            ${gallery.map((gImg, idx) => `
+              <button 
+                onclick="state.activeGalleryIndex = ${idx}; renderApp();" 
+                class="w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${state.activeGalleryIndex === idx ? 'border-black scale-105 shadow-sm' : 'border-transparent opacity-60 hover:opacity-100'}"
+              >
+                <img src="${gImg}" class="w-full h-full object-cover" />
+              </button>
+            `).join('')}
+          </div>
+          <div class="flex items-center justify-center gap-1.5 text-xs text-slate-400">
+            ${gallery.map((_, idx) => `
+              <span class="w-2 h-2 rounded-full ${state.activeGalleryIndex === idx ? 'bg-black w-4' : 'bg-slate-300'} transition-all"></span>
+            `).join('')}
+          </div>
         </div>
 
-        <div class="lg:col-span-5 space-y-5 text-left">
-          <div class="flex items-center justify-between">
-            <div class="flex items-baseline gap-2">
-              <span class="text-xs text-slate-400 font-medium">MRP</span>
-              <span class="text-xs text-slate-400 line-through font-normal">${formatPrice(p.originalPrice)}</span>
-              <span class="text-2xl font-bold text-[#1A1A1A]">${formatPrice(p.price)}</span>
+        <!-- Right: Details, Offers, Accordions, Trust Badges -->
+        <div class="lg:col-span-5 space-y-6 text-left">
+          
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#C5A059] uppercase tracking-wider">${p.metal}</span>
+              <div class="flex items-center gap-1.5 bg-[#FAF8F5] border border-[#E6E1D7] px-3 py-1 rounded-full text-xs font-bold text-[#1A1A1A]">
+                <span class="text-amber-500">★</span>
+                <span>4.6</span>
+                <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
+              </div>
             </div>
-            
-            <div class="flex items-center gap-1 text-xs font-bold text-[#1A1A1A]">
-              <span>★</span>
-              <span>4.6</span>
+
+            <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] leading-tight">${p.name}</h1>
+          </div>
+
+          <!-- Scarcity Badge -->
+          <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-800 px-3.5 py-1.5 rounded-full text-xs font-bold">
+            <span>⚡ 132 quantity sold in last 7 days</span>
+          </div>
+
+          <!-- Price Container -->
+          <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 rounded-2xl flex items-center justify-between">
+            <div>
+              <div class="flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${formatPrice(p.price)}</span>
+                <span class="text-sm text-slate-400 line-through font-normal">${formatPrice(p.originalPrice)}</span>
+              </div>
+              <span class="text-[11px] text-emerald-700 font-bold block pt-0.5">Inclusive of all taxes & FREE Express Shipping</span>
+            </div>
+            <span class="bg-[#8B1E2B] text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">Save ${p.discountPercent}%</span>
+          </div>
+
+          <!-- 3 Feature Pills -->
+          <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-bold text-[#1A1A1A]">
+            <div class="bg-amber-50 border border-amber-200 py-2 rounded-xl">✨ Anti-Tarnish</div>
+            <div class="bg-blue-50 border border-blue-200 py-2 rounded-xl">💧 Waterproof</div>
+            <div class="bg-emerald-50 border border-emerald-200 py-2 rounded-xl">🌿 Hypoallergenic</div>
+          </div>
+
+          <!-- Offers Box (% Deals) -->
+          <div class="border border-dashed border-[#C5A059] bg-[#FAF8F5] p-4 rounded-2xl space-y-2">
+            <span class="text-[10px] uppercase font-bold text-[#C5A059] tracking-wider">% AVAILABLE OFFERS</span>
+            <div class="flex items-center justify-between text-xs">
+              <span class="font-bold text-[#1A1A1A]">Buy 1 Get 1 Free</span>
+              <span class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">Code: B1G1</span>
+            </div>
+            <div class="flex items-center justify-between text-xs border-t border-[#E6E1D7] pt-2">
+              <span class="font-bold text-[#1A1A1A]">Flat 40% OFF</span>
+              <span class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">Code: RAKHI40</span>
             </div>
           </div>
 
-          <h1 class="font-serif text-3xl font-bold text-[#1A1A1A] leading-tight">${p.name}</h1>
+          <!-- Gift Box Checkbox Option -->
+          <label class="flex items-center gap-3 bg-white border border-[#E6E1D7] p-3.5 rounded-xl cursor-pointer hover:border-black transition-colors">
+            <input type="checkbox" ${state.addGiftSleeve ? 'checked' : ''} onchange="state.addGiftSleeve = this.checked; renderApp();" class="w-4 h-4 accent-black" />
+            <span class="text-xs font-bold text-[#1A1A1A]">🎁 Add Luxury Keepsake Gift Box & Sleeve (+₹99)</span>
+          </label>
 
-          <!-- Action Buttons -->
-          <div class="flex items-center gap-3 pt-2">
-            <button onclick="addToCart('${p.id}')" class="flex-1 bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-md">
+          <!-- Delivery Estimator Pincode Box -->
+          <div class="bg-white border border-[#E6E1D7] p-4 rounded-2xl space-y-2">
+            <span class="text-xs font-bold text-[#1A1A1A] block">Check Delivery & COD Availability:</span>
+            <div class="flex gap-2">
+              <input type="text" value="${state.pincode}" oninput="state.pincode=this.value" placeholder="Enter 6-digit Pincode" class="flex-1 border border-[#E6E1D7] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black font-medium" />
+              <button onclick="state.pincodeCheckResult='⚡ Delivery in 2-3 Days via Bluedart Express'; renderApp();" class="bg-black text-white font-bold px-4 py-2 rounded-xl text-xs uppercase">Check</button>
+            </div>
+            ${state.pincodeCheckResult ? `<p class="text-xs font-bold text-emerald-700 pt-1">${state.pincodeCheckResult}</p>` : ''}
+          </div>
+
+          <!-- Add to Cart & Buy Now Buttons -->
+          <div class="space-y-3 pt-2">
+            <button onclick="addToCart('${p.id}')" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-lg">
               <span>🛒</span>
               <span>ADD TO CART</span>
               <span>→</span>
             </button>
 
-            <button onclick="toggleWishlist('${p.id}')" class="w-12 h-12 rounded-xl border border-[#E6E1D7] bg-white flex items-center justify-center text-lg hover:text-rose-500 transition-colors" title="Wishlist">
-              🤍
+            <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm">
+              ⚡ BUY IT NOW (FAST CHECKOUT)
             </button>
           </div>
 
-          <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full bg-[#1A1A1A] hover:bg-black text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-md">
-            BUY IT NOW
-          </button>
+          <!-- Full Width Accordions -->
+          <div class="border-t border-[#E6E1D7] pt-4 space-y-2">
+            
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'description' ? '' : 'description'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>PRODUCT DESCRIPTION</span>
+                <span>${state.openAccordion === 'description' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'description' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7]">${p.description}</div>` : ''}
+            </div>
+
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'specs' ? '' : 'specs'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>SPECIFICATIONS & MATERIALS</span>
+                <span>${state.openAccordion === 'specs' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'specs' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7] space-y-1"><p><strong>Material:</strong> ${p.materials}</p><p><strong>Dimensions:</strong> ${p.dimensions}</p><p><strong>Care:</strong> ${p.care}</p></div>` : ''}
+            </div>
+
+            <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
+              <button onclick="state.openAccordion = state.openAccordion === 'returns' ? '' : 'returns'; renderApp();" class="w-full p-4 text-left font-bold text-xs flex justify-between items-center bg-[#FAF8F5]">
+                <span>RETURNS & WARRANTY</span>
+                <span>${state.openAccordion === 'returns' ? '−' : '+'}</span>
+              </button>
+              ${state.openAccordion === 'returns' ? `<div class="p-4 text-xs text-slate-600 leading-relaxed bg-white border-t border-[#E6E1D7]">7-Day Easy Return & Exchange policy. Covered under Cieloria Lifetime Anti-Tarnish Guarantee.</div>` : ''}
+            </div>
+
+          </div>
+
+          <!-- 3 Trust Cards Grid -->
+          <div class="grid grid-cols-3 gap-4 pt-4 text-center border-t border-[#E6E1D7]">
+            <div class="space-y-1">
+              <span class="text-2xl">🔒</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">Lifetime Plating</h5>
+            </div>
+            <div class="space-y-1">
+              <span class="text-2xl">🚚</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">Free Shipping</h5>
+            </div>
+            <div class="space-y-1">
+              <span class="text-2xl">🔄</span>
+              <h5 class="font-bold text-[11px] text-[#1A1A1A]">7-Day Returns</h5>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <!-- Shraddha Kapoor Dark Luxury Banner -->
+      <section class="bg-black text-white rounded-3xl p-8 sm:p-12 my-12 text-center space-y-6 shadow-xl">
+        <div class="max-w-3xl mx-auto space-y-3">
+          <span class="text-xs uppercase font-bold tracking-[0.3em] text-[#C5A059]">CIELORIA LUXURY DEMIFINE®</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold">Anti-Tarnish • 18Kt Thick Plating • Skin Safe</h2>
+          <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">Built with surgical stainless steel & sterling silver. Designed to move with you everywhere.</p>
+        </div>
+      </section>
+
+      <!-- Verified Customer Reviews Grid -->
+      <section class="space-y-8 pt-8 border-t border-[#E6E1D7]">
+        <div class="flex items-center justify-between">
+          <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Verified Customer Reviews</h3>
+          <button onclick="alert('Write a Review form opened!')" class="border border-black text-black px-4 py-2 rounded-xl text-xs font-bold hover:bg-black hover:text-white">Write A Review</button>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          ${displayedReviews.map(r => `
+            <div class="bg-white border border-[#E6E1D7] p-5 rounded-2xl space-y-3 shadow-xs">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-[#1A1A1A]">${r.name}</span>
+                  ${r.verified ? `<span class="bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded-full">✔ Verified Buyer</span>` : ''}
+                </div>
+                <span class="text-[10px] text-slate-400">${r.date}</span>
+              </div>
+
+              <div class="text-amber-500 text-xs">★★★★★</div>
+              <p class="text-xs text-slate-700 font-medium leading-relaxed">${r.comment}</p>
+
+              ${r.videoMedia ? `
+                <div class="relative w-24 h-24 rounded-xl overflow-hidden bg-black border border-slate-200 mt-2">
+                  <img src="${r.videoMedia}" class="w-full h-full object-cover opacity-80" />
+                  <span class="absolute inset-0 flex items-center justify-center text-white text-lg">▶</span>
+                </div>
+              ` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </section>
+
     </div>
   `;
 }
