@@ -5054,10 +5054,10 @@ window.openPDP = function(id) {
   renderApp(); 
 };
 window.openPLPCategory = function(cat) { 
+  state.plpCategory = cat; 
   if (cat === 'About') {
     state.viewMode = 'about';
   } else {
-    state.plpCategory = cat; 
     state.plpSubFilter = '';
     state.viewMode = 'plp'; 
   }
