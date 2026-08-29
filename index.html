@@ -43,7 +43,7 @@
     }
   </script>
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=5.0.0&t=202608300157">
   
   <!-- Firebase Cloud SDK Integration for Permanent Customer DB -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
@@ -66,6 +66,27 @@
       display: flex;
       flex-direction: column;
     }
+
+    /* Subheader Navigation Bar Explicit Hover & Active Highlight */
+    .cieloria-nav-btn {
+      color: #1A1A1A !important;
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 2px solid transparent !important;
+      padding-bottom: 2px !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+    .cieloria-nav-btn:hover {
+      color: #C5A059 !important;
+    }
+    .cieloria-nav-btn.active {
+      color: #C5A059 !important;
+      font-weight: 700 !important;
+      border-bottom: 2px solid #C5A059 !important;
+    }
   </style>
 </head>
 <body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#C5A059] selection:text-white min-h-screen flex flex-col justify-between">
@@ -74,7 +95,7 @@
   <div id="app"></div>
 
   <!-- Main Vanilla JS Application Script with Cache Buster -->
-  <script src="./app.js?v=4.0.0&t=202608300155"></script>
+  <script src="./app.js?v=5.0.0&t=202608300157"></script>
 
   <script>
     if (typeof renderApp === 'function') {

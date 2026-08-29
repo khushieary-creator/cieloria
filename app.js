@@ -3433,10 +3433,7 @@ function renderApp() {
               <div class="relative py-1 cursor-pointer shrink-0">
                 <button 
                   onclick="openPLPCategory('${nav.cat}')" 
-                  style="${isActive ? 'color: #C5A059 !important; font-weight: 700 !important; border-bottom: 2px solid #C5A059 !important; padding-bottom: 2px !important;' : 'color: #1A1A1A !important; font-weight: 500 !important;'}"
-                  onmouseover="this.style.color='#C5A059';"
-                  onmouseout="if(!${isActive}) this.style.color='#1A1A1A';"
-                  class="transition-colors cursor-pointer text-xs"
+                  class="cieloria-nav-btn ${isActive ? 'active' : ''}"
                 >
                   ${nav.name}
                 </button>
