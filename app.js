@@ -3424,17 +3424,20 @@ function renderApp() {
 
       <nav class="border-t border-[#E6E1D7] bg-white py-2.5 overflow-x-auto whitespace-nowrap">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-5 sm:gap-8 text-xs font-medium text-[#1A1A1A]">
-          ${SUBHEADER_NAV.map(nav => `
-            <div class="relative py-1 cursor-pointer shrink-0">
-              <button 
-                onclick="openPLPCategory('${nav.cat}')" 
-                class="hover:text-[#C5A059] transition-colors ${state.plpCategory === nav.cat && (state.viewMode === 'plp' || state.viewMode === 'about') ? 'font-bold text-[#C5A059]' : ''}"
-              >
-                ${nav.name}
-              </button>
-              ${nav.badge ? `<span class="${nav.badgeClass}">${nav.badge}</span>` : ''}
-            </div>
-          `).join('')}
+          ${SUBHEADER_NAV.map(nav => {
+            const isActive = (state.viewMode === 'about' && nav.cat === 'About') || (state.viewMode === 'plp' && state.plpCategory === nav.cat);
+            return `
+              <div class="relative py-1 cursor-pointer shrink-0">
+                <button 
+                  onclick="openPLPCategory('${nav.cat}')" 
+                  class="hover:text-[#C5A059] font-medium transition-all ${isActive ? 'font-bold text-[#C5A059] border-b-2 border-[#C5A059] pb-0.5' : 'text-[#1A1A1A]'}"
+                >
+                  ${nav.name}
+                </button>
+                ${nav.badge ? `<span class="${nav.badgeClass}">${nav.badge}</span>` : ''}
+              </div>
+            `;
+          }).join('')}
         </div>
       </nav>
     </header>
