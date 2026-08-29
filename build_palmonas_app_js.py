@@ -91,7 +91,7 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (Merchant Admin Portal & Clean Customer LocalStorage)
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Clean Customer App - No Admin Links)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -302,7 +302,6 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-// LocalStorage Helper for Clean Per-User Data
 function getStoredData(key, defaultVal) {
   try {
     const val = localStorage.getItem(key);
@@ -318,7 +317,6 @@ function setStoredData(key, val) {
   } catch(e) {}
 }
 
-// Global Application State (Clean & Per-Customer Persistent)
 let state = {
   viewMode: 'homepage',
   accountTab: 'orders',
@@ -342,7 +340,7 @@ let state = {
   plpSortBy: 'featured',
 
   cart: getStoredData('cieloria_cart', []),
-  wishlist: getStoredData('cieloria_wishlist', []), // Empty [] by default for new visitors!
+  wishlist: getStoredData('cieloria_wishlist', []),
   appliedCoupon: '',
   discountPercentage: 0,
   activeCurrency: 'INR',
@@ -351,7 +349,6 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  // Per-Customer State
   isLoggedIn: getStoredData('cieloria_is_logged_in', false),
   customerName: getStoredData('cieloria_cust_name', ''),
   customerPhone: getStoredData('cieloria_cust_phone', ''),
@@ -361,7 +358,6 @@ let state = {
   ordersList: getStoredData('cieloria_orders', []),
   rewardsCoins: getStoredData('cieloria_coins', 0),
 
-  // Merchant All Orders Store (Persisted for Admin Panel)
   merchantAllOrders: getStoredData('cieloria_merchant_all_orders', []),
 
   isCartOpen: false,
@@ -450,10 +446,6 @@ function renderApp() {
       <div class="flex items-center gap-2 text-center uppercase">
         <span id="announcement-ticker">${ANNOUNCEMENTS[state.tickerIndex]}</span>
       </div>
-      <!-- Merchant Admin Portal Secret Link -->
-      <button onclick="switchViewMode('admin')" class="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-amber-300 font-bold hover:underline hidden sm:block">
-        ⚙️ Store Admin Portal
-      </button>
     </div>
 
     <!-- Mobile & Desktop Header -->
@@ -590,7 +582,6 @@ function renderApp() {
       ${state.viewMode === 'about' ? renderAboutUsView() : ''}
       ${state.viewMode === 'account' ? renderAccountDashboardView() : ''}
       ${state.viewMode === 'wishlist' ? renderWishlistView() : ''}
-      ${state.viewMode === 'admin' ? renderMerchantAdminPortalView() : ''}
       ${state.viewMode === 'order_confirmed' ? renderOrderConfirmedView() : ''}
     </main>
 
@@ -607,7 +598,7 @@ function renderApp() {
 
     <footer class="bg-black text-slate-400 pt-14 pb-10 text-xs text-left">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           <div class="space-y-4">
             <h3 class="font-serif text-2xl font-bold tracking-[0.2em] text-white">CIELORIA</h3>
             <p class="text-slate-400 text-xs leading-relaxed">India's pioneer Demifine® 18k thick gold plated & sterling silver anti-tarnish jewelry. Founded in Lucknow, UP.</p>
@@ -634,27 +625,12 @@ function renderApp() {
           </div>
 
           <div class="space-y-3">
-            <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Store Admin</h4>
+            <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Policies</h4>
             <ul class="space-y-2">
-              <li><button onclick="switchViewMode('admin')" class="hover:text-white font-bold text-amber-400">⚙️ Merchant Admin Portal</button></li>
               <li><button onclick="alert('Privacy Policy')" class="hover:text-white">Privacy Policy</button></li>
               <li><button onclick="alert('Terms of Service')" class="hover:text-white">Terms of Service</button></li>
+              <li><button onclick="alert('Warranty')" class="hover:text-white">Lifetime Warranty</button></li>
             </ul>
-          </div>
-
-          <div class="space-y-3 sm:col-span-2 lg:col-span-1">
-            <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Join Cieloria Club</h4>
-            <p class="text-slate-400 text-xs">Get 10% OFF on your first purchase.</p>
-            ${!state.isSubscribed ? `
-              <form onsubmit="handleNewsletter(event)" class="space-y-2">
-                <input type="email" placeholder="Enter your email..." required class="w-full bg-[#1A1A1A] text-white text-xs border border-white/20 rounded px-3 py-2 focus:outline-none" />
-                <button type="submit" class="w-full bg-white text-black font-bold py-2 text-xs uppercase tracking-wider">Subscribe</button>
-              </form>
-            ` : `
-              <div class="bg-white/10 text-white p-3 rounded text-xs border border-white/20">
-                🎉 Welcome! Use Code <strong>B1G1</strong> for Buy 1 Get 1 Free!
-              </div>
-            `}
           </div>
         </div>
 
@@ -667,7 +643,7 @@ function renderApp() {
   `;
 }
 
-// 1. Order Confirmed Page
+// Order Confirmed View
 function renderOrderConfirmedView() {
   const ord = state.lastPlacedOrder || (state.ordersList.length > 0 ? state.ordersList[0] : null);
   if (!ord) return renderHomepageView(HERO_SLIDES[0]);
@@ -718,106 +694,6 @@ function renderOrderConfirmedView() {
               Continue Shopping
             </button>
           </div>
-        </div>
-
-      </div>
-    </div>
-  `;
-}
-
-// 2. Merchant Admin Portal (View Orders & Change Live Order Status)
-function renderMerchantAdminPortalView() {
-  const allOrders = state.merchantAllOrders;
-
-  return `
-    <div class="bg-[#111827] text-white min-h-screen py-10 text-left font-sans">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-gray-800 gap-4">
-          <div>
-            <div class="flex items-center gap-3">
-              <span class="text-2xl">⚙️</span>
-              <h1 class="font-serif text-2xl sm:text-3xl font-bold tracking-wider text-amber-400">CIELORIA MERCHANT ADMIN PORTAL</h1>
-            </div>
-            <p class="text-xs text-gray-400 pt-1">Manage Customer Orders, Update Live Shipment Status & View Customer Contacts (Merchant ID: 2yyq6ziimeofq998)</p>
-          </div>
-
-          <div class="flex items-center gap-3">
-            <button onclick="switchViewMode('homepage')" class="bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors">
-              ← Return to Storefront
-            </button>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
-          <div class="bg-gray-900 border border-gray-800 p-4 rounded-2xl">
-            <span class="text-gray-400 text-[10px] uppercase font-bold block">Total Orders</span>
-            <span class="text-2xl font-bold text-white">${allOrders.length}</span>
-          </div>
-
-          <div class="bg-gray-900 border border-gray-800 p-4 rounded-2xl">
-            <span class="text-gray-400 text-[10px] uppercase font-bold block">Total Revenue</span>
-            <span class="text-2xl font-bold text-emerald-400">₹${allOrders.reduce((sum, o) => sum + (o.totalAmount || 0), 0).toLocaleString()}</span>
-          </div>
-
-          <div class="bg-gray-900 border border-gray-800 p-4 rounded-2xl">
-            <span class="text-gray-400 text-[10px] uppercase font-bold block">Orders Dispatched</span>
-            <span class="text-2xl font-bold text-blue-400">${allOrders.filter(o => o.status === 'Dispatched' || o.status === 'In Transit' || o.status === 'Delivered').length}</span>
-          </div>
-
-          <div class="bg-gray-900 border border-gray-800 p-4 rounded-2xl">
-            <span class="text-gray-400 text-[10px] uppercase font-bold block">Delivered Orders</span>
-            <span class="text-2xl font-bold text-amber-400">${allOrders.filter(o => o.status === 'Delivered').length}</span>
-          </div>
-        </div>
-
-        <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 space-y-6">
-          <div class="flex items-center justify-between">
-            <h3 class="font-serif text-xl font-bold text-white">Customer Orders List (${allOrders.length})</h3>
-            <span class="text-xs text-gray-400">Select status from dropdown to update live tracking for customer!</span>
-          </div>
-
-          ${allOrders.length === 0 ? `
-            <div class="text-center py-12 text-gray-500 space-y-2">
-              <span class="text-4xl block">📦</span>
-              <p class="text-xs">No orders received yet. Place an order on the storefront to test admin tracking updates!</p>
-            </div>
-          ` : `
-            <div class="overflow-x-auto">
-              <table class="w-full text-left text-xs text-gray-300">
-                <thead class="bg-gray-800 text-gray-400 uppercase text-[10px]">
-                  <tr>
-                    <th class="p-3">Order ID & Date</th>
-                    <th class="p-3">Customer Name & Phone</th>
-                    <th class="p-3">Delivery Address</th>
-                    <th class="p-3">Amount</th>
-                    <th class="p-3">Current Status</th>
-                    <th class="p-3">Update Order Status</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-800">
-                  ${allOrders.map(ord => `
-                    <tr class="hover:bg-gray-800/50">
-                      <td class="p-3 font-bold text-white">${ord.orderId}<br/><span class="text-[10px] text-gray-400 font-normal">${ord.date}</span></td>
-                      <td class="p-3 font-medium text-amber-300">${ord.customerName || 'Customer'}<br/><span class="text-[10px] text-gray-400 font-normal">+91 ${ord.customerPhone}</span></td>
-                      <td class="p-3 max-w-xs truncate">${ord.customerAddress || 'Lucknow, UP'}</td>
-                      <td class="p-3 font-bold text-emerald-400">₹${(ord.totalAmount||999).toLocaleString()}</td>
-                      <td class="p-3"><span class="px-2.5 py-1 rounded-full text-[10px] font-bold ${ord.statusColor || 'bg-blue-900 text-blue-200'}">${ord.status}</span></td>
-                      <td class="p-3">
-                        <select onchange="handleAdminOrderStatusUpdate('${ord.orderId}', this.value)" class="bg-gray-800 text-white border border-gray-700 rounded-lg p-2 text-xs focus:outline-none focus:border-amber-400">
-                          <option value="Order Placed" ${ord.status==='Order Placed'?'selected':''}>1. Order Received (Order Placed)</option>
-                          <option value="Dispatched" ${ord.status==='Dispatched'?'selected':''}>2. Dispatched from Lucknow HQ</option>
-                          <option value="In Transit" ${ord.status==='In Transit'?'selected':''}>3. In Transit (Bluedart Express)</option>
-                          <option value="Out for Delivery" ${ord.status==='Out for Delivery'?'selected':''}>4. Out for Delivery</option>
-                          <option value="Delivered" ${ord.status==='Delivered'?'selected':''}>5. Delivered Successfully 🎉</option>
-                        </select>
-                      </td>
-                    </tr>
-                  `).join('')}
-                </tbody>
-              </table>
-            </div>
-          `}
         </div>
 
       </div>
@@ -1903,11 +1779,6 @@ function renderModals() {
                 <span>👤 ${state.isLoggedIn ? 'My Account & Orders' : 'Login via KwikPass'}</span>
                 <span class="text-amber-500">⚡</span>
               </button>
-
-              <button onclick="state.isMobileMenuOpen=false; switchViewMode('admin');" class="w-full text-left py-2 font-bold text-amber-600 flex items-center justify-between border-t border-slate-200 pt-3">
-                <span>⚙️ Merchant Admin Portal</span>
-                <span>›</span>
-              </button>
             </div>
           </div>
 
@@ -2121,7 +1992,6 @@ function renderModals() {
   return html;
 }
 
-// Handler for smooth OTP box navigation
 window.handleOtpBoxInput = function(idx, val) {
   state.otpDigits[idx] = val;
   if (val && idx < 3) {
@@ -2220,33 +2090,6 @@ window.handleKwikPassVerifyOTP = function(e) {
   switchViewMode('account');
 };
 
-// Admin Order Status Update
-window.handleAdminOrderStatusUpdate = function(orderId, newStatus) {
-  const ordInCust = state.ordersList.find(o => o.orderId === orderId);
-  if (ordInCust) {
-    ordInCust.status = newStatus;
-    if (newStatus === 'Dispatched') ordInCust.statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
-    if (newStatus === 'In Transit') ordInCust.statusColor = 'bg-indigo-100 text-indigo-800 border-indigo-300';
-    if (newStatus === 'Out for Delivery') ordInCust.statusColor = 'bg-amber-100 text-amber-800 border-amber-300';
-    if (newStatus === 'Delivered') ordInCust.statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-  }
-
-  const ordInMerch = state.merchantAllOrders.find(o => o.orderId === orderId);
-  if (ordInMerch) {
-    ordInMerch.status = newStatus;
-    if (newStatus === 'Dispatched') ordInMerch.statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
-    if (newStatus === 'In Transit') ordInMerch.statusColor = 'bg-indigo-100 text-indigo-800 border-indigo-300';
-    if (newStatus === 'Out for Delivery') ordInMerch.statusColor = 'bg-amber-100 text-amber-800 border-amber-300';
-    if (newStatus === 'Delivered') ordInMerch.statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
-  }
-
-  setStoredData('cieloria_orders', state.ordersList);
-  setStoredData('cieloria_merchant_all_orders', state.merchantAllOrders);
-  alert(`✅ Order ${orderId} status updated to '${newStatus}'! Customer will see this live in My Account.`);
-  renderApp();
-};
-
-// GoKwik Checkout Trigger
 window.triggerGoKwikCheckout = function() {
   if (typeof window !== 'undefined' && window.GokwikSdk && typeof window.GokwikSdk.initCheckout === 'function') {
     try {
@@ -2264,7 +2107,6 @@ window.triggerGoKwikCheckout = function() {
   openCheckoutModal();
 };
 
-// Complete Order Function
 window.completeUserOrder = function() {
   const newOrderId = `CIE-${Math.floor(10000 + Math.random() * 90000)}`;
   const finalTotal = calculateCartFinalTotal();
@@ -2302,7 +2144,6 @@ window.completeUserOrder = function() {
   switchViewMode('order_confirmed');
 };
 
-// Global Navigation Actions
 window.switchViewMode = function(mode) { 
   state.viewMode = mode; 
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
@@ -2397,10 +2238,7 @@ document.addEventListener('DOMContentLoaded', () => {
 try { renderApp(); } catch(err) { console.error('Render error:', err); }
 """
 
-with open("/Users/khushi/.gemini/app.js", "w") as f:
-    pass
-
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully updated app.js with Merchant Admin Portal, Clean Per-Customer LocalStorage, Order Received & Dispatch status updates!")
+print("Successfully updated app.js (removed internal admin view from customer storefront)!")
