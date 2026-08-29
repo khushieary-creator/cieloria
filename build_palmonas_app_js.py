@@ -317,26 +317,27 @@ function setStoredData(key, val) {
   } catch(e) {}
 }
 
-function removeStoredData(key) {
-  try {
-    localStorage.removeItem(key);
-  } catch(e) {}
+function getCleanPhone(phoneStr) {
+  if (!phoneStr) return '';
+  const digits = phoneStr.toString().replace(/\\D/g, '');
+  return digits.length >= 10 ? digits.slice(-10) : digits;
 }
 
-// Initial Account Check
-const initialIsLoggedIn = getStoredData('cieloria_is_logged_in', false);
-const initialPhone = getStoredData('cieloria_cust_phone', '');
-
-// Account-Specific Storage Keys
+// Dynamically compute storage key for Wishlist & Orders
 function getWishlistStorageKey() {
-  const phone = getStoredData('cieloria_cust_phone', '');
-  return (initialIsLoggedIn && phone) ? `cieloria_wishlist_${phone}` : `cieloria_wishlist_guest`;
+  const isLoggedIn = getStoredData('cieloria_is_logged_in', false);
+  const phone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
+  return (isLoggedIn && phone) ? `cieloria_wishlist_${phone}` : `cieloria_wishlist_guest`;
 }
 
 function getOrdersStorageKey() {
-  const phone = getStoredData('cieloria_cust_phone', '');
-  return (initialIsLoggedIn && phone) ? `cieloria_orders_${phone}` : `cieloria_orders_guest`;
+  const isLoggedIn = getStoredData('cieloria_is_logged_in', false);
+  const phone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
+  return (isLoggedIn && phone) ? `cieloria_orders_${phone}` : `cieloria_orders_guest`;
 }
+
+const currentIsLoggedIn = getStoredData('cieloria_is_logged_in', false);
+const currentCleanPhone = getCleanPhone(getStoredData('cieloria_cust_phone', ''));
 
 // Global Application State
 let state = {
@@ -362,7 +363,7 @@ let state = {
   plpSortBy: 'featured',
 
   cart: getStoredData('cieloria_cart', []),
-  wishlist: getStoredData(getWishlistStorageKey(), []), // Clean per-account or guest wishlist
+  wishlist: getStoredData(getWishlistStorageKey(), []),
   appliedCoupon: '',
   discountPercentage: 0,
   activeCurrency: 'INR',
@@ -371,9 +372,9 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  isLoggedIn: initialIsLoggedIn,
+  isLoggedIn: currentIsLoggedIn,
   customerName: getStoredData('cieloria_cust_name', ''),
-  customerPhone: initialPhone,
+  customerPhone: currentCleanPhone,
   customerEmail: getStoredData('cieloria_cust_email', ''),
   pincode: getStoredData('cieloria_pincode', ''),
   customerAddress: getStoredData('cieloria_address', ''),
@@ -394,13 +395,10 @@ let state = {
 };
 
 function syncAccountStorage() {
-  if (state.isLoggedIn && state.customerPhone) {
-    state.wishlist = getStoredData(`cieloria_wishlist_${state.customerPhone}`, []);
-    state.ordersList = getStoredData(`cieloria_orders_${state.customerPhone}`, []);
-  } else {
-    state.wishlist = getStoredData(`cieloria_wishlist_guest`, []);
-    state.ordersList = [];
-  }
+  const wKey = getWishlistStorageKey();
+  const oKey = getOrdersStorageKey();
+  state.wishlist = getStoredData(wKey, []);
+  state.ordersList = getStoredData(oKey, []);
 }
 
 function formatPrice(inrPrice) {
@@ -975,7 +973,7 @@ function renderAccountDashboardView() {
                 </div>
 
                 <div class="pt-4">
-                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', state.customerPhone); alert('Profile Details Saved!')" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
+                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); alert('Profile Details Saved!')" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
                 </div>
               </div>
             ` : ''}
@@ -1962,7 +1960,7 @@ function renderModals() {
                     class="w-full focus:outline-none text-xs font-medium" 
                   />
                 </div>
-                <button onclick="if(!state.customerPhone || state.customerPhone.trim().length<10){alert('Please enter 10-digit mobile number!'); return;} setStoredData('cieloria_cust_phone', state.customerPhone); state.checkoutStep=2; renderApp();" class="w-full bg-black text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-[#C5A059] transition-colors">
+                <button onclick="if(!state.customerPhone || state.customerPhone.trim().length<10){alert('Please enter 10-digit mobile number!'); return;} setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); state.checkoutStep=2; renderApp();" class="w-full bg-black text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider hover:bg-[#C5A059] transition-colors">
                   Continue to Address →
                 </button>
               </div>
@@ -2053,7 +2051,7 @@ window.triggerGoKwikSDKLogin = function() {
         type: 'login',
         onSuccess: function(res) {
           state.isLoggedIn = true;
-          state.customerPhone = res.phone || '9876543210';
+          state.customerPhone = getCleanPhone(res.phone || '9876543210');
           setStoredData('cieloria_is_logged_in', true);
           setStoredData('cieloria_cust_phone', state.customerPhone);
           syncAccountStorage();
@@ -2077,8 +2075,7 @@ window.handleUserLogout = function() {
   state.customerEmail = "";
   state.customerAddress = "";
   state.ordersList = [];
-  state.wishlist = []; // Clear active wishlist on logout!
-  state.cart = []; // Clear active cart on logout!
+  state.wishlist = [];
 
   setStoredData('cieloria_is_logged_in', false);
   setStoredData('cieloria_cust_name', '');
@@ -2093,7 +2090,7 @@ window.handleKwikPassSendOTP = function(e) {
   if (e) e.preventDefault();
   const phoneInput = document.getElementById('kwikpass-phone-input');
   if (phoneInput && phoneInput.value) {
-    state.customerPhone = phoneInput.value;
+    state.customerPhone = getCleanPhone(phoneInput.value);
   }
 
   if (!state.customerPhone || state.customerPhone.trim().length < 10) {
@@ -2119,13 +2116,16 @@ window.handleKwikPassVerifyOTP = function(e) {
   if (!state.customerName) state.customerName = "Valued Customer";
   state.isKwikPassAuthOpen = false;
 
+  const cleanPh = getCleanPhone(state.customerPhone);
+  state.customerPhone = cleanPh;
+
   setStoredData('cieloria_is_logged_in', true);
   setStoredData('cieloria_cust_name', state.customerName);
-  setStoredData('cieloria_cust_phone', state.customerPhone);
+  setStoredData('cieloria_cust_phone', cleanPh);
 
   syncAccountStorage();
 
-  alert(`🎉 Verified! Logged in successfully for +91 ${state.customerPhone}!`);
+  alert(`🎉 Verified! Logged in successfully for +91 ${cleanPh}!`);
   switchViewMode('account');
 };
 
@@ -2150,6 +2150,8 @@ window.completeUserOrder = function() {
   const newOrderId = `CIE-${Math.floor(10000 + Math.random() * 90000)}`;
   const finalTotal = calculateCartFinalTotal();
 
+  const cleanPh = getCleanPhone(state.customerPhone) || '9876543210';
+
   const newOrder = {
     orderId: newOrderId,
     date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
@@ -2160,7 +2162,7 @@ window.completeUserOrder = function() {
     estimatedDelivery: "2-3 Business Days",
     totalAmount: finalTotal > 0 ? finalTotal : 999,
     customerName: state.customerName || 'Valued Customer',
-    customerPhone: state.customerPhone || '9876543210',
+    customerPhone: cleanPh,
     customerAddress: state.customerAddress || 'Lucknow, UP',
     pincode: state.pincode || '226001',
     items: state.cart.length > 0 ? [...state.cart] : [PRODUCTS[0]]
@@ -2169,8 +2171,8 @@ window.completeUserOrder = function() {
   state.ordersList.unshift(newOrder);
   state.merchantAllOrders.unshift(newOrder);
 
-  if (state.customerPhone) {
-    setStoredData(`cieloria_orders_${state.customerPhone}`, state.ordersList);
+  if (cleanPh) {
+    setStoredData(`cieloria_orders_${cleanPh}`, state.ordersList);
   }
   setStoredData('cieloria_merchant_all_orders', state.merchantAllOrders);
 
@@ -2256,11 +2258,8 @@ window.toggleWishlist = function(id) {
     state.wishlist.push(id); 
   }
   
-  if (state.isLoggedIn && state.customerPhone) {
-    setStoredData(`cieloria_wishlist_${state.customerPhone}`, state.wishlist);
-  } else {
-    setStoredData(`cieloria_wishlist_guest`, state.wishlist);
-  }
+  const wKey = getWishlistStorageKey();
+  setStoredData(wKey, state.wishlist);
   
   renderApp();
 };
@@ -2288,4 +2287,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully updated app.js with account-scoped Wishlist & Cart storage!")
+print("Successfully updated app.js with dynamic 10-digit clean phone Wishlist storage!")
