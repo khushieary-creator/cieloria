@@ -3289,6 +3289,15 @@ if (typeof window !== 'undefined') {
   }, 6000);
 }
 
+function getActiveNavCategory() {
+  if (state.viewMode === 'about') return 'About';
+  if (state.viewMode === 'homepage') return '';
+  if (state.viewMode === 'wishlist') return 'Wishlist';
+  if (state.viewMode === 'account') return '';
+  if (state.viewMode === 'plp') return state.plpCategory || 'All';
+  return '';
+}
+
 function renderApp() {
   if (typeof document === 'undefined') return;
   const appContainer = document.getElementById('app');
@@ -3425,9 +3434,9 @@ function renderApp() {
       <nav class="border-t border-[#E6E1D7] bg-white py-2.5 overflow-x-auto whitespace-nowrap">
         <div class="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-5 sm:gap-8 text-xs font-medium text-[#1A1A1A]">
           ${SUBHEADER_NAV.map(nav => {
-            const isAboutActive = (state.viewMode === 'about' || state.plpCategory === 'About') && (nav.cat === 'About' || nav.name === 'About Us');
-            const isPlpActive = state.viewMode === 'plp' && state.plpCategory === nav.cat;
-            const isCurrentActive = isAboutActive || isPlpActive;
+            const activeNav = getActiveNavCategory().toLowerCase();
+            const thisNav = (nav.cat || '').toLowerCase();
+            const isCurrentActive = activeNav !== '' && activeNav === thisNav;
 
             const btnStyle = isCurrentActive 
               ? "color: #C5A059 !important; font-weight: 700 !important; border-bottom: 2px solid #C5A059 !important; padding-bottom: 2px !important;"
