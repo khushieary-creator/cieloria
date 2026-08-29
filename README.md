@@ -5,14 +5,14 @@ CIELORIA (palmonas.com inspired) - 18K Thick Gold Plated & 925 Sterling Silver A
 ## Tech Stack
 - Vanilla HTML5 / JavaScript (Single-file reactive state architecture)
 - Tailwind CSS
-- GoKwik Fast Checkout & Palmonas Cart Drawer
+- CIELORIA Fast Checkout & Palmonas Cart Drawer
 
 ## Features
 - 78 Official Shopify CSV Products
 - Luxury Same-Product Hover Zoom
 - High-Fashion PLP Category Pages & Hero Posters
 - PDP with Verified Customer Reviews Grid & Shraddha Kapoor Luxury Banner
-- Slide-over Cart Drawer & GoKwik Fast Checkout Modal
+- Slide-over Cart Drawer & CIELORIA Fast Checkout Modal
 - User Account & Live Order Tracking Dashboard
 - Lucknow HQ & 1-Year Story About Us Page
 
