@@ -1,0 +1,174 @@
+:root {
+  --primary-gold: #D4AF37;
+  --gold-glow: #F3E5AB;
+  --gold-dark: #A38018;
+  --champagne: #F9F5EC;
+  --rose-gold: #E8A89A;
+  
+  --bg-primary: #0A0D12;
+  --bg-surface: #121722;
+  --bg-card: #19202E;
+  --bg-glass: rgba(18, 23, 34, 0.75);
+  
+  --border-gold: rgba(212, 175, 55, 0.25);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-gold: #E6CA65;
+  
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --shadow-gold: 0 10px 30px -5px rgba(212, 175, 55, 0.2);
+  --shadow-card: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #2A3447;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-gold);
+}
+
+/* Typography Helpers */
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Gold Gradient Text */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #FFF0B8 0%, #D4AF37 50%, #AA820A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-border-glow {
+  border: 1px solid var(--border-gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, #E6CA65 0%, #D4AF37 50%, #B89018 100%);
+  color: #0A0D12;
+  font-weight: 700;
+  padding: 12px 28px;
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 35px rgba(212, 175, 55, 0.35);
+  background: linear-gradient(135deg, #FFF0B8 0%, #E6CA65 50%, #C99E1F 100%);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--text-gold);
+  border: 1px solid var(--primary-gold);
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-outline-gold:hover {
+  background: rgba(212, 175, 55, 0.12);
+  color: #FFF;
+  border-color: #E6CA65;
+}
+
+/* Badges */
+.badge-gold {
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--text-gold);
+  border: 1px solid var(--border-gold);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Animations */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.05); }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Shimmer Loading */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--bg-card) 25%, #232B3D 50%, var(--bg-card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}

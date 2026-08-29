@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PALMONAS | Demi-Fine Anti-Tarnish Luxury Jewelry</title>
+  <meta name="description" content="Shop 100% waterproof, anti-tarnish 18K gold plated demi-fine jewelry at Palmonas. Warm Nude & Champagne Gold luxury collection.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (window.tailwind) {
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              nude: {
+                50: '#FAF8F5',
+                100: '#F7F4F0',
+                200: '#EBE5DF',
+                300: '#D9D0C7',
+                900: '#1A1A1A'
+              },
+              champagne: {
+                300: '#F4E4BA',
+                400: '#E6CA65',
+                500: '#C5A059',
+                600: '#A38038'
+              }
+            },
+            fontFamily: {
+              serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
+              sans: ['"Inter"', '"Montserrat"', 'sans-serif']
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Fallback Styles in case Tailwind CDN is delayed or blocked -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FFFFFF;
+      color: #1A1A1A;
+      font-family: 'Inter', 'Montserrat', sans-serif;
+    }
+    #app {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#C5A059] selection:text-white min-h-screen flex flex-col justify-between">
+  
+  <div id="app">
+    <!-- Initial Loading State -->
+    <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; background: #FAF8F5;">
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: #000000; display: flex; align-items: center; justify-content: center; color: white; font-family: serif; font-size: 28px; font-weight: bold; margin: 0 auto 1.5rem;">P</div>
+      <h2 style="font-family: serif; font-size: 28px; font-weight: bold; color: #1A1A1A; margin-bottom: 0.5rem; letter-spacing: 0.2em;">PALMONAS</h2>
+      <p style="font-size: 13px; color: #C5A059; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600;">Loading Demifine® Luxury Storefront...</p>
+    </div>
+  </div>
+
+  <script>
+    // Bulletproof Error Handling
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+      console.error('Script Error:', msg, 'at line', lineNo);
+      return false;
+    };
+  </script>
+
+  <!-- Bulletproof Vanilla JS Application -->
+  <script src="./app.js"></script>
+
+  <script>
+    // Force instant execution on load
+    if (typeof renderApp === 'function') {
+      try { renderApp(); } catch(e) { console.error(e); }
+    }
+    window.addEventListener('load', function() {
+      if (typeof renderApp === 'function') {
+        try { renderApp(); } catch(e) { console.error(e); }
+      }
+    });
+  </script>
+
+</body>
+</html>
