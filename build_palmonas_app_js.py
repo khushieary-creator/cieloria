@@ -91,7 +91,7 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik / KwikPass Auth Modal Integrated)
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik 2-Step KwikPass OTP Verification Integrated)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -372,6 +372,8 @@ let state = {
   isCartOpen: false,
   isCheckoutOpen: false,
   isKwikPassAuthOpen: false,
+  kwikPassStep: 1, // Step 1: Mobile Input, Step 2: 4-digit OTP Screen
+  otpInputs: ["1", "2", "3", "4"],
   checkoutStep: 1,
   isOrderSummaryOpen: false,
   isSubscribed: false
@@ -1624,7 +1626,7 @@ function renderPDPView() {
   `;
 }
 
-// Modals, Cart Drawer, GoKwik Checkout & KwikPass Auth Popup Modal (Exact Screenshot Design)
+// Modals, Cart Drawer, GoKwik Checkout & KwikPass 2-Step OTP Auth Popup Modal
 function renderModals() {
   let html = '';
 
@@ -1632,7 +1634,7 @@ function renderModals() {
   const finalTotal = Math.max(0, subtotal - (subtotal > 0 ? state.discountAmount : 0));
   const cartTotalItems = calculateCartTotalCount();
 
-  // 1. KwikPass Auth & Login Popup Modal (Matching User's Screenshot Exactly!)
+  // 1. KwikPass Auth & Login Popup Modal (2-Step OTP Verification Flow)
   if (state.isKwikPassAuthOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/65 backdrop-blur-xs">
@@ -1656,7 +1658,7 @@ function renderModals() {
               </div>
             </div>
 
-            <!-- 3 Feature Cards Grid (Exact screenshot design!) -->
+            <!-- 3 Feature Cards Grid -->
             <div class="grid grid-cols-1 gap-3 pt-2">
               <div class="bg-white/70 border border-rose-200/80 p-3.5 rounded-2xl space-y-1 text-center shadow-2xs">
                 <div class="w-5 h-5 rounded-full bg-rose-200 text-rose-700 mx-auto flex items-center justify-center text-xs">✦</div>
@@ -1680,42 +1682,79 @@ function renderModals() {
             <div class="text-[9px] text-slate-400 font-medium text-center md:text-left">Merchant ID: 2yyq6ziimeofq998 • GoKwik Verified</div>
           </div>
 
-          <!-- Right Side: Clean White Mobile OTP Login Form -->
+          <!-- Right Side: Clean White Form (Step 1: Mobile Input / Step 2: 4-digit OTP) -->
           <div class="md:w-1/2 bg-white p-6 sm:p-8 flex flex-col justify-center text-center space-y-5">
-            <div class="space-y-1">
-              <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Explore Cieloria</h3>
-              <p class="text-xs text-slate-500">Affordable Luxury, Made for Every Day!</p>
-            </div>
-
-            <form onsubmit="handleKwikPassLoginSubmit(event)" class="space-y-4 pt-2">
-              <div class="flex items-center border border-slate-300 rounded-xl px-3.5 py-3 bg-white focus-within:border-black transition-colors">
-                <span class="flex items-center gap-1.5 text-xs font-bold text-slate-700 mr-2 pr-2 border-r border-slate-200">
-                  <span>🇮🇳</span>
-                  <span>+91</span>
-                </span>
-                <input 
-                  type="tel" 
-                  value="${state.customerPhone}"
-                  oninput="state.customerPhone=this.value"
-                  placeholder="Enter Mobile Number" 
-                  required
-                  class="w-full focus:outline-none text-xs font-medium text-[#1A1A1A]" 
-                />
+            
+            ${state.kwikPassStep === 1 ? `
+              <div class="space-y-1">
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Explore Cieloria</h3>
+                <p class="text-xs text-slate-500">Affordable Luxury, Made for Every Day!</p>
               </div>
 
-              <label class="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium cursor-pointer">
-                <input type="checkbox" checked class="w-3.5 h-3.5 accent-rose-500 rounded" />
-                <span>Notify me with offers & updates</span>
-              </label>
+              <form onsubmit="handleKwikPassSendOTP(event)" class="space-y-4 pt-2">
+                <div class="flex items-center border border-slate-300 rounded-xl px-3.5 py-3 bg-white focus-within:border-black transition-colors">
+                  <span class="flex items-center gap-1.5 text-xs font-bold text-slate-700 mr-2 pr-2 border-r border-slate-200">
+                    <span>🇮🇳</span>
+                    <span>+91</span>
+                  </span>
+                  <input 
+                    type="tel" 
+                    value="${state.customerPhone}"
+                    oninput="state.customerPhone=this.value"
+                    placeholder="Enter Mobile Number" 
+                    required
+                    class="w-full focus:outline-none text-xs font-medium text-[#1A1A1A]" 
+                  />
+                </div>
 
-              <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300">
-                Submit →
-              </button>
-            </form>
+                <label class="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium cursor-pointer">
+                  <input type="checkbox" checked class="w-3.5 h-3.5 accent-rose-500 rounded" />
+                  <span>Notify me with offers & updates</span>
+                </label>
 
-            <p class="text-[9px] text-slate-400 max-w-xs mx-auto leading-relaxed">
-              I accept that I have read & understood your <button onclick="alert('Privacy Policy')" class="underline hover:text-black">Privacy Policy</button> and <button onclick="alert('Terms & Conditions')" class="underline hover:text-black">T&Cs</button>.
-            </p>
+                <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300">
+                  Send OTP →
+                </button>
+              </form>
+
+              <p class="text-[9px] text-slate-400 max-w-xs mx-auto leading-relaxed">
+                I accept that I have read & understood your <button onclick="alert('Privacy Policy')" class="underline hover:text-black">Privacy Policy</button> and <button onclick="alert('Terms & Conditions')" class="underline hover:text-black">T&Cs</button>.
+              </p>
+            ` : ''}
+
+            ${state.kwikPassStep === 2 ? `
+              <div class="space-y-2">
+                <button onclick="state.kwikPassStep=1; renderApp();" class="text-xs font-bold text-slate-400 hover:text-black flex items-center gap-1 justify-center mx-auto">
+                  <span>❮</span> <span>Change Number (+91 ${state.customerPhone})</span>
+                </button>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Verify OTP</h3>
+                <p class="text-xs text-slate-500">Enter 4-digit OTP sent to <strong>+91 ${state.customerPhone}</strong></p>
+              </div>
+
+              <form onsubmit="handleKwikPassVerifyOTP(event)" class="space-y-5 pt-2">
+                <div class="flex justify-center gap-3">
+                  ${[0, 1, 2, 3].map(idx => `
+                    <input 
+                      type="text" 
+                      maxlength="1" 
+                      value="${state.otpInputs[idx] || ''}"
+                      oninput="state.otpInputs[${idx}]=this.value; renderApp();"
+                      class="w-12 h-12 text-center text-lg font-bold border-2 border-slate-300 rounded-xl focus:border-rose-500 focus:outline-none bg-slate-50"
+                    />
+                  `).join('')}
+                </div>
+
+                <div class="text-[11px] text-slate-400 font-semibold">
+                  <span>Didn't receive code? </span>
+                  <button type="button" onclick="alert('OTP Resent to +91 ${state.customerPhone}')" class="text-rose-600 font-bold underline">Resend OTP</button>
+                </div>
+
+                <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300 shadow-sm">
+                  Verify & Continue →
+                </button>
+              </form>
+            ` : ''}
+
           </div>
 
         </div>
@@ -1958,20 +1997,28 @@ window.handleProfileIconClick = function() {
     switchViewMode('account');
   } else {
     state.isKwikPassAuthOpen = true;
+    state.kwikPassStep = 1;
     renderApp();
   }
 };
 
-window.handleKwikPassLoginSubmit = function(e) {
+window.handleKwikPassSendOTP = function(e) {
   e.preventDefault();
   if (!state.customerPhone || state.customerPhone.trim().length < 10) {
     alert('Please enter a valid 10-digit mobile number!');
     return;
   }
+  state.kwikPassStep = 2;
+  state.otpInputs = ["1", "2", "3", "4"];
+  renderApp();
+};
+
+window.handleKwikPassVerifyOTP = function(e) {
+  e.preventDefault();
   state.isLoggedIn = true;
   if (!state.customerName) state.customerName = "Khushi Aarya";
   state.isKwikPassAuthOpen = false;
-  alert("🎉 Welcome to Cieloria! Logged in successfully via KwikPass OTP!");
+  alert("🎉 OTP Verified! Welcome to Cieloria! Logged in successfully via KwikPass!");
   switchViewMode('account');
 };
 
@@ -1979,6 +2026,7 @@ window.handleKwikPassLoginSubmit = function(e) {
 window.triggerGoKwikCheckout = function() {
   if (!state.isLoggedIn) {
     state.isKwikPassAuthOpen = true;
+    state.kwikPassStep = 1;
     renderApp();
     return;
   }
@@ -2117,4 +2165,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully updated app.js with exact KwikPass Auth Popup Modal!")
+print("Successfully updated app.js with 2-Step KwikPass OTP Verification!")
