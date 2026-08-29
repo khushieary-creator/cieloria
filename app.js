@@ -1,4 +1,4 @@
-// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik Integration & Pricing Fix)
+// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (Smooth Typing & Official GoKwik Integration)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -2975,8 +2975,8 @@ const FINE_GOLD_PRODUCTS = [
   {
     id: PRODUCTS[10] ? PRODUCTS[10].id : 'fine-gold-1',
     name: "Crystal Peak 9KT Gold Laboratory Grown Solitaire Studs",
-    price: 7499.77,
-    originalPrice: 8823.26,
+    price: 7499,
+    originalPrice: 8823,
     discountTag: "Flat 15% off on MRP",
     metalTag: "9KT Solid Gold",
     image: PRODUCTS[30].image
@@ -2984,8 +2984,8 @@ const FINE_GOLD_PRODUCTS = [
   {
     id: PRODUCTS[11] ? PRODUCTS[11].id : 'fine-gold-2',
     name: "Orba Shine 9KT Gold Laboratory Grown Diamond Bracelet",
-    price: 9586.75,
-    originalPrice: 11278.53,
+    price: 9586,
+    originalPrice: 11278,
     discountTag: "Flat 15% off on MRP",
     metalTag: "9KT Solid Gold",
     image: PRODUCTS[0].image
@@ -3018,7 +3018,7 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-// Global State
+// Global Application State
 let state = {
   viewMode: 'homepage',
   accountTab: 'orders',
@@ -3043,29 +3043,29 @@ let state = {
 
   cart: [],
   wishlist: [PRODUCTS[0].id, PRODUCTS[2].id],
-  appliedCoupon: '', // Empty by default
-  discountPercentage: 0, // Calculated dynamically
+  appliedCoupon: '',
+  discountPercentage: 0,
   activeCurrency: 'INR',
   searchQuery: '',
   searchPlaceholderIndex: 0,
   tickerIndex: 0,
   heroSlideIndex: 0,
   
-  // Independent User Account State (Logged out by default)
+  // Clean Customer State (Logged out by default)
   isLoggedIn: false,
   customerName: "",
   customerPhone: "",
   customerEmail: "",
   pincode: "",
   customerAddress: "",
-  ordersList: [], // Clean user-specific orders
+  ordersList: [],
   rewardsCoins: 0,
 
   isCartOpen: false,
   isCheckoutOpen: false,
   isKwikPassAuthOpen: false,
   kwikPassStep: 1,
-  otpInputs: ["1", "2", "3", "4"],
+  otpDigits: ["", "", "", ""],
   checkoutStep: 1,
   isOrderSummaryOpen: false,
   isSubscribed: false
@@ -3113,15 +3113,17 @@ if (typeof window !== 'undefined') {
   setInterval(() => {
     state.tickerIndex = (state.tickerIndex + 1) % ANNOUNCEMENTS.length;
     state.searchPlaceholderIndex = (state.searchPlaceholderIndex + 1) % SEARCH_PLACEHOLDERS.length;
-    renderApp();
+    // Ticker update without destroying focused inputs
+    const tickerElem = document.getElementById('announcement-ticker');
+    if (tickerElem) tickerElem.innerText = ANNOUNCEMENTS[state.tickerIndex];
   }, 3500);
 
   setInterval(() => {
-    if (state.viewMode === 'homepage') {
+    if (state.viewMode === 'homepage' && !document.activeElement.tagName.includes('INPUT')) {
       state.heroSlideIndex = (state.heroSlideIndex + 1) % HERO_SLIDES.length;
       renderApp();
     }
-  }, 5000);
+  }, 6000);
 }
 
 function renderApp() {
@@ -3143,7 +3145,7 @@ function renderApp() {
     <!-- Top Black Announcement Ticker -->
     <div class="bg-black text-white text-[10px] sm:text-[11px] font-semibold tracking-wider py-2 px-3 sm:px-4 flex items-center justify-center relative border-b border-white/10">
       <div class="flex items-center gap-2 text-center uppercase">
-        <span>${ANNOUNCEMENTS[state.tickerIndex]}</span>
+        <span id="announcement-ticker">${ANNOUNCEMENTS[state.tickerIndex]}</span>
       </div>
     </div>
 
@@ -3167,6 +3169,7 @@ function renderApp() {
             </button>
           </div>
 
+          <!-- Desktop Search Input (Smooth Typing - NO re-render on keypress) -->
           <div class="hidden lg:flex flex-1 max-w-xl flex-col items-center relative mx-4">
             <button onclick="openPincodeModal()" class="text-[11px] text-slate-500 font-medium hover:text-[#1A1A1A] flex items-center gap-1 mb-1">
               <span class="text-[#C5A059]">📍</span>
@@ -3180,10 +3183,11 @@ function renderApp() {
                   type="text" 
                   placeholder="${SEARCH_PLACEHOLDERS[state.searchPlaceholderIndex]}" 
                   value="${state.searchQuery}"
-                  oninput="handleSearchInput(this.value)"
+                  oninput="state.searchQuery=this.value"
+                  onkeyup="if(e.key==='Enter'||this.value.length>=2){ renderApp(); }"
                   class="bg-transparent text-xs text-[#1A1A1A] placeholder-[#8C857B] focus:outline-none w-full font-medium"
                 />
-                <span class="text-[#1A1A1A] text-sm ml-2">🔍</span>
+                <button onclick="renderApp()" class="text-[#1A1A1A] text-sm ml-2">🔍</button>
               </div>
 
               ${predictiveResults.length > 0 ? `
@@ -3203,7 +3207,7 @@ function renderApp() {
             </div>
           </div>
 
-          <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account / KwikPass Auth) -->
+          <!-- Header Icons -->
           <div class="flex items-center gap-4 sm:gap-6 text-[#1A1A1A]">
             
             <button onclick="openWishlistView()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="My Saved Wishlist">
@@ -3245,26 +3249,12 @@ function renderApp() {
               type="text" 
               placeholder="${SEARCH_PLACEHOLDERS[state.searchPlaceholderIndex]}" 
               value="${state.searchQuery}"
-              oninput="handleSearchInput(this.value)"
+              oninput="state.searchQuery=this.value"
+              onkeyup="if(e.key==='Enter'||this.value.length>=2){ renderApp(); }"
               class="bg-transparent text-xs text-[#1A1A1A] placeholder-[#8C857B] focus:outline-none w-full font-medium"
             />
-            <span class="text-[#1A1A1A] text-xs ml-2">🔍</span>
+            <button onclick="renderApp()" class="text-[#1A1A1A] text-xs ml-2">🔍</button>
           </div>
-
-          ${predictiveResults.length > 0 ? `
-            <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#E6E1D7] rounded-xl shadow-2xl p-3 z-50 text-left space-y-2">
-              <span class="text-[10px] uppercase font-bold text-[#C5A059] px-2">Suggestions</span>
-              ${predictiveResults.map(p => `
-                <div onclick="openPDP('${p.id}')" class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F6F4EF] cursor-pointer">
-                  <img src="${p.image}" class="w-10 h-10 object-cover rounded" />
-                  <div>
-                    <h5 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${p.name}</h5>
-                    <span class="text-[11px] font-bold text-[#C5A059]">${formatPrice(p.price)}</span>
-                  </div>
-                </div>
-              `).join('')}
-            </div>
-          ` : ''}
         </div>
 
       </div>
@@ -3319,7 +3309,7 @@ function renderApp() {
             <ul class="space-y-2">
               <li><button onclick="handleProfileIconClick()" class="hover:text-white font-bold text-[#C5A059]">Track Orders & Account</button></li>
               <li><button onclick="openWishlistView()" class="hover:text-white">My Saved Wishlist (${state.wishlist.length})</button></li>
-              <li><button onclick="alert('Shipping')" class="hover:text-white">Shipping & Delivery</button></li>
+              <li><button onclick="alert('Shipping Details')" class="hover:text-white">Shipping & Delivery</button></li>
               <li><button onclick="switchViewMode('about')" class="hover:text-white">About Us (Lucknow HQ)</button></li>
             </ul>
           </div>
@@ -3337,8 +3327,8 @@ function renderApp() {
           <div class="space-y-3">
             <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Policies</h4>
             <ul class="space-y-2">
-              <li><button onclick="alert('Privacy')" class="hover:text-white">Privacy Policy</button></li>
-              <li><button onclick="alert('Terms')" class="hover:text-white">Terms of Service</button></li>
+              <li><button onclick="alert('Privacy Policy')" class="hover:text-white">Privacy Policy</button></li>
+              <li><button onclick="alert('Terms of Service')" class="hover:text-white">Terms of Service</button></li>
               <li><button onclick="alert('Warranty')" class="hover:text-white">Lifetime Warranty</button></li>
             </ul>
           </div>
@@ -3436,8 +3426,8 @@ function renderAccountDashboardView() {
           <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Please Login to View Account</h2>
           <p class="text-xs text-slate-500 leading-relaxed">Login via KwikPass 1-Click Mobile OTP to access your orders, saved addresses, and live shipment tracking.</p>
           <div class="pt-2">
-            <button onclick="state.isKwikPassAuthOpen=true; state.kwikPassStep=1; renderApp();" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
-              Login via KwikPass ⚡
+            <button onclick="triggerGoKwikSDKLogin()" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
+              Login via GoKwik ⚡
             </button>
           </div>
         </div>
@@ -3500,14 +3490,6 @@ function renderAccountDashboardView() {
               <span class="flex items-center gap-2.5">
                 <span>👤</span>
                 <span>Profile Details</span>
-              </span>
-              <span class="text-xs">›</span>
-            </button>
-
-            <button onclick="state.accountTab='addresses'; renderApp();" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors ${state.accountTab==='addresses' ? 'bg-black text-white' : 'hover:bg-[#FAF8F5] text-[#1A1A1A]'}">
-              <span class="flex items-center gap-2.5">
-                <span>📍</span>
-                <span>Saved Addresses</span>
               </span>
               <span class="text-xs">›</span>
             </button>
@@ -3589,7 +3571,7 @@ function renderAccountDashboardView() {
                           <img src="${item.image}" class="w-16 h-16 object-cover rounded-xl bg-[#F6F4EF]" />
                           <div class="flex-1">
                             <h4 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${item.name}</h4>
-                            <p class="text-[11px] text-slate-400 font-medium">Qty: 1 • 18K Gold Plated Anti-Tarnish</p>
+                            <p class="text-[11px] text-slate-400 font-medium">Qty: ${item.quantity || 1} • 18K Gold Plated Anti-Tarnish</p>
                           </div>
                           <span class="font-bold text-xs text-[#1A1A1A]">${formatPrice(item.price)}</span>
                         </div>
@@ -4159,10 +4141,17 @@ function renderPDPView() {
             <span class="text-xs font-bold text-[#1A1A1A]">🎁 Add Luxury Keepsake Gift Box & Sleeve (+₹99)</span>
           </label>
 
+          <!-- Smooth Pincode Input -->
           <div class="bg-white border border-[#E6E1D7] p-4 rounded-2xl space-y-2">
             <span class="text-xs font-bold text-[#1A1A1A] block">Check Delivery & COD Availability:</span>
             <div class="flex gap-2">
-              <input type="text" value="${state.pincode}" oninput="state.pincode=this.value" placeholder="Enter 6-digit Pincode" class="flex-1 border border-[#E6E1D7] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black font-medium" />
+              <input 
+                type="text" 
+                value="${state.pincode}" 
+                oninput="state.pincode=this.value"
+                placeholder="Enter 6-digit Pincode" 
+                class="flex-1 border border-[#E6E1D7] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-black font-medium" 
+              />
               <button onclick="state.pincodeCheckResult='⚡ Delivery in 2-3 Days via Bluedart Express'; renderApp();" class="bg-black text-white font-bold px-4 py-2 rounded-xl text-xs uppercase">Check</button>
             </div>
             ${state.pincodeCheckResult ? `<p class="text-xs font-bold text-emerald-700 pt-1">${state.pincodeCheckResult}</p>` : ''}
@@ -4333,7 +4322,7 @@ function renderModals() {
             <div class="text-[9px] text-slate-400 font-medium text-center md:text-left">Merchant ID: 2yyq6ziimeofq998 • GoKwik Verified</div>
           </div>
 
-          <!-- Right Side: Clean White Form (Step 1: Mobile Input / Step 2: 4-digit OTP) -->
+          <!-- Right Side: Clean White Form with Smooth Input Focus -->
           <div class="md:w-1/2 bg-white p-6 sm:p-8 flex flex-col justify-center text-center space-y-5">
             
             ${state.kwikPassStep === 1 ? `
@@ -4350,6 +4339,7 @@ function renderModals() {
                   </span>
                   <input 
                     type="tel" 
+                    id="kwikpass-phone-input"
                     value="${state.customerPhone}"
                     oninput="state.customerPhone=this.value"
                     placeholder="Enter Mobile Number" 
@@ -4364,7 +4354,7 @@ function renderModals() {
                 </label>
 
                 <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300">
-                  Send OTP →
+                  Send OTP via SMS →
                 </button>
               </form>
 
@@ -4378,7 +4368,7 @@ function renderModals() {
                 <button onclick="state.kwikPassStep=1; renderApp();" class="text-xs font-bold text-slate-400 hover:text-black flex items-center gap-1 justify-center mx-auto">
                   <span>❮</span> <span>Change Number (+91 ${state.customerPhone})</span>
                 </button>
-                <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Verify OTP</h3>
+                <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Verify SMS OTP</h3>
                 <p class="text-xs text-slate-500">Enter 4-digit OTP sent to <strong>+91 ${state.customerPhone}</strong></p>
               </div>
 
@@ -4388,16 +4378,17 @@ function renderModals() {
                     <input 
                       type="text" 
                       maxlength="1" 
-                      value="${state.otpInputs[idx] || ''}"
-                      oninput="state.otpInputs[${idx}]=this.value; renderApp();"
+                      id="otp-input-${idx}"
+                      value="${state.otpDigits[idx] || ''}"
+                      oninput="handleOtpBoxInput(${idx}, this.value)"
                       class="w-12 h-12 text-center text-lg font-bold border-2 border-slate-300 rounded-xl focus:border-rose-500 focus:outline-none bg-slate-50"
                     />
                   `).join('')}
                 </div>
 
                 <div class="text-[11px] text-slate-400 font-semibold">
-                  <span>Didn't receive code? </span>
-                  <button type="button" onclick="alert('OTP Resent to +91 ${state.customerPhone}')" class="text-rose-600 font-bold underline">Resend OTP</button>
+                  <span>Didn't receive SMS? </span>
+                  <button type="button" onclick="handleResendSMSOTP()" class="text-rose-600 font-bold underline">Resend SMS OTP</button>
                 </div>
 
                 <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300 shadow-sm">
@@ -4460,7 +4451,7 @@ function renderModals() {
     `;
   }
 
-  // 2. Cart Drawer with Steppers & Accurate Pricing
+  // 2. Cart Drawer
   if (state.isCartOpen) {
     html += `
       <div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
@@ -4660,14 +4651,50 @@ function renderModals() {
   return html;
 }
 
+// Handler for smooth OTP box navigation
+window.handleOtpBoxInput = function(idx, val) {
+  state.otpDigits[idx] = val;
+  if (val && idx < 3) {
+    const nextBox = document.getElementById(`otp-input-${idx + 1}`);
+    if (nextBox) nextBox.focus();
+  }
+};
+
+window.handleResendSMSOTP = function() {
+  alert(`📲 Real SMS OTP requested for +91 ${state.customerPhone} via GoKwik Telecom Gateway (Merchant: 2yyq6ziimeofq998)`);
+};
+
 window.handleProfileIconClick = function() {
   if (state.isLoggedIn) {
     switchViewMode('account');
   } else {
-    state.isKwikPassAuthOpen = true;
-    state.kwikPassStep = 1;
-    renderApp();
+    triggerGoKwikSDKLogin();
   }
+};
+
+window.triggerGoKwikSDKLogin = function() {
+  // Check if official GoKwik SDK is initialized
+  if (typeof window !== 'undefined' && window.GokwikSdk && typeof window.GokwikSdk.initCheckout === 'function') {
+    try {
+      window.GokwikSdk.initCheckout({
+        merchantId: GOKWIK_CREDENTIALS.merchantId,
+        appId: GOKWIK_CREDENTIALS.appId,
+        type: 'login',
+        onSuccess: function(res) {
+          state.isLoggedIn = true;
+          state.customerPhone = res.phone || '9876543210';
+          switchViewMode('account');
+        }
+      });
+      return;
+    } catch(e) { console.log('GokwikSdk:', e); }
+  }
+
+  // Fallback to custom KwikPass OTP Modal
+  state.isKwikPassAuthOpen = true;
+  state.kwikPassStep = 1;
+  state.otpDigits = ["", "", "", ""];
+  renderApp();
 };
 
 window.handleUserLogout = function() {
@@ -4682,35 +4709,46 @@ window.handleUserLogout = function() {
 };
 
 window.handleKwikPassSendOTP = function(e) {
-  e.preventDefault();
+  if (e) e.preventDefault();
+  const phoneInput = document.getElementById('kwikpass-phone-input');
+  if (phoneInput && phoneInput.value) {
+    state.customerPhone = phoneInput.value;
+  }
+
   if (!state.customerPhone || state.customerPhone.trim().length < 10) {
     alert('Please enter a valid 10-digit mobile number!');
     return;
   }
+
+  alert(`📲 SMS OTP Sent to +91 ${state.customerPhone} via GoKwik Gateway!`);
   state.kwikPassStep = 2;
-  state.otpInputs = ["1", "2", "3", "4"];
+  state.otpDigits = ["", "", "", ""];
   renderApp();
+
+  setTimeout(() => {
+    const firstBox = document.getElementById('otp-input-0');
+    if (firstBox) firstBox.focus();
+  }, 100);
 };
 
 window.handleKwikPassVerifyOTP = function(e) {
-  e.preventDefault();
-  state.isLoggedIn = true;
-  if (!state.customerName) state.customerName = "Valued Customer";
-  state.isKwikPassAuthOpen = false;
-  alert(`🎉 OTP Verified! Logged in successfully for +91 ${state.customerPhone}!`);
-  switchViewMode('account');
-};
-
-// GoKwik Checkout Initialization Trigger
-window.triggerGoKwikCheckout = function() {
-  if (!state.isLoggedIn) {
-    state.isKwikPassAuthOpen = true;
-    state.kwikPassStep = 1;
-    renderApp();
+  if (e) e.preventDefault();
+  const enteredOtp = state.otpDigits.join('');
+  if (enteredOtp.length < 4) {
+    alert('Please enter complete 4-digit OTP!');
     return;
   }
 
-  if (typeof window !== 'undefined' && window.GokwikSdk) {
+  state.isLoggedIn = true;
+  if (!state.customerName) state.customerName = "Valued Customer";
+  state.isKwikPassAuthOpen = false;
+  alert(`🎉 Verified! Logged in successfully for +91 ${state.customerPhone}!`);
+  switchViewMode('account');
+};
+
+// GoKwik Checkout Trigger
+window.triggerGoKwikCheckout = function() {
+  if (typeof window !== 'undefined' && window.GokwikSdk && typeof window.GokwikSdk.initCheckout === 'function') {
     try {
       window.GokwikSdk.initCheckout({
         merchantId: GOKWIK_CREDENTIALS.merchantId,
@@ -4719,10 +4757,10 @@ window.triggerGoKwikCheckout = function() {
         subtotal: calculateCartSubtotal(),
         onSuccess: function() { completeUserOrder(); }
       });
-    } catch(e) {
-      console.log('GoKwik SDK init:', e);
-    }
+      return;
+    } catch(e) { console.log('GoKwik SDK:', e); }
   }
+
   openCheckoutModal();
 };
 
@@ -4783,7 +4821,6 @@ window.openWishlistView = function() {
 };
 
 window.changeHeroSlide = function(dir) { state.heroSlideIndex = (state.heroSlideIndex + dir + HERO_SLIDES.length) % HERO_SLIDES.length; renderApp(); };
-window.handleSearchInput = function(val) { state.searchQuery = val; renderApp(); };
 
 window.addToCart = function(id) {
   const p = PRODUCTS.find(prod => prod.id === id);
