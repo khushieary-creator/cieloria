@@ -1,13 +1,12 @@
 // Vercel Serverless Google Cloud Database API Endpoint for Cieloria Storefront
 // Handles Customer Profiles, Wishlist Persistence, and Merchant Orders Sync
 
-// In-Memory Cloud Store for active server instances
 global.cieloriaCloudStore = global.cieloriaCloudStore || {
   customers: {},
   orders: []
 };
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // CORS Headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -86,4 +85,4 @@ export default async function handler(req, res) {
   } catch (error) {
     return res.status(500).json({ success: false, error: error.message });
   }
-}
+};
