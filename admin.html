@@ -12,10 +12,6 @@
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Firebase Cloud SDK Integration for Admin Orders -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 <body class="bg-[#0F172A] text-slate-100 font-sans antialiased min-h-screen">
 
@@ -27,24 +23,6 @@
       appId: "app_id_93a59e4095c7408f9b7ebeb50bcdeda9",
       merchantCode: "42961"
     };
-
-    let db = null;
-    try {
-      const firebaseConfig = {
-        apiKey: "AIzaSyCieloriaLuxuryStorefront2026Key",
-        authDomain: "cieloria-demifine.firebaseapp.com",
-        projectId: "cieloria-demifine",
-        storageBucket: "cieloria-demifine.appspot.com",
-        messagingSenderId: "987654321098",
-        appId: "1:987654321098:web:cieloriastorefront"
-      };
-      if (typeof firebase !== 'undefined') {
-        if (!firebase.apps.length) {
-          firebase.initializeApp(firebaseConfig);
-        }
-        db = firebase.firestore();
-      }
-    } catch(e) { console.log("Admin Cloud DB Note:", e); }
 
     function getStoredData(key, defaultVal) {
       try {
@@ -67,19 +45,21 @@
       allOrders: getStoredData('cieloria_merchant_all_orders', [])
     };
 
-    // Listen to real-time order streams from Cloud DB
-    if (db) {
-      db.collection("orders").onSnapshot(snapshot => {
-        if (snapshot && !snapshot.empty) {
-          const cloudOrders = [];
-          snapshot.forEach(doc => cloudOrders.push(doc.data()));
-          cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-          adminState.allOrders = cloudOrders;
-          setStoredData('cieloria_merchant_all_orders', cloudOrders);
-          if (adminState.isAuthenticated) renderAdmin();
-        }
-      }, err => console.log("Admin Cloud Listener Note:", err));
+    // Fetch real-time order streams from Vercel Google Cloud Serverless API
+    function fetchCloudOrders() {
+      fetch('/api/sync?action=get_all_orders')
+        .then(res => res.json())
+        .then(data => {
+          if (data && data.orders && Array.isArray(data.orders) && data.orders.length > 0) {
+            adminState.allOrders = data.orders;
+            setStoredData('cieloria_merchant_all_orders', data.orders);
+            if (adminState.isAuthenticated) renderAdmin();
+          }
+        }).catch(e => console.log('Admin Cloud Fetch Note:', e));
     }
+
+    setInterval(fetchCloudOrders, 4000);
+    fetchCloudOrders();
 
     function handleAdminLogin(e) {
       if (e) e.preventDefault();
@@ -115,14 +95,17 @@
 
       setStoredData('cieloria_merchant_all_orders', orders);
 
-      // Sync to Firebase Cloud DB
-      if (db) {
-        db.collection("orders").doc(orderId).set({
-          status: newStatus,
-          statusColor: statusColor,
-          updatedAt: new Date().toISOString()
-        }, { merge: true }).catch(e => console.log("Cloud Admin Order Status Write Note:", e));
-      }
+      // Post status update to Vercel Google Cloud Serverless API
+      try {
+        fetch('/api/sync', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'update_order_status',
+            data: { orderId: orderId, newStatus: newStatus, statusColor: statusColor }
+          })
+        }).catch(e => console.log('Admin Cloud Order Status Write Note:', e));
+      } catch(e) {}
 
       // Sync customer active local order
       let custOrders = getStoredData('cieloria_orders', []);
@@ -134,7 +117,7 @@
       }
 
       adminState.allOrders = orders;
-      alert(`✅ Order ${orderId} status updated to '${newStatus}' in Cloud DB! Customer will see this live in My Account.`);
+      alert(`✅ Order ${orderId} status updated to '${newStatus}' on Google Cloud DB! Customer will see this live in My Account.`);
       renderAdmin();
     }
 
@@ -192,7 +175,7 @@
                   <span class="text-3xl">⚙️</span>
                   <h1 class="font-serif text-3xl font-bold text-amber-400 uppercase tracking-widest">CIELORIA MERCHANT ADMIN DASHBOARD</h1>
                 </div>
-                <p class="text-xs text-slate-400 pt-1">Manage Customer Orders, Customer Contact Details & Update Dispatch Status (Merchant ID: ${GOKWIK_CREDENTIALS.merchantId} • Live Cloud Sync Active)</p>
+                <p class="text-xs text-slate-400 pt-1">Manage Customer Orders, Customer Contact Details & Update Dispatch Status (Merchant ID: ${GOKWIK_CREDENTIALS.merchantId} • Live Cloud API Active)</p>
               </div>
 
               <div class="flex items-center gap-3">

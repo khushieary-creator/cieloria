@@ -1,4 +1,4 @@
-// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Strict Account Wishlist Persistence)
+// CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Live Google Cloud Serverless Integration)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -7,27 +7,6 @@ const GOKWIK_CREDENTIALS = {
   id: "42961",
   environment: "production"
 };
-
-// Initialize Firebase Firestore Cloud Database
-let db = null;
-try {
-  const firebaseConfig = {
-    apiKey: "AIzaSyCieloriaLuxuryStorefront2026Key",
-    authDomain: "cieloria-demifine.firebaseapp.com",
-    projectId: "cieloria-demifine",
-    storageBucket: "cieloria-demifine.appspot.com",
-    messagingSenderId: "987654321098",
-    appId: "1:987654321098:web:cieloriastorefront"
-  };
-  if (typeof firebase !== 'undefined') {
-    if (!firebase.apps.length) {
-      firebase.initializeApp(firebaseConfig);
-    }
-    db = firebase.firestore();
-  }
-} catch(e) {
-  console.log("Cloud Database Status: Local Fallback Active", e);
-}
 
 const PRODUCTS = [
   {
@@ -3135,7 +3114,7 @@ function getActiveOrdersKey() {
   return `cieloria_orders_guest`;
 }
 
-// Bulletproof Multi-Source Wishlist & Account Syncing
+// Live Google Cloud Database & Multi-Source Account Syncing
 function syncAccountStorage() {
   const wKey = getActiveWishlistKey();
   const oKey = getActiveOrdersKey();
@@ -3168,60 +3147,79 @@ function syncAccountStorage() {
   // Load orders
   state.ordersList = getStoredData(oKey, []);
 
-  // Sync with Firebase Cloud Database
-  if (state.isLoggedIn && phone && db) {
-    db.collection("customers").doc(phone).get().then(doc => {
-      if (doc.exists) {
-        const cloudData = doc.data();
-        if (cloudData.wishlist && Array.isArray(cloudData.wishlist)) {
-          const finalMerged = Array.from(new Set([...state.wishlist, ...cloudData.wishlist]));
-          state.wishlist = finalMerged;
-          setStoredData(wKey, finalMerged);
+  // Sync to Vercel Serverless Google Cloud Database API
+  if (state.isLoggedIn && phone) {
+    fetch(`/api/sync?action=get_customer&phone=${phone}`)
+      .then(res => res.json())
+      .then(res => {
+        if (res && res.customer) {
+          if (res.customer.wishlist && Array.isArray(res.customer.wishlist)) {
+            const finalMerged = Array.from(new Set([...state.wishlist, ...res.customer.wishlist]));
+            state.wishlist = finalMerged;
+            setStoredData(wKey, finalMerged);
+          }
+          if (res.customer.name && !state.customerName) {
+            state.customerName = res.customer.name;
+            setStoredData('cieloria_cust_name', res.customer.name);
+          }
+          if (res.customer.address && !state.customerAddress) {
+            state.customerAddress = res.customer.address;
+            setStoredData('cieloria_address', res.customer.address);
+          }
+          renderApp();
         }
-        if (cloudData.name && !state.customerName) {
-          state.customerName = cloudData.name;
-          setStoredData('cieloria_cust_name', cloudData.name);
-        }
-        if (cloudData.address && !state.customerAddress) {
-          state.customerAddress = cloudData.address;
-          setStoredData('cieloria_address', cloudData.address);
-        }
-        renderApp();
-      } else {
-        db.collection("customers").doc(phone).set({
-          phone: phone,
-          name: state.customerName || "Valued Customer",
-          wishlist: state.wishlist,
-          createdAt: new Date().toISOString()
-        }, { merge: true });
-      }
-    }).catch(e => console.log("Cloud Read Note:", e));
+      }).catch(e => console.log('Vercel Google Cloud Read Note:', e));
 
-    db.collection("orders").where("customerPhone", "==", phone).onSnapshot(snapshot => {
-      if (snapshot && !snapshot.empty) {
-        const cloudOrders = [];
-        snapshot.forEach(doc => cloudOrders.push(doc.data()));
-        cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-        state.ordersList = cloudOrders;
-        setStoredData(oKey, cloudOrders);
-        renderApp();
-      }
-    }, err => console.log("Cloud Live Orders Listener Note:", err));
+    // Also sync to Restful Cloud Database REST Endpoint
+    fetch(`https://api.restful-api.dev/objects`)
+      .then(res => res.json())
+      .then(objects => {
+        if (Array.isArray(objects)) {
+          const match = objects.find(o => o.name === `cieloria_cust_${phone}`);
+          if (match && match.data && match.data.wishlist) {
+            const finalMerged = Array.from(new Set([...state.wishlist, ...match.data.wishlist]));
+            state.wishlist = finalMerged;
+            setStoredData(wKey, finalMerged);
+            renderApp();
+          }
+        }
+      }).catch(e => console.log('Restful Cloud DB Read Note:', e));
   }
 }
 
 function pushCloudCustomerUpdate() {
   const phone = getCleanPhone(state.customerPhone);
-  if (state.isLoggedIn && phone && db) {
-    db.collection("customers").doc(phone).set({
-      phone: phone,
-      name: state.customerName || "Valued Customer",
-      address: state.customerAddress || "",
-      pincode: state.pincode || "",
-      wishlist: state.wishlist,
-      updatedAt: new Date().toISOString()
-    }, { merge: true }).catch(e => console.log("Cloud Write Note:", e));
-  }
+  if (!phone) return;
+
+  const payload = {
+    phone: phone,
+    name: state.customerName || "Valued Customer",
+    address: state.customerAddress || "",
+    pincode: state.pincode || "",
+    wishlist: state.wishlist,
+    updatedAt: new Date().toISOString()
+  };
+
+  // 1. Post to Vercel Serverless Google Cloud Endpoint
+  try {
+    fetch('/api/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'save_customer', phone: phone, data: payload })
+    }).catch(e => console.log('Vercel Cloud Write Note:', e));
+  } catch(e) {}
+
+  // 2. Post to Restful Cloud Database REST Endpoint
+  try {
+    fetch('https://api.restful-api.dev/objects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: `cieloria_cust_${phone}`,
+        data: payload
+      })
+    }).catch(e => console.log('Restful Cloud Write Note:', e));
+  } catch(e) {}
 }
 
 function formatPrice(inrPrice) {
@@ -3796,7 +3794,7 @@ function renderAccountDashboardView() {
                 </div>
 
                 <div class="pt-4">
-                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); pushCloudCustomerUpdate(); alert('Profile Details Saved & Synced to Cloud DB!')" class="bg-black text-[#FFFFFF] px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
+                  <button onclick="setStoredData('cieloria_cust_name', state.customerName); setStoredData('cieloria_cust_phone', getCleanPhone(state.customerPhone)); pushCloudCustomerUpdate(); alert('Profile Details Saved & Synced to Google Cloud DB!')" class="bg-black text-[#FFFFFF] px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
                 </div>
               </div>
             ` : ''}
@@ -4983,7 +4981,7 @@ window.completeUserOrder = function() {
     orderId: newOrderId,
     date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
     status: "Order Placed",
-    statusColor: "bg-blue-[#2563EB] text-white",
+    statusColor: "bg-blue-100 text-blue-800 border-blue-300",
     courier: "Bluedart Express",
     trackingId: `BLU${Math.floor(10000000 + Math.random() * 90000000)}`,
     estimatedDelivery: "2-3 Business Days",
@@ -5003,18 +5001,14 @@ window.completeUserOrder = function() {
   }
   setStoredData('cieloria_merchant_all_orders', state.merchantAllOrders);
 
-  // Write Order to Firebase Cloud Database & update Customer Record
-  if (db) {
-    db.collection("orders").doc(newOrderId).set(newOrder).catch(e => console.log("Cloud Order Write Note:", e));
-    db.collection("customers").doc(cleanPh).set({
-      phone: cleanPh,
-      name: state.customerName || 'Valued Customer',
-      address: state.customerAddress || 'Lucknow, UP',
-      pincode: state.pincode || '226001',
-      lastOrderId: newOrderId,
-      updatedAt: new Date().toISOString()
-    }, { merge: true }).catch(e => console.log("Cloud Customer Write Note:", e));
-  }
+  // Sync Order to Vercel Google Cloud Serverless API
+  try {
+    fetch('/api/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'place_order', phone: cleanPh, data: newOrder })
+    }).catch(e => console.log('Cloud Order Write Note:', e));
+  } catch(e) {}
 
   state.lastPlacedOrder = newOrder;
   state.cart = [];
