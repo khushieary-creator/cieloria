@@ -1,5 +1,8 @@
 {
   "name": "cieloria",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html app.js style.css admin.html dist/ && (cp -r api dist/ 2>/dev/null || true)"
+  }
 }
