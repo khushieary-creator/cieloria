@@ -91,7 +91,7 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik 2-Step KwikPass OTP Verification Integrated)
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik Integration & Pricing Fix)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -302,31 +302,6 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-const INITIAL_ORDERS = [
-  {
-    orderId: "CIE-89210",
-    date: "28 Aug 2026",
-    status: "In Transit",
-    statusColor: "bg-amber-100 text-amber-800 border-amber-300",
-    courier: "Delhivery Express",
-    trackingId: "DLV983210492",
-    estimatedDelivery: "31st August 2026",
-    totalAmount: 5416,
-    items: [PRODUCTS[0], PRODUCTS[1]]
-  },
-  {
-    orderId: "CIE-87401",
-    date: "14 Jul 2026",
-    status: "Delivered",
-    statusColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
-    courier: "Bluedart",
-    trackingId: "BLU482910381",
-    estimatedDelivery: "17th July 2026",
-    totalAmount: 3306,
-    items: [PRODUCTS[2]]
-  }
-];
-
 // Global State
 let state = {
   viewMode: 'homepage',
@@ -352,27 +327,28 @@ let state = {
 
   cart: [],
   wishlist: [PRODUCTS[0].id, PRODUCTS[2].id],
-  appliedCoupon: 'RAKHI40',
-  discountAmount: 1322.40,
+  appliedCoupon: '', // Empty by default
+  discountPercentage: 0, // Calculated dynamically
   activeCurrency: 'INR',
   searchQuery: '',
   searchPlaceholderIndex: 0,
   tickerIndex: 0,
   heroSlideIndex: 0,
   
+  // Independent User Account State (Logged out by default)
   isLoggedIn: false,
   customerName: "",
   customerPhone: "",
   customerEmail: "",
   pincode: "",
   customerAddress: "",
-  ordersList: INITIAL_ORDERS,
-  rewardsCoins: 271,
+  ordersList: [], // Clean user-specific orders
+  rewardsCoins: 0,
 
   isCartOpen: false,
   isCheckoutOpen: false,
   isKwikPassAuthOpen: false,
-  kwikPassStep: 1, // Step 1: Mobile Input, Step 2: 4-digit OTP Screen
+  kwikPassStep: 1,
   otpInputs: ["1", "2", "3", "4"],
   checkoutStep: 1,
   isOrderSummaryOpen: false,
@@ -399,6 +375,22 @@ function calculateCartSubtotal() {
     const qty = parseInt(item.quantity) || 1;
     return sum + (item.price * qty);
   }, 0);
+}
+
+function calculateCartDiscount() {
+  const subtotal = calculateCartSubtotal();
+  if (subtotal <= 0) return 0;
+  if (state.appliedCoupon === 'RAKHI40') {
+    return Math.round(subtotal * 0.40);
+  }
+  return 0;
+}
+
+function calculateCartFinalTotal() {
+  const subtotal = calculateCartSubtotal();
+  const discount = calculateCartDiscount();
+  const giftExtra = state.addGiftSleeve ? 99 : 0;
+  return Math.max(0, subtotal - discount + giftExtra);
 }
 
 if (typeof window !== 'undefined') {
@@ -518,9 +510,9 @@ function renderApp() {
               </span>
             </button>
 
-            <button onclick="handleProfileIconClick()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="KwikPass Login / My Account">
+            <button onclick="handleProfileIconClick()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="${state.isLoggedIn ? 'My Account' : 'KwikPass Login'}">
               <div class="relative">
-                <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="${state.isLoggedIn ? '#1A1A1A' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
@@ -609,7 +601,7 @@ function renderApp() {
           <div class="space-y-3">
             <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Customer Care</h4>
             <ul class="space-y-2">
-              <li><button onclick="handleProfileIconClick()" class="hover:text-white font-bold text-[#C5A059]">Track Orders & KwikPass Account</button></li>
+              <li><button onclick="handleProfileIconClick()" class="hover:text-white font-bold text-[#C5A059]">Track Orders & Account</button></li>
               <li><button onclick="openWishlistView()" class="hover:text-white">My Saved Wishlist (${state.wishlist.length})</button></li>
               <li><button onclick="alert('Shipping')" class="hover:text-white">Shipping & Delivery</button></li>
               <li><button onclick="switchViewMode('about')" class="hover:text-white">About Us (Lucknow HQ)</button></li>
@@ -720,6 +712,23 @@ function renderWishlistView() {
 }
 
 function renderAccountDashboardView() {
+  if (!state.isLoggedIn) {
+    return `
+      <div class="bg-[#FAF8F5] min-h-screen py-16 text-center text-[#1A1A1A]">
+        <div class="max-w-md mx-auto bg-white border border-[#E6E1D7] rounded-3xl p-8 shadow-xs space-y-5">
+          <span class="text-5xl block">👤⚡</span>
+          <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Please Login to View Account</h2>
+          <p class="text-xs text-slate-500 leading-relaxed">Login via KwikPass 1-Click Mobile OTP to access your orders, saved addresses, and live shipment tracking.</p>
+          <div class="pt-2">
+            <button onclick="state.isKwikPassAuthOpen=true; state.kwikPassStep=1; renderApp();" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
+              Login via KwikPass ⚡
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
   return `
     <div class="bg-[#FAF8F5] min-h-screen py-10 text-left text-[#1A1A1A]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
@@ -730,23 +739,24 @@ function renderAccountDashboardView() {
               ${state.customerName ? state.customerName.charAt(0) : '👤'}
             </div>
             <div>
-              <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${state.customerName || 'Khushi Aarya'}</h1>
-              <p class="text-xs text-slate-500 font-medium">${state.customerPhone ? `+91 ${state.customerPhone}` : '+91 8887566006'} ${state.customerEmail ? `• ${state.customerEmail}` : ''}</p>
+              <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${state.customerName || 'Customer Account'}</h1>
+              <p class="text-xs text-slate-500 font-medium">${state.customerPhone ? `+91 ${state.customerPhone}` : 'Guest'} ${state.customerEmail ? `• ${state.customerEmail}` : ''}</p>
               <span class="inline-block bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded mt-1">⚡ Verified KwikPass Member</span>
             </div>
           </div>
 
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-3">
             <div class="bg-amber-50 border border-amber-200 px-4 py-2 rounded-2xl flex items-center gap-2">
               <span class="text-amber-600 text-lg">🪙</span>
               <div>
                 <span class="font-bold text-xs text-[#1A1A1A] block">${state.rewardsCoins} Cieloria Coins</span>
-                <span class="text-[10px] text-amber-700 font-semibold">100% Anti-Tarnish Club</span>
+                <span class="text-[10px] text-amber-700 font-semibold">Anti-Tarnish Club</span>
               </div>
             </div>
 
-            <button onclick="switchViewMode('homepage')" class="border border-[#E6E1D7] hover:border-black bg-white px-4 py-2 rounded-xl text-xs font-bold transition-colors">
-              Continue Shopping
+            <!-- Logout Button -->
+            <button onclick="handleUserLogout()" class="border border-rose-200 hover:bg-rose-50 text-rose-700 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5" title="Logout of Account">
+              <span>🚪 Logout</span>
             </button>
           </div>
         </div>
@@ -757,7 +767,7 @@ function renderAccountDashboardView() {
             <button onclick="state.accountTab='orders'; renderApp();" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors ${state.accountTab==='orders' ? 'bg-black text-white' : 'hover:bg-[#FAF8F5] text-[#1A1A1A]'}">
               <span class="flex items-center gap-2.5">
                 <span>📦</span>
-                <span>My Orders & Tracking</span>
+                <span>My Orders (${state.ordersList.length})</span>
               </span>
               <span class="text-xs">›</span>
             </button>
@@ -786,18 +796,10 @@ function renderAccountDashboardView() {
               <span class="text-xs">›</span>
             </button>
 
-            <button onclick="state.accountTab='rewards'; renderApp();" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors ${state.accountTab==='rewards' ? 'bg-black text-white' : 'hover:bg-[#FAF8F5] text-[#1A1A1A]'}">
+            <button onclick="handleUserLogout()" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors hover:bg-rose-50 text-rose-700">
               <span class="flex items-center gap-2.5">
-                <span>🎁</span>
-                <span>Rewards & Coupons</span>
-              </span>
-              <span class="text-xs">›</span>
-            </button>
-
-            <button onclick="state.accountTab='help'; renderApp();" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors ${state.accountTab==='help' ? 'bg-black text-white' : 'hover:bg-[#FAF8F5] text-[#1A1A1A]'}">
-              <span class="flex items-center gap-2.5">
-                <span>💬</span>
-                <span>Help & Order Support</span>
+                <span>🚪</span>
+                <span>Logout</span>
               </span>
               <span class="text-xs">›</span>
             </button>
@@ -809,10 +811,19 @@ function renderAccountDashboardView() {
               <div class="space-y-6">
                 <div class="flex items-center justify-between">
                   <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">My Recent Orders (${state.ordersList.length})</h2>
-                  <span class="text-xs text-slate-500 font-medium">⚡ Real-time Order Tracking</span>
+                  <span class="text-xs text-slate-500 font-medium">⚡ Real-time Tracking</span>
                 </div>
 
-                ${state.ordersList.map(ord => `
+                ${state.ordersList.length === 0 ? `
+                  <div class="bg-white border border-[#E6E1D7] rounded-3xl p-10 text-center space-y-3 shadow-xs">
+                    <span class="text-4xl block">📦</span>
+                    <h4 class="font-serif text-xl font-bold text-[#1A1A1A]">No Orders Placed Yet</h4>
+                    <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and place your first order!</p>
+                    <div class="pt-2">
+                      <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-6 py-2.5 text-xs rounded-xl uppercase">Start Shopping</button>
+                    </div>
+                  </div>
+                ` : state.ordersList.map(ord => `
                   <div class="bg-white border border-[#E6E1D7] rounded-3xl p-6 shadow-xs space-y-5">
                     
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-[#E6E1D7] gap-3">
@@ -869,18 +880,6 @@ function renderAccountDashboardView() {
                       `).join('')}
                     </div>
 
-                    <div class="flex flex-wrap items-center justify-between pt-2 border-t border-[#E6E1D7] gap-3">
-                      <button onclick="alert('Downloading Official GST Tax Invoice PDF...')" class="border border-[#E6E1D7] bg-white px-4 py-2 rounded-xl text-xs font-semibold hover:border-black">
-                        📄 Download Invoice
-                      </button>
-                      
-                      <div class="flex items-center gap-3">
-                        <button onclick="alert('Track link opened!')" class="bg-black text-white px-5 py-2 rounded-xl text-xs font-bold hover:bg-[#C5A059] transition-colors">
-                          Track Shipment →
-                        </button>
-                      </div>
-                    </div>
-
                   </div>
                 `).join('')}
               </div>
@@ -900,77 +899,10 @@ function renderAccountDashboardView() {
                     <label class="text-xs font-bold text-slate-600 block mb-1">Mobile Number</label>
                     <input type="tel" value="${state.customerPhone}" oninput="state.customerPhone=this.value" placeholder="Enter Mobile Number" class="w-full border border-[#E6E1D7] p-3 rounded-xl text-xs focus:outline-none focus:border-black font-medium" />
                   </div>
-
-                  <div class="md:col-span-2">
-                    <label class="text-xs font-bold text-slate-600 block mb-1">Email Address</label>
-                    <input type="email" value="${state.customerEmail}" oninput="state.customerEmail=this.value" placeholder="Enter Email Address" class="w-full border border-[#E6E1D7] p-3 rounded-xl text-xs focus:outline-none focus:border-black font-medium" />
-                  </div>
                 </div>
 
                 <div class="pt-4">
-                  <button onclick="alert('Profile Updated Successfully!')" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-[#C5A059] transition-colors">
-                    Save Profile Changes
-                  </button>
-                </div>
-              </div>
-            ` : ''}
-
-            ${state.accountTab === 'addresses' ? `
-              <div class="bg-white border border-[#E6E1D7] rounded-3xl p-8 shadow-xs space-y-6">
-                <div class="flex justify-between items-center">
-                  <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Saved Delivery Addresses</h2>
-                  <button onclick="openPincodeModal()" class="border border-black text-black px-4 py-2 rounded-xl text-xs font-bold hover:bg-black hover:text-white">
-                    + Add New Address
-                  </button>
-                </div>
-
-                <div class="border border-[#E6E1D7] p-5 rounded-2xl bg-[#FAF8F5] space-y-2">
-                  <div class="flex justify-between items-start">
-                    <div>
-                      <span class="bg-black text-white text-[9px] uppercase font-bold px-2 py-0.5 rounded">Default Address</span>
-                      <h4 class="font-bold text-sm text-[#1A1A1A] pt-2">${state.customerName || 'Khushi Aarya'}</h4>
-                    </div>
-                    <button class="text-xs text-slate-500 font-bold underline">Edit</button>
-                  </div>
-                  <p class="text-xs text-slate-600 leading-relaxed">${state.customerAddress || '3/11 Vinamra Khand 3, Gomti Nagar, Lucknow, UP, 226010'}</p>
-                  <p class="text-xs text-slate-400 font-medium">Pincode: ${state.pincode || '226010'} • Phone: +91 ${state.customerPhone || '8887566006'}</p>
-                </div>
-              </div>
-            ` : ''}
-
-            ${state.accountTab === 'rewards' ? `
-              <div class="bg-white border border-[#E6E1D7] rounded-3xl p-8 shadow-xs space-y-6">
-                <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">My Vouchers & Rewards</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div class="border border-dashed border-emerald-400 bg-emerald-50/60 p-5 rounded-2xl space-y-2">
-                    <span class="text-[10px] uppercase font-bold text-emerald-800 tracking-wider">ACTIVE COUPON</span>
-                    <h3 class="font-serif text-xl font-bold text-emerald-900">RAKHI40</h3>
-                    <p class="text-xs text-emerald-700 font-medium">Get EXTRA 40% OFF on all purchases!</p>
-                  </div>
-
-                  <div class="border border-dashed border-amber-400 bg-amber-50/60 p-5 rounded-2xl space-y-2">
-                    <span class="text-[10px] uppercase font-bold text-amber-800 tracking-wider">BUY 1 GET 1 FREE</span>
-                    <h3 class="font-serif text-xl font-bold text-amber-900">CODE: B1G1</h3>
-                    <p class="text-xs text-amber-700 font-medium">Add 2 items and pay for only 1!</p>
-                  </div>
-                </div>
-              </div>
-            ` : ''}
-
-            ${state.accountTab === 'help' ? `
-              <div class="bg-white border border-[#E6E1D7] rounded-3xl p-8 shadow-xs space-y-6 text-center">
-                <h2 class="font-serif text-2xl font-bold text-[#1A1A1A]">Order Help & Customer Support</h2>
-                <p class="text-xs text-slate-600 max-w-lg mx-auto leading-relaxed">Need help with tracking, sizing, or returns? Our Lucknow Flagship Customer Service Team is available 7 days a week.</p>
-                
-                <div class="flex flex-wrap justify-center gap-4 pt-2">
-                  <button onclick="alert('Connecting to WhatsApp Priority Support...')" class="bg-emerald-600 text-white px-6 py-3 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-emerald-700">
-                    <span>💬 Chat on WhatsApp</span>
-                  </button>
-                  
-                  <button onclick="alert('Customer Care Email: support@cieloria.com')" class="bg-black text-white px-6 py-3 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-800">
-                    <span>✉️ Email Support</span>
-                  </button>
+                  <button onclick="alert('Profile Saved!')" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider">Save Changes</button>
                 </div>
               </div>
             ` : ''}
@@ -1500,7 +1432,9 @@ function renderPDPView() {
             </div>
             <div class="flex items-center justify-between text-xs border-t border-[#E6E1D7] pt-2">
               <span class="font-bold text-[#1A1A1A]">Flat 40% OFF</span>
-              <span class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">Code: RAKHI40</span>
+              <button onclick="state.appliedCoupon='RAKHI40'; renderApp(); alert('RAKHI40 Applied! 40% Discount active.');" class="bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded uppercase">
+                ${state.appliedCoupon==='RAKHI40' ? '✔ APPLIED' : 'Apply Code: RAKHI40'}
+              </button>
             </div>
           </div>
 
@@ -1626,15 +1560,16 @@ function renderPDPView() {
   `;
 }
 
-// Modals, Cart Drawer, GoKwik Checkout & KwikPass 2-Step OTP Auth Popup Modal
+// Modals, Cart Drawer & GoKwik KwikPass Auth Popup Modal
 function renderModals() {
   let html = '';
 
   const subtotal = calculateCartSubtotal();
-  const finalTotal = Math.max(0, subtotal - (subtotal > 0 ? state.discountAmount : 0));
+  const discount = calculateCartDiscount();
+  const finalTotal = calculateCartFinalTotal();
   const cartTotalItems = calculateCartTotalCount();
 
-  // 1. KwikPass Auth & Login Popup Modal (2-Step OTP Verification Flow)
+  // 1. KwikPass Auth & Login Popup Modal
   if (state.isKwikPassAuthOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/65 backdrop-blur-xs">
@@ -1809,7 +1744,7 @@ function renderModals() {
     `;
   }
 
-  // 2. Cart Drawer with Steppers & Accurate Item Count
+  // 2. Cart Drawer with Steppers & Accurate Pricing
   if (state.isCartOpen) {
     html += `
       <div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
@@ -1845,7 +1780,6 @@ function renderModals() {
                   <div class="flex items-center justify-between pt-2">
                     <span class="font-bold text-xs text-[#1A1A1A]">${formatPrice(item.price)}</span>
                     
-                    <!-- Stepper Buttons: - 1 + -->
                     <div class="flex items-center border border-slate-300 rounded-lg overflow-hidden bg-slate-50">
                       <button onclick="updateCartQty('${item.id}', -1)" class="px-2.5 py-1 font-bold text-slate-700 hover:bg-slate-200 text-xs">-</button>
                       <span class="px-3 font-bold text-xs text-[#1A1A1A]">${item.quantity}</span>
@@ -1862,9 +1796,27 @@ function renderModals() {
           ${state.cart.length > 0 ? `
             <div class="p-4 border-t border-[#E6E1D7] bg-[#FAF8F5] space-y-3">
               
-              <div class="flex justify-between items-center text-xs border-b border-slate-200 pb-2">
-                <span class="text-slate-500 font-medium">Estimated Subtotal:</span>
-                <span class="font-bold text-sm text-[#1A1A1A]">₹${subtotal.toLocaleString()}.00</span>
+              <div class="space-y-1.5 text-xs border-b border-slate-200 pb-3">
+                <div class="flex justify-between items-center text-slate-600">
+                  <span>Subtotal:</span>
+                  <span class="font-bold text-[#1A1A1A]">₹${subtotal.toLocaleString()}.00</span>
+                </div>
+                ${discount > 0 ? `
+                  <div class="flex justify-between items-center text-emerald-700 font-semibold">
+                    <span>Discount (${state.appliedCoupon}):</span>
+                    <span>- ₹${discount.toLocaleString()}.00</span>
+                  </div>
+                ` : ''}
+                ${state.addGiftSleeve ? `
+                  <div class="flex justify-between items-center text-slate-600">
+                    <span>Gift Box & Sleeve:</span>
+                    <span>+ ₹99.00</span>
+                  </div>
+                ` : ''}
+                <div class="flex justify-between items-center text-sm font-bold text-[#1A1A1A] pt-1 border-t border-slate-200">
+                  <span>Total Payable:</span>
+                  <span class="text-base text-black">₹${finalTotal.toLocaleString()}.00</span>
+                </div>
               </div>
 
               <button onclick="toggleCart(false); triggerGoKwikCheckout();" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider shadow-lg flex items-center justify-center gap-2">
@@ -2002,6 +1954,17 @@ window.handleProfileIconClick = function() {
   }
 };
 
+window.handleUserLogout = function() {
+  state.isLoggedIn = false;
+  state.customerName = "";
+  state.customerPhone = "";
+  state.customerEmail = "";
+  state.customerAddress = "";
+  state.ordersList = [];
+  alert("🚪 You have logged out successfully!");
+  switchViewMode('homepage');
+};
+
 window.handleKwikPassSendOTP = function(e) {
   e.preventDefault();
   if (!state.customerPhone || state.customerPhone.trim().length < 10) {
@@ -2016,9 +1979,9 @@ window.handleKwikPassSendOTP = function(e) {
 window.handleKwikPassVerifyOTP = function(e) {
   e.preventDefault();
   state.isLoggedIn = true;
-  if (!state.customerName) state.customerName = "Khushi Aarya";
+  if (!state.customerName) state.customerName = "Valued Customer";
   state.isKwikPassAuthOpen = false;
-  alert("🎉 OTP Verified! Welcome to Cieloria! Logged in successfully via KwikPass!");
+  alert(`🎉 OTP Verified! Logged in successfully for +91 ${state.customerPhone}!`);
   switchViewMode('account');
 };
 
@@ -2050,8 +2013,7 @@ window.triggerGoKwikCheckout = function() {
 // Complete Order Function
 window.completeUserOrder = function() {
   const newOrderId = `CIE-${Math.floor(10000 + Math.random() * 90000)}`;
-  const subtotal = calculateCartSubtotal();
-  const finalTotal = Math.max(0, subtotal - (subtotal > 0 ? state.discountAmount : 0));
+  const finalTotal = calculateCartFinalTotal();
 
   const newOrder = {
     orderId: newOrderId,
@@ -2165,4 +2127,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully updated app.js with 2-Step KwikPass OTP Verification!")
+print("Successfully updated app.js with exact pricing calculation, logout button, and clean user state!")
