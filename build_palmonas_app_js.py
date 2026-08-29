@@ -55,9 +55,12 @@ for row in reader:
     is_fine_gold = "9kt" in title.lower() or "gold" in title.lower() and "pendant" in title.lower()
     is_silver = "silver" in title.lower() or "sterling" in title.lower()
     
+    # Replace Palmonas with Cieloria in title if present
+    clean_title = title.replace("PALMONAS", "CIELORIA").replace("Palmonas", "Cieloria").replace("palmonas", "cieloria")
+
     products.append({
         "id": handle,
-        "name": title,
+        "name": clean_title,
         "category": cat,
         "occasion": "Daily Wear" if (len(products) % 2 == 0) else "Office Wear",
         "price": price,
@@ -71,12 +74,12 @@ for row in reader:
         "isFineGold": is_fine_gold,
         "isSilver": is_silver,
         "inStock": True,
-        "sku": f"SKU: PAL{100 + len(products)}",
+        "sku": f"SKU: CIE{100 + len(products)}",
         "image": img,
         "secondaryImage": img,
         "gallery": [img],
         "features": ["18K Gold Plated Anti-Tarnish Coating", "100% Waterproof & Sweatproof", "Hypoallergenic & Nickel-Free", "Lifetime Polish Guarantee"],
-        "description": title + " - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry.",
+        "description": clean_title + " - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA.",
         "dimensions": "Weight: 8g | 100% Waterproof & Sweatproof",
         "materials": "18K Gold Plated PVD Coating over 316L Surgical Stainless Steel.",
         "care": "100% Shower and swim safe. Wipe with soft cloth after ocean water exposure."
@@ -84,7 +87,7 @@ for row in reader:
 
 products_json_str = json.dumps(products, indent=2)
 
-js_content = """// CIELORIA - Exact Screenshot Icons & Full User Account Management Dashboard
+js_content = """// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (cieloria.com)
 
 const PRODUCTS = """ + products_json_str + """;
 
@@ -126,7 +129,7 @@ const CUSTOMER_REVIEWS = [
     verified: true, 
     date: "3/5/2026", 
     rating: 5, 
-    comment: "Nice making of these earrings... It suits me a lot and very cute.. Thank u palmonas" 
+    comment: "Nice making of these earrings... It suits me a lot and very cute.. Thank u cieloria" 
   },
   { name: "Girisha S.", verified: true, date: "30/4/2026", rating: 5, comment: "Awesome product" }
 ];
@@ -225,7 +228,7 @@ const HERO_SLIDES = [
   {
     id: "slide-3",
     image: PRODUCTS[40].image,
-    tag: "PALMONAS IN STYLE",
+    tag: "CIELORIA IN STYLE",
     title: "LUXURY COLLECTION",
     subtitle: "FLAT 40% OFF",
     codeText: "Code: RAKHI40",
@@ -300,7 +303,7 @@ const SUBHEADER_NAV = [
 // Sample Orders for User Profile Dashboard
 const INITIAL_ORDERS = [
   {
-    orderId: "PAL-89210",
+    orderId: "CIE-89210",
     date: "28 Aug 2026",
     status: "In Transit",
     statusColor: "bg-amber-100 text-amber-800 border-amber-300",
@@ -311,7 +314,7 @@ const INITIAL_ORDERS = [
     items: [PRODUCTS[0], PRODUCTS[1]]
   },
   {
-    orderId: "PAL-87401",
+    orderId: "CIE-87401",
     date: "14 Jul 2026",
     status: "Delivered",
     statusColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
@@ -416,12 +419,12 @@ function renderApp() {
       </div>
     </div>
 
-    <!-- Header Row (Matches User Screenshot Exact Icons: Heart, Bag, Profile) -->
+    <!-- Header Row (CIELORIA Brand Logo & Header Icons) -->
     <header class="bg-white border-b border-[#E6E1D7] sticky top-0 z-40 shadow-xs">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
         
         <button onclick="switchViewMode('homepage')" class="font-serif text-3xl sm:text-4xl font-bold tracking-[0.2em] text-[#1A1A1A] hover:text-[#C5A059] uppercase">
-          PALMONAS
+          CIELORIA
         </button>
 
         <div class="flex-1 max-w-xl flex flex-col items-center relative">
@@ -460,10 +463,10 @@ function renderApp() {
           </div>
         </div>
 
-        <!-- 3 Icons Matching Screenshot: Heart (Wishlist), Shopping Bag (Cart), Profile (Account) -->
+        <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account) -->
         <div class="flex items-center gap-6 text-[#1A1A1A]">
           
-          <!-- 1. Wishlist Heart Icon with Black Circle Counter (Screenshot Style) -->
+          <!-- 1. Wishlist Heart Icon with Black Circle Counter -->
           <button onclick="openPLPCategory('BestSeller')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Wishlist">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -473,7 +476,7 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 2. Shopping Bag Icon with Black Circle Counter (Screenshot Style) -->
+          <!-- 2. Shopping Bag Icon with Black Circle Counter -->
           <button onclick="toggleCart(true)" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Shopping Bag">
             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
@@ -485,14 +488,13 @@ function renderApp() {
             </span>
           </button>
 
-          <!-- 3. Account / Profile Icon with Yellow Lightning Badge (Screenshot Style) -->
+          <!-- 3. Account / Profile Icon with Yellow Lightning Badge -->
           <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="My Account & Orders">
             <div class="relative">
               <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                 <circle cx="12" cy="7" r="4"></circle>
               </svg>
-              <!-- Yellow Lightning Badge -->
               <span class="absolute -top-1 -right-1 text-amber-500 font-bold text-xs leading-none">⚡</span>
             </div>
           </button>
@@ -540,7 +542,7 @@ function renderApp() {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div class="space-y-4">
-            <h3 class="font-serif text-2xl font-bold tracking-[0.2em] text-white">PALMONAS</h3>
+            <h3 class="font-serif text-2xl font-bold tracking-[0.2em] text-white">CIELORIA</h3>
             <p class="text-slate-400 text-xs leading-relaxed">India's pioneer Demifine® 18k thick gold plated & sterling silver anti-tarnish jewelry. Founded in Lucknow, UP.</p>
           </div>
 
@@ -574,7 +576,7 @@ function renderApp() {
           </div>
 
           <div class="space-y-3">
-            <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Join Palmonas Club</h4>
+            <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Join Cieloria Club</h4>
             <p class="text-slate-400 text-xs">Get 10% OFF on your first purchase.</p>
             ${!state.isSubscribed ? `
               <form onsubmit="handleNewsletter(event)" class="space-y-2">
@@ -590,7 +592,7 @@ function renderApp() {
         </div>
 
         <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-[11px] text-slate-500">
-          <div>© ${new Date().getFullYear()} PALMONAS / CIELORIA (palmonas.com). Lucknow, UP, India. All Rights Reserved.</div>
+          <div>© ${new Date().getFullYear()} CIELORIA (cieloria.com). Lucknow, UP, India. All Rights Reserved.</div>
           <div>100% Waterproof • Anti-Tarnish • Hypoallergenic</div>
         </div>
       </div>
@@ -598,7 +600,7 @@ function renderApp() {
   `;
 }
 
-// FULL E-COMMERCE USER ACCOUNT & ORDER MANAGEMENT DASHBOARD (viewMode === 'account')
+// USER ACCOUNT & ORDER MANAGEMENT DASHBOARD (viewMode === 'account')
 function renderAccountDashboardView() {
   return `
     <div class="bg-[#FAF8F5] min-h-screen py-10 text-left text-[#1A1A1A]">
@@ -620,7 +622,7 @@ function renderAccountDashboardView() {
             <div class="bg-amber-50 border border-amber-200 px-4 py-2 rounded-2xl flex items-center gap-2">
               <span class="text-amber-600 text-lg">🪙</span>
               <div>
-                <span class="font-bold text-xs text-[#1A1A1A] block">${state.rewardsCoins} Rewards Coins</span>
+                <span class="font-bold text-xs text-[#1A1A1A] block">${state.rewardsCoins} Cieloria Coins</span>
                 <span class="text-[10px] text-amber-700 font-semibold">100% Anti-Tarnish Club</span>
               </div>
             </div>
@@ -852,7 +854,7 @@ function renderAccountDashboardView() {
                     <span>💬 Chat on WhatsApp</span>
                   </button>
                   
-                  <button onclick="alert('Customer Care Email: support@palmonas.com')" class="bg-black text-white px-6 py-3 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-800">
+                  <button onclick="alert('Customer Care Email: support@cieloria.com')" class="bg-black text-white px-6 py-3 rounded-xl text-xs font-bold flex items-center gap-2 hover:bg-slate-800">
                     <span>✉️ Email Support</span>
                   </button>
                 </div>
@@ -958,10 +960,10 @@ function renderHomepageView(currentHero) {
       </div>
     </section>
 
-    <!-- 5. PALMONAS TOP STYLES Tabbed Grid -->
+    <!-- 5. CIELORIA TOP STYLES Tabbed Grid -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
       <div class="text-center space-y-6">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">PALMONAS TOP STYLES</h2>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">CIELORIA TOP STYLES</h2>
         <div class="flex flex-wrap justify-center gap-2">
           ${['ALL', 'NECKLACES', 'BRACELETS', 'EARRINGS', 'RINGS', 'MENS', 'MANGALSUTRA'].map(tab => `
             <button onclick="state.bestsellerTab = '${tab}'; renderApp();" class="px-5 py-2 text-xs font-semibold uppercase border transition-all ${state.bestsellerTab === tab ? 'bg-black text-white border-black' : 'bg-white text-[#1A1A1A] border-[#E6E1D7]'}">${tab}</button>
@@ -1032,12 +1034,12 @@ function renderHomepageView(currentHero) {
     <!-- 7. FROM SHRADDHA, FOR YOU Quote -->
     <section class="py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed">At Palmonas, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Palmonas, the sparkle is always yours to keep.</strong></p>
+        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed">At Cieloria, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Cieloria, the sparkle is always yours to keep.</strong></p>
         <h2 class="text-center font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FROM SHRADDHA, FOR YOU</h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-4">
           <div class="md:col-span-6 rounded-2xl overflow-hidden shadow-md"><img src="${PRODUCTS[40].image}" class="w-full h-[420px] object-cover" /></div>
           <div class="md:col-span-6 text-left space-y-4 p-4">
-            <blockquote class="font-serif text-base sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Palmonas, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
+            <blockquote class="font-serif text-base sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Cieloria, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
           </div>
         </div>
       </div>
@@ -1082,7 +1084,7 @@ function renderHomepageView(currentHero) {
           </div>
         `).join('')}
       </div>
-      <div class="text-center pt-4"><button onclick="alert('Viewing All Palmonas Editorial Blogs')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">View All</button></div>
+      <div class="text-center pt-4"><button onclick="alert('Viewing All Cieloria Editorial Blogs')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">View All</button></div>
     </section>
 
     <!-- 10. SHOP WITH CONFIDENCE -->
@@ -1236,7 +1238,7 @@ function renderAboutUsView() {
             <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY</span>
             <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-[#1A1A1A]">Born in Lucknow, Cherished Nationwide</h2>
             <p class="text-sm text-slate-600 leading-relaxed">
-              Launched <strong>1 year ago</strong> in <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA / PALMONAS</strong> was born with a single revolutionary vision: to make everyday gold jewelry effortless, affordable, and completely tarnish-free.
+              Launched <strong>1 year ago</strong> in <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to make everyday gold jewelry effortless, affordable, and completely tarnish-free.
             </p>
             <div class="pt-2 flex items-center gap-6 border-t border-[#E6E1D7] pt-6">
               <div>
@@ -1396,7 +1398,7 @@ function renderModals() {
           <div class="p-4 border-b border-slate-200 flex items-center justify-between bg-white sticky top-0 z-10">
             <div class="flex items-center gap-3">
               <button onclick="state.isCheckoutOpen=false; renderApp();" class="text-slate-400 hover:text-black font-bold text-base">❮</button>
-              <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">PALMONAS</h3>
+              <h3 class="font-serif text-lg font-bold tracking-widest text-[#1A1A1A]">CIELORIA</h3>
             </div>
             <div class="flex items-center gap-1 text-[11px] font-semibold text-slate-500">
               <span>100% Secured Payment</span>
@@ -1525,4 +1527,4 @@ try { renderApp(); } catch(err) { console.error('Render error:', err); }
 with open("/Users/khushi/.gemini/antigravity/scratch/cieloria/app.js", "w") as f:
     f.write(js_content)
 
-print("Successfully generated exact screenshot header icons & full User Account Management Dashboard!")
+print("Successfully replaced all PALMONAS references with CIELORIA!")
