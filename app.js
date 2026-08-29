@@ -3087,7 +3087,7 @@ let state = {
   plpSortBy: 'featured',
 
   cart: getStoredData('cieloria_cart', []),
-  wishlist: [], // Will be loaded dynamically based on active state
+  wishlist: [],
   appliedCoupon: '',
   discountPercentage: 0,
   activeCurrency: 'INR',
@@ -3135,68 +3135,78 @@ function getActiveOrdersKey() {
   return `cieloria_orders_guest`;
 }
 
-// Real-Time Cloud Database & Account Syncing
+// Bulletproof Multi-Source Wishlist & Account Syncing
 function syncAccountStorage() {
   const wKey = getActiveWishlistKey();
   const oKey = getActiveOrdersKey();
-  
-  state.wishlist = getStoredData(wKey, []);
-  state.ordersList = getStoredData(oKey, []);
-
   const phone = getCleanPhone(state.customerPhone);
 
+  const savedAccountWishlist = getStoredData(wKey, []);
+  const guestWishlist = getStoredData('cieloria_wishlist_guest', []);
+  const inMemoryWishlist = state.wishlist || [];
+
   if (state.isLoggedIn && phone) {
-    // Also merge any items that were added as guest before login!
-    const guestWishlist = getStoredData('cieloria_wishlist_guest', []);
-    if (guestWishlist.length > 0) {
-      const merged = Array.from(new Set([...state.wishlist, ...guestWishlist]));
-      state.wishlist = merged;
-      setStoredData(wKey, merged);
-      setStoredData('cieloria_wishlist_guest', []); // clear guest queue
-    }
+    // Merge account wishlist + guest wishlist + in-memory wishlist
+    const combined = Array.from(new Set([
+      ...savedAccountWishlist,
+      ...guestWishlist,
+      ...inMemoryWishlist
+    ]));
+    state.wishlist = combined;
+    setStoredData(wKey, combined);
+    setStoredData('cieloria_wishlist_guest', []);
+  } else {
+    // Guest mode merge
+    const combinedGuest = Array.from(new Set([
+      ...guestWishlist,
+      ...inMemoryWishlist
+    ]));
+    state.wishlist = combinedGuest;
+    setStoredData('cieloria_wishlist_guest', combinedGuest);
+  }
 
-    if (db) {
-      // Fetch Customer Profile, Wishlist & Orders from Cloud Database
-      db.collection("customers").doc(phone).get().then(doc => {
-        if (doc.exists) {
-          const cloudData = doc.data();
-          if (cloudData.wishlist && Array.isArray(cloudData.wishlist)) {
-            const combined = Array.from(new Set([...state.wishlist, ...cloudData.wishlist]));
-            state.wishlist = combined;
-            setStoredData(wKey, combined);
-          }
-          if (cloudData.name && !state.customerName) {
-            state.customerName = cloudData.name;
-            setStoredData('cieloria_cust_name', cloudData.name);
-          }
-          if (cloudData.address && !state.customerAddress) {
-            state.customerAddress = cloudData.address;
-            setStoredData('cieloria_address', cloudData.address);
-          }
-          renderApp();
-        } else {
-          // Create initial cloud doc
-          db.collection("customers").doc(phone).set({
-            phone: phone,
-            name: state.customerName || "Valued Customer",
-            wishlist: state.wishlist,
-            createdAt: new Date().toISOString()
-          }, { merge: true });
-        }
-      }).catch(e => console.log("Cloud Read Note:", e));
+  // Load orders
+  state.ordersList = getStoredData(oKey, []);
 
-      // Listen to real-time order updates for this customer
-      db.collection("orders").where("customerPhone", "==", phone).onSnapshot(snapshot => {
-        if (snapshot && !snapshot.empty) {
-          const cloudOrders = [];
-          snapshot.forEach(doc => cloudOrders.push(doc.data()));
-          cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
-          state.ordersList = cloudOrders;
-          setStoredData(oKey, cloudOrders);
-          renderApp();
+  // Sync with Firebase Cloud Database
+  if (state.isLoggedIn && phone && db) {
+    db.collection("customers").doc(phone).get().then(doc => {
+      if (doc.exists) {
+        const cloudData = doc.data();
+        if (cloudData.wishlist && Array.isArray(cloudData.wishlist)) {
+          const finalMerged = Array.from(new Set([...state.wishlist, ...cloudData.wishlist]));
+          state.wishlist = finalMerged;
+          setStoredData(wKey, finalMerged);
         }
-      }, err => console.log("Cloud Live Orders Listener Note:", err));
-    }
+        if (cloudData.name && !state.customerName) {
+          state.customerName = cloudData.name;
+          setStoredData('cieloria_cust_name', cloudData.name);
+        }
+        if (cloudData.address && !state.customerAddress) {
+          state.customerAddress = cloudData.address;
+          setStoredData('cieloria_address', cloudData.address);
+        }
+        renderApp();
+      } else {
+        db.collection("customers").doc(phone).set({
+          phone: phone,
+          name: state.customerName || "Valued Customer",
+          wishlist: state.wishlist,
+          createdAt: new Date().toISOString()
+        }, { merge: true });
+      }
+    }).catch(e => console.log("Cloud Read Note:", e));
+
+    db.collection("orders").where("customerPhone", "==", phone).onSnapshot(snapshot => {
+      if (snapshot && !snapshot.empty) {
+        const cloudOrders = [];
+        snapshot.forEach(doc => cloudOrders.push(doc.data()));
+        cloudOrders.sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+        state.ordersList = cloudOrders;
+        setStoredData(oKey, cloudOrders);
+        renderApp();
+      }
+    }, err => console.log("Cloud Live Orders Listener Note:", err));
   }
 }
 
@@ -4973,7 +4983,7 @@ window.completeUserOrder = function() {
     orderId: newOrderId,
     date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
     status: "Order Placed",
-    statusColor: "bg-blue-100 text-blue-800 border-blue-300",
+    statusColor: "bg-blue-[#2563EB] text-white",
     courier: "Bluedart Express",
     trackingId: `BLU${Math.floor(10000000 + Math.random() * 90000000)}`,
     estimatedDelivery: "2-3 Business Days",
