@@ -1,4 +1,4 @@
-// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (cieloria.com)
+// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (Mobile Optimized & Working Wishlist)
 
 const PRODUCTS = [
   {
@@ -2918,6 +2918,13 @@ const PLP_CATEGORY_DATA = {
     bannerImage: PRODUCTS[30].image,
     subFilters: ["All Gifts", "Gift Boxes", "Sister Gifts", "Brother Gifts", "Sets"]
   },
+  Wishlist: {
+    title: "My Wishlist",
+    heading: "Your Saved Favorites",
+    tagline: "Your personal anti-tarnish wishlist collection",
+    bannerImage: PRODUCTS[30].image,
+    subFilters: ["All Saved Items"]
+  },
   All: {
     title: "Demifine ® Collection",
     heading: "All Demifine Jewelry",
@@ -3047,7 +3054,7 @@ const INITIAL_ORDERS = [
 
 // Global State
 let state = {
-  viewMode: 'homepage',
+  viewMode: 'homepage', // 'homepage' | 'plp' | 'pdp' | 'about' | 'account' | 'wishlist'
   accountTab: 'orders',
   selectedProductId: PRODUCTS[0].id,
   activeGalleryIndex: 0,
@@ -3058,6 +3065,7 @@ let state = {
   addGiftSleeve: false,
   visibleReviewsCount: 6,
   pincodeCheckResult: '',
+  isMobileMenuOpen: false,
 
   plpCategory: 'BestSeller',
   plpSubFilter: '',
@@ -3132,96 +3140,147 @@ function renderApp() {
 
   appContainer.innerHTML = `
     <!-- Top Black Announcement Ticker -->
-    <div class="bg-black text-white text-[11px] font-semibold tracking-wider py-2 px-4 flex items-center justify-center relative border-b border-white/10">
+    <div class="bg-black text-white text-[10px] sm:text-[11px] font-semibold tracking-wider py-2 px-3 sm:px-4 flex items-center justify-center relative border-b border-white/10">
       <div class="flex items-center gap-2 text-center uppercase">
         <span>${ANNOUNCEMENTS[state.tickerIndex]}</span>
       </div>
     </div>
 
-    <!-- Header Row -->
+    <!-- Mobile-Optimized Header -->
     <header class="bg-white border-b border-[#E6E1D7] sticky top-0 z-40 shadow-xs">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-6">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3.5 flex flex-col gap-3">
         
-        <button onclick="switchViewMode('homepage')" class="font-serif text-3xl sm:text-4xl font-bold tracking-[0.2em] text-[#1A1A1A] hover:text-[#C5A059] uppercase">
-          CIELORIA
-        </button>
+        <!-- Top Bar: Mobile Hamburger + Brand Logo + 3 Header Icons -->
+        <div class="flex items-center justify-between gap-3">
+          
+          <div class="flex items-center gap-2.5">
+            <!-- Mobile Hamburger Button (Visible on mobile/tablet) -->
+            <button onclick="state.isMobileMenuOpen=true; renderApp();" class="lg:hidden p-1.5 text-slate-800 hover:text-black" title="Open Navigation Menu">
+              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
 
-        <div class="flex-1 max-w-xl flex flex-col items-center relative">
-          <button onclick="openPincodeModal()" class="text-[11px] text-slate-500 font-medium hover:text-[#1A1A1A] flex items-center gap-1 mb-1">
-            <span class="text-[#C5A059]">📍</span>
-            <span>${state.pincode ? `Pincode: ${state.pincode}` : 'Enter Pincode'}</span>
-            <span class="text-[9px]">▾</span>
-          </button>
+            <!-- Brand Logo -->
+            <button onclick="switchViewMode('homepage')" class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-[0.18em] text-[#1A1A1A] hover:text-[#C5A059] uppercase">
+              CIELORIA
+            </button>
+          </div>
 
-          <div class="w-full relative">
-            <div class="flex items-center bg-[#F3EFE6] rounded-md px-4 py-2.5 w-full">
-              <input 
-                type="text" 
-                placeholder="${SEARCH_PLACEHOLDERS[state.searchPlaceholderIndex]}" 
-                value="${state.searchQuery}"
-                oninput="handleSearchInput(this.value)"
-                class="bg-transparent text-xs text-[#1A1A1A] placeholder-[#8C857B] focus:outline-none w-full font-medium"
-              />
-              <span class="text-[#1A1A1A] text-sm ml-2">🔍</span>
-            </div>
+          <!-- Desktop Search Bar (Hidden on Mobile, shown in 2nd row for Mobile) -->
+          <div class="hidden lg:flex flex-1 max-w-xl flex-col items-center relative mx-4">
+            <button onclick="openPincodeModal()" class="text-[11px] text-slate-500 font-medium hover:text-[#1A1A1A] flex items-center gap-1 mb-1">
+              <span class="text-[#C5A059]">📍</span>
+              <span>${state.pincode ? `Pincode: ${state.pincode}` : 'Enter Pincode'}</span>
+              <span class="text-[9px]">▾</span>
+            </button>
 
-            ${predictiveResults.length > 0 ? `
-              <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#E6E1D7] rounded-xl shadow-2xl p-3 z-50 text-left space-y-2">
-                <span class="text-[10px] uppercase font-bold text-[#C5A059] px-2">Suggestions</span>
-                ${predictiveResults.map(p => `
-                  <div onclick="openPDP('${p.id}')" class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F6F4EF] cursor-pointer">
-                    <img src="${p.image}" class="w-10 h-10 object-cover rounded" />
-                    <div>
-                      <h5 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${p.name}</h5>
-                      <span class="text-[11px] font-bold text-[#C5A059]">${formatPrice(p.price)}</span>
-                    </div>
-                  </div>
-                `).join('')}
+            <div class="w-full relative">
+              <div class="flex items-center bg-[#F3EFE6] rounded-md px-4 py-2.5 w-full">
+                <input 
+                  type="text" 
+                  placeholder="${SEARCH_PLACEHOLDERS[state.searchPlaceholderIndex]}" 
+                  value="${state.searchQuery}"
+                  oninput="handleSearchInput(this.value)"
+                  class="bg-transparent text-xs text-[#1A1A1A] placeholder-[#8C857B] focus:outline-none w-full font-medium"
+                />
+                <span class="text-[#1A1A1A] text-sm ml-2">🔍</span>
               </div>
-            ` : ''}
+
+              ${predictiveResults.length > 0 ? `
+                <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#E6E1D7] rounded-xl shadow-2xl p-3 z-50 text-left space-y-2">
+                  <span class="text-[10px] uppercase font-bold text-[#C5A059] px-2">Suggestions</span>
+                  ${predictiveResults.map(p => `
+                    <div onclick="openPDP('${p.id}')" class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F6F4EF] cursor-pointer">
+                      <img src="${p.image}" class="w-10 h-10 object-cover rounded" />
+                      <div>
+                        <h5 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${p.name}</h5>
+                        <span class="text-[11px] font-bold text-[#C5A059]">${formatPrice(p.price)}</span>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- 3 Header Icons: Heart (Opens Wishlist View), Shopping Bag (Opens Cart Drawer), Profile (Opens Account) -->
+          <div class="flex items-center gap-4 sm:gap-6 text-[#1A1A1A]">
+            
+            <!-- 1. Wishlist Heart Icon (Opens Wishlist Page) -->
+            <button onclick="openWishlistView()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="My Saved Wishlist">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="${state.wishlist.length > 0 ? '#1A1A1A' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span class="absolute -top-1.5 -right-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-black text-white font-bold text-[9px] sm:text-[10px] rounded-full flex items-center justify-center border border-white shadow-sm">
+                ${state.wishlist.length}
+              </span>
+            </button>
+
+            <!-- 2. Shopping Bag Icon -->
+            <button onclick="toggleCart(true)" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="Shopping Bag">
+              <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 0 1-8 0"></path>
+              </svg>
+              <span class="absolute -top-1.5 -right-1.5 w-4 h-4 sm:w-5 sm:h-5 bg-black text-white font-bold text-[9px] sm:text-[10px] rounded-full flex items-center justify-center border border-white shadow-sm">
+                ${cartTotalItems}
+              </span>
+            </button>
+
+            <!-- 3. Account / Profile Icon -->
+            <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="My Account & Orders">
+              <div class="relative">
+                <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span class="absolute -top-1 -right-1 text-amber-500 font-bold text-xs leading-none">⚡</span>
+              </div>
+            </button>
+
           </div>
         </div>
 
-        <!-- 3 Icons Matching Screenshot: Heart, Shopping Bag, Profile -->
-        <div class="flex items-center gap-6 text-[#1A1A1A]">
-          
-          <button onclick="openPLPCategory('BestSeller')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Wishlist">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.72-8.72 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-            </svg>
-            <span class="absolute -top-2 -right-2 w-5 h-5 bg-black text-white font-bold text-[10px] rounded-full flex items-center justify-center border border-white shadow-sm">
-              ${state.wishlist.length}
-            </span>
-          </button>
+        <!-- Mobile Search Bar (Dedicated for mobile phones) -->
+        <div class="lg:hidden w-full relative">
+          <div class="flex items-center bg-[#F3EFE6] rounded-lg px-3.5 py-2 w-full">
+            <input 
+              type="text" 
+              placeholder="${SEARCH_PLACEHOLDERS[state.searchPlaceholderIndex]}" 
+              value="${state.searchQuery}"
+              oninput="handleSearchInput(this.value)"
+              class="bg-transparent text-xs text-[#1A1A1A] placeholder-[#8C857B] focus:outline-none w-full font-medium"
+            />
+            <span class="text-[#1A1A1A] text-xs ml-2">🔍</span>
+          </div>
 
-          <button onclick="toggleCart(true)" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Shopping Bag">
-            <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <path d="M16 10a4 4 0 0 1-8 0"></path>
-            </svg>
-            <span class="absolute -top-2 -right-2 w-5 h-5 bg-black text-white font-bold text-[10px] rounded-full flex items-center justify-center border border-white shadow-sm">
-              ${cartTotalItems}
-            </span>
-          </button>
-
-          <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="My Account & Orders">
-            <div class="relative">
-              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-              <span class="absolute -top-1 -right-1 text-amber-500 font-bold text-xs leading-none">⚡</span>
+          ${predictiveResults.length > 0 ? `
+            <div class="absolute top-full left-0 right-0 mt-1 bg-white border border-[#E6E1D7] rounded-xl shadow-2xl p-3 z-50 text-left space-y-2">
+              <span class="text-[10px] uppercase font-bold text-[#C5A059] px-2">Suggestions</span>
+              ${predictiveResults.map(p => `
+                <div onclick="openPDP('${p.id}')" class="flex items-center gap-3 p-2 rounded-lg hover:bg-[#F6F4EF] cursor-pointer">
+                  <img src="${p.image}" class="w-10 h-10 object-cover rounded" />
+                  <div>
+                    <h5 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${p.name}</h5>
+                    <span class="text-[11px] font-bold text-[#C5A059]">${formatPrice(p.price)}</span>
+                  </div>
+                </div>
+              `).join('')}
             </div>
-          </button>
-
+          ` : ''}
         </div>
+
       </div>
 
-      <nav class="border-t border-[#E6E1D7] bg-white py-3 overflow-x-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-center gap-6 sm:gap-8 text-xs font-medium whitespace-nowrap text-[#1A1A1A]">
+      <!-- Mobile Touch-Scrollable Category Navigation Bar -->
+      <nav class="border-t border-[#E6E1D7] bg-white py-2.5 overflow-x-auto whitespace-nowrap">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-start lg:justify-center gap-5 sm:gap-8 text-xs font-medium text-[#1A1A1A]">
           ${SUBHEADER_NAV.map(nav => `
-            <div class="relative py-1 cursor-pointer group">
+            <div class="relative py-1 cursor-pointer shrink-0">
               <button 
                 onclick="openPLPCategory('${nav.cat}')" 
                 class="hover:text-[#C5A059] transition-colors ${state.plpCategory === nav.cat && (state.viewMode === 'plp' || state.viewMode === 'about') ? 'font-bold text-[#C5A059]' : ''}"
@@ -3241,6 +3300,7 @@ function renderApp() {
       ${state.viewMode === 'pdp' ? renderPDPView() : ''}
       ${state.viewMode === 'about' ? renderAboutUsView() : ''}
       ${state.viewMode === 'account' ? renderAccountDashboardView() : ''}
+      ${state.viewMode === 'wishlist' ? renderWishlistView() : ''}
     </main>
 
     ${renderModals()}
@@ -3254,9 +3314,9 @@ function renderApp() {
       </div>
     </div>
 
-    <footer class="bg-black text-slate-400 pt-16 pb-12 text-xs text-left">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+    <footer class="bg-black text-slate-400 pt-14 pb-10 text-xs text-left">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
           <div class="space-y-4">
             <h3 class="font-serif text-2xl font-bold tracking-[0.2em] text-white">CIELORIA</h3>
             <p class="text-slate-400 text-xs leading-relaxed">India's pioneer Demifine® 18k thick gold plated & sterling silver anti-tarnish jewelry. Founded in Lucknow, UP.</p>
@@ -3266,8 +3326,8 @@ function renderApp() {
             <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Customer Care</h4>
             <ul class="space-y-2">
               <li><button onclick="switchViewMode('account')" class="hover:text-white font-bold text-[#C5A059]">Track Orders & Account</button></li>
+              <li><button onclick="openWishlistView()" class="hover:text-white">My Saved Wishlist (${state.wishlist.length})</button></li>
               <li><button onclick="alert('Shipping')" class="hover:text-white">Shipping & Delivery</button></li>
-              <li><button onclick="alert('Return')" class="hover:text-white">Return & Exchange</button></li>
               <li><button onclick="switchViewMode('about')" class="hover:text-white">About Us (Lucknow HQ)</button></li>
             </ul>
           </div>
@@ -3291,7 +3351,7 @@ function renderApp() {
             </ul>
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-3 sm:col-span-2 lg:col-span-1">
             <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Join Cieloria Club</h4>
             <p class="text-slate-400 text-xs">Get 10% OFF on your first purchase.</p>
             ${!state.isSubscribed ? `
@@ -3313,6 +3373,67 @@ function renderApp() {
         </div>
       </div>
     </footer>
+  `;
+}
+
+// DEDICATED WISHLIST VIEW (viewMode === 'wishlist')
+function renderWishlistView() {
+  const savedProducts = PRODUCTS.filter(p => state.wishlist.includes(p.id));
+
+  return `
+    <div class="bg-[#FAF8F5] min-h-screen py-10 text-left text-[#1A1A1A]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <!-- Header Banner -->
+        <div class="bg-white border border-[#E6E1D7] rounded-3xl p-6 sm:p-8 flex items-center justify-between shadow-xs">
+          <div>
+            <h1 class="font-serif text-3xl font-bold text-[#1A1A1A]">My Saved Wishlist ❤️</h1>
+            <p class="text-xs text-slate-500 font-medium pt-1">You have <strong>${savedProducts.length}</strong> items saved in your favorites</p>
+          </div>
+          
+          <button onclick="switchViewMode('homepage')" class="border border-black hover:bg-black hover:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-colors">
+            Explore More Products
+          </button>
+        </div>
+
+        ${savedProducts.length === 0 ? `
+          <div class="bg-white border border-[#E6E1D7] rounded-3xl p-12 text-center space-y-4 shadow-xs">
+            <span class="text-5xl block">🤍</span>
+            <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Your Wishlist is Empty</h3>
+            <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and tap the heart icon on any piece to save your favorite jewelry!</p>
+            <div class="pt-2">
+              <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider">Browse Bestsellers</button>
+            </div>
+          </div>
+        ` : `
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            ${savedProducts.map(p => `
+              <div class="group relative bg-[#FFFFFF] border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-lg transition-all rounded-xl">
+                <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
+                  <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  
+                  <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-rose-500 hover:scale-110 transition-transform z-20" title="Remove from Wishlist">
+                    ❤️
+                  </button>
+                </div>
+                
+                <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
+                  <div onclick="openPDP('${p.id}')" class="space-y-1 cursor-pointer">
+                    <h3 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-1">${p.name}</h3>
+                    <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>${formatPrice(p.price)}</span><span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span></div>
+                  </div>
+
+                  <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
+                    Add to Cart
+                  </button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `}
+
+      </div>
+    </div>
   `;
 }
 
@@ -3358,6 +3479,14 @@ function renderAccountDashboardView() {
               <span class="flex items-center gap-2.5">
                 <span>📦</span>
                 <span>My Orders & Tracking</span>
+              </span>
+              <span class="text-xs">›</span>
+            </button>
+
+            <button onclick="openWishlistView()" class="w-full text-left p-3.5 rounded-2xl font-bold text-xs flex items-center justify-between transition-colors hover:bg-[#FAF8F5] text-[#1A1A1A]">
+              <span class="flex items-center gap-2.5">
+                <span>❤️</span>
+                <span>My Saved Wishlist (${state.wishlist.length})</span>
               </span>
               <span class="text-xs">›</span>
             </button>
@@ -3409,7 +3538,6 @@ function renderAccountDashboardView() {
                 ${state.ordersList.map(ord => `
                   <div class="bg-white border border-[#E6E1D7] rounded-3xl p-6 shadow-xs space-y-5">
                     
-                    <!-- Order Card Header -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-[#E6E1D7] gap-3">
                       <div class="space-y-1">
                         <div class="flex items-center gap-3">
@@ -3425,7 +3553,6 @@ function renderAccountDashboardView() {
                       </div>
                     </div>
 
-                    <!-- Tracking Timeline Bar -->
                     <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 rounded-2xl space-y-2">
                       <div class="flex justify-between items-center text-xs">
                         <span class="font-bold text-[#1A1A1A]">Live Shipment Progress</span>
@@ -3452,7 +3579,6 @@ function renderAccountDashboardView() {
                       </div>
                     </div>
 
-                    <!-- Ordered Items List -->
                     <div class="space-y-3">
                       ${ord.items.map(item => `
                         <div class="flex items-center gap-4 p-3 bg-white border border-[#E6E1D7] rounded-2xl">
@@ -3466,7 +3592,6 @@ function renderAccountDashboardView() {
                       `).join('')}
                     </div>
 
-                    <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center justify-between pt-2 border-t border-[#E6E1D7] gap-3">
                       <button onclick="alert('Downloading Official GST Tax Invoice PDF...')" class="border border-[#E6E1D7] bg-white px-4 py-2 rounded-xl text-xs font-semibold hover:border-black">
                         📄 Download Invoice
@@ -3597,61 +3722,61 @@ function renderHomepageView(currentHero) {
 
   return `
     <!-- 1. Hero Slider Banner -->
-    <section class="relative overflow-hidden w-full bg-[#EAE5D9] min-h-[480px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
+    <section class="relative overflow-hidden w-full bg-[#EAE5D9] min-h-[440px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
       <div class="absolute inset-0 z-0">
         <img src="${currentHero.image}" class="w-full h-full object-cover transition-transform duration-1000 scale-105" />
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
       </div>
 
-      <button onclick="changeHeroSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors">❮</button>
-      <button onclick="changeHeroSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors">❯</button>
+      <button onclick="changeHeroSlide(-1)" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors text-xs sm:text-base">❮</button>
+      <button onclick="changeHeroSlide(1)" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black transition-colors text-xs sm:text-base">❯</button>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-left py-16">
-        <div class="max-w-xl space-y-4 text-white">
-          ${currentHero.tag ? `<span class="text-xs uppercase font-bold tracking-[0.3em] text-white/80 block">${currentHero.tag}</span>` : ''}
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">${currentHero.title}</h1>
-          ${currentHero.subtitle ? `<p class="text-xl sm:text-2xl font-light text-slate-100">${currentHero.subtitle}</p>` : ''}
-          ${currentHero.priceText ? `<div class="text-3xl sm:text-4xl font-serif font-bold text-white pt-2">${currentHero.priceText}</div>` : ''}
-          ${currentHero.codeText ? `<div class="inline-block bg-white/20 backdrop-blur-md border border-white/40 px-4 py-1.5 rounded text-xs font-bold uppercase tracking-wider text-white">${currentHero.codeText}</div>` : ''}
-          <div class="pt-6">
-            <button onclick="openPLPCategory('BestSeller')" class="btn-palmonas-hero">${currentHero.buttonText}</button>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full text-left py-12 sm:py-16">
+        <div class="max-w-xl space-y-3 sm:space-y-4 text-white">
+          ${currentHero.tag ? `<span class="text-[10px] sm:text-xs uppercase font-bold tracking-[0.3em] text-white/80 block">${currentHero.tag}</span>` : ''}
+          <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight">${currentHero.title}</h1>
+          ${currentHero.subtitle ? `<p class="text-lg sm:text-2xl font-light text-slate-100">${currentHero.subtitle}</p>` : ''}
+          ${currentHero.priceText ? `<div class="text-2xl sm:text-4xl font-serif font-bold text-white pt-1">${currentHero.priceText}</div>` : ''}
+          ${currentHero.codeText ? `<div class="inline-block bg-white/20 backdrop-blur-md border border-white/40 px-3 py-1 rounded text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white">${currentHero.codeText}</div>` : ''}
+          <div class="pt-4 sm:pt-6">
+            <button onclick="openPLPCategory('BestSeller')" class="btn-palmonas-hero text-xs py-3 px-6">${currentHero.buttonText}</button>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 2. Special Gifting Banner -->
-    <section class="py-16 bg-white text-center space-y-4 border-b border-[#E6E1D7]">
+    <section class="py-12 sm:py-16 bg-white text-center space-y-4 border-b border-[#E6E1D7]">
       <div class="max-w-3xl mx-auto px-4 space-y-3">
-        <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#4A0E17] italic">
+        <h2 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-[#4A0E17] italic">
           A bond this special <br class="sm:hidden" />deserves a little gold
         </h2>
-        <p class="text-slate-600 text-sm sm:text-base font-light">Thoughtful rakhis and keepsake gifts, made for every kind of sibling love.</p>
-        <div class="pt-4">
+        <p class="text-slate-600 text-xs sm:text-base font-light">Thoughtful rakhis and keepsake gifts, made for every kind of sibling love.</p>
+        <div class="pt-3">
           <button onclick="openPLPCategory('Gifting')" class="bg-[#4A0E17] text-white text-xs font-semibold px-6 py-3 rounded-md uppercase tracking-wider hover:bg-[#330A10]">Shop Rakhi Gifts →</button>
         </div>
       </div>
     </section>
 
     <!-- 3. Dual Gift Banners -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
-      <div class="text-center"><h2 class="font-serif text-3xl font-bold text-[#4A0E17]">Rakhi Gifts For</h2></div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="relative rounded-3xl overflow-hidden shadow-md group h-[380px] bg-[#EAE5D9]">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
+      <div class="text-center"><h2 class="font-serif text-2xl sm:text-3xl font-bold text-[#4A0E17]">Rakhi Gifts For</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div class="relative rounded-3xl overflow-hidden shadow-md group h-[320px] sm:h-[380px] bg-[#EAE5D9]">
           <img src="${PRODUCTS[40].image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div class="absolute inset-0 p-8 flex flex-col justify-center items-end text-right bg-gradient-to-l from-black/60 via-transparent to-transparent">
+          <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-center items-end text-right bg-gradient-to-l from-black/60 via-transparent to-transparent">
             <div class="space-y-2 text-white">
-              <h3 class="font-serif text-3xl font-bold">Rakhi Gift Box for Sister</h3>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold">Rakhi Gift Box for Sister</h3>
               <p class="text-xs text-slate-200">2 Best Sellers Plus Mirror</p>
               <div class="pt-4"><button onclick="openPLPCategory('Gifting')" class="border border-white text-white px-5 py-2 text-xs uppercase font-bold tracking-wider hover:bg-white hover:text-black">SHOP NOW</button></div>
             </div>
           </div>
         </div>
-        <div class="relative rounded-3xl overflow-hidden shadow-md group h-[380px] bg-[#EAE5D9]">
+        <div class="relative rounded-3xl overflow-hidden shadow-md group h-[320px] sm:h-[380px] bg-[#EAE5D9]">
           <img src="${PRODUCTS[2].image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-          <div class="absolute inset-0 p-8 flex flex-col justify-center items-end text-right bg-gradient-to-l from-black/60 via-transparent to-transparent">
+          <div class="absolute inset-0 p-6 sm:p-8 flex flex-col justify-center items-end text-right bg-gradient-to-l from-black/60 via-transparent to-transparent">
             <div class="space-y-2 text-white">
-              <h3 class="font-serif text-3xl font-bold">Rakhi Gifts for Brother</h3>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold">Rakhi Gifts for Brother</h3>
               <div class="pt-4"><button onclick="openPLPCategory('Gifting')" class="border border-white text-white px-5 py-2 text-xs uppercase font-bold tracking-wider hover:bg-white hover:text-black">SHOP NOW</button></div>
             </div>
           </div>
@@ -3660,16 +3785,16 @@ function renderHomepageView(currentHero) {
     </section>
 
     <!-- 4. EVERYDAY DEMIFINE® COLLECTION Circle Grid -->
-    <section class="py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-10">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">EVERYDAY DEMIFINE® COLLECTION</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8">
+    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 sm:space-y-10">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">EVERYDAY DEMIFINE® COLLECTION</h2>
+        <div class="grid grid-cols-3 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-8">
           ${CIRCLE_CATEGORIES.map(c => `
-            <div onclick="openPLPCategory('${c.cat}')" class="flex flex-col items-center space-y-3 cursor-pointer group">
-              <div class="w-36 h-36 rounded-full overflow-hidden border-2 border-transparent group-hover:border-[#C5A059] transition-all shadow-sm bg-white">
+            <div onclick="openPLPCategory('${c.cat}')" class="flex flex-col items-center space-y-2 sm:space-y-3 cursor-pointer group">
+              <div class="w-24 h-24 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-transparent group-hover:border-[#C5A059] transition-all shadow-sm bg-white">
                 <img src="${c.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
-              <span class="font-serif text-base font-semibold text-[#1A1A1A] group-hover:text-[#C5A059]">${c.name}</span>
+              <span class="font-serif text-xs sm:text-base font-semibold text-[#1A1A1A] group-hover:text-[#C5A059]">${c.name}</span>
             </div>
           `).join('')}
         </div>
@@ -3677,68 +3802,71 @@ function renderHomepageView(currentHero) {
     </section>
 
     <!-- 5. CIELORIA TOP STYLES Tabbed Grid -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10">
-      <div class="text-center space-y-6">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">CIELORIA TOP STYLES</h2>
-        <div class="flex flex-wrap justify-center gap-2">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 sm:space-y-10">
+      <div class="text-center space-y-4 sm:space-y-6">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">CIELORIA TOP STYLES</h2>
+        <div class="flex flex-wrap justify-center gap-1.5 sm:gap-2">
           ${['ALL', 'NECKLACES', 'BRACELETS', 'EARRINGS', 'RINGS', 'MENS', 'MANGALSUTRA'].map(tab => `
-            <button onclick="state.bestsellerTab = '${tab}'; renderApp();" class="px-5 py-2 text-xs font-semibold uppercase border transition-all ${state.bestsellerTab === tab ? 'bg-black text-white border-black' : 'bg-white text-[#1A1A1A] border-[#E6E1D7]'}">${tab}</button>
+            <button onclick="state.bestsellerTab = '${tab}'; renderApp();" class="px-3 py-1.5 sm:px-5 sm:py-2 text-[10px] sm:text-xs font-semibold uppercase border transition-all ${state.bestsellerTab === tab ? 'bg-black text-white border-black' : 'bg-white text-[#1A1A1A] border-[#E6E1D7]'}">${tab}</button>
           `).join('')}
         </div>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        ${topStylesProducts.slice(0, 8).map(p => `
-          <div class="group relative bg-white border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer transition-all hover:shadow-lg rounded-xl">
-            <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
-              <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
-              <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2.5 py-1 z-10 shadow-xs">Flat ${p.price}</div>
-              
-              <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute bottom-3 left-3 text-slate-400 hover:text-rose-500 transition-colors z-20 text-sm" title="Add to Wishlist">🤍</button>
-            </div>
-            
-            <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
-              <div onclick="openPDP('${p.id}')" class="space-y-1 cursor-pointer">
-                <h3 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-1">${p.name}</h3>
-                <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>${formatPrice(p.price)}</span><span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span></div>
-                <div class="flex items-center gap-1 text-[#C5A059] text-[11px] font-semibold pt-1">
-                  <span>★★★★★</span>
-                  <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
-                </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        ${topStylesProducts.slice(0, 8).map(p => {
+          const isSaved = state.wishlist.includes(p.id);
+          return `
+            <div class="group relative bg-white border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer transition-all hover:shadow-lg rounded-xl">
+              <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
+                <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 z-10 shadow-xs">Flat ${p.price}</div>
+                
+                <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 text-base sm:text-lg transition-transform hover:scale-110 z-20" title="${isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                  ${isSaved ? '❤️' : '🤍'}
+                </button>
               </div>
+              
+              <div class="p-3 sm:p-4 flex flex-col justify-between flex-1 space-y-2.5">
+                <div onclick="openPDP('${p.id}')" class="space-y-1 cursor-pointer">
+                  <h3 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-1">${p.name}</h3>
+                  <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>${formatPrice(p.price)}</span><span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span></div>
+                  <div class="flex items-center gap-1 text-[#C5A059] text-[10px] sm:text-[11px] font-semibold pt-0.5">
+                    <span>★★★★★</span>
+                    <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
+                  </div>
+                </div>
 
-              <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
-                Add to Cart
-              </button>
+                <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
+                  Add to Cart
+                </button>
+              </div>
             </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
-      <div class="text-center pt-6"><button onclick="openPLPCategory('BestSeller')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
+      <div class="text-center pt-4"><button onclick="openPLPCategory('BestSeller')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
     </section>
 
     <!-- 6. 9KT FINE GOLD Grid -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10 border-t border-[#E6E1D7]">
-      <div class="text-center space-y-2"><h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">9KT FINE GOLD</h2></div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 sm:space-y-10 border-t border-[#E6E1D7]">
+      <div class="text-center space-y-2"><h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">9KT FINE GOLD</h2></div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         ${FINE_GOLD_PRODUCTS.map(fg => `
-          <div class="group relative bg-white border border-[#E6E1D7] p-4 text-left flex flex-col justify-between rounded-xl cursor-pointer hover:shadow-lg transition-all space-y-3">
+          <div class="group relative bg-white border border-[#E6E1D7] p-3 sm:p-4 text-left flex flex-col justify-between rounded-xl cursor-pointer hover:shadow-lg transition-all space-y-3">
             <div onclick="openPDP('${fg.id}')" class="relative aspect-square w-full bg-[#F6F4EF] rounded-lg overflow-hidden">
               <img src="${fg.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
-              <button onclick="event.stopPropagation(); toggleWishlist('${fg.id}');" class="absolute bottom-2 left-2 text-slate-400 hover:text-rose-500 z-20">🤍</button>
+              <button onclick="event.stopPropagation(); toggleWishlist('${fg.id}');" class="absolute bottom-2 left-2 text-base z-20">
+                ${state.wishlist.includes(fg.id) ? '❤️' : '🤍'}
+              </button>
             </div>
             
-            <div class="flex-1 flex flex-col justify-between space-y-3">
-              <div onclick="openPDP('${fg.id}')" class="space-y-1.5">
+            <div class="flex-1 flex flex-col justify-between space-y-2.5">
+              <div onclick="openPDP('${fg.id}')" class="space-y-1">
                 <h4 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-2">${fg.name}</h4>
                 <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>₹${fg.price.toLocaleString()}</span><span class="text-slate-400 line-through text-[11px] font-normal">₹${fg.originalPrice.toLocaleString()}</span></div>
-                <div class="flex items-center gap-1 text-[#C5A059] text-[11px] font-semibold">
-                  <span>★★★★★</span>
-                  <span class="text-slate-400 font-normal">(112)</span>
-                </div>
               </div>
 
-              <button onclick="event.stopPropagation(); addToCart('${fg.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
+              <button onclick="event.stopPropagation(); addToCart('${fg.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
                 Add to Cart
               </button>
             </div>
@@ -3748,80 +3876,57 @@ function renderHomepageView(currentHero) {
     </section>
 
     <!-- 7. FROM SHRADDHA, FOR YOU Quote -->
-    <section class="py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
+    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed">At Cieloria, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Cieloria, the sparkle is always yours to keep.</strong></p>
-        <h2 class="text-center font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FROM SHRADDHA, FOR YOU</h2>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-4">
-          <div class="md:col-span-6 rounded-2xl overflow-hidden shadow-md"><img src="${PRODUCTS[40].image}" class="w-full h-[420px] object-cover" /></div>
-          <div class="md:col-span-6 text-left space-y-4 p-4">
-            <blockquote class="font-serif text-base sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Cieloria, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
+        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed px-2">At Cieloria, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Cieloria, the sparkle is always yours to keep.</strong></p>
+        <h2 class="text-center font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FROM SHRADDHA, FOR YOU</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
+          <div class="md:col-span-6 rounded-2xl overflow-hidden shadow-md"><img src="${PRODUCTS[40].image}" class="w-full h-[320px] sm:h-[420px] object-cover" /></div>
+          <div class="md:col-span-6 text-left space-y-4 p-2">
+            <blockquote class="font-serif text-sm sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-4 sm:pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Cieloria, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
           </div>
         </div>
       </div>
     </section>
 
     <!-- 8. Gifts For Her / Him & FOR EVERY YOU -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-6 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span><img src="${PRODUCTS[40].image}" class="w-20 h-20 object-cover rounded-xl" /></div>
-        <div onclick="openPLPCategory('Bracelets')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-6 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Him</strong> ›</span><img src="${PRODUCTS[2].image}" class="w-20 h-20 object-cover rounded-xl" /></div>
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span><img src="${PRODUCTS[40].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl" /></div>
+        <div onclick="openPLPCategory('Bracelets')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Him</strong> ›</span><img src="${PRODUCTS[2].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl" /></div>
       </div>
-      <div class="space-y-8 text-center">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR EVERY YOU</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="space-y-6 text-center">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR EVERY YOU</h2>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           ${FOR_EVERY_YOU_CARDS.map(card => `
-            <div onclick="openPLPCategory('All')" class="relative rounded-2xl overflow-hidden cursor-pointer group h-[380px] bg-black">
+            <div onclick="openPLPCategory('All')" class="relative rounded-2xl overflow-hidden cursor-pointer group h-[300px] sm:h-[380px] bg-black">
               <img src="${card.image}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-              <div class="absolute inset-0 p-6 flex items-end justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent"><span class="font-serif text-lg font-bold text-white pb-1 tracking-wider uppercase">${card.title}</span></div>
+              <div class="absolute inset-0 p-4 flex items-end justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent"><span class="font-serif text-base sm:text-lg font-bold text-white pb-1 tracking-wider uppercase">${card.title}</span></div>
             </div>
           `).join('')}
         </div>
       </div>
     </section>
 
-    <!-- 9. BLOGS -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-10 border-t border-[#E6E1D7]">
-      <div class="text-center space-y-2"><h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">BLOGS</h2></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        ${BLOG_POSTS.map(blog => `
-          <div class="group bg-white rounded-xl border border-[#E6E1D7] overflow-hidden text-left flex flex-col justify-between shadow-xs">
-            <div class="relative aspect-[4/3] w-full bg-[#F6F4EF] overflow-hidden">
-              <img src="${blog.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div class="absolute top-3 right-3 w-12 h-12 bg-white rounded-full flex flex-col items-center justify-center text-center shadow-md">
-                <span class="font-bold text-xs text-[#1A1A1A] leading-none">${blog.date.split(' ')[0]}</span>
-                <span class="text-[9px] uppercase font-bold text-slate-400">${blog.date.split(' ')[1]}</span>
-              </div>
-            </div>
-            <div class="p-5 space-y-2">
-              <h3 class="font-serif text-base font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-2">${blog.title}</h3>
-              <p class="text-xs text-slate-500 line-clamp-3 leading-relaxed">${blog.excerpt}</p>
-            </div>
+    <!-- 9. SHOP WITH CONFIDENCE -->
+    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-center">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">SHOP WITH CONFIDENCE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div class="space-y-2 p-2">
+            <span class="text-3xl sm:text-4xl">😊</span>
+            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">SKIN SAFE</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is hypoallergenic and skin-safe, crafted with care to ensure comfort for all skin types.</p>
           </div>
-        `).join('')}
-      </div>
-      <div class="text-center pt-4"><button onclick="alert('Viewing All Cieloria Editorial Blogs')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">View All</button></div>
-    </section>
-
-    <!-- 10. SHOP WITH CONFIDENCE -->
-    <section class="py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
-        <h2 class="font-serif text-2xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">SHOP WITH CONFIDENCE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="space-y-3 p-4">
-            <span class="text-4xl">😊</span>
-            <h3 class="font-serif text-lg font-bold text-[#1A1A1A]">SKIN SAFE</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is hypoallergenic and skin-safe, crafted with care to ensure comfort for all skin types. Enjoy beautiful, irritation-free wear every day, knowing each piece is designed with your well-being in mind.</p>
+          <div class="space-y-2 p-2">
+            <span class="text-3xl sm:text-4xl">✨</span>
+            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">18K GOLD VERMEIL</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is crafted from premium surgical steel, sterling silver, and thick 18k gold plating for lasting shine.</p>
           </div>
-          <div class="space-y-3 p-4">
-            <span class="text-4xl">✨</span>
-            <h3 class="font-serif text-lg font-bold text-[#1A1A1A]">18K GOLD VERMEIL</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is crafted from premium metals like surgical steel, sterling silver, and thick 18k gold plating, ensuring durability and lasting shine. Experience luxury and quality with every piece, designed to stand the test of time.</p>
-          </div>
-          <div class="space-y-3 p-4">
-            <span class="text-4xl">💎</span>
-            <h3 class="font-serif text-lg font-bold text-[#1A1A1A]">AUTHENTIC DIAMONDS</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our lab-grown diamonds are SGL Certified, ensuring the highest standards of quality and authenticity same like natural diamonds. Each diamond undergoes rigorous testing to guarantee its brilliance and ethical origins.</p>
+          <div class="space-y-2 p-2">
+            <span class="text-3xl sm:text-4xl">💎</span>
+            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">AUTHENTIC DIAMONDS</h3>
+            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our lab-grown diamonds are SGL Certified, ensuring the highest standards of quality and ethical origins.</p>
           </div>
         </div>
       </div>
@@ -3856,19 +3961,19 @@ function renderPLPView() {
   }
 
   return `
-    <div class="relative w-full h-[320px] sm:h-[420px] overflow-hidden bg-[#EAE5D9]">
+    <div class="relative w-full h-[260px] sm:h-[380px] overflow-hidden bg-[#EAE5D9]">
       <img src="${cData.bannerImage}" class="w-full h-full object-cover" />
-      <div class="absolute inset-0 bg-black/40 flex items-center justify-center p-6 text-center">
-        <div class="text-white space-y-2 max-w-2xl">
-          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">${cData.title}</h1>
-          <p class="text-sm sm:text-lg font-light text-slate-100 italic">${cData.tagline}</p>
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center p-4 text-center">
+        <div class="text-white space-y-1.5 max-w-2xl">
+          <h1 class="font-serif text-3xl sm:text-5xl font-bold tracking-tight">${cData.title}</h1>
+          <p class="text-xs sm:text-base font-light text-slate-100 italic">${cData.tagline}</p>
         </div>
       </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6 text-center">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 space-y-6 text-center">
       <div class="space-y-1">
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-[#1A1A1A]">${cData.heading}</h2>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-[#1A1A1A]">${cData.heading}</h2>
         <div class="flex items-center justify-center gap-2 text-xs text-slate-400 font-medium">
           <button onclick="switchViewMode('homepage')" class="hover:text-[#1A1A1A]">Home</button>
           <span>›</span>
@@ -3876,18 +3981,18 @@ function renderPLPView() {
         </div>
       </div>
 
-      <div class="flex flex-wrap justify-center gap-2.5 pt-2">
+      <div class="flex flex-wrap justify-center gap-2 pt-2">
         ${cData.subFilters.map((pill, idx) => `
           <button 
             onclick="state.plpSubFilter = '${pill}'; renderApp();" 
-            class="px-4 py-2 rounded-full text-xs font-medium transition-all border ${ (state.plpSubFilter === pill || (idx === 0 && !state.plpSubFilter)) ? 'bg-black text-white border-black font-semibold' : 'bg-white text-[#1A1A1A] border-[#E6E1D7] hover:border-black' }"
+            class="px-3.5 py-1.5 rounded-full text-xs font-medium transition-all border ${ (state.plpSubFilter === pill || (idx === 0 && !state.plpSubFilter)) ? 'bg-black text-white border-black font-semibold' : 'bg-white text-[#1A1A1A] border-[#E6E1D7] hover:border-black' }"
           >
             ${pill}
           </button>
         `).join('')}
       </div>
 
-      <div class="flex items-center justify-between border-t border-b border-[#E6E1D7] py-3.5 mt-8 text-xs font-medium text-[#1A1A1A]">
+      <div class="flex items-center justify-between border-t border-b border-[#E6E1D7] py-3 mt-6 text-xs font-medium text-[#1A1A1A]">
         <span class="text-slate-500 font-medium">Showing <strong>${plpProducts.length}</strong> items</span>
 
         <div class="flex items-center gap-2">
@@ -3901,121 +4006,122 @@ function renderPLPView() {
         </div>
       </div>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-6 text-left">
-        ${plpProducts.map(p => `
-          <div class="group relative bg-[#FFFFFF] border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-lg transition-all rounded-xl">
-            <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
-              <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
-              
-              <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2.5 py-1 z-10 shadow-xs">
-                ${p.discountPercent > 50 ? `EXTRA ${p.discountPercent}% OFF` : `Flat ${p.price}`}
-              </div>
-              
-              <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute bottom-3 left-3 text-slate-400 hover:text-rose-500 transition-colors z-20 text-sm" title="Add to Wishlist">🤍</button>
-            </div>
-            
-            <div class="p-4 flex flex-col justify-between flex-1 space-y-3">
-              <div onclick="openPDP('${p.id}')" class="space-y-1 cursor-pointer">
-                <h3 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-1">${p.name}</h3>
-                <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>${formatPrice(p.price)}</span><span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span></div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 pt-4 text-left">
+        ${plpProducts.map(p => {
+          const isSaved = state.wishlist.includes(p.id);
+          return `
+            <div class="group relative bg-[#FFFFFF] border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-lg transition-all rounded-xl">
+              <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
+                <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                 
-                <div class="flex items-center gap-1 text-[#C5A059] text-[11px] font-semibold pt-1">
-                  <span>★★★★★</span>
-                  <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
+                <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 z-10 shadow-xs">
+                  ${p.discountPercent > 50 ? `EXTRA ${p.discountPercent}% OFF` : `Flat ${p.price}`}
                 </div>
+                
+                <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 text-base sm:text-lg transition-transform hover:scale-110 z-20" title="${isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                  ${isSaved ? '❤️' : '🤍'}
+                </button>
               </div>
+              
+              <div class="p-3 sm:p-4 flex flex-col justify-between flex-1 space-y-2.5">
+                <div onclick="openPDP('${p.id}')" class="space-y-1 cursor-pointer">
+                  <h3 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-1">${p.name}</h3>
+                  <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>${formatPrice(p.price)}</span><span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span></div>
+                  
+                  <div class="flex items-center gap-1 text-[#C5A059] text-[10px] sm:text-[11px] font-semibold pt-0.5">
+                    <span>★★★★★</span>
+                    <span class="text-slate-400 font-normal">(${p.reviewCount})</span>
+                  </div>
+                </div>
 
-              <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
-                Add to Cart
-              </button>
+                <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
+                  Add to Cart
+                </button>
+              </div>
             </div>
-          </div>
-        `).join('')}
+          `;
+        }).join('')}
       </div>
     </div>
   `;
 }
 
-// FULL RICH ABOUT US PAGE WITH ALL LUCKNOW & CRAFTSMANSHIP DETAILS
 function renderAboutUsView() {
   return `
     <div class="bg-white text-[#1A1A1A] text-left">
       
-      <!-- 1. Full Width Hero Banner -->
-      <section class="relative w-full h-[450px] sm:h-[550px] bg-black overflow-hidden flex items-center justify-center">
+      <section class="relative w-full h-[360px] sm:h-[550px] bg-black overflow-hidden flex items-center justify-center">
         <img src="${PRODUCTS[40].image}" class="w-full h-full object-cover opacity-50" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-center items-center text-center p-6 text-white space-y-4">
-          <span class="text-xs uppercase tracking-[0.3em] font-bold text-[#C5A059]">EST. 1 YEAR AGO • LUCKNOW, INDIA</span>
-          <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-tight max-w-4xl leading-tight">Crafting Timeless Luxury in the Heart of Lucknow</h1>
-          <p class="text-sm sm:text-lg font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-center items-center text-center p-4 sm:p-6 text-white space-y-3">
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold text-[#C5A059]">EST. 1 YEAR AGO • LUCKNOW, INDIA</span>
+          <h1 class="font-serif text-3xl sm:text-6xl font-bold tracking-tight max-w-4xl leading-tight">Crafting Timeless Luxury in the Heart of Lucknow</h1>
+          <p class="text-xs sm:text-lg font-light max-w-2xl text-slate-200">Demifine® 18K Thick Gold Plated & Waterproof Jewelry — Crafted for the modern Indian woman.</p>
         </div>
       </section>
 
-      <!-- 2. Lucknow Foundation Story & Milestones -->
-      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div class="lg:col-span-6 space-y-6">
+      <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 space-y-16">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-center">
+          <div class="lg:col-span-6 space-y-4 sm:space-y-6">
             <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">OUR STORY & ORIGIN</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold leading-tight text-[#1A1A1A]">Born in Lucknow, Cherished Nationwide</h2>
-            <p class="text-sm text-slate-600 leading-relaxed">
+            <h2 class="font-serif text-2xl sm:text-4xl font-bold leading-tight text-[#1A1A1A]">Born in Lucknow, Cherished Nationwide</h2>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Launched <strong>1 year ago</strong> in the royal city of <strong>Lucknow, Uttar Pradesh</strong>, <strong>CIELORIA</strong> was born with a single revolutionary vision: to bridge the gap between expensive solid gold and low-quality imitation jewelry.
             </p>
-            <p class="text-sm text-slate-600 leading-relaxed">
-              We pioneered <strong>Demifine® anti-tarnish jewelry in India</strong>: blending 316L surgical grade stainless steel and 925 sterling silver with real 18K thick gold PVD vacuum plating. Now celebrating our 1-year anniversary, we have delivered elegance to over 8,000,000+ happy women across India!
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              We pioneered <strong>Demifine® anti-tarnish jewelry in India</strong>: blending 316L surgical grade stainless steel and 925 sterling silver with real 18K thick gold PVD vacuum plating. Celebrating our 1-year anniversary, we have delivered elegance to over 8,000,000+ happy women across India!
             </p>
 
-            <div class="pt-2 flex items-center gap-6 border-t border-[#E6E1D7] pt-6">
+            <div class="pt-2 flex items-center gap-4 sm:gap-6 border-t border-[#E6E1D7] pt-6">
               <div>
-                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">1 Year</span>
-                <span class="text-xs text-slate-400">Anniversary Milestone</span>
+                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] block">1 Year</span>
+                <span class="text-[10px] sm:text-xs text-slate-400">Anniversary Milestone</span>
               </div>
-              <div class="border-l border-[#E6E1D7] pl-6">
-                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">Lucknow, UP</span>
-                <span class="text-xs text-slate-400">Headquarters & Studio</span>
+              <div class="border-l border-[#E6E1D7] pl-4 sm:pl-6">
+                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] block">Lucknow, UP</span>
+                <span class="text-[10px] sm:text-xs text-slate-400">Headquarters & Studio</span>
               </div>
-              <div class="border-l border-[#E6E1D7] pl-6">
-                <span class="font-serif text-3xl font-bold text-[#1A1A1A] block">8L+</span>
-                <span class="text-xs text-slate-400">Happy Customers</span>
+              <div class="border-l border-[#E6E1D7] pl-4 sm:pl-6">
+                <span class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] block">8L+</span>
+                <span class="text-[10px] sm:text-xs text-slate-400">Happy Customers</span>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-6">
             <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-[#E6E1D7] bg-[#FAF8F5] p-3">
-              <img src="${PRODUCTS[9].image}" class="w-full h-[450px] object-cover rounded-2xl" />
+              <img src="${PRODUCTS[9].image}" class="w-full h-[340px] sm:h-[450px] object-cover rounded-2xl" />
             </div>
           </div>
         </div>
 
-        <!-- 3. 4 Core Brand Pillars -->
-        <div class="pt-12 border-t border-[#E6E1D7] space-y-10 text-center">
-          <div class="space-y-2">
+        <div class="pt-8 border-t border-[#E6E1D7] space-y-8 text-center">
+          <div class="space-y-1">
             <span class="text-xs uppercase tracking-widest font-bold text-[#C5A059]">WHY CIELORIA</span>
-            <h3 class="font-serif text-3xl font-bold text-[#1A1A1A]">The 4 Pillars of Cieloria Luxury</h3>
+            <h3 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">The 4 Pillars of Cieloria Luxury</h3>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
-            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
-              <span class="text-3xl">✨</span>
-              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">100% Anti-Tarnish</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-5 rounded-2xl space-y-2">
+              <span class="text-2xl sm:text-3xl">✨</span>
+              <h4 class="font-serif text-base font-bold text-[#1A1A1A]">100% Anti-Tarnish</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Advanced PVD vacuum plating guarantees your jewelry never turns black or loses its golden radiance.</p>
             </div>
 
-            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
-              <span class="text-3xl">💧</span>
-              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Water & Sweatproof</h4>
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-5 rounded-2xl space-y-2">
+              <span class="text-2xl sm:text-3xl">💧</span>
+              <h4 class="font-serif text-base font-bold text-[#1A1A1A]">Water & Sweatproof</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Wear it in the shower, pool, gym, or ocean — 100% waterproof for everyday active living.</p>
             </div>
 
-            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
-              <span class="text-3xl">🌿</span>
-              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Hypoallergenic & Safe</h4>
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-5 rounded-2xl space-y-2">
+              <span class="text-2xl sm:text-3xl">🌿</span>
+              <h4 class="font-serif text-base font-bold text-[#1A1A1A]">Hypoallergenic & Safe</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Nickel-free and lead-free surgical grade steel ensures zero skin irritation or green marks.</p>
             </div>
 
-            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-6 rounded-2xl space-y-3">
-              <span class="text-3xl">🏛️</span>
-              <h4 class="font-serif text-lg font-bold text-[#1A1A1A]">Lucknow Craftsmanship</h4>
+            <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-5 rounded-2xl space-y-2">
+              <span class="text-2xl sm:text-3xl">🏛️</span>
+              <h4 class="font-serif text-base font-bold text-[#1A1A1A]">Lucknow Craftsmanship</h4>
               <p class="text-xs text-slate-600 leading-relaxed">Infused with Lucknow's rich heritage of royal craftsmanship and modern high-fashion design.</p>
             </div>
           </div>
@@ -4025,19 +4131,17 @@ function renderAboutUsView() {
   `;
 }
 
-// FULL RICH PALMONAS ARCHITECTURE PDP WITH ALL DETAILS, ACCORDIONS, REVIEWS & SHRADDHA BANNER
 function renderPDPView() {
   const p = PRODUCTS.find(prod => prod.id === state.selectedProductId) || PRODUCTS[0];
   const gallery = (p.gallery && p.gallery.length > 0) ? p.gallery : [p.image];
   const activeImg = gallery[state.activeGalleryIndex] || p.image;
+  const isSaved = state.wishlist.includes(p.id);
 
-  const crossSellItems = PRODUCTS.slice(0, 6);
   const displayedReviews = CUSTOMER_REVIEWS.slice(0, state.visibleReviewsCount);
 
   return `
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-14 text-left">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-12 text-left">
       
-      <!-- Breadcrumb Navigation -->
       <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
         <button onclick="switchViewMode('homepage')" class="hover:text-[#1A1A1A]">Home</button>
         <span>/</span>
@@ -4046,14 +4150,12 @@ function renderPDPView() {
         <span class="text-[#1A1A1A] font-bold line-clamp-1">${p.name}</span>
       </div>
 
-      <!-- Main PDP Product Layout -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         
-        <!-- Left: Image Gallery & Dot Pagination -->
         <div class="lg:col-span-7 space-y-4">
           <div class="relative aspect-square w-full rounded-2xl overflow-hidden border border-[#E6E1D7] bg-[#F6F4EF] group">
             
-            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-4 py-1.5 z-10 shadow-xs">
+            <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-xs font-bold uppercase px-3.5 py-1.5 z-10 shadow-xs">
               EXTRA 40% OFF
             </div>
 
@@ -4064,12 +4166,11 @@ function renderPDPView() {
             </button>
           </div>
 
-          <!-- Dot Pagination & Thumbnail Selector -->
-          <div class="flex items-center justify-center gap-3 pt-2">
+          <div class="flex items-center justify-center gap-3 pt-1">
             ${gallery.map((gImg, idx) => `
               <button 
                 onclick="state.activeGalleryIndex = ${idx}; renderApp();" 
-                class="w-16 h-16 rounded-xl overflow-hidden border-2 transition-all ${state.activeGalleryIndex === idx ? 'border-black scale-105 shadow-sm' : 'border-transparent opacity-60 hover:opacity-100'}"
+                class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl overflow-hidden border-2 transition-all ${state.activeGalleryIndex === idx ? 'border-black scale-105 shadow-sm' : 'border-transparent opacity-60 hover:opacity-100'}"
               >
                 <img src="${gImg}" class="w-full h-full object-cover" />
               </button>
@@ -4082,8 +4183,7 @@ function renderPDPView() {
           </div>
         </div>
 
-        <!-- Right: Details, Offers, Accordions, Trust Badges -->
-        <div class="lg:col-span-5 space-y-6 text-left">
+        <div class="lg:col-span-5 space-y-5 text-left">
           
           <div class="space-y-2">
             <div class="flex items-center justify-between">
@@ -4098,12 +4198,10 @@ function renderPDPView() {
             <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A] leading-tight">${p.name}</h1>
           </div>
 
-          <!-- Scarcity Badge -->
           <div class="inline-flex items-center gap-2 bg-rose-50 border border-rose-200 text-rose-800 px-3.5 py-1.5 rounded-full text-xs font-bold">
             <span>⚡ 132 quantity sold in last 7 days</span>
           </div>
 
-          <!-- Price Container -->
           <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 rounded-2xl flex items-center justify-between">
             <div>
               <div class="flex items-baseline gap-2">
@@ -4115,14 +4213,12 @@ function renderPDPView() {
             <span class="bg-[#8B1E2B] text-white text-xs font-bold px-3 py-1.5 rounded-lg uppercase">Save ${p.discountPercent}%</span>
           </div>
 
-          <!-- 3 Feature Pills -->
           <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-bold text-[#1A1A1A]">
             <div class="bg-amber-50 border border-amber-200 py-2 rounded-xl">✨ Anti-Tarnish</div>
             <div class="bg-blue-50 border border-blue-200 py-2 rounded-xl">💧 Waterproof</div>
             <div class="bg-emerald-50 border border-emerald-200 py-2 rounded-xl">🌿 Hypoallergenic</div>
           </div>
 
-          <!-- Offers Box (% Deals) -->
           <div class="border border-dashed border-[#C5A059] bg-[#FAF8F5] p-4 rounded-2xl space-y-2">
             <span class="text-[10px] uppercase font-bold text-[#C5A059] tracking-wider">% AVAILABLE OFFERS</span>
             <div class="flex items-center justify-between text-xs">
@@ -4135,13 +4231,11 @@ function renderPDPView() {
             </div>
           </div>
 
-          <!-- Gift Box Checkbox Option -->
           <label class="flex items-center gap-3 bg-white border border-[#E6E1D7] p-3.5 rounded-xl cursor-pointer hover:border-black transition-colors">
             <input type="checkbox" ${state.addGiftSleeve ? 'checked' : ''} onchange="state.addGiftSleeve = this.checked; renderApp();" class="w-4 h-4 accent-black" />
             <span class="text-xs font-bold text-[#1A1A1A]">🎁 Add Luxury Keepsake Gift Box & Sleeve (+₹99)</span>
           </label>
 
-          <!-- Delivery Estimator Pincode Box -->
           <div class="bg-white border border-[#E6E1D7] p-4 rounded-2xl space-y-2">
             <span class="text-xs font-bold text-[#1A1A1A] block">Check Delivery & COD Availability:</span>
             <div class="flex gap-2">
@@ -4151,20 +4245,25 @@ function renderPDPView() {
             ${state.pincodeCheckResult ? `<p class="text-xs font-bold text-emerald-700 pt-1">${state.pincodeCheckResult}</p>` : ''}
           </div>
 
-          <!-- Add to Cart & Buy Now Buttons -->
+          <!-- Add to Cart, Buy Now & Heart Action Buttons -->
           <div class="space-y-3 pt-2">
-            <button onclick="addToCart('${p.id}')" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-lg">
-              <span>🛒</span>
-              <span>ADD TO CART</span>
-              <span>→</span>
-            </button>
+            <div class="flex items-center gap-3">
+              <button onclick="addToCart('${p.id}')" class="flex-1 bg-black hover:bg-[#C5A059] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-colors flex items-center justify-center gap-2 shadow-lg">
+                <span>🛒</span>
+                <span>ADD TO CART</span>
+                <span>→</span>
+              </button>
+
+              <button onclick="toggleWishlist('${p.id}')" class="w-12 h-12 rounded-xl border border-[#E6E1D7] bg-white flex items-center justify-center text-lg transition-transform hover:scale-105" title="${isSaved ? 'Remove from Wishlist' : 'Save to Wishlist'}">
+                ${isSaved ? '❤️' : '🤍'}
+              </button>
+            </div>
 
             <button onclick="addToCart('${p.id}'); openCheckoutModal();" class="w-full border-2 border-black bg-white hover:bg-black hover:text-white text-black font-bold py-3.5 rounded-xl text-xs uppercase tracking-widest transition-colors shadow-sm">
               ⚡ BUY IT NOW (FAST CHECKOUT)
             </button>
           </div>
 
-          <!-- Full Width Accordions -->
           <div class="border-t border-[#E6E1D7] pt-4 space-y-2">
             
             <div class="border border-[#E6E1D7] rounded-xl overflow-hidden">
@@ -4193,7 +4292,6 @@ function renderPDPView() {
 
           </div>
 
-          <!-- 3 Trust Cards Grid -->
           <div class="grid grid-cols-3 gap-4 pt-4 text-center border-t border-[#E6E1D7]">
             <div class="space-y-1">
               <span class="text-2xl">🔒</span>
@@ -4212,19 +4310,17 @@ function renderPDPView() {
         </div>
       </div>
 
-      <!-- Shraddha Kapoor Dark Luxury Banner -->
-      <section class="bg-black text-white rounded-3xl p-8 sm:p-12 my-12 text-center space-y-6 shadow-xl">
+      <section class="bg-black text-white rounded-3xl p-6 sm:p-12 my-10 text-center space-y-5 shadow-xl">
         <div class="max-w-3xl mx-auto space-y-3">
           <span class="text-xs uppercase font-bold tracking-[0.3em] text-[#C5A059]">CIELORIA LUXURY DEMIFINE®</span>
-          <h2 class="font-serif text-3xl sm:text-4xl font-bold">Anti-Tarnish • 18Kt Thick Plating • Skin Safe</h2>
+          <h2 class="font-serif text-2xl sm:text-4xl font-bold">Anti-Tarnish • 18Kt Thick Plating • Skin Safe</h2>
           <p class="text-xs sm:text-sm text-slate-300 font-light leading-relaxed">Built with surgical stainless steel & sterling silver. Designed to move with you everywhere.</p>
         </div>
       </section>
 
-      <!-- Verified Customer Reviews Grid -->
-      <section class="space-y-8 pt-8 border-t border-[#E6E1D7]">
+      <section class="space-y-8 pt-6 border-t border-[#E6E1D7]">
         <div class="flex items-center justify-between">
-          <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Verified Customer Reviews</h3>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Verified Customer Reviews</h3>
           <button onclick="alert('Write a Review form opened!')" class="border border-black text-black px-4 py-2 rounded-xl text-xs font-bold hover:bg-black hover:text-white">Write A Review</button>
         </div>
 
@@ -4257,13 +4353,62 @@ function renderPDPView() {
   `;
 }
 
-// Modals
+// Modals & Mobile Drawer Navigation
 function renderModals() {
   let html = '';
 
   const subtotal = state.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const finalTotal = Math.max(0, subtotal - (subtotal > 0 ? state.discountAmount : 0));
 
+  // 1. Mobile Drawer Navigation Modal
+  if (state.isMobileMenuOpen) {
+    html += `
+      <div class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex justify-start lg:hidden">
+        <div class="w-4/5 max-w-xs bg-white h-full flex flex-col justify-between shadow-2xl text-left">
+          
+          <div class="p-5 border-b border-[#E6E1D7] flex items-center justify-between bg-[#FAF8F5]">
+            <span class="font-serif text-xl font-bold tracking-widest text-[#1A1A1A]">CIELORIA</span>
+            <button onclick="state.isMobileMenuOpen=false; renderApp();" class="text-xl font-bold text-slate-500 hover:text-black">✕</button>
+          </div>
+
+          <div class="flex-1 overflow-y-auto p-5 space-y-5">
+            <div class="space-y-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#C5A059]">Shop Collections</span>
+              ${SUBHEADER_NAV.map(nav => `
+                <button 
+                  onclick="state.isMobileMenuOpen=false; openPLPCategory('${nav.cat}');" 
+                  class="w-full text-left py-3 border-b border-slate-100 flex items-center justify-between text-xs font-bold text-[#1A1A1A] hover:text-[#C5A059]"
+                >
+                  <span>${nav.name}</span>
+                  ${nav.badge ? `<span class="bg-amber-100 text-amber-900 font-bold text-[9px] px-2 py-0.5 rounded-full">${nav.badge}</span>` : '<span class="text-slate-300">›</span>'}
+                </button>
+              `).join('')}
+            </div>
+
+            <div class="pt-4 border-t border-slate-200 space-y-3 text-xs">
+              <button onclick="state.isMobileMenuOpen=false; openWishlistView();" class="w-full text-left py-2 font-bold text-[#1A1A1A] flex items-center justify-between">
+                <span>❤️ My Saved Wishlist</span>
+                <span class="bg-black text-white text-[10px] px-2 py-0.5 rounded-full">${state.wishlist.length}</span>
+              </button>
+
+              <button onclick="state.isMobileMenuOpen=false; switchViewMode('account');" class="w-full text-left py-2 font-bold text-[#1A1A1A] flex items-center justify-between">
+                <span>👤 My Account & Orders</span>
+                <span class="text-amber-500">⚡</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="p-5 border-t border-[#E6E1D7] bg-[#FAF8F5] text-center space-y-2">
+            <span class="text-[10px] text-slate-400 font-bold uppercase block tracking-wider">LUCKNOW FLAGSHIP HQ</span>
+            <span class="text-xs font-bold text-emerald-700 block">100% Waterproof & Anti-Tarnish</span>
+          </div>
+
+        </div>
+      </div>
+    `;
+  }
+
+  // 2. Palmonas Cart Drawer
   if (state.isCartOpen) {
     html += `
       <div class="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
@@ -4309,6 +4454,7 @@ function renderModals() {
     `;
   }
 
+  // 3. GoKwik Fast Checkout Modal
   if (state.isCheckoutOpen) {
     html += `
       <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
@@ -4371,7 +4517,7 @@ function renderModals() {
   return html;
 }
 
-// Global Actions
+// Global Navigation Actions
 window.switchViewMode = function(mode) { 
   state.viewMode = mode; 
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
@@ -4395,6 +4541,12 @@ window.openPLPCategory = function(cat) {
   window.scrollTo({ top: 0, behavior: 'smooth' }); 
   renderApp(); 
 };
+window.openWishlistView = function() {
+  state.viewMode = 'wishlist';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  renderApp();
+};
+
 window.changeHeroSlide = function(dir) { state.heroSlideIndex = (state.heroSlideIndex + dir + HERO_SLIDES.length) % HERO_SLIDES.length; renderApp(); };
 window.handleSearchInput = function(val) { state.searchQuery = val; renderApp(); };
 
@@ -4423,9 +4575,14 @@ window.removeCartItem = function(id) {
   renderApp();
 };
 
+// Fixed Bulletproof Toggle Wishlist Action
 window.toggleWishlist = function(id) {
   const idx = state.wishlist.indexOf(id);
-  if (idx > -1) { state.wishlist.splice(idx, 1); } else { state.wishlist.push(id); }
+  if (idx > -1) { 
+    state.wishlist.splice(idx, 1); 
+  } else { 
+    state.wishlist.push(id); 
+  }
   renderApp();
 };
 
