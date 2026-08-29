@@ -1,4 +1,4 @@
-// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik Merchant ID Credentials Integrated)
+// CIELORIA - Demifine® Anti-Tarnish Luxury Jewelry (GoKwik / KwikPass Auth Modal Integrated)
 
 const GOKWIK_CREDENTIALS = {
   merchantId: "2yyq6ziimeofq998",
@@ -3034,7 +3034,7 @@ const INITIAL_ORDERS = [
     orderId: "CIE-87401",
     date: "14 Jul 2026",
     status: "Delivered",
-    statusColor: "bg-[#E6F4EA] text-emerald-800 border-emerald-300",
+    statusColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
     courier: "Bluedart",
     trackingId: "BLU482910381",
     estimatedDelivery: "17th July 2026",
@@ -3076,6 +3076,7 @@ let state = {
   tickerIndex: 0,
   heroSlideIndex: 0,
   
+  isLoggedIn: false,
   customerName: "",
   customerPhone: "",
   customerEmail: "",
@@ -3086,6 +3087,7 @@ let state = {
 
   isCartOpen: false,
   isCheckoutOpen: false,
+  isKwikPassAuthOpen: false,
   checkoutStep: 1,
   isOrderSummaryOpen: false,
   isSubscribed: false
@@ -3207,7 +3209,7 @@ function renderApp() {
             </div>
           </div>
 
-          <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account) -->
+          <!-- 3 Header Icons: Heart (Wishlist), Shopping Bag (Cart), Profile (Account / KwikPass Auth) -->
           <div class="flex items-center gap-4 sm:gap-6 text-[#1A1A1A]">
             
             <button onclick="openWishlistView()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="My Saved Wishlist">
@@ -3230,7 +3232,7 @@ function renderApp() {
               </span>
             </button>
 
-            <button onclick="switchViewMode('account')" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="My Account & Orders">
+            <button onclick="handleProfileIconClick()" class="relative flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity p-1" title="KwikPass Login / My Account">
               <div class="relative">
                 <svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -3321,7 +3323,7 @@ function renderApp() {
           <div class="space-y-3">
             <h4 class="font-serif text-sm font-bold text-white uppercase tracking-wider">Customer Care</h4>
             <ul class="space-y-2">
-              <li><button onclick="switchViewMode('account')" class="hover:text-white font-bold text-[#C5A059]">Track Orders & Account</button></li>
+              <li><button onclick="handleProfileIconClick()" class="hover:text-white font-bold text-[#C5A059]">Track Orders & KwikPass Account</button></li>
               <li><button onclick="openWishlistView()" class="hover:text-white">My Saved Wishlist (${state.wishlist.length})</button></li>
               <li><button onclick="alert('Shipping')" class="hover:text-white">Shipping & Delivery</button></li>
               <li><button onclick="switchViewMode('about')" class="hover:text-white">About Us (Lucknow HQ)</button></li>
@@ -3442,8 +3444,9 @@ function renderAccountDashboardView() {
               ${state.customerName ? state.customerName.charAt(0) : '👤'}
             </div>
             <div>
-              <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${state.customerName || 'My Account'}</h1>
-              <p class="text-xs text-slate-500 font-medium">${state.customerPhone ? `+91 ${state.customerPhone}` : 'Guest User'} ${state.customerEmail ? `• ${state.customerEmail}` : ''}</p>
+              <h1 class="font-serif text-2xl sm:text-3xl font-bold text-[#1A1A1A]">${state.customerName || 'Khushi Aarya'}</h1>
+              <p class="text-xs text-slate-500 font-medium">${state.customerPhone ? `+91 ${state.customerPhone}` : '+91 8887566006'} ${state.customerEmail ? `• ${state.customerEmail}` : ''}</p>
+              <span class="inline-block bg-emerald-100 text-emerald-800 text-[9px] font-bold px-2 py-0.5 rounded mt-1">⚡ Verified KwikPass Member</span>
             </div>
           </div>
 
@@ -4337,13 +4340,104 @@ function renderPDPView() {
   `;
 }
 
-// Modals, Cart Drawer & GoKwik KwikPass Checkout Modal
+// Modals, Cart Drawer, GoKwik Checkout & KwikPass Auth Popup Modal (Exact Screenshot Design)
 function renderModals() {
   let html = '';
 
   const subtotal = calculateCartSubtotal();
   const finalTotal = Math.max(0, subtotal - (subtotal > 0 ? state.discountAmount : 0));
   const cartTotalItems = calculateCartTotalCount();
+
+  // 1. KwikPass Auth & Login Popup Modal (Matching User's Screenshot Exactly!)
+  if (state.isKwikPassAuthOpen) {
+    html += `
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/65 backdrop-blur-xs">
+        <div class="relative w-full max-w-3xl bg-[#FDF0F5] border border-rose-200 rounded-3xl overflow-hidden shadow-2xl text-left flex flex-col md:flex-row">
+          
+          <button onclick="state.isKwikPassAuthOpen=false; renderApp();" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-slate-500 hover:text-black flex items-center justify-center text-sm font-bold shadow-sm">✕</button>
+
+          <!-- Left Side: Cieloria KwikPass Brand Welcome Panel -->
+          <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-b from-[#FDF0F5] to-[#F7DCE6] text-center md:text-left">
+            <div class="space-y-4">
+              <div class="flex items-center justify-center md:justify-start gap-3">
+                <span class="font-serif text-2xl font-bold tracking-[0.15em] text-[#1A1A1A] uppercase">CIELORIA</span>
+                <span class="text-[10px] font-extrabold uppercase tracking-wider bg-white/80 border border-rose-200 px-2 py-0.5 rounded text-slate-800 flex items-center gap-1">
+                  Kwik<span class="text-amber-500 font-bold">⚡</span>Pass
+                </span>
+              </div>
+
+              <div class="space-y-1">
+                <h2 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Welcome to Cieloria!</h2>
+                <p class="text-xs text-rose-900 font-medium">India's 1st Demifine Jewellery Brand</p>
+              </div>
+            </div>
+
+            <!-- 3 Feature Cards Grid (Exact screenshot design!) -->
+            <div class="grid grid-cols-1 gap-3 pt-2">
+              <div class="bg-white/70 border border-rose-200/80 p-3.5 rounded-2xl space-y-1 text-center shadow-2xs">
+                <div class="w-5 h-5 rounded-full bg-rose-200 text-rose-700 mx-auto flex items-center justify-center text-xs">✦</div>
+                <h4 class="font-bold text-[11px] text-[#1A1A1A]">Powered by Demifine</h4>
+                <p class="text-[9px] text-slate-500 font-medium">Built to Last, Swim, Sweat, No Tarnish, no worries</p>
+              </div>
+
+              <div class="bg-white/70 border border-rose-200/80 p-3.5 rounded-2xl space-y-1 text-center shadow-2xs">
+                <div class="w-5 h-5 rounded-full bg-rose-200 text-rose-700 mx-auto flex items-center justify-center text-xs">✦</div>
+                <h4 class="font-bold text-[11px] text-[#1A1A1A]">Exclusive Perks Just for You</h4>
+                <p class="text-[9px] text-slate-500 font-medium">Earn Cieloria Coins. Unlock Early Bird Offers</p>
+              </div>
+
+              <div class="bg-white/70 border border-rose-200/80 p-3.5 rounded-2xl space-y-1 text-center shadow-2xs">
+                <div class="w-5 h-5 rounded-full bg-rose-200 text-rose-700 mx-auto flex items-center justify-center text-xs">✦</div>
+                <h4 class="font-bold text-[11px] text-[#1A1A1A]">VIP Treatment, Every Time</h4>
+                <p class="text-[9px] text-slate-500 font-medium">Exclusive Access to Cieloria's Private Events & Launches</p>
+              </div>
+            </div>
+
+            <div class="text-[9px] text-slate-400 font-medium text-center md:text-left">Merchant ID: 2yyq6ziimeofq998 • GoKwik Verified</div>
+          </div>
+
+          <!-- Right Side: Clean White Mobile OTP Login Form -->
+          <div class="md:w-1/2 bg-white p-6 sm:p-8 flex flex-col justify-center text-center space-y-5">
+            <div class="space-y-1">
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Explore Cieloria</h3>
+              <p class="text-xs text-slate-500">Affordable Luxury, Made for Every Day!</p>
+            </div>
+
+            <form onsubmit="handleKwikPassLoginSubmit(event)" class="space-y-4 pt-2">
+              <div class="flex items-center border border-slate-300 rounded-xl px-3.5 py-3 bg-white focus-within:border-black transition-colors">
+                <span class="flex items-center gap-1.5 text-xs font-bold text-slate-700 mr-2 pr-2 border-r border-slate-200">
+                  <span>🇮🇳</span>
+                  <span>+91</span>
+                </span>
+                <input 
+                  type="tel" 
+                  value="${state.customerPhone}"
+                  oninput="state.customerPhone=this.value"
+                  placeholder="Enter Mobile Number" 
+                  required
+                  class="w-full focus:outline-none text-xs font-medium text-[#1A1A1A]" 
+                />
+              </div>
+
+              <label class="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium cursor-pointer">
+                <input type="checkbox" checked class="w-3.5 h-3.5 accent-rose-500 rounded" />
+                <span>Notify me with offers & updates</span>
+              </label>
+
+              <button type="submit" class="w-full bg-[#FCE4EC] hover:bg-[#F8BBD0] text-rose-900 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors border border-rose-300">
+                Submit →
+              </button>
+            </form>
+
+            <p class="text-[9px] text-slate-400 max-w-xs mx-auto leading-relaxed">
+              I accept that I have read & understood your <button onclick="alert('Privacy Policy')" class="underline hover:text-black">Privacy Policy</button> and <button onclick="alert('Terms & Conditions')" class="underline hover:text-black">T&Cs</button>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    `;
+  }
 
   if (state.isMobileMenuOpen) {
     html += `
@@ -4375,8 +4469,8 @@ function renderModals() {
                 <span class="bg-black text-white text-[10px] px-2 py-0.5 rounded-full">${state.wishlist.length}</span>
               </button>
 
-              <button onclick="state.isMobileMenuOpen=false; switchViewMode('account');" class="w-full text-left py-2 font-bold text-[#1A1A1A] flex items-center justify-between">
-                <span>👤 My Account & Orders</span>
+              <button onclick="state.isMobileMenuOpen=false; handleProfileIconClick();" class="w-full text-left py-2 font-bold text-[#1A1A1A] flex items-center justify-between">
+                <span>👤 ${state.isLoggedIn ? 'My Account & Orders' : 'Login via KwikPass'}</span>
                 <span class="text-amber-500">⚡</span>
               </button>
             </div>
@@ -4575,8 +4669,36 @@ function renderModals() {
   return html;
 }
 
+window.handleProfileIconClick = function() {
+  if (state.isLoggedIn) {
+    switchViewMode('account');
+  } else {
+    state.isKwikPassAuthOpen = true;
+    renderApp();
+  }
+};
+
+window.handleKwikPassLoginSubmit = function(e) {
+  e.preventDefault();
+  if (!state.customerPhone || state.customerPhone.trim().length < 10) {
+    alert('Please enter a valid 10-digit mobile number!');
+    return;
+  }
+  state.isLoggedIn = true;
+  if (!state.customerName) state.customerName = "Khushi Aarya";
+  state.isKwikPassAuthOpen = false;
+  alert("🎉 Welcome to Cieloria! Logged in successfully via KwikPass OTP!");
+  switchViewMode('account');
+};
+
 // GoKwik Checkout Initialization Trigger
 window.triggerGoKwikCheckout = function() {
+  if (!state.isLoggedIn) {
+    state.isKwikPassAuthOpen = true;
+    renderApp();
+    return;
+  }
+
   if (typeof window !== 'undefined' && window.GokwikSdk) {
     try {
       window.GokwikSdk.initCheckout({
@@ -4702,5 +4824,7 @@ window.openPincodeModal = function() {
 window.openCheckoutModal = function() { state.isCheckoutOpen = true; state.checkoutStep = 1; renderApp(); };
 window.handleNewsletter = function(e) { e.preventDefault(); state.isSubscribed = true; renderApp(); };
 
-document.addEventListener('DOMContentLoaded', () => { renderApp(); });
+document.addEventListener('DOMContentLoaded', () => { 
+  renderApp(); 
+});
 try { renderApp(); } catch(err) { console.error('Render error:', err); }
