@@ -1,5 +1,8 @@
 {
   "version": 2,
-  "buildCommand": null,
-  "outputDirectory": "."
+  "rewrites": [
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/admin.html", "destination": "/admin.html" },
+    { "source": "/((?!admin|admin.html|app.js|style.js|style.css).*)" , "destination": "/index.html" }
+  ]
 }
