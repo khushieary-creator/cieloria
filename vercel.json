@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "dist",
+  "cleanUrls": true,
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/admin.html", "destination": "/admin.html" }
