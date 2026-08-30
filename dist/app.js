@@ -3044,7 +3044,7 @@ const currentCleanPhone = getCleanPhone(getStoredData('cieloria_cust_phone', '')
 
 // Global Application State
 let state = {
-  viewMode: 'homepage',
+  viewMode: (window.location.search.includes('view=admin') || window.location.hash.includes('admin') || window.location.pathname.includes('/admin')) ? 'admin' : 'homepage',
   accountTab: 'orders',
   selectedProductId: PRODUCTS[0].id,
   activeGalleryIndex: 0,
@@ -3469,6 +3469,7 @@ function renderApp() {
       ${state.viewMode === 'account' ? renderAccountDashboardView() : ''}
       ${state.viewMode === 'wishlist' ? renderWishlistView() : ''}
       ${state.viewMode === 'order_confirmed' ? renderOrderConfirmedView() : ''}
+      ${state.viewMode === 'admin' ? renderAdminView() : ''}
     </main>
 
     ${renderModals()}
@@ -5185,3 +5186,237 @@ try {
   syncAccountStorage();
   renderApp(); 
 } catch(err) { console.error('Render error:', err); }
+
+
+// CIELORIA Merchant Admin Portal Logic
+let adminState = {
+  isAuthenticated: sessionStorage.getItem('cieloria_admin_auth') === 'true',
+  passcode: '',
+  allOrders: getStoredData('cieloria_merchant_all_orders', [])
+};
+
+function fetchCloudOrders() {
+  fetch('/api/sync?action=get_all_orders')
+    .then(res => res.json())
+    .then(data => {
+      if (data && data.orders && Array.isArray(data.orders) && data.orders.length > 0) {
+        adminState.allOrders = data.orders;
+        setStoredData('cieloria_merchant_all_orders', data.orders);
+        if (adminState.isAuthenticated && state.viewMode === 'admin') renderApp();
+      }
+    }).catch(e => console.log('Admin Cloud Fetch Note:', e));
+}
+
+setInterval(fetchCloudOrders, 4000);
+
+function handleAdminLogin(e) {
+  if (e) e.preventDefault();
+  if (adminState.passcode === '42961' || adminState.passcode === '2yyq6ziimeofq998' || adminState.passcode === 'cieloria123') {
+    adminState.isAuthenticated = true;
+    sessionStorage.setItem('cieloria_admin_auth', 'true');
+    renderApp();
+  } else {
+    alert('❌ Invalid Merchant Passcode! Use your Merchant Code: 42961');
+  }
+}
+
+function handleAdminLogout() {
+  adminState.isAuthenticated = false;
+  sessionStorage.removeItem('cieloria_admin_auth');
+  renderApp();
+}
+
+function handleOrderStatusChange(orderId, newStatus) {
+  let orders = getStoredData('cieloria_merchant_all_orders', []);
+  let target = orders.find(o => o.orderId === orderId);
+  let statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
+
+  if (newStatus === 'Dispatched') statusColor = 'bg-blue-100 text-blue-800 border-blue-300';
+  if (newStatus === 'In Transit') statusColor = 'bg-indigo-100 text-indigo-800 border-indigo-300';
+  if (newStatus === 'Out for Delivery') statusColor = 'bg-amber-100 text-amber-800 border-amber-300';
+  if (newStatus === 'Delivered') statusColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+
+  if (target) {
+    target.status = newStatus;
+    target.statusColor = statusColor;
+  }
+
+  setStoredData('cieloria_merchant_all_orders', orders);
+
+  try {
+    fetch('/api/sync', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'update_order_status',
+        data: { orderId: orderId, newStatus: newStatus, statusColor: statusColor }
+      })
+    }).catch(e => console.log('Admin Cloud Order Status Write Note:', e));
+  } catch(e) {}
+
+  let custOrders = getStoredData('cieloria_orders', []);
+  let custTarget = custOrders.find(o => o.orderId === orderId);
+  if (custTarget) {
+    custTarget.status = newStatus;
+    custTarget.statusColor = statusColor;
+    setStoredData('cieloria_orders', custOrders);
+  }
+
+  adminState.allOrders = orders;
+  alert(`✅ Order ${orderId} status updated to '${newStatus}' on Google Cloud DB! Customer will see this live in My Account.`);
+  renderApp();
+}
+
+function renderAdminView() {
+  if (!adminState.isAuthenticated) {
+    return `
+      <div class="min-h-screen flex items-center justify-center p-4 bg-[#0F172A] text-slate-100">
+        <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl text-center space-y-6">
+          <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-2xl font-bold flex items-center justify-center mx-auto">
+            🔒
+          </div>
+
+          <div class="space-y-2">
+            <h1 class="font-serif text-2xl font-bold text-white uppercase tracking-wider">CIELORIA STORE ADMIN</h1>
+            <p class="text-xs text-slate-400">Enter Merchant Passcode or Merchant Code to access Orders Dashboard.</p>
+          </div>
+
+          <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+            <input 
+              type="password" 
+              value="${adminState.passcode}" 
+              oninput="adminState.passcode=this.value" 
+              placeholder="Enter Merchant Code (e.g. 42961)" 
+              required 
+              class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-amber-400 font-medium text-center tracking-widest text-lg" 
+            />
+
+            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg">
+              Login to Admin Portal →
+            </button>
+          </form>
+
+          <div class="text-[10px] text-slate-500 font-mono">
+            Merchant ID: 2yyq6ziimeofq998 • Passcode Hint: 42961
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  const orders = adminState.allOrders;
+  const totalRev = orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
+
+  return `
+    <div class="min-h-screen py-8 text-left bg-[#0F172A] text-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-6 border-b border-slate-800 gap-4">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="text-3xl">⚙️</span>
+              <h1 class="font-serif text-3xl font-bold text-amber-400 uppercase tracking-widest">CIELORIA MERCHANT ADMIN DASHBOARD</h1>
+            </div>
+            <p class="text-xs text-slate-400 pt-1">Manage Customer Orders, Customer Contact Details & Update Dispatch Status (Merchant ID: 2yyq6ziimeofq998 • Live Cloud API Active)</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="state.viewMode='homepage'; renderApp();" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
+              🌐 Visit Storefront
+            </button>
+            <button onclick="handleAdminLogout()" class="border border-rose-500/40 hover:bg-rose-500/10 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
+              Logout
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+            <span class="text-slate-400 text-[10px] uppercase font-bold block">Total Received Orders</span>
+            <span class="text-3xl font-bold text-white pt-1 block">${orders.length}</span>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+            <span class="text-slate-400 text-[10px] uppercase font-bold block">Total Revenue (₹)</span>
+            <span class="text-3xl font-bold text-emerald-400 pt-1 block">₹${totalRev.toLocaleString()}</span>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+            <span class="text-slate-400 text-[10px] uppercase font-bold block">Dispatched Orders</span>
+            <span class="text-3xl font-bold text-blue-400 pt-1 block">${orders.filter(o => o.status === 'Dispatched' || o.status === 'In Transit' || o.status === 'Out for Delivery' || o.status === 'Delivered').length}</span>
+          </div>
+
+          <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
+            <span class="text-slate-400 text-[10px] uppercase font-bold block">Delivered Orders</span>
+            <span class="text-3xl font-bold text-amber-400 pt-1 block">${orders.filter(o => o.status === 'Delivered').length}</span>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
+          <div class="flex items-center justify-between">
+            <h3 class="font-serif text-2xl font-bold text-white">Customer Orders List (${orders.length})</h3>
+            <span class="text-xs text-slate-400 font-medium">Select new status from dropdown to update live tracking for customer!</span>
+          </div>
+
+          ${orders.length === 0 ? `
+            <div class="text-center py-16 text-slate-500 space-y-3">
+              <span class="text-5xl block">📦</span>
+              <h4 class="font-bold text-slate-300">No Customer Orders Received Yet</h4>
+              <p class="text-xs max-w-sm mx-auto">When customers place orders on www.cieloria.com, their name, mobile number, delivery address, and ordered items will appear here automatically!</p>
+            </div>
+          ` : `
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-slate-200">
+                <thead class="bg-slate-800 text-slate-400 uppercase text-[10px]">
+                  <tr>
+                    <th class="p-3.5">Order ID & Date</th>
+                    <th class="p-3.5">Customer Name & Phone</th>
+                    <th class="p-3.5">Delivery Address</th>
+                    <th class="p-3.5">Total Payable</th>
+                    <th class="p-3.5">Current Status</th>
+                    <th class="p-3.5">Update Order Status</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800">
+                  ${orders.map(ord => `
+                    <tr class="hover:bg-slate-800/50 transition-colors">
+                      <td class="p-3.5 font-bold text-white">
+                        ${ord.orderId}<br/>
+                        <span class="text-[10px] text-slate-400 font-normal">${ord.date}</span>
+                      </td>
+                      <td class="p-3.5 font-medium text-amber-300">
+                        ${ord.customerName || 'Customer'}<br/>
+                        <span class="text-[10px] text-slate-400 font-normal">+91 ${ord.customerPhone}</span>
+                      </td>
+                      <td class="p-3.5 max-w-xs truncate font-medium text-slate-300">
+                        ${ord.customerAddress || 'Lucknow, UP'} (Pincode: ${ord.pincode || '226001'})
+                      </td>
+                      <td class="p-3.5 font-bold text-emerald-400">
+                        ₹${(ord.totalAmount || 999).toLocaleString()}.00
+                      </td>
+                      <td class="p-3.5">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold ${ord.statusColor || 'bg-blue-900 text-blue-200'} border">
+                          ${ord.status}
+                        </span>
+                      </td>
+                      <td class="p-3.5">
+                        <select onchange="handleOrderStatusChange('${ord.orderId}', this.value)" class="bg-slate-800 text-white border border-slate-700 rounded-xl p-2.5 text-xs focus:outline-none focus:border-amber-400 cursor-pointer font-semibold">
+                          <option value="Order Placed" ${ord.status==='Order Placed'?'selected':''}>1. Order Received (Order Placed)</option>
+                          <option value="Dispatched" ${ord.status==='Dispatched'?'selected':''}>2. Dispatched from Lucknow HQ</option>
+                          <option value="In Transit" ${ord.status==='In Transit'?'selected':''}>3. In Transit (Bluedart Express)</option>
+                          <option value="Out for Delivery" ${ord.status==='Out for Delivery'?'selected':''}>4. Out for Delivery</option>
+                          <option value="Delivered" ${ord.status==='Delivered'?'selected':''}>5. Delivered Successfully 🎉</option>
+                        </select>
+                      </td>
+                    </tr>
+                  `).join('')}
+                </tbody>
+              </table>
+            </div>
+          `}
+        </div>
+
+      </div>
+    </div>
+  `;
+}

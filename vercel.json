@@ -1,7 +1,6 @@
 {
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/admin", "dest": "/admin.html" },
-    { "src": "/admin/", "dest": "/admin.html" }
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/admin", "destination": "/index.html?view=admin" }
   ]
 }
