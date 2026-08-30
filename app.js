@@ -3118,17 +3118,50 @@ function getActiveOrdersKey() {
 function getAllCumulativeOrders() {
   let allOrdersMap = new Map();
 
+  const defaultDemoOrders = [
+    {
+      orderId: "CIE-84920",
+      date: "28 Aug 2026",
+      status: "Dispatched",
+      statusColor: "bg-blue-100 text-blue-800 border-blue-300",
+      courier: "Bluedart Express",
+      trackingId: "BLU89230149",
+      estimatedDelivery: "Tomorrow by 5 PM",
+      totalAmount: 2499,
+      customerName: "Khushi",
+      customerPhone: "9876543210",
+      customerAddress: "Hazratganj, Lucknow, UP",
+      pincode: "226001",
+      items: [PRODUCTS[0], PRODUCTS[1] || PRODUCTS[0]]
+    },
+    {
+      orderId: "CIE-73912",
+      date: "25 Aug 2026",
+      status: "Delivered",
+      statusColor: "bg-emerald-100 text-emerald-800 border-emerald-300",
+      courier: "Bluedart Express",
+      trackingId: "BLU74829103",
+      estimatedDelivery: "Delivered",
+      totalAmount: 1899,
+      customerName: "Khushi",
+      customerPhone: "9876543210",
+      customerAddress: "Hazratganj, Lucknow, UP",
+      pincode: "226001",
+      items: [PRODUCTS[2] || PRODUCTS[0]]
+    }
+  ];
+
   let merchantOrders = getStoredData('cieloria_merchant_all_orders', []);
-  if (Array.isArray(merchantOrders)) {
+  if (Array.isArray(merchantOrders) && merchantOrders.length > 0) {
     merchantOrders.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
   }
 
   let guestOrders = getStoredData('cieloria_orders_guest', []);
-  if (Array.isArray(guestOrders)) {
+  if (Array.isArray(guestOrders) && guestOrders.length > 0) {
     guestOrders.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
   }
 
-  if (Array.isArray(state.ordersList)) {
+  if (Array.isArray(state.ordersList) && state.ordersList.length > 0) {
     state.ordersList.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
   }
 
@@ -3137,12 +3170,18 @@ function getAllCumulativeOrders() {
       let key = localStorage.key(i);
       if (key && key.startsWith('cieloria_orders_')) {
         let list = getStoredData(key, []);
-        if (Array.isArray(list)) {
+        if (Array.isArray(list) && list.length > 0) {
           list.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
         }
       }
     }
   } catch(e) {}
+
+  defaultDemoOrders.forEach(d => {
+    if (!allOrdersMap.has(d.orderId)) {
+      allOrdersMap.set(d.orderId, d);
+    }
+  });
 
   return Array.from(allOrdersMap.values());
 }
@@ -5442,11 +5481,91 @@ function renderAdminView() {
             <button onclick="adminState.showAddProductForm = !adminState.showAddProductForm; renderApp();" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-1.5">
               ✨ Add New Product
             </button>
+            <button onclick="adminState.showAddProductForm = !adminState.showAddProductForm; renderApp();" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-1.5">
+              ✨ Add New Product
+            </button>
             <button onclick="handleAdminLogout()" class="border border-rose-500/40 hover:bg-rose-500/10 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
               Logout
             </button>
           </div>
         </div>
+
+        
+        ${adminState.showAddProductForm ? `
+          <div class="bg-slate-900 border border-amber-500/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl animate-fade-in">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div class="flex items-center gap-3">
+                <span class="text-2xl">✨</span>
+                <div>
+                  <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Publish New Product to Storefront</h3>
+                  <p class="text-xs text-slate-400">Fill in details below to instantly list a new product on www.cieloria.com</p>
+                </div>
+              </div>
+              <button onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white text-lg">✕</button>
+            </div>
+
+            <form onsubmit="handleAddNewProductSubmit(event)" class="space-y-5 text-left">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-300">Product Title *</label>
+                  <input type="text" required placeholder="e.g. Royal Solitaire 18K Gold Necklace" value="${adminState.newProd.title}" oninput="adminState.newProd.title=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-300">Category Tag *</label>
+                  <select onchange="adminState.newProd.category=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
+                    <option value="BestSeller" ${adminState.newProd.category==='BestSeller'?'selected':''}>Best Seller 🔥</option>
+                    <option value="NewArrivals" ${adminState.newProd.category==='NewArrivals'?'selected':''}>New Arrival ✨</option>
+                    <option value="FineSilver" ${adminState.newProd.category==='FineSilver'?'selected':''}>Fine Silver 925 💎</option>
+                    <option value="NineKTGold" ${adminState.newProd.category==='NineKTGold'?'selected':''}>9KT Solid Gold 👑</option>
+                    <option value="Demifine" ${adminState.newProd.category==='Demifine'?'selected':''}>Demifine ® Collection</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-300">Selling Price (₹) *</label>
+                  <input type="number" required placeholder="e.g. 1499" value="${adminState.newProd.price}" oninput="adminState.newProd.price=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-300">Original MRP (₹)</label>
+                  <input type="number" placeholder="e.g. 2999" value="${adminState.newProd.mrp}" oninput="adminState.newProd.mrp=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
+                </div>
+
+                <div class="space-y-1.5">
+                  <label class="text-xs font-bold text-slate-300">Jewelry Type</label>
+                  <select onchange="adminState.newProd.type=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
+                    <option value="Necklaces">Necklace / Pendant</option>
+                    <option value="Earrings">Earrings / Studs</option>
+                    <option value="Rings">Rings</option>
+                    <option value="Bracelets">Bracelets / Bangles</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300">Product Image URL (HD Photo Link)</label>
+                <input type="url" placeholder="https://images.unsplash.com/... or image link" value="${adminState.newProd.image}" oninput="adminState.newProd.image=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
+              </div>
+
+              <div class="space-y-1.5">
+                <label class="text-xs font-bold text-slate-300">Short Product Description</label>
+                <textarea rows="2" placeholder="e.g. 100% waterproof 18k gold plated solitaire necklace crafted in Lucknow HQ..." oninput="adminState.newProd.description=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">${adminState.newProd.description}</textarea>
+              </div>
+
+              <div class="flex items-center gap-3 pt-2">
+                <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg">
+                  🚀 Publish Product Live Now
+                </button>
+                <button type="button" onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white px-4 py-3 text-xs">
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        ` : ''}
 
         
         ${adminState.showAddProductForm ? `
