@@ -101,10 +101,36 @@ function fetchCloudOrders() {
   fetch('/api/sync?action=get_all_orders')
     .then(res => res.json())
     .then(data => {
+      let masterMap = new Map();
+      getAllCumulativeOrders().forEach(o => { if (o && o.orderId) masterMap.set(o.orderId, o); });
+
       if (data && data.orders && Array.isArray(data.orders) && data.orders.length > 0) {
-        adminState.allOrders = data.orders;
-        setStoredData('cieloria_merchant_all_orders', data.orders);
-        if (adminState.isAuthenticated && state.viewMode === 'admin') renderApp();
+        data.orders.forEach(co => {
+          if (co && co.orderId) {
+            if (!masterMap.has(co.orderId)) {
+              masterMap.set(co.orderId, co);
+            } else {
+              let existing = masterMap.get(co.orderId);
+              if (co.status && co.status !== existing.status) {
+                existing.status = co.status;
+                existing.statusColor = co.statusColor;
+              }
+            }
+          }
+        });
+      }
+
+      const mergedList = Array.from(masterMap.values());
+      adminState.allOrders = mergedList;
+      state.ordersList = mergedList;
+      setStoredData('cieloria_master_permanent_orders_v1', mergedList);
+      setStoredData('cieloria_merchant_all_orders', mergedList);
+      if (adminState.isAuthenticated && state.viewMode === 'admin') {
+        // Only re-render if count or statuses changed to prevent UI flicker
+        if (!adminState.lastCount || adminState.lastCount !== mergedList.length) {
+          adminState.lastCount = mergedList.length;
+          renderApp();
+        }
       }
     }).catch(e => console.log('Admin Cloud Fetch Note:', e));
 }
