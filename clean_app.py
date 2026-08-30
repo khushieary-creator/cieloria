@@ -19,7 +19,7 @@ admin_code = """
 let adminState = {
   isAuthenticated: sessionStorage.getItem('cieloria_admin_auth') === 'true',
   passcode: '',
-  allOrders: getStoredData('cieloria_merchant_all_orders', []),
+  allOrders: (typeof getAllCumulativeOrders === 'function') ? getAllCumulativeOrders() : getStoredData('cieloria_merchant_all_orders', []),
   showAddProductForm: false,
   newProd: {
     title: '',
@@ -206,7 +206,8 @@ function renderAdminView() {
     `;
   }
 
-  const orders = adminState.allOrders;
+  const orders = (typeof getAllCumulativeOrders === 'function') ? getAllCumulativeOrders() : (adminState.allOrders || []);
+  adminState.allOrders = orders;
   const totalRev = orders.reduce((sum, o) => sum + (o.totalAmount || 0), 0);
 
   return `
@@ -223,6 +224,9 @@ function renderAdminView() {
           </div>
 
           <div class="flex items-center gap-3">
+            <button onclick="adminState.allOrders = getAllCumulativeOrders(); renderApp(); alert('✅ Synced & restored all past customer orders across storage!');" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-md flex items-center gap-1">
+              🔄 Sync All Orders
+            </button>
             <button onclick="state.viewMode='homepage'; renderApp();" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
               🌐 Visit Storefront
             </button>
