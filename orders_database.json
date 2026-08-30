@@ -1,0 +1,117 @@
+[
+  {
+    "orderId": "CIE-38148",
+    "date": "30 Aug 2026",
+    "status": "Order Placed",
+    "statusColor": "bg-blue-100 text-blue-800 border-blue-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU88875660",
+    "estimatedDelivery": "2-3 Business Days",
+    "totalAmount": 999,
+    "customerName": "Khushi",
+    "customerPhone": "8887566006",
+    "customerAddress": "bbd, Lucknow, UP",
+    "pincode": "224122",
+    "items": [
+      {
+        "id": "luxury-gold-plated-anti-tarnish-stone-bracelet",
+        "name": "Luxury Gold-Plated Anti-Tarnish Stone Bracelet",
+        "price": 999,
+        "quantity": 1,
+        "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377"
+      }
+    ]
+  },
+  {
+    "orderId": "CIE-35456",
+    "date": "30 Aug 2026",
+    "status": "Order Placed",
+    "statusColor": "bg-blue-100 text-blue-800 border-blue-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU88812993",
+    "estimatedDelivery": "2-3 Business Days",
+    "totalAmount": 899,
+    "customerName": "Rishabh",
+    "customerPhone": "8881299358",
+    "customerAddress": "Rkj, Lucknow, UP",
+    "pincode": "224122",
+    "items": [
+      {
+        "id": "demifine-solitaire-ring",
+        "name": "Demifine Solitaire Ring",
+        "price": 899,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800"
+      }
+    ]
+  },
+  {
+    "orderId": "CIE-92351",
+    "date": "30 Aug 2026",
+    "status": "In Transit",
+    "statusColor": "bg-indigo-100 text-indigo-800 border-indigo-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU92352223",
+    "estimatedDelivery": "2-3 Business Days",
+    "totalAmount": 1499,
+    "customerName": "Customer 9235222399",
+    "customerPhone": "9235222399",
+    "customerAddress": "Lucknow, UP",
+    "pincode": "226001",
+    "items": [
+      {
+        "id": "18k-gold-demifine-pendant",
+        "name": "18K Gold Demifine Pendant",
+        "price": 1499,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=800"
+      }
+    ]
+  },
+  {
+    "orderId": "CIE-84920",
+    "date": "28 Aug 2026",
+    "status": "Dispatched",
+    "statusColor": "bg-blue-100 text-blue-800 border-blue-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU89230149",
+    "estimatedDelivery": "Tomorrow by 5 PM",
+    "totalAmount": 2499,
+    "customerName": "Khushi",
+    "customerPhone": "8887566006",
+    "customerAddress": "Hazratganj, Lucknow, UP",
+    "pincode": "226001",
+    "items": [
+      {
+        "id": "luxury-gold-plated-anti-tarnish-stone-bracelet",
+        "name": "Luxury Gold-Plated Anti-Tarnish Stone Bracelet",
+        "price": 999,
+        "quantity": 1,
+        "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_33_57PM.png?v=1758182377"
+      }
+    ]
+  },
+  {
+    "orderId": "CIE-73912",
+    "date": "25 Aug 2026",
+    "status": "Delivered",
+    "statusColor": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU74829103",
+    "estimatedDelivery": "Delivered",
+    "totalAmount": 1899,
+    "customerName": "Khushi",
+    "customerPhone": "8887566006",
+    "customerAddress": "Hazratganj, Lucknow, UP",
+    "pincode": "226001",
+    "items": [
+      {
+        "id": "demifine-solitaire-ring",
+        "name": "Demifine Solitaire Ring",
+        "price": 899,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&q=80&w=800"
+      }
+    ]
+  }
+]
