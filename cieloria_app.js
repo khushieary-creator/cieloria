@@ -3114,7 +3114,41 @@ function getActiveOrdersKey() {
   return `cieloria_orders_guest`;
 }
 
+
+function getAllCumulativeOrders() {
+  let allOrdersMap = new Map();
+
+  let merchantOrders = getStoredData('cieloria_merchant_all_orders', []);
+  if (Array.isArray(merchantOrders)) {
+    merchantOrders.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
+  }
+
+  let guestOrders = getStoredData('cieloria_orders_guest', []);
+  if (Array.isArray(guestOrders)) {
+    guestOrders.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
+  }
+
+  if (Array.isArray(state.ordersList)) {
+    state.ordersList.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
+  }
+
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      let key = localStorage.key(i);
+      if (key && key.startsWith('cieloria_orders_')) {
+        let list = getStoredData(key, []);
+        if (Array.isArray(list)) {
+          list.forEach(o => { if (o && o.orderId) allOrdersMap.set(o.orderId, o); });
+        }
+      }
+    }
+  } catch(e) {}
+
+  return Array.from(allOrdersMap.values());
+}
+
 // Live Google Cloud Database & Multi-Source Account Syncing
+
 function syncAccountStorage() {
   const wKey = getActiveWishlistKey();
   const oKey = getActiveOrdersKey();
@@ -3145,7 +3179,9 @@ function syncAccountStorage() {
   }
 
   // Load local orders
-  state.ordersList = getStoredData(oKey, []);
+  const cumulativeOrders = getAllCumulativeOrders();
+  state.ordersList = cumulativeOrders;
+  state.merchantAllOrders = cumulativeOrders;
 
   // Sync to Vercel Serverless Google Cloud Database API
   if (state.isLoggedIn && phone) {
@@ -5032,13 +5068,32 @@ window.completeUserOrder = function() {
     items: state.cart.length > 0 ? [...state.cart] : [PRODUCTS[0]]
   };
 
-  state.ordersList.unshift(newOrder);
-  state.merchantAllOrders.unshift(newOrder);
+  // Read all existing cumulative orders across all storage keys
+  let existingCumulative = getAllCumulativeOrders();
+  
+  // Deduplicate by orderId ensuring newOrder is at top
+  let mergedMap = new Map();
+  mergedMap.set(newOrder.orderId, newOrder);
+  existingCumulative.forEach(o => {
+    if (o && o.orderId && !mergedMap.has(o.orderId)) {
+      mergedMap.set(o.orderId, o);
+    }
+  });
 
-  if (cleanPh) {
-    setStoredData(`cieloria_orders_${cleanPh}`, state.ordersList);
+  const finalCumulativeList = Array.from(mergedMap.values());
+
+  state.ordersList = finalCumulativeList;
+  state.merchantAllOrders = finalCumulativeList;
+  if (typeof adminState !== 'undefined') {
+    adminState.allOrders = finalCumulativeList;
   }
-  setStoredData('cieloria_merchant_all_orders', state.merchantAllOrders);
+
+  // Save cumulative list to ALL storage keys so past orders are never lost
+  setStoredData('cieloria_merchant_all_orders', finalCumulativeList);
+  setStoredData('cieloria_orders_guest', finalCumulativeList);
+  if (cleanPh) {
+    setStoredData(`cieloria_orders_${cleanPh}`, finalCumulativeList);
+  }
 
   // Sync Order to Vercel Google Cloud Serverless API
   try {
