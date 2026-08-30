@@ -3475,10 +3475,28 @@ function renderApp() {
 
     <div class="marquee-container">
       <div class="marquee-content">
-        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
-        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
-        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
-        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
+        <span>✨ 8L+ Happy Customers</span>
+        <span>•</span>
+        <span>Lucknow Flagship Luxury</span>
+        <span>•</span>
+        <span>Gifts For Her @ 50% OFF</span>
+        <span>•</span>
+        <span>Ships in 24 Hours</span>
+        <span>•</span>
+        <span>100% Anti-Tarnish & Waterproof</span>
+        <span>•</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>✨ 8L+ Happy Customers</span>
+        <span>•</span>
+        <span>Lucknow Flagship Luxury</span>
+        <span>•</span>
+        <span>Gifts For Her @ 50% OFF</span>
+        <span>•</span>
+        <span>Ships in 24 Hours</span>
+        <span>•</span>
+        <span>100% Anti-Tarnish & Waterproof</span>
+        <span>•</span>
       </div>
     </div>
 

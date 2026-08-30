@@ -139,32 +139,35 @@ body {
   color: #000000;
 }
 
-/* Marquee / Infinite Ticker */
+/* Infinite Seamless Marquee Animation */
 .marquee-container {
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  background: #000000;
-  color: #FFFFFF;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  padding: 8px 0;
+  display: flex !important;
+  overflow: hidden !important;
+  user-select: none !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  padding: 10px 0 !important;
+  white-space: nowrap !important;
+  width: 100% !important;
 }
 
 .marquee-content {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: space-around;
-  min-width: 100%;
-  gap: 3rem;
-  animation: scroll-left 25s linear infinite;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  min-width: 100% !important;
+  gap: 2.5rem !important;
+  animation: marquee-infinite 22s linear infinite !important;
 }
 
-@keyframes scroll-left {
-  from {
-    transform: translateX(0);
+@keyframes marquee-infinite {
+  0% {
+    transform: translateX(0%);
   }
-  to {
+  100% {
     transform: translateX(-100%);
   }
 }
