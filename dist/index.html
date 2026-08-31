@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIELORIA | Demi-Fine Anti-Tarnish Luxury Jewelry</title>
   <meta name="description" content="Shop 100% waterproof, anti-tarnish 18K gold plated demi-fine jewelry at Cieloria. Warm Nude & Champagne Gold luxury collection.">
-  <meta name="google-site-verification" content="wl6j0pA_TmjRllzBhmc--7AGpBvcKpCBQ_eSetJd1-I" />
+    <link rel="canonical" href="https://www.cieloria.com/" />
+<meta name="google-site-verification" content="wl6j0pA_TmjRllzBhmc--7AGpBvcKpCBQ_eSetJd1-I" />
   <!-- Google Search Engine Favicon Tags -->
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
@@ -245,6 +246,18 @@ body {
 
   <!-- Inline Full Application Logic -->
   <script>
+
+function cleanTrackingUrl() {
+  try {
+    if (window.location.search && window.location.search.includes('srsltid=')) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('srsltid');
+      const cleanPath = url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
+      window.history.replaceState({}, document.title, cleanPath);
+    }
+  } catch (e) {}
+}
+
 // CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Live Google Cloud Serverless Integration)
 
 const CIELORIA_CREDENTIALS = {
@@ -3531,7 +3544,8 @@ function syncAccountStorage() {
 if (typeof window !== 'undefined') {
   setInterval(() => {
     if (state.isLoggedIn && state.customerPhone) {
-      syncAccountStorage();
+      cleanTrackingUrl();
+  syncAccountStorage();
     }
   }, 5000);
 }
@@ -5254,7 +5268,8 @@ window.triggerCIELORIASDKLogin = function() {
           state.customerPhone = cleanPh;
           setStoredData('cieloria_is_logged_in', true);
           setStoredData('cieloria_cust_phone', cleanPh);
-          syncAccountStorage();
+          cleanTrackingUrl();
+  syncAccountStorage();
           switchViewMode('account');
         }
       });
@@ -5326,6 +5341,7 @@ window.handleCIELORIAVerifyOTP = function(e) {
   setStoredData('cieloria_cust_name', state.customerName);
   setStoredData('cieloria_cust_phone', cleanPh);
 
+  cleanTrackingUrl();
   syncAccountStorage();
 
   alert(`🎉 Verified! Logged in successfully for +91 ${cleanPh}!`);
@@ -5518,10 +5534,12 @@ window.openCheckoutModal = function() { state.isCheckoutOpen = true; state.check
 window.handleNewsletter = function(e) { e.preventDefault(); state.isSubscribed = true; renderApp(); };
 
 document.addEventListener('DOMContentLoaded', () => { 
+  cleanTrackingUrl();
   syncAccountStorage();
   renderApp(); 
 });
 try { 
+  cleanTrackingUrl();
   syncAccountStorage();
   renderApp(); 
 } catch(err) { console.error('Render error:', err); }

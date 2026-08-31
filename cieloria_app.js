@@ -1,3 +1,15 @@
+
+function cleanTrackingUrl() {
+  try {
+    if (window.location.search && window.location.search.includes('srsltid=')) {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('srsltid');
+      const cleanPath = url.pathname + (url.searchParams.toString() ? '?' + url.searchParams.toString() : '') + url.hash;
+      window.history.replaceState({}, document.title, cleanPath);
+    }
+  } catch (e) {}
+}
+
 // CIELORIA - Demifine® Anti-Tarnish Luxury Storefront (Live Google Cloud Serverless Integration)
 
 const CIELORIA_CREDENTIALS = {
@@ -3284,7 +3296,8 @@ function syncAccountStorage() {
 if (typeof window !== 'undefined') {
   setInterval(() => {
     if (state.isLoggedIn && state.customerPhone) {
-      syncAccountStorage();
+      cleanTrackingUrl();
+  syncAccountStorage();
     }
   }, 5000);
 }
@@ -5006,7 +5019,8 @@ window.triggerCIELORIASDKLogin = function() {
           state.customerPhone = cleanPh;
           setStoredData('cieloria_is_logged_in', true);
           setStoredData('cieloria_cust_phone', cleanPh);
-          syncAccountStorage();
+          cleanTrackingUrl();
+  syncAccountStorage();
           switchViewMode('account');
         }
       });
@@ -5078,6 +5092,7 @@ window.handleCIELORIAVerifyOTP = function(e) {
   setStoredData('cieloria_cust_name', state.customerName);
   setStoredData('cieloria_cust_phone', cleanPh);
 
+  cleanTrackingUrl();
   syncAccountStorage();
 
   alert(`🎉 Verified! Logged in successfully for +91 ${cleanPh}!`);
@@ -5270,10 +5285,12 @@ window.openCheckoutModal = function() { state.isCheckoutOpen = true; state.check
 window.handleNewsletter = function(e) { e.preventDefault(); state.isSubscribed = true; renderApp(); };
 
 document.addEventListener('DOMContentLoaded', () => { 
+  cleanTrackingUrl();
   syncAccountStorage();
   renderApp(); 
 });
 try { 
+  cleanTrackingUrl();
   syncAccountStorage();
   renderApp(); 
 } catch(err) { console.error('Render error:', err); }
