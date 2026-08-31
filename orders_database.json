@@ -1,5 +1,58 @@
 [
   {
+    "orderId": "CIE-21061",
+    "date": "31 Aug 2026",
+    "status": "Order Placed",
+    "statusColor": "bg-blue-100 text-blue-800 border-blue-300",
+    "courier": "Bluedart Express",
+    "trackingId": "BLU30273063",
+    "estimatedDelivery": "2-3 Business Days",
+    "totalAmount": 799,
+    "customerName": "Valued Customer",
+    "customerPhone": "8887566006",
+    "customerAddress": "bbd",
+    "pincode": "224122",
+    "items": [
+      {
+        "id": "elysian-flow-22k-gold-statement-ring",
+        "name": "Elysian Flow 22K Gold Statement Ring",
+        "category": "Rings",
+        "occasion": "Daily Wear",
+        "price": 799,
+        "originalPrice": 1899,
+        "discountPercent": 58,
+        "rating": 4.6,
+        "reviewCount": 132,
+        "metal": "18K Gold Tone Plated",
+        "isBestseller": true,
+        "isNew": false,
+        "isFineGold": false,
+        "isSilver": false,
+        "inStock": true,
+        "sku": "SKU: CIE150",
+        "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+        "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+        "gallery": [
+          "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+          "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+          "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860",
+          "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/elysian-flow-22k-gold-statement-ring-3827294.png?v=1756617860"
+        ],
+        "features": [
+          "18K Gold Plated Anti-Tarnish Coating",
+          "100% Waterproof & Sweatproof",
+          "Hypoallergenic & Nickel-Free",
+          "Lifetime Polish Guarantee"
+        ],
+        "description": "Elysian Flow 22K Gold Statement Ring - 18K Gold Tone Plated PVD Stainless Steel anti-tarnish jewelry by CIELORIA. Designed for everyday luxury and timeless elegance.",
+        "dimensions": "Weight: 8g | Length: Adjustable 16 + 2 inch extension | 100% Waterproof & Sweatproof",
+        "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
+        "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure.",
+        "quantity": 1
+      }
+    ]
+  },
+  {
     "orderId": "CIE-32047",
     "date": "30 Aug 2026",
     "status": "Order Placed",
