@@ -38,8 +38,8 @@ const PRODUCTS = [
     "isSilver": false,
     "inStock": true,
     "sku": "SKU: CIE-MANG-01",
-    "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_05_56PM.png?v=1758180696",
-    "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_05_56PM.png?v=1758180696",
+    "image": "/mangalsutra_product.jpg",
+    "secondaryImage": "/hero_mangalsutras.jpg",
     "gallery": [
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_12_05_56PM.png?v=1758180696"
     ],
@@ -71,8 +71,8 @@ const PRODUCTS = [
     "isSilver": false,
     "inStock": true,
     "sku": "SKU: CIE-MANG-02",
-    "image": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
-    "secondaryImage": "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292",
+    "image": "/hero_mangalsutras.jpg",
+    "secondaryImage": "/mangalsutra_product.jpg",
     "gallery": [
       "https://cdn.shopify.com/s/files/1/0629/2321/0811/files/ChatGPTImageSep12_2025_11_38_23AM.png?v=1758953292"
     ],
@@ -3091,12 +3091,12 @@ const FINE_GOLD_PRODUCTS = [
 ];
 
 const CIRCLE_CATEGORIES = [
-  { name: "Earrings", cat: "Earrings", image: PRODUCTS[45].image },
-  { name: "Necklaces", cat: "Necklaces", image: PRODUCTS[61].image },
-  { name: "Bracelets", cat: "Bracelets", image: PRODUCTS[2].image },
-  { name: "Rings", cat: "Rings", image: PRODUCTS[32].image },
-  { name: "Mangalsutras", cat: "Mangalsutras", image: PRODUCTS[0].image },
-  { name: "Mens", cat: "Mens", image: PRODUCTS[3].image }
+  { name: "Earrings", cat: "Earrings", image: "/hero_earrings.jpg" },
+  { name: "Necklaces", cat: "Necklaces", image: "/hero_necklaces.jpg" },
+  { name: "Bracelets", cat: "Bracelets", image: "/hero_bracelets.jpg" },
+  { name: "Rings", cat: "Rings", image: "/hero_rings.jpg" },
+  { name: "Mangalsutras", cat: "Mangalsutras", image: "/hero_mangalsutras.jpg" },
+  { name: "Mens", cat: "Mens", image: "/hero_mens.jpg" }
 ];
 
 const FOR_EVERY_YOU_CARDS = [
@@ -3810,7 +3810,7 @@ function renderWishlistView() {
             ${savedProducts.map(p => `
               <div class="group relative bg-[#FFFFFF] border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-lg transition-all rounded-xl">
                 <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
-                  <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  <img src="${p.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                   
                   <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 shadow-sm flex items-center justify-center text-rose-500 hover:scale-110 transition-transform z-20" title="Remove from Wishlist">
                     ❤️
@@ -4134,7 +4134,7 @@ function renderHomepageView(currentHero) {
           ${CIRCLE_CATEGORIES.map(c => `
             <div onclick="openPLPCategory('${c.cat}')" class="flex flex-col items-center space-y-2 sm:space-y-3 cursor-pointer group">
               <div class="w-24 h-24 sm:w-36 sm:h-36 rounded-full overflow-hidden border-2 border-transparent group-hover:border-[#C5A059] transition-all shadow-sm bg-white">
-                <img src="${c.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                <img src="${c.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
               </div>
               <span class="font-serif text-xs sm:text-base font-semibold text-[#1A1A1A] group-hover:text-[#C5A059]">${c.name}</span>
             </div>
@@ -4160,7 +4160,7 @@ function renderHomepageView(currentHero) {
           return `
             <div class="group relative bg-white border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer transition-all hover:shadow-lg rounded-xl">
               <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
-                <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                <img src="${p.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                 <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 z-10 shadow-xs">Flat ${p.price}</div>
                 
                 <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute bottom-2.5 left-2.5 sm:bottom-3 sm:left-3 text-base sm:text-lg transition-transform hover:scale-110 z-20" title="${isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}">
@@ -4356,7 +4356,7 @@ function renderPLPView() {
           return `
             <div class="group relative bg-[#FFFFFF] border border-[#E6E1D7] overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-lg transition-all rounded-xl">
               <div onclick="openPDP('${p.id}')" class="relative aspect-square w-full bg-[#F6F4EF] overflow-hidden">
-                <img src="${p.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                <img src="${p.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                 
                 <div class="absolute top-0 left-0 bg-[#8B1E2B] text-white text-[9px] font-bold uppercase px-2 py-0.5 sm:px-2.5 sm:py-1 z-10 shadow-xs">
                   ${p.discountPercent > 50 ? `EXTRA ${p.discountPercent}% OFF` : `Flat ${p.price}`}
