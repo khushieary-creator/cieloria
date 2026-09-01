@@ -3,16 +3,18 @@ import os
 with open('cieloria_app.js', 'r', encoding='utf-8') as f:
     js = f.read()
 
-# Add admin route detection in initial state
-js = js.replace("viewMode: 'homepage'", "viewMode: (window.location.search.includes('view=admin') || window.location.hash.includes('admin') || window.location.pathname.includes('/admin')) ? 'admin' : 'homepage'")
+# Make sure initial viewMode handles admin route cleanly
+if "viewMode: 'homepage'" in js:
+    js = js.replace("viewMode: 'homepage'", "viewMode: (window.location.search.includes('view=admin') || window.location.hash.includes('admin') || window.location.pathname.includes('/admin')) ? 'admin' : 'homepage'")
 
-# Add renderAdminView inside main viewMode router
+# Ensure renderAdminView is in main router
 target_str = "${state.viewMode === 'order_confirmed' ? renderOrderConfirmedView() : ''}"
 replacement_str = "${state.viewMode === 'order_confirmed' ? renderOrderConfirmedView() : ''}\n      ${state.viewMode === 'admin' ? renderAdminView() : ''}"
 
-js = js.replace(target_str, replacement_str)
+if "renderAdminView()" not in js:
+    js = js.replace(target_str, replacement_str)
 
-# Append admin helper functions and renderAdminView ONCE
+# Clean admin portal code block (single append if not already in js)
 admin_code = """
 
 // CIELORIA Merchant Admin Portal Logic
@@ -32,7 +34,6 @@ let adminState = {
   }
 };
 
-// Merge Custom Merchant Added Products into Store Catalog
 (function mergeMerchantProducts() {
   try {
     const custom = getStoredData('cieloria_custom_merchant_products', []);
@@ -96,7 +97,6 @@ function handleAddNewProductSubmit(e) {
   renderApp();
 }
 
-
 function fetchCloudOrders() {
   fetch('/api/sync?action=get_all_orders')
     .then(res => res.json())
@@ -125,14 +125,7 @@ function fetchCloudOrders() {
       state.ordersList = mergedList;
       setStoredData('cieloria_master_permanent_orders_v1', mergedList);
       setStoredData('cieloria_merchant_all_orders', mergedList);
-      if (adminState.isAuthenticated && state.viewMode === 'admin') {
-        // Only re-render if count or statuses changed to prevent UI flicker
-        if (!adminState.lastCount || adminState.lastCount !== mergedList.length) {
-          adminState.lastCount = mergedList.length;
-          renderApp();
-        }
-      }
-    }).catch(e => console.log('Admin Cloud Fetch Note:', e));
+    }).catch(e => {});
 }
 
 setInterval(fetchCloudOrders, 4000);
@@ -179,7 +172,7 @@ function handleOrderStatusChange(orderId, newStatus) {
         action: 'update_order_status',
         data: { orderId: orderId, newStatus: newStatus, statusColor: statusColor }
       })
-    }).catch(e => console.log('Admin Cloud Order Status Write Note:', e));
+    }).catch(e => {});
   } catch(e) {}
 
   let custOrders = getStoredData('cieloria_orders', []);
@@ -191,7 +184,7 @@ function handleOrderStatusChange(orderId, newStatus) {
   }
 
   adminState.allOrders = orders;
-  alert(`✅ Order ${orderId} status updated to '${newStatus}' on Google Cloud DB! Customer will see this live in My Account.`);
+  alert(`✅ Order ${orderId} status updated to '${newStatus}' on Cloud Database!`);
   renderApp();
 }
 
@@ -246,255 +239,18 @@ function renderAdminView() {
               <span class="text-3xl">⚙️</span>
               <h1 class="font-serif text-3xl font-bold text-amber-400 uppercase tracking-widest">CIELORIA MERCHANT ADMIN DASHBOARD</h1>
             </div>
-            <p class="text-xs text-slate-400 pt-1">Manage Customer Orders, Customer Contact Details & Update Dispatch Status (Merchant ID: 2yyq6ziimeofq998 • Live Cloud API Active)</p>
+            <p class="text-xs text-slate-400 pt-1">Manage Customer Orders & Product Catalog (Merchant ID: 2yyq6ziimeofq998)</p>
           </div>
 
           <div class="flex items-center gap-3">
-            <button onclick="adminState.allOrders = getAllCumulativeOrders(); renderApp(); alert('✅ Synced & restored all past customer orders across storage!');" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-md flex items-center gap-1">
-              🔄 Sync All Orders
-            </button>
             <button onclick="state.viewMode='homepage'; renderApp();" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
               🌐 Visit Storefront
-            </button>
-            <button onclick="adminState.showAddProductForm = !adminState.showAddProductForm; renderApp();" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors shadow-lg flex items-center gap-1.5">
-              ✨ Add New Product
             </button>
             <button onclick="handleAdminLogout()" class="border border-rose-500/40 hover:bg-rose-500/10 text-rose-400 px-4 py-2.5 rounded-xl text-xs font-bold transition-colors">
               Logout
             </button>
           </div>
         </div>
-
-        
-        ${adminState.showAddProductForm ? `
-          <div class="bg-slate-900 border border-amber-500/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl animate-fade-in">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-              <div class="flex items-center gap-3">
-                <span class="text-2xl">✨</span>
-                <div>
-                  <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Publish New Product to Storefront</h3>
-                  <p class="text-xs text-slate-400">Fill in details below to instantly list a new product on www.cieloria.com</p>
-                </div>
-              </div>
-              <button onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white text-lg">✕</button>
-            </div>
-
-            <form onsubmit="handleAddNewProductSubmit(event)" class="space-y-5 text-left">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Product Title *</label>
-                  <input type="text" required placeholder="e.g. Royal Solitaire 18K Gold Necklace" value="${adminState.newProd.title}" oninput="adminState.newProd.title=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Category Tag *</label>
-                  <select onchange="adminState.newProd.category=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="BestSeller" ${adminState.newProd.category==='BestSeller'?'selected':''}>Best Seller 🔥</option>
-                    <option value="NewArrivals" ${adminState.newProd.category==='NewArrivals'?'selected':''}>New Arrival ✨</option>
-                    <option value="FineSilver" ${adminState.newProd.category==='FineSilver'?'selected':''}>Fine Silver 925 💎</option>
-                    <option value="NineKTGold" ${adminState.newProd.category==='NineKTGold'?'selected':''}>9KT Solid Gold 👑</option>
-                    <option value="Demifine" ${adminState.newProd.category==='Demifine'?'selected':''}>Demifine ® Collection</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Selling Price (₹) *</label>
-                  <input type="number" required placeholder="e.g. 1499" value="${adminState.newProd.price}" oninput="adminState.newProd.price=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Original MRP (₹)</label>
-                  <input type="number" placeholder="e.g. 2999" value="${adminState.newProd.mrp}" oninput="adminState.newProd.mrp=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Jewelry Type</label>
-                  <select onchange="adminState.newProd.type=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="Necklaces">Necklace / Pendant</option>
-                    <option value="Earrings">Earrings / Studs</option>
-                    <option value="Rings">Rings</option>
-                    <option value="Bracelets">Bracelets / Bangles</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Product Image URL (HD Photo Link)</label>
-                <input type="url" placeholder="https://images.unsplash.com/... or image link" value="${adminState.newProd.image}" oninput="adminState.newProd.image=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Short Product Description</label>
-                <textarea rows="2" placeholder="e.g. 100% waterproof 18k gold plated solitaire necklace crafted in Lucknow HQ..." oninput="adminState.newProd.description=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">${adminState.newProd.description}</textarea>
-              </div>
-
-              <div class="flex items-center gap-3 pt-2">
-                <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg">
-                  🚀 Publish Product Live Now
-                </button>
-                <button type="button" onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white px-4 py-3 text-xs">
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        ` : ''}
-
-        
-        ${adminState.showAddProductForm ? `
-          <div class="bg-slate-900 border border-amber-500/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl animate-fade-in">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-              <div class="flex items-center gap-3">
-                <span class="text-2xl">✨</span>
-                <div>
-                  <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Publish New Product to Storefront</h3>
-                  <p class="text-xs text-slate-400">Fill in details below to instantly list a new product on www.cieloria.com</p>
-                </div>
-              </div>
-              <button onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white text-lg">✕</button>
-            </div>
-
-            <form onsubmit="handleAddNewProductSubmit(event)" class="space-y-5 text-left">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Product Title *</label>
-                  <input type="text" required placeholder="e.g. Royal Solitaire 18K Gold Necklace" value="${adminState.newProd.title}" oninput="adminState.newProd.title=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Category Tag *</label>
-                  <select onchange="adminState.newProd.category=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="BestSeller" ${adminState.newProd.category==='BestSeller'?'selected':''}>Best Seller 🔥</option>
-                    <option value="NewArrivals" ${adminState.newProd.category==='NewArrivals'?'selected':''}>New Arrival ✨</option>
-                    <option value="FineSilver" ${adminState.newProd.category==='FineSilver'?'selected':''}>Fine Silver 925 💎</option>
-                    <option value="NineKTGold" ${adminState.newProd.category==='NineKTGold'?'selected':''}>9KT Solid Gold 👑</option>
-                    <option value="Demifine" ${adminState.newProd.category==='Demifine'?'selected':''}>Demifine ® Collection</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Selling Price (₹) *</label>
-                  <input type="number" required placeholder="e.g. 1499" value="${adminState.newProd.price}" oninput="adminState.newProd.price=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Original MRP (₹)</label>
-                  <input type="number" placeholder="e.g. 2999" value="${adminState.newProd.mrp}" oninput="adminState.newProd.mrp=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Jewelry Type</label>
-                  <select onchange="adminState.newProd.type=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="Necklaces">Necklace / Pendant</option>
-                    <option value="Earrings">Earrings / Studs</option>
-                    <option value="Rings">Rings</option>
-                    <option value="Bracelets">Bracelets / Bangles</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Product Image URL (HD Photo Link)</label>
-                <input type="url" placeholder="https://images.unsplash.com/... or image link" value="${adminState.newProd.image}" oninput="adminState.newProd.image=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Short Product Description</label>
-                <textarea rows="2" placeholder="e.g. 100% waterproof 18k gold plated solitaire necklace crafted in Lucknow HQ..." oninput="adminState.newProd.description=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">${adminState.newProd.description}</textarea>
-              </div>
-
-              <div class="flex items-center gap-3 pt-2">
-                <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg">
-                  🚀 Publish Product Live Now
-                </button>
-                <button type="button" onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white px-4 py-3 text-xs">
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        ` : ''}
-
-        
-        ${adminState.showAddProductForm ? `
-          <div class="bg-slate-900 border border-amber-500/40 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl animate-fade-in">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-              <div class="flex items-center gap-3">
-                <span class="text-2xl">✨</span>
-                <div>
-                  <h3 class="font-serif text-xl font-bold text-white uppercase tracking-wider">Publish New Product to Storefront</h3>
-                  <p class="text-xs text-slate-400">Fill in details below to instantly list a new product on www.cieloria.com</p>
-                </div>
-              </div>
-              <button onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white text-lg">✕</button>
-            </div>
-
-            <form onsubmit="handleAddNewProductSubmit(event)" class="space-y-5 text-left">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Product Title *</label>
-                  <input type="text" required placeholder="e.g. Royal Solitaire 18K Gold Necklace" value="${adminState.newProd.title}" oninput="adminState.newProd.title=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Category Tag *</label>
-                  <select onchange="adminState.newProd.category=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="BestSeller" ${adminState.newProd.category==='BestSeller'?'selected':''}>Best Seller 🔥</option>
-                    <option value="NewArrivals" ${adminState.newProd.category==='NewArrivals'?'selected':''}>New Arrival ✨</option>
-                    <option value="FineSilver" ${adminState.newProd.category==='FineSilver'?'selected':''}>Fine Silver 925 💎</option>
-                    <option value="NineKTGold" ${adminState.newProd.category==='NineKTGold'?'selected':''}>9KT Solid Gold 👑</option>
-                    <option value="Demifine" ${adminState.newProd.category==='Demifine'?'selected':''}>Demifine ® Collection</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Selling Price (₹) *</label>
-                  <input type="number" required placeholder="e.g. 1499" value="${adminState.newProd.price}" oninput="adminState.newProd.price=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Original MRP (₹)</label>
-                  <input type="number" placeholder="e.g. 2999" value="${adminState.newProd.mrp}" oninput="adminState.newProd.mrp=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-                </div>
-
-                <div class="space-y-1.5">
-                  <label class="text-xs font-bold text-slate-300">Jewelry Type</label>
-                  <select onchange="adminState.newProd.type=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400 cursor-pointer">
-                    <option value="Necklaces">Necklace / Pendant</option>
-                    <option value="Earrings">Earrings / Studs</option>
-                    <option value="Rings">Rings</option>
-                    <option value="Bracelets">Bracelets / Bangles</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Product Image URL (HD Photo Link)</label>
-                <input type="url" placeholder="https://images.unsplash.com/... or image link" value="${adminState.newProd.image}" oninput="adminState.newProd.image=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400" />
-              </div>
-
-              <div class="space-y-1.5">
-                <label class="text-xs font-bold text-slate-300">Short Product Description</label>
-                <textarea rows="2" placeholder="e.g. 100% waterproof 18k gold plated solitaire necklace crafted in Lucknow HQ..." oninput="adminState.newProd.description=this.value" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-amber-400">${adminState.newProd.description}</textarea>
-              </div>
-
-              <div class="flex items-center gap-3 pt-2">
-                <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs uppercase tracking-wider transition-colors shadow-lg">
-                  🚀 Publish Product Live Now
-                </button>
-                <button type="button" onclick="adminState.showAddProductForm=false; renderApp();" class="text-slate-400 hover:text-white px-4 py-3 text-xs">
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        ` : ''}
 
         <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 text-center">
           <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl">
@@ -521,14 +277,12 @@ function renderAdminView() {
         <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 space-y-6 shadow-2xl">
           <div class="flex items-center justify-between">
             <h3 class="font-serif text-2xl font-bold text-white">Customer Orders List (${orders.length})</h3>
-            <span class="text-xs text-slate-400 font-medium">Select new status from dropdown to update live tracking for customer!</span>
           </div>
 
           ${orders.length === 0 ? `
             <div class="text-center py-16 text-slate-500 space-y-3">
               <span class="text-5xl block">📦</span>
               <h4 class="font-bold text-slate-300">No Customer Orders Received Yet</h4>
-              <p class="text-xs max-w-sm mx-auto">When customers place orders on www.cieloria.com, their name, mobile number, delivery address, and ordered items will appear here automatically!</p>
             </div>
           ` : `
             <div class="overflow-x-auto pb-6">
@@ -567,11 +321,11 @@ function renderAdminView() {
                       </td>
                       <td class="p-3.5">
                         <select onchange="handleOrderStatusChange('${ord.orderId}', this.value)" class="bg-slate-800 text-white border border-slate-700 rounded-xl p-2.5 text-xs focus:outline-none focus:border-amber-400 cursor-pointer font-semibold">
-                          <option value="Order Placed" ${ord.status==='Order Placed'?'selected':''}>1. Order Received (Order Placed)</option>
-                          <option value="Dispatched" ${ord.status==='Dispatched'?'selected':''}>2. Dispatched from Lucknow HQ</option>
-                          <option value="In Transit" ${ord.status==='In Transit'?'selected':''}>3. In Transit (Bluedart Express)</option>
+                          <option value="Order Placed" ${ord.status==='Order Placed'?'selected':''}>1. Order Received</option>
+                          <option value="Dispatched" ${ord.status==='Dispatched'?'selected':''}>2. Dispatched</option>
+                          <option value="In Transit" ${ord.status==='In Transit'?'selected':''}>3. In Transit</option>
                           <option value="Out for Delivery" ${ord.status==='Out for Delivery'?'selected':''}>4. Out for Delivery</option>
-                          <option value="Delivered" ${ord.status==='Delivered'?'selected':''}>5. Delivered Successfully 🎉</option>
+                          <option value="Delivered" ${ord.status==='Delivered'?'selected':''}>5. Delivered 🎉</option>
                         </select>
                       </td>
                     </tr>
@@ -588,7 +342,7 @@ function renderAdminView() {
 }
 """
 
-full_js = js + admin_code
+full_js = js if "adminState" in js else (js + admin_code)
 
 with open('app.js', 'w', encoding='utf-8') as f:
     f.write(full_js)
@@ -606,17 +360,15 @@ html = f"""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIELORIA | Demi-Fine Anti-Tarnish Luxury Jewelry</title>
   <meta name="description" content="Shop 100% waterproof, anti-tarnish 18K gold plated demi-fine jewelry at Cieloria. Warm Nude & Champagne Gold luxury collection.">
-    <link rel="canonical" href="https://www.cieloria.com/" />
-<meta name="google-site-verification" content="wl6j0pA_TmjRllzBhmc--7AGpBvcKpCBQ_eSetJd1-I" />
-  <!-- Google Search Engine Favicon Tags -->
+  <link rel="canonical" href="https://www.cieloria.com/" />
+  <meta name="google-site-verification" content="wl6j0pA_TmjRllzBhmc--7AGpBvcKpCBQ_eSetJd1-I" />
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" /><link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="apple-touch-icon" sizes="192x192" href="/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     if (window.tailwind) {{
@@ -624,19 +376,8 @@ html = f"""<!DOCTYPE html>
         theme: {{
           extend: {{
             colors: {{
-              nude: {{
-                50: '#FAF8F5',
-                100: '#F7F4F0',
-                200: '#EBE5DF',
-                300: '#D9D0C7',
-                900: '#1A1A1A'
-              }},
-              champagne: {{
-                300: '#F4E4BA',
-                400: '#E6CA65',
-                500: '#C5A059',
-                600: '#A38038'
-              }}
+              nude: {{ 50: '#FAF8F5', 100: '#F7F4F0', 200: '#EBE5DF', 300: '#D9D0C7', 900: '#1A1A1A' }},
+              champagne: {{ 300: '#F4E4BA', 400: '#E6CA65', 500: '#C5A059', 600: '#A38038' }}
             }},
             fontFamily: {{
               serif: ['"Cormorant Garamond"', '"Playfair Display"', 'serif'],
@@ -647,21 +388,14 @@ html = f"""<!DOCTYPE html>
       }}
     }}
   </script>
-
-  <!-- Firebase Cloud SDK Integration for Permanent Customer DB -->
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-
   <style>
 {css_code}
   </style>
 </head>
 <body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#C5A059] selection:text-white min-h-screen flex flex-col justify-between">
-  
-  <!-- Main Application Container (Instant Direct Render) -->
   <div id="app"></div>
-
-  <!-- Inline Full Application Logic -->
   <script>
 {full_js}
 
@@ -680,7 +414,9 @@ os.makedirs('dist', exist_ok=True)
 with open('dist/index.html', 'w', encoding='utf-8') as f:
     f.write(html)
 
-# Create static fallback directories for every route to ensure 0-fail 200 OK on Vercel
+with open('dist/app.js', 'w', encoding='utf-8') as f:
+    f.write(full_js)
+
 cat_slugs = ['mangalsutras', 'mens', 'earrings', 'rings', 'necklaces', 'bracelets', 'gifting', 'new-arrivals', 'best-seller', 'fine-silver', '9kt-fine-gold', 'all']
 for slug in cat_slugs:
     cat_dir = os.path.join('category', slug)
@@ -693,7 +429,4 @@ for slug in cat_slugs:
     with open(os.path.join(dist_cat_dir, 'index.html'), 'w', encoding='utf-8') as f:
         f.write(html)
 
-with open('dist/app.js', 'w', encoding='utf-8') as f:
-    f.write(full_js)
-
-print('Successfully cleaned app.js and generated clean index.html!')
+print('Successfully created clean clean_app.py without duplicate admin blocks!')
