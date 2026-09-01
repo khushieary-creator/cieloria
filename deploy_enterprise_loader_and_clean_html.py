@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+import os
+
+with open('app.js', 'r', encoding='utf-8') as f:
+    full_js = f.read()
+
+with open('style.css', 'r', encoding='utf-8') as f:
+    css_code = f.read()
+
+os.makedirs('public', exist_ok=True)
+with open('public/app.js', 'w', encoding='utf-8') as f:
+    f.write(full_js)
+
+os.makedirs('dist', exist_ok=True)
+with open('dist/app.js', 'w', encoding='utf-8') as f:
+    f.write(full_js)
+
+html_template = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,188 +56,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <style>
 @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-/* Palmonas Style CSS Tokens & Clean Layout */
-:root {
-  --bg-nude: #F6F4EF;
-  --bg-header-search: #F3EFE6;
-  --bg-card: #FFFFFF;
-  --bg-dark: #000000;
-  
-  --text-primary: #1A1A1A;
-  --text-muted: #6B655F;
-  --text-gold: #C5A059;
-  
-  --primary-gold: #C5A059;
-  --gold-glow: #F4E4BA;
-  
-  --border-nude: #E6E1D7;
-  
-  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: #FFFFFF;
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  -webkit-font-smoothing: antialiased;
-}
-
-#app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Subheader Navigation Links Hover & Active State */
-.subnav-btn {
-  color: #1A1A1A !important;
-  font-weight: 500 !important;
-  transition: color 0.2s ease, border-color 0.2s ease !important;
-  background: transparent !important;
-  border: none !important;
-  cursor: pointer !important;
-}
-
-.subnav-btn:hover {
-  color: #C5A059 !important;
-}
-
-.subnav-btn.active {
-  color: #C5A059 !important;
-  font-weight: 700 !important;
-  border-bottom: 2px solid #C5A059 !important;
-  padding-bottom: 2px !important;
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #F6F4EF;
-}
-::-webkit-scrollbar-thumb {
-  background: #C5A059;
-  border-radius: 3px;
-}
-
-/* Gold Gradient Text */
-.gold-gradient-text {
-  background: linear-gradient(135deg, #D4AF37 0%, #C5A059 50%, #99752D 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Palmonas Category Badges */
-.badge-luxe {
-  background-color: #D4AF37;
-  color: #FFFFFF;
-  font-size: 8px;
-  font-weight: 700;
-  padding: 1px 5px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  position: absolute;
-  top: -8px;
-  right: 0;
-}
-
-.badge-alamode {
-  background-color: #4A90E2;
-  color: #FFFFFF;
-  font-size: 8px;
-  font-weight: 700;
-  padding: 1px 5px;
-  border-radius: 4px;
-  text-transform: lowercase;
-  position: absolute;
-  top: -8px;
-  right: 0;
-}
-
-.badge-new {
-  background-color: #4A0E17;
-  color: #FFFFFF;
-  font-size: 8px;
-  font-weight: 700;
-  padding: 1px 5px;
-  border-radius: 4px;
-  text-transform: uppercase;
-  position: absolute;
-  top: -8px;
-  right: 0;
-}
-
-/* Hero Slider Buttons */
-.btn-palmonas-hero {
-  border: 1px solid #FFFFFF;
-  color: #FFFFFF;
-  background: transparent;
-  padding: 10px 24px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.btn-palmonas-hero:hover {
-  background: #FFFFFF;
-  color: #000000;
-}
-
-/* Infinite Seamless Marquee Animation */
-.marquee-container {
-  display: flex !important;
-  overflow: hidden !important;
-  user-select: none !important;
-  background: #000000 !important;
-  color: #FFFFFF !important;
-  font-size: 11px !important;
-  letter-spacing: 0.08em !important;
-  padding: 10px 0 !important;
-  white-space: nowrap !important;
-  width: 100% !important;
-}
-
-.marquee-content {
-  flex-shrink: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-around !important;
-  min-width: 100% !important;
-  gap: 2.5rem !important;
-  animation: marquee-infinite 22s linear infinite !important;
-}
-
-@keyframes marquee-infinite {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-.card-elevation {
-  transition: all 0.3s ease;
-}
-.card-elevation:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
+""" + css_code + """
   </style>
 </head>
 <body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#C5A059] selection:text-white min-h-screen flex flex-col justify-between">
@@ -261,3 +96,24 @@ body {
   </script>
 </body>
 </html>
+"""
+
+with open('index.html', 'w', encoding='utf-8') as f:
+    f.write(html_template)
+
+with open('dist/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_template)
+
+cat_slugs = ['mangalsutras', 'mens', 'earrings', 'rings', 'necklaces', 'bracelets', 'gifting', 'new-arrivals', 'best-seller', 'fine-silver', '9kt-fine-gold', 'all']
+for slug in cat_slugs:
+    cat_dir = os.path.join('category', slug)
+    os.makedirs(cat_dir, exist_ok=True)
+    with open(os.path.join(cat_dir, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(html_template)
+    
+    dist_cat_dir = os.path.join('dist', 'category', slug)
+    os.makedirs(dist_cat_dir, exist_ok=True)
+    with open(os.path.join(dist_cat_dir, 'index.html'), 'w', encoding='utf-8') as f:
+        f.write(html_template)
+
+print('Successfully deployed Enterprise Champagne Gold Loader and lightweight index.html!')
