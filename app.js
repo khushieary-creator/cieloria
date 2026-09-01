@@ -5380,19 +5380,31 @@ function syncStateFromUrl() {
         state.viewMode = 'pdp';
       }
     } else if (path.startsWith('/category/')) {
-      const slug = path.replace('/category/', '');
+      const rawSlug = path.replace('/category/', '').toLowerCase();
       const categoryMap = {
-        'new-arrivals': 'New Arrivals',
+        'new-arrivals': 'NewArrivals',
+        'best-seller': 'BestSeller',
+        'bestseller': 'BestSeller',
+        'fine-silver': 'FineSilver',
+        '9kt-fine-gold': 'NineKTGold',
         'anti-tarnish': 'Anti-Tarnish',
         'waterproof': 'Waterproof',
         'rings': 'Rings',
         'earrings': 'Earrings',
         'necklaces': 'Necklaces',
         'bracelets': 'Bracelets',
-        'gifting': 'Gifting',
-        'bestsellers': 'Bestsellers'
+        'mangalsutras': 'Mangalsutras',
+        'mangalsutra': 'Mangalsutras',
+        'mens': 'Mens',
+        'men': 'Mens',
+        'gifting': 'Gifting'
       };
-      state.plpCategory = categoryMap[slug] || (slug ? slug.replace(/-/g, ' ').toUpperCase() : 'All');
+      if (categoryMap[rawSlug]) {
+        state.plpCategory = categoryMap[rawSlug];
+      } else {
+        const matchedKey = Object.keys(PLP_CATEGORY_DATA).find(k => k.toLowerCase() === rawSlug || k.toLowerCase() === rawSlug.replace(/-/g, ''));
+        state.plpCategory = matchedKey || 'All';
+      }
       state.viewMode = 'plp';
     }
   } catch(e) {}
