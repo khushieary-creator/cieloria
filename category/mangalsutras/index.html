@@ -39,7 +39,6 @@
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
   <style>
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 /* Palmonas Style CSS Tokens & Clean Layout */
 :root {
   --bg-nude: #F6F4EF;
@@ -226,15 +225,7 @@ body {
 </head>
 <body class="bg-white text-[#1A1A1A] font-sans antialiased selection:bg-[#C5A059] selection:text-white min-h-screen flex flex-col justify-between">
   
-  <div id="app">
-    <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #FAF8F5; font-family: sans-serif;">
-      <div style="text-align: center;">
-        <div style="width: 48px; height: 48px; border: 3px solid #C5A059; border-top-color: transparent; border-radius: 50%; animation: spin 0.8s linear infinite; margin: 0 auto 16px;"></div>
-        <div style="font-family: Cormorant Garamond, serif; font-size: 20px; font-weight: 700; color: #1A1A1A; letter-spacing: 0.1em; text-transform: uppercase;">CIELORIA DEMIFINE®</div>
-        <div style="font-size: 11px; color: #A38038; margin-top: 6px; letter-spacing: 0.05em; font-weight: 600;">Loading Luxury Jewelry Storefront...</div>
-      </div>
-    </div>
-  </div>
+  <div id="app"></div>
 
   <script>
 
@@ -5752,7 +5743,7 @@ try {
       initializeCieloriaApp();
     }
 
-    setTimeout(initializeCieloriaApp, 10);
+    setTimeout(initializeCieloriaApp, 1);
   </script>
 </body>
 </html>
