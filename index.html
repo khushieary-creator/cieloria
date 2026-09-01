@@ -3339,12 +3339,12 @@ const FINE_GOLD_PRODUCTS = [
 ];
 
 const CIRCLE_CATEGORIES = [
-  { name: "Earrings", cat: "Earrings", image: PRODUCTS[43].image },
-  { name: "Necklaces", cat: "Necklaces", image: PRODUCTS[59].image },
-  { name: "Bracelets", cat: "Bracelets", image: PRODUCTS[0].image },
-  { name: "Rings", cat: "Rings", image: PRODUCTS[30].image },
-  { name: "Mangalsutras", cat: "Necklaces", image: PRODUCTS[62].image },
-  { name: "Mens", cat: "Bracelets", image: PRODUCTS[2].image }
+  { name: "Earrings", cat: "Earrings", image: PRODUCTS[45].image },
+  { name: "Necklaces", cat: "Necklaces", image: PRODUCTS[61].image },
+  { name: "Bracelets", cat: "Bracelets", image: PRODUCTS[2].image },
+  { name: "Rings", cat: "Rings", image: PRODUCTS[32].image },
+  { name: "Mangalsutras", cat: "Mangalsutras", image: PRODUCTS[0].image },
+  { name: "Mens", cat: "Mens", image: PRODUCTS[3].image }
 ];
 
 const FOR_EVERY_YOU_CARDS = [
@@ -4289,6 +4289,8 @@ function renderHomepageView(currentHero) {
 
   const topStylesProducts = PRODUCTS.filter(p => {
     if (selectedTabCategory === 'ALL') return true;
+    if (selectedTabCategory === 'MANGALSUTRA') return p.category === 'Mangalsutras' || p.name.toLowerCase().includes('mangalsutra');
+    if (selectedTabCategory === 'MENS') return p.category === 'Mens' || p.id === 'traditional-engraved-gold-kada' || p.id === 'luxury-black-silicone-rose-gold-plated-crystal-bracelet';
     return p.category.toUpperCase() === selectedTabCategory.toUpperCase();
   });
 
