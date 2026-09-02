@@ -2829,28 +2829,7 @@ const PRODUCTS = [
     "materials": "18K Gold Plated PVD Vacuum Coating over 316L Surgical Grade Stainless Steel.",
     "care": "100% Shower and swim safe. Tarnish resistant. Wipe with a dry soft cloth after sea/ocean water exposure."
   }
-];
-
-const CURRENCIES = {
-  INR: { symbol: '₹', rate: 1, label: 'INR (₹)' },
-  USD: { symbol: '$', rate: 0.012, label: 'USD ($)' },
-  EUR: { symbol: '€', rate: 0.011, label: 'EUR (€)' },
-  GBP: { symbol: '£', rate: 0.0094, label: 'GBP (£)' }
-};
-
-const ANNOUNCEMENTS = [
-  "RAKHI SALE - STARTING FROM FLAT ₹999",
-  "⚡ FREE STUDS of ₹1495 on orders above ₹2999",
-  "Buy 1 Get 1 Free | Use Code - B1G1"
-];
-
-const SEARCH_PLACEHOLDERS = [
-  "Search for Mangalsutra...",
-  "Search for Necklaces...",
-  "Search Gifts for your dearest...",
-  "Search for Solitaire Rings...",
-  "Search for Anti-Tarnish Bangles..."
-];,
+,
   {
     "id": "luxe-solitaire-diamond-18k-gold-mangalsutra",
     "name": "Luxe Solitaire Diamond 18K Gold Mangalsutra",
@@ -2915,7 +2894,29 @@ const SEARCH_PLACEHOLDERS = [
     "dimensions": "Length: 18 inches",
     "materials": "18K Gold Plated PVD Stainless Steel.",
     "care": "Waterproof. Wipe dry after bath/ocean water."
-  },
+  }
+];
+
+const CURRENCIES = {
+  INR: { symbol: '₹', rate: 1, label: 'INR (₹)' },
+  USD: { symbol: '$', rate: 0.012, label: 'USD ($)' },
+  EUR: { symbol: '€', rate: 0.011, label: 'EUR (€)' },
+  GBP: { symbol: '£', rate: 0.0094, label: 'GBP (£)' }
+};
+
+const ANNOUNCEMENTS = [
+  "RAKHI SALE - STARTING FROM FLAT ₹999",
+  "⚡ FREE STUDS of ₹1495 on orders above ₹2999",
+  "Buy 1 Get 1 Free | Use Code - B1G1"
+];
+
+const SEARCH_PLACEHOLDERS = [
+  "Search for Mangalsutra...",
+  "Search for Necklaces...",
+  "Search Gifts for your dearest...",
+  "Search for Solitaire Rings...",
+  "Search for Anti-Tarnish Bangles..."
+];
 
 const CUSTOMER_REVIEWS = [
   { name: "N.", verified: true, date: "27/7/2026", rating: 5, comment: "good" },
