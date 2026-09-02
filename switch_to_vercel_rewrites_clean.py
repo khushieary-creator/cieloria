@@ -1,4 +1,7 @@
-{
+import os
+
+# Clean Vercel Rewrites Configuration (Modern Vercel Standard)
+vercel_config = """{
   "rewrites": [
     {
       "source": "/category/:slug*",
@@ -26,3 +29,9 @@
     }
   ]
 }
+"""
+
+with open('vercel.json', 'w', encoding='utf-8') as f:
+    f.write(vercel_config)
+
+print('Successfully updated vercel.json with clean rewrites!')
