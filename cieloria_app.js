@@ -3107,29 +3107,55 @@ const BLOG_POSTS = [
     slug: "lab-grown-diamonds",
     day: "03",
     month: "MAR",
-    tag: "DIAMOND CARE",
-    title: "Lab-Grown Diamonds: Styling & Care for the Modern Indian Woman",
-    image: "/blog_1.jpg",
-    excerpt: "If jewellery had a reality check, lab-grown diamonds would be it. Real, pretty, conflict-free, and crafted for everyday elegance.",
+    tag: "DIAMOND CARE & STYLE",
+    title: "Lab-Grown Diamonds: The Modern Indian Woman’s Guide to Everyday Luxury",
+    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
+    excerpt: "If jewellery had a reality check, lab-grown diamonds would be it. Real, conflict-free, 100% certified, and crafted for everyday elegance.",
+    featuredProductIds: ["luxury-gold-plated-anti-tarnish-stone-bracelet", "PROD-001", "PROD-002"],
     fullContent: `
-      <p class="text-base text-slate-700 leading-relaxed">If jewellery had a reality check, lab-grown diamonds would be it. Real, pretty, conflict-free, and crafted for everyday elegance. In a world where luxury often feels distant or delicate, lab-grown diamonds bring brilliant sparkle straight into your daily wardrobe.</p>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        In a world where fine luxury used to be reserved only for weddings or stored away in iron safes, <strong>lab-grown diamonds</strong> have sparked a quiet revolution. They bring the exact optical brilliance, 10/10 Mohs hardness, and fire of natural diamonds straight into your daily wardrobe—without the traditional price markup or environmental concerns.
+      </p>
       
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">What Are Lab-Grown Diamonds?</h3>
-      <p class="text-base text-slate-700 leading-relaxed">Lab-grown diamonds are grown using advanced technology that replicates the natural pressure and temperature deep within the earth. They possess the exact same chemical, optical, and physical properties as mined diamonds — with identical hardness, brilliance, and fire.</p>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. What Are Lab-Grown Diamonds Really Made Of?</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Let’s set the record straight: lab-grown diamonds are <strong>not fake, cubic zirconia, or moissanite</strong>. They are 100% real carbon diamonds created using advanced CVD (Chemical Vapor Deposition) and HPHT (High Pressure High Temperature) technology that replicates the exact geological conditions beneath the earth’s crust.
+      </p>
 
-      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-6 bg-[#FAF8F5] py-4 rounded-r-xl">
-        "Real sparkle shouldn't be locked away in a safe. It's meant to catch the light on your morning coffee run and shine at evening dinners."
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Property</th>
+              <th class="p-3.5">Natural Mined Diamond</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Lab-Grown</th>
+              <th class="p-3.5">Cubic Zirconia (CZ)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Chemical Composition</td><td class="p-3.5">Pure Carbon (C)</td><td class="p-3.5 font-bold text-emerald-700">Pure Carbon (C)</td><td class="p-3.5">Zirconium Dioxide</td></tr>
+            <tr><td class="p-3.5 font-semibold">Mohs Hardness</td><td class="p-3.5">10 / 10</td><td class="p-3.5 font-bold text-emerald-700">10 / 10 (Scratchproof)</td><td class="p-3.5 text-red-600">8 / 10 (Scratches Easily)</td></tr>
+            <tr><td class="p-3.5 font-semibold">Refractive Index</td><td class="p-3.5">2.42</td><td class="p-3.5 font-bold text-emerald-700">2.42 (Identical Fire)</td><td class="p-3.5">2.15</td></tr>
+            <tr><td class="p-3.5 font-semibold">Eco Impact</td><td class="p-3.5 text-red-600">High Mining Deforestation</td><td class="p-3.5 font-bold text-emerald-700">Zero Mining / Conflict-Free</td><td class="p-3.5">Synthetic Plastic/Glass</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Real sparkle shouldn't be locked away in a safe. It's meant to catch the light on your morning coffee run, glow during Zoom meetings, and shine at evening dinners."
       </blockquote>
 
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">Styling Solitaire Diamonds for Everyday Glamour</h3>
-      <p class="text-base text-slate-700 leading-relaxed">Pairing a solitaire lab-grown diamond pendant with 18K thick gold plated chains creates a timeless look. You can stack open-bezel rings with twisted gold bands for a subtle yet striking minimalist aesthetic.</p>
-
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">How to Clean & Preserve Your Demifine Solitaires</h3>
-      <ul class="list-disc pl-6 text-base text-slate-700 space-y-2">
-        <li>Wash gently with lukewarm soapy water and a soft bristle brush once a month.</li>
-        <li>Avoid harsh industrial chemicals or bleach.</li>
-        <li>Store in your CIELORIA anti-tarnish suede pouch when traveling.</li>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. 3 Effortless Stacking Formulas for Everyday Wear</h3>
+      <ul class="list-disc pl-6 text-base text-slate-700 space-y-3 font-sans mb-6">
+        <li><strong>The Solitaire & Snake Chain Layer:</strong> Pair a 1ct solitaire lab-grown diamond pendant with a 14" 18K thick gold PVD herringbone chain for collarbone drama.</li>
+        <li><strong>The Mixed Metal Finger Stack:</strong> Wear a 925 sterling silver solitaire ring stacked between two 18K gold micro-pave eternity bands.</li>
+        <li><strong>The Office-to-Dinner Hoop:</strong> Huggie hoops with bezel-set diamond drops give instant polish to crisp white shirts and tailored blazers.</li>
       </ul>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">3. Cleaning & Care Routine for 24/7 Brilliance</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Because CIELORIA lab-grown diamonds are set in 316L surgical stainless steel and 925 sterling silver with thick PVD 18K gold vacuum plating, they are 100% waterproof. Soak your diamond pieces in warm water with mild dish soap once a month, gently scrub with the soft CIELORIA microfiber brush, and dry thoroughly.
+      </p>
     `
   },
   {
@@ -3137,26 +3163,48 @@ const BLOG_POSTS = [
     slug: "womens-day-jewellery-guide",
     day: "02",
     month: "MAR",
-    tag: "WOMEN'S EDITION",
-    title: "The Women's Day Jewellery Guide Nobody Asked For, But Everybody Needed",
-    image: "/blog_2.jpg",
-    excerpt: "Beyoncé told us who runs the world. Legally Blonde proved that a woman can wear gold and dominate the boardroom.",
+    tag: "CAPSULE WARDROBE",
+    title: "The Ultimate Demifine® Capsule Jewelry Guide: 5 Essential Staples Every Woman Needs",
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80",
+    excerpt: "Beyoncé told us who runs the world. Build your 100% waterproof, anti-tarnish 18K gold capsule jewelry wardrobe for office, workouts, and dinners.",
+    featuredProductIds: ["PROD-003", "PROD-007", "PROD-010"],
     fullContent: `
-      <p class="text-base text-slate-700 leading-relaxed">Beyoncé told us who runs the world. Legally Blonde proved that a woman can wear gold and dominate the boardroom. Demifine jewelry isn't just an accessory — it's a daily assertion of grace, strength, and individuality.</p>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Fast-fashion brass jewelry that turns your neck green after one humid day is officially obsolete. Modern Indian women demand jewelry that works as hard as they do: <strong>100% waterproof, anti-tarnish, hypoallergenic, and crafted from 316L surgical grade steel and 925 sterling silver</strong>.
+      </p>
 
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">Why Self-Gifting Matters</h3>
-      <p class="text-base text-slate-700 leading-relaxed">Waiting for a special milestone to buy gold is a thing of the past. Today's modern woman celebrates her own wins — big or small — with lasting demifine pieces that elevate her everyday wardrobe.</p>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">The 5 Non-Negotiable Staples of a Demifine® Capsule</h3>
 
-      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-6 bg-[#FAF8F5] py-4 rounded-r-xl">
-        "Wear the gold hoop earrings to work. Wear the pendant necklace to coffee. Every day is a occasion worth dressing up for."
+      <div class="space-y-6 my-6">
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">Staple #1: The 18K Gold Plated Classic Hoops</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Medium-sized gold hoops elevate a casual t-shirt and jeans in under 3 seconds. CIELORIA PVD plating ensures you can wear them in the shower or gym without rusting.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">Staple #2: The Layered Pendant Necklace</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">A dual-layer chain with a central coin or solitaire motif gives instant depth to deep V-necks, sarees, and crisp office shirts.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">Staple #3: The Lucknow Heritage Kada / Bangle</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">A bold symbol of strength. Our Lucknow flagship studio crafts hand-polished 18K thick gold kadas that never lose their mirror shine.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">Staple #4: The Stackable Eternity Ring</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Micro-set cubic zirconia eternity bands look effortless stacked together or worn solo on the index finger.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">Staple #5: Modern Anti-Tarnish Mangalsutra</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Minimal black beads paired with 18K thick gold geometric pendants—designed for modern married women who want tradition without bulky design.</p>
+        </div>
+      </div>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Self-gifting is self-love. You don't need to wait for an occasion or permission to wear gold."
       </blockquote>
-
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">Top 3 Pieces Every Woman Needs in Her Capsule Collection</h3>
-      <ol class="list-decimal pl-6 text-base text-slate-700 space-y-2">
-        <li><strong>Classic Golden Hoop Earrings:</strong> Lightweight, anti-tarnish, and skin-safe for 24/7 wear.</li>
-        <li><strong>Layered Chain Pendant:</strong> Adds effortless texture to t-shirts, dresses, and formal blazers.</li>
-        <li><strong>Structured Kada Bangle:</strong> A bold symbol of confidence and timeless Indian heritage.</li>
-      </ol>
     `
   },
   {
@@ -3164,27 +3212,73 @@ const BLOG_POSTS = [
     slug: "gold-vs-silver-jewellery",
     day: "01",
     month: "MAR",
-    tag: "STYLE COMPARISON",
-    title: "Gold vs Silver Jewellery: How to Choose What Suits You Best",
-    image: "/blog_3.jpg",
-    excerpt: "The great debate is always on – gold or silver? That's like asking, chai or coffee? Here is how to find your true metallic signature.",
+    tag: "STYLING MASTERCLASS",
+    title: "Gold vs Silver: How to Find Your Metallic Signature & Master Mixed Metals",
+    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
+    excerpt: "Chai or coffee? Gold or Silver? Learn the wrist vein test to identify your skin tone and master 2026's boldest mixed-metal jewelry trend.",
+    featuredProductIds: ["PROD-004", "PROD-008", "PROD-012"],
     fullContent: `
-      <p class="text-base text-slate-700 leading-relaxed">The great debate is always on – gold or silver? That's like asking, chai or coffee? Both have their unique charm, but finding your true metallic match will instantly harmonize your wardrobe and complement your skin tones.</p>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        The debate between 18K Champagne Gold and 925 Fine Silver is timeless. But in 2026, the strict fashion rules of the past have evolved. Understanding your skin’s undertone helps you choose your base metal, while mixing both metals unlocks endless styling possibilities.
+      </p>
 
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">Determining Your Skin Undertone</h3>
-      <p class="text-base text-slate-700 leading-relaxed">Look at the veins on your inner wrist under natural light:</p>
-      <ul class="list-disc pl-6 text-base text-slate-700 space-y-2">
-        <li><strong>Warm Undertones (Greenish veins):</strong> 18K Champagne Gold plating glows against warm skin tones.</li>
-        <li><strong>Cool Undertones (Blueish veins):</strong> 925 Sterling Fine Silver provides a crisp, luminous contrast.</li>
-        <li><strong>Neutral Undertones (Mix of blue & green):</strong> You hit the jackpot! Both gold and silver look stunning on you.</li>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">The 10-Second Wrist Vein Test</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Stand near a window in natural sunlight and examine the color of the veins on the inside of your wrist:
+      </p>
+
+      <ul class="list-disc pl-6 text-base text-slate-700 space-y-3 font-sans mb-6">
+        <li><strong>Greenish Veins (Warm Undertone):</strong> Your skin radiates against <strong>18K Warm Gold & Rose Gold</strong> plating. It brings out honey undertones in Indian complexions.</li>
+        <li><strong>Blueish / Purple Veins (Cool Undertone):</strong> Your skin lights up with <strong>925 Sterling Fine Silver</strong>. It gives a crisp, icy, high-contrast glow.</li>
+        <li><strong>Blue-Green Mix (Neutral Undertone):</strong> You hit the genetic jackpot! Both gold and silver look breathtaking on you.</li>
       </ul>
 
-      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-6 bg-[#FAF8F5] py-4 rounded-r-xl">
-        "Can you mix gold and silver together? Absolutely! Mixed metal styling is one of 2026's boldest fashion trends."
-      </blockquote>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">Golden Rules for Mixing Gold & Silver Together</h3>
+      <ol class="list-decimal pl-6 text-base text-slate-700 space-y-3 font-sans mb-6">
+        <li><strong>Maintain a 70/30 Ratio:</strong> Choose one dominant metal (e.g. 70% gold chains) and anchor with 30% silver accents (e.g. silver pendant or rings).</li>
+        <li><strong>Keep the Aesthetic Consistent:</strong> Don't mix vintage filigree silver with modern geometric gold. Pair minimalist silver bands with sleek gold bands.</li>
+        <li><strong>Use a 2-in-1 Bridge Piece:</strong> A dual-tone ring or mixed-metal bracelet ties the whole look together seamlessly.</li>
+      </ol>
+    `
+  },
+  {
+    id: "blog-4",
+    slug: "lucknow-craftsmanship-1-year-anniversary",
+    day: "25",
+    month: "FEB",
+    tag: "BRAND HERITAGE",
+    title: "Celebrating 1 Year of CIELORIA: Bringing Lucknow’s Royal Heritage to 80L+ Indian Women",
+    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    excerpt: "Founded in Lucknow, Uttar Pradesh 1 year ago. Discover how royal Chikankari artistry and Nawabi elegance inspire our 100% waterproof 18K gold PVD technology.",
+    featuredProductIds: ["PROD-006", "PROD-009", "PROD-011"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Exactly 365 days ago in the historic city of <strong>Lucknow, Uttar Pradesh</strong>, CIELORIA was born with a single revolutionary vision: to bridge the massive gap between expensive solid gold and low-quality imitation brass jewelry.
+      </p>
 
-      <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A] pt-4">The CIELORIA Waterproof Promise</h3>
-      <p class="text-base text-slate-700 leading-relaxed">Whether you choose 18K Gold Demifine or 925 Fine Silver, all CIELORIA pieces are treated with protective anti-tarnish seals, ensuring 100% waterproof resilience against sweat and daily wear.</p>
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1-Year Milestone Achievements</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8 text-center">
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <span class="font-serif text-3xl font-bold text-[#C5A059] block">80L+</span>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Happy Customers</span>
+        </div>
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <span class="font-serif text-3xl font-bold text-[#C5A059] block">100%</span>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Waterproof PVD</span>
+        </div>
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <span class="font-serif text-3xl font-bold text-[#C5A059] block">1 Year</span>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Color Warranty</span>
+        </div>
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <span class="font-serif text-3xl font-bold text-[#C5A059] block">Lucknow</span>
+          <span class="text-xs text-slate-500 font-semibold uppercase tracking-wider">HQ & Studio</span>
+        </div>
+      </div>
+
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Inspired by Lucknow's world-famous Chikankari needlework and Nawabi royal jewelry, our master artisans craft each piece using 316L surgical steel and 925 sterling silver sealed with 18K thick gold PVD vacuum plating. Thank you for making CIELORIA India's favorite Demifine® destination!
+      </p>
     `
   }
 ];
@@ -5482,6 +5576,7 @@ window.openBlogPage = function(slug, skipPush = false) {
 function renderBlogDetailView() {
   const post = BLOG_POSTS.find(b => b.slug === state.selectedBlogSlug) || BLOG_POSTS[0];
   const otherPosts = BLOG_POSTS.filter(b => b.slug !== post.slug);
+  const featuredProducts = (post.featuredProductIds || []).map(id => PRODUCTS.find(p => p.id === id || (p.name && p.name.toLowerCase().includes('bracelet')))).filter(Boolean).slice(0, 3);
 
   return `
     <div class="bg-white min-h-screen pb-20 animate-fade-in text-left">
@@ -5501,7 +5596,7 @@ function renderBlogDetailView() {
         <div class="flex items-center gap-3">
           <span class="bg-[#C5A059] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-sm">${post.tag}</span>
           <span class="text-xs text-slate-400 font-medium">📅 ${post.day} ${post.month} 2026</span>
-          <span class="text-xs text-slate-400 font-medium">⏱️ 4 min read</span>
+          <span class="text-xs text-slate-400 font-medium">⏱️ 5 min read</span>
         </div>
 
         <h1 class="font-serif text-3xl sm:text-5xl font-bold text-[#1A1A1A] leading-tight">${post.title}</h1>
@@ -5512,13 +5607,37 @@ function renderBlogDetailView() {
       <!-- Featured Image -->
       <div class="max-w-4xl mx-auto px-4 mb-10">
         <div class="aspect-video sm:aspect-[16/9] rounded-3xl overflow-hidden shadow-lg border border-[#E6E1D7] bg-slate-100">
-          <img src="${post.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover" />
+          <img src="${post.image}" class="w-full h-full object-cover" />
         </div>
       </div>
 
       <!-- Article Main Content -->
       <article class="max-w-3xl mx-auto px-4 space-y-6 text-slate-800 leading-relaxed text-base font-sans border-b border-[#E6E1D7] pb-12 mb-16">
         ${post.fullContent}
+
+        <!-- Featured Products Section inside Blog -->
+        ${featuredProducts.length > 0 ? `
+          <div class="mt-10 p-6 sm:p-8 bg-[#FAF8F5] border border-[#E6E1D7] rounded-3xl space-y-4 text-left">
+            <div class="space-y-1">
+              <span class="text-[10px] font-bold text-[#C5A059] uppercase tracking-widest">SHOP THE LOOK</span>
+              <h3 class="font-serif text-xl sm:text-2xl font-bold text-[#1A1A1A]">Featured Jewelry in this Article</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              ${featuredProducts.map(p => `
+                <div class="bg-white border border-[#E6E1D7] rounded-2xl p-3 flex flex-col justify-between space-y-3 shadow-xs">
+                  <div onclick="openPDP('${p.id}')" class="cursor-pointer space-y-2">
+                    <img src="${p.image}" class="w-full h-36 object-cover rounded-xl" />
+                    <h4 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${p.name}</h4>
+                    <div class="text-xs font-bold text-[#1A1A1A]">${formatPrice(p.price)}</div>
+                  </div>
+                  <button onclick="addToCart('${p.id}')" class="w-full bg-[#1A1A1A] hover:bg-[#C5A059] text-white py-2 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-colors cursor-pointer">
+                    Add to Cart
+                  </button>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
 
         <div class="pt-8 flex items-center justify-between border-t border-[#E6E1D7] mt-10">
           <button onclick="switchViewMode('homepage')" class="border border-black text-black hover:bg-black hover:text-white px-6 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors">
@@ -5538,7 +5657,7 @@ function renderBlogDetailView() {
           ${otherPosts.map(other => `
             <div onclick="openBlogPage('${other.slug}')" class="flex gap-4 p-4 rounded-2xl bg-[#FAF8F5] border border-[#E6E1D7] cursor-pointer hover:border-[#C5A059] transition-all group">
               <img src="${other.image}" class="w-24 h-24 object-cover rounded-xl shrink-0 group-hover:scale-105 transition-transform" />
-              <div class="space-y-1 my-auto">
+              <div class="space-y-1 my-auto text-left">
                 <span class="text-[9px] font-bold text-[#C5A059] uppercase tracking-wider">${other.tag}</span>
                 <h4 class="font-serif text-base font-bold text-[#1A1A1A] line-clamp-2 leading-snug group-hover:text-[#C5A059]">${other.title}</h4>
                 <span class="text-[10px] text-slate-400 font-medium">Read Article →</span>
