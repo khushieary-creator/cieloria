@@ -4318,33 +4318,7 @@ function renderHomepageView(currentHero) {
       <div class="text-center pt-4"><button onclick="openPLPCategory('BestSeller')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
     </section>
 
-    <!-- 6. 9KT FINE GOLD Grid -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 sm:space-y-10 border-t border-[#E6E1D7]">
-      <div class="text-center space-y-2"><h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">9KT FINE GOLD</h2></div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-        ${FINE_GOLD_PRODUCTS.map(fg => `
-          <div class="group relative bg-white border border-[#E6E1D7] p-3 sm:p-4 text-left flex flex-col justify-between rounded-xl cursor-pointer hover:shadow-lg transition-all space-y-3">
-            <div onclick="openPDP('${fg.id}')" class="relative aspect-square w-full bg-[#F6F4EF] rounded-lg overflow-hidden">
-              <img src="${fg.image}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
-              <button onclick="event.stopPropagation(); toggleWishlist('${fg.id}');" class="absolute bottom-2 left-2 text-base z-20">
-                ${state.wishlist.includes(fg.id) ? '❤️' : '🤍'}
-              </button>
-            </div>
-            
-            <div class="flex-1 flex flex-col justify-between space-y-2.5">
-              <div onclick="openPDP('${fg.id}')" class="space-y-1">
-                <h4 class="font-serif text-xs font-bold text-[#1A1A1A] group-hover:text-[#C5A059] line-clamp-2">${fg.name}</h4>
-                <div class="text-xs font-bold text-[#1A1A1A] flex items-center gap-2"><span>₹${fg.price.toLocaleString()}</span><span class="text-slate-400 line-through text-[11px] font-normal">₹${fg.originalPrice.toLocaleString()}</span></div>
-              </div>
-
-              <button onclick="event.stopPropagation(); addToCart('${fg.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors">
-                Add to Cart
-              </button>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </section>
+    
 
     <!-- 8. Gifts For Her / Him & FOR EVERY YOU -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
