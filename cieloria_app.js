@@ -3107,7 +3107,7 @@ const BLOG_POSTS = [
     day: "03",
     month: "MAR",
     title: "Lab-Grown Diamonds: Styling & Care for the Modern Indian Woman",
-    image: "/cieloria_hero_rings.jpg",
+    image: "/blog_1.jpg",
     excerpt: "If jewellery had a reality check, lab-grown diamonds would be it. Real, pretty, conflict-free, and crafted for everyday elegance.",
     fullContent: `
       <p class="text-sm text-slate-700 leading-relaxed font-sans">Lab-grown diamonds are identical to mined diamonds in optical, chemical, and physical properties. At Cieloria, our demifine solitaire collection features precision-cut lab-grown CZ and diamonds set in 18K gold plating.</p>
@@ -3120,7 +3120,7 @@ const BLOG_POSTS = [
     day: "02",
     month: "MAR",
     title: "The Women's Day Jewellery Guide Nobody Asked For, But Everybody Needed",
-    image: "/cieloria_hero_necklaces.jpg",
+    image: "/blog_2.jpg",
     excerpt: "Beyoncé told us who runs the world. Legally Blonde proved that a woman can wear gold and dominate the boardroom.",
     fullContent: `
       <p class="text-sm text-slate-700 leading-relaxed font-sans">Celebrate strength, grace, and independence with statement demifine jewelry that empowers every woman to shine on her own terms.</p>
@@ -3133,7 +3133,7 @@ const BLOG_POSTS = [
     day: "01",
     month: "MAR",
     title: "Gold vs Silver Jewellery: How to Choose What Suits You Best",
-    image: "/cieloria_hero_bracelets.jpg",
+    image: "/blog_3.jpg",
     excerpt: "The great debate is always on – gold or silver? That's like asking, chai or coffee? Here is how to find your true metallic signature.",
     fullContent: `
       <p class="text-sm text-slate-700 leading-relaxed font-sans">Choosing between gold and silver comes down to skin undertones, personal wardrobe aesthetics, and occasion styling.</p>
