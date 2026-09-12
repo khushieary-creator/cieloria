@@ -6316,3 +6316,49 @@ if (typeof document !== 'undefined') {
   setTimeout(initializeCieloriaApp, 0);
   setTimeout(initializeCieloriaApp, 20);
 }
+
+// Smart Tab Title Switcher (Cart Retention & Win-back Title Switcher)
+(function initTabTitleSwitcher() {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  
+  let originalTitle = "CIELORIA | Demi-Fine Anti-Tarnish 18K Gold & Silver Jewelry";
+  let titleTimer = null;
+  let titleIndex = 0;
+  
+  const awayTitles = [
+    "❤️ You left this...",
+    "❤️ Come back!",
+    "✨ Your 18K Gold item is waiting!",
+    "🎁 Claim Flat 40% OFF!"
+  ];
+
+  function startTitleAnimation() {
+    if (titleTimer) clearInterval(titleTimer);
+    originalTitle = document.title && !awayTitles.includes(document.title) ? document.title : originalTitle;
+    titleIndex = 0;
+    document.title = awayTitles[0];
+    titleTimer = setInterval(() => {
+      titleIndex = (titleIndex + 1) % awayTitles.length;
+      document.title = awayTitles[titleIndex];
+    }, 1800);
+  }
+
+  function restoreTitle() {
+    if (titleTimer) {
+      clearInterval(titleTimer);
+      titleTimer = null;
+    }
+    document.title = originalTitle;
+  }
+
+  window.addEventListener('blur', startTitleAnimation);
+  window.addEventListener('focus', restoreTitle);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      startTitleAnimation();
+    } else {
+      restoreTitle();
+    }
+  });
+})();
