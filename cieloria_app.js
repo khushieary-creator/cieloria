@@ -3206,14 +3206,32 @@ const SUBHEADER_NAV = [
   { name: "About Us", cat: "About" }
 ];
 
-function getStoredData(key, defaultVal) {
+const memoryStorage = {};
+
+function getStoredData(key, fallback) {
   try {
+    if (typeof window === 'undefined' || typeof localStorage === 'undefined') {
+      return memoryStorage[key] !== undefined ? memoryStorage[key] : fallback;
+    }
     const val = localStorage.getItem(key);
-    return val ? JSON.parse(val) : defaultVal;
+    if (!val || val === 'undefined' || val === 'null' || val === '[object Object]') {
+      return memoryStorage[key] !== undefined ? memoryStorage[key] : fallback;
+    }
+    return JSON.parse(val);
   } catch(e) {
-    return defaultVal;
+    return memoryStorage[key] !== undefined ? memoryStorage[key] : fallback;
   }
 }
+
+function setStoredData(key, val) {
+  try {
+    memoryStorage[key] = val;
+    if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
+      localStorage.setItem(key, JSON.stringify(val));
+    }
+  } catch(e) {}
+}
+
 
 function setStoredData(key, val) {
   try {
