@@ -6043,6 +6043,10 @@ window.openWishlistView = function() {
 
 function syncStateFromUrl() {
   try {
+    state.isCartOpen = false;
+    state.isMobileMenuOpen = false;
+    state.isSearchOpen = false;
+
     const path = window.location.pathname || '/';
     if (path === '/about') {
       state.viewMode = 'about';
@@ -6092,12 +6096,17 @@ function syncStateFromUrl() {
         state.plpCategory = matchedKey || 'All';
       }
       state.viewMode = 'plp';
+    } else {
+      state.viewMode = 'homepage';
+      state.plpCategory = '';
+      state.selectedProductId = null;
     }
   } catch(e) {}
 }
 
 window.addEventListener('popstate', () => {
   syncStateFromUrl();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   renderApp();
 });
 
