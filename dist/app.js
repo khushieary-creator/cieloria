@@ -4456,18 +4456,7 @@ function renderHomepageView(heroParam) {
       </div>
     </section>
 
-    <!-- 2. Special Luxury Gifting Banner -->
-    <section class="py-12 sm:py-16 bg-white text-center space-y-4 border-b border-[#E6E1D7]">
-      <div class="max-w-3xl mx-auto px-4 space-y-3">
-        <h2 class="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-[#4A0E17] italic">
-          Moments this timeless <br class="sm:hidden" />deserve everlasting 18K gold
-        </h2>
-        <p class="text-slate-600 text-xs sm:text-base font-light">Thoughtful luxury keepsakes, anti-tarnish jewelry, and signature velvet gift sets for loved ones.</p>
-        <div class="pt-3">
-          <button onclick="openPLPCategory('Gifting')" class="bg-[#4A0E17] text-white text-xs font-semibold px-6 py-3 rounded-md uppercase tracking-wider hover:bg-[#330A10]">EXPLORE LUXURY GIFTING →</button>
-        </div>
-      </div>
-    </section>
+    
 
     
 
