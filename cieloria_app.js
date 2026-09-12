@@ -4675,25 +4675,70 @@ function renderHomepageView(heroParam) {
       </div>
     </section>
 
-    <!-- 9. SHOP WITH CONFIDENCE -->
-    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-center">
-        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">SHOP WITH CONFIDENCE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          <div class="space-y-2 p-2">
-            <span class="text-3xl sm:text-4xl">😊</span>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">SKIN SAFE</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is hypoallergenic and skin-safe, crafted with care to ensure comfort for all skin types.</p>
+        <!-- 9. SHOP WITH CONFIDENCE (EXACT PALMONAS MATCH - NO EMOJIS, CLEAN LINE-ART SVGs) -->
+    <section class="py-16 sm:py-24 bg-[#FAF8F5] border-y border-[#E6E1D7]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
+        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-[0.25em] text-[#1A1A1A] uppercase">SHOP WITH CONFIDENCE</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
+          <!-- Feature 1: SKIN SAFE -->
+          <div class="space-y-4 p-4 max-w-sm mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <svg class="w-12 h-12 text-[#1A1A1A]" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="24" cy="22" r="13"/>
+                <path d="M18 19c.5-1 1.5-1 2 0"/>
+                <path d="M28 19c.5-1 1.5-1 2 0"/>
+                <path d="M19 25c1.5 2 3.5 3 5 3s3.5-1 5-3"/>
+                <path d="M15 30c-2 0-3.5 1.5-3.5 3.5 0 3 4.5 6 4.5 6s4.5-3 4.5-6c0-2-1.5-3.5-3.5-3.5-1 0-1.5.5-2 1.5-.5-1-1-1.5-2-1.5z" fill="#1A1A1A" stroke="none"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg font-bold tracking-wider text-[#1A1A1A] uppercase">SKIN SAFE</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+              Our jewelry is hypoallergenic and skin-safe, crafted with care to ensure comfort for all skin types. Enjoy beautiful, irritation-free wear every day, knowing each piece is designed with your well-being in mind.
+            </p>
           </div>
-          <div class="space-y-2 p-2">
-            <span class="text-3xl sm:text-4xl">✨</span>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">18K GOLD VERMEIL</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our jewelry is crafted from premium surgical steel, sterling silver, and thick 18k gold plating for lasting shine.</p>
+
+          <!-- Feature 2: 18K GOLD VERMEIL -->
+          <div class="space-y-4 p-4 max-w-sm mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <svg class="w-14 h-14 text-[#1A1A1A]" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="24" y1="4" x2="24" y2="8"/>
+                <line x1="14" y1="7" x2="16.5" y2="10.5"/>
+                <line x1="34" y1="7" x2="31.5" y2="10.5"/>
+                <line x1="8" y1="16" x2="12" y2="17"/>
+                <line x1="40" y1="16" x2="36" y2="17"/>
+                <polygon points="16,20 28,16 36,20 24,24"/>
+                <polygon points="16,20 24,24 24,29 16,25"/>
+                <polygon points="24,24 36,20 36,25 24,29"/>
+                <polygon points="12,30 24,26 32,30 20,34"/>
+                <polygon points="12,30 20,34 20,39 12,35"/>
+                <polygon points="20,34 32,30 32,35 20,39"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg font-bold tracking-wider text-[#1A1A1A] uppercase">18K GOLD VERMEIL</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+              Our jewelry is crafted from premium metals like surgical steel, sterling silver, and thick 18k gold plating, ensuring durability and lasting shine. Experience luxury and quality with every piece, designed to stand the test of time.
+            </p>
           </div>
-          <div class="space-y-2 p-2">
-            <span class="text-3xl sm:text-4xl">💎</span>
-            <h3 class="font-serif text-base sm:text-lg font-bold text-[#1A1A1A]">AUTHENTIC DIAMONDS</h3>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-xs mx-auto">Our lab-grown diamonds are SGL Certified, ensuring the highest standards of quality and ethical origins.</p>
+
+          <!-- Feature 3: AUTHENTIC DIAMONDS -->
+          <div class="space-y-4 p-4 max-w-sm mx-auto">
+            <div class="h-16 flex items-center justify-center">
+              <svg class="w-14 h-14 text-[#1A1A1A]" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 9l1.2 2.5 2.5 1.2-2.5 1.2-1.2 2.5-1.2-2.5-2.5-1.2 2.5-1.2z" fill="#1A1A1A" stroke="none"/>
+                <path d="M37 7l1 2 2 1-2 1-1 2-1-2-2-1 2-1z" fill="#1A1A1A" stroke="none"/>
+                <polygon points="16,18 32,18 40,26 24,42 8,26"/>
+                <line x1="16" y1="18" x2="24" y2="42"/>
+                <line x1="32" y1="18" x2="24" y2="42"/>
+                <line x1="8" y1="26" x2="40" y2="26"/>
+                <line x1="20" y1="18" x2="16" y2="26"/>
+                <line x1="28" y1="18" x2="32" y2="26"/>
+              </svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg font-bold tracking-wider text-[#1A1A1A] uppercase">AUTHENTIC DIAMONDS</h3>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed font-sans">
+              Our lab-grown diamonds are SGL Certified, ensuring the highest standards of quality and authenticity same like natural diamonds. Each diamond undergoes rigorous testing to guarantee its brilliance and ethical origins. Shine with confidence in every sparkly moment.
+            </p>
           </div>
         </div>
       </div>
