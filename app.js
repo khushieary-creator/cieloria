@@ -4461,16 +4461,16 @@ function renderHomepageView(heroParam) {
     
 
     <!-- 4. EVERYDAY DEMIFINE® COLLECTION Circle Grid -->
-    <section class="py-10 sm:py-14 bg-white">
+    <section class="py-12 sm:py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 sm:space-y-10">
         <h2 class="font-sans text-lg sm:text-2xl font-medium tracking-[0.2em] text-[#1A1A1A] uppercase">EVERYDAY DEMIFINE® COLLECTION</h2>
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto items-center justify-center">
+        <div class="grid grid-cols-3 sm:grid-cols-6 gap-4 sm:gap-6 lg:gap-8 max-w-7xl mx-auto items-center justify-center">
           ${CIRCLE_CATEGORIES.map(c => `
-            <div onclick="openPLPCategory('${c.cat}')" class="flex flex-col items-center space-y-2.5 cursor-pointer group">
-              <div class="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border border-[#E6E1D7] shadow-sm bg-[#FAF8F5] transition-transform duration-500 hover:scale-105 group-hover:shadow-md">
+            <div onclick="openPLPCategory('${c.cat}')" class="flex flex-col items-center space-y-3 cursor-pointer group">
+              <div class="w-28 h-28 sm:w-44 sm:h-44 lg:w-52 lg:h-52 rounded-full overflow-hidden border border-[#E6E1D7] shadow-sm bg-[#FAF8F5] transition-transform duration-500 hover:scale-105 group-hover:shadow-lg">
                 <img src="${c.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
               </div>
-              <span class="font-sans text-xs sm:text-sm font-medium text-[#1A1A1A] group-hover:text-[#C5A059] transition-colors">${c.name}</span>
+              <span class="font-sans text-xs sm:text-base font-semibold text-[#1A1A1A] group-hover:text-[#C5A059] transition-colors pt-1">${c.name}</span>
             </div>
           `).join('')}
         </div>
