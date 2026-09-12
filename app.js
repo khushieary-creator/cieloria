@@ -4628,6 +4628,52 @@ function renderHomepageView(heroParam) {
       </div>
     </section>
 
+    <!-- 7. FOR YOU Quote -->
+    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed px-2">At Cieloria, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Cieloria, the sparkle is always yours to keep.</strong></p>
+        <h2 class="text-center font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR YOU</h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
+          <div class="md:col-span-6 rounded-2xl overflow-hidden shadow-md"><img src="${PRODUCTS[40].image}" class="w-full h-[320px] sm:h-[420px] object-cover" /></div>
+          <div class="md:col-span-6 text-left space-y-4 p-2">
+            <blockquote class="font-serif text-sm sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-4 sm:pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Cieloria, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8.5. BLOGS SECTION (EXACT REFERENCE MATCH - 3 CARDS ON HOMEPAGE) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
+      <div class="flex items-center justify-between border-b border-[#E6E1D7] pb-4 text-left">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#C5A059]">CIELORIA JOURNAL & STYLE EDIT</span>
+          <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">BLOGS</h2>
+        </div>
+        <button onclick="openBlogList()" class="border border-[#1A1A1A] px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors cursor-pointer">
+          View All Articles ➔
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        ${BLOG_POSTS.slice(0, 3).map(post => `
+          <article onclick="openBlogPage('${post.slug}')" class="space-y-4 cursor-pointer group text-left">
+            <div class="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-sm">
+              <img src="${post.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+              <!-- Floating Circular Date Badge -->
+              <div class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white flex flex-col items-center justify-center shadow-md text-[#1A1A1A] border border-slate-100">
+                <span class="text-sm font-bold leading-none">${post.day}</span>
+                <span class="text-[9px] font-semibold tracking-wider text-slate-500 uppercase leading-none mt-0.5">${post.month}</span>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <h3 class="font-sans text-base sm:text-lg font-bold text-[#1A1A1A] group-hover:text-[#C5A059] transition-colors leading-snug line-clamp-2">${post.title}</h3>
+              <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">${post.excerpt}</p>
+            </div>
+          </article>
+        `).join('')}
+      </div>
+    </section>
+
     <!-- 9. SHOP WITH CONFIDENCE (EXACT PALMONAS MATCH - NO EMOJIS, CLEAN LINE-ART SVGs) -->
     <section class="py-16 sm:py-24 bg-[#FAF8F5] border-y border-[#E6E1D7]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 text-center">
@@ -4694,52 +4740,6 @@ function renderHomepageView(heroParam) {
             </p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 7. FOR YOU Quote -->
-    <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <p class="text-center text-xs text-slate-600 max-w-4xl mx-auto leading-relaxed px-2">At Cieloria, we create jewellery that's made to be worn — every day and on the days that matter most. It's premium in quality, thoughtful in design, and priced so it feels right. We don't believe in saving the good stuff for later. Our pieces are made to move with you, not sit in a box. <strong>Because with Cieloria, the sparkle is always yours to keep.</strong></p>
-        <h2 class="text-center font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR YOU</h2>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center pt-2">
-          <div class="md:col-span-6 rounded-2xl overflow-hidden shadow-md"><img src="${PRODUCTS[40].image}" class="w-full h-[320px] sm:h-[420px] object-cover" /></div>
-          <div class="md:col-span-6 text-left space-y-4 p-2">
-            <blockquote class="font-serif text-sm sm:text-lg text-slate-800 leading-relaxed italic border-l-4 border-[#C5A059] pl-4 sm:pl-6">"A lot of us find real gold too expensive — and we don't want our jewellery locked away. At the same time, imitation jewellery fades, breaks, and doesn't last. So at Cieloria, we're building something in the middle — a new vision called Demifine® :18k thick gold plating on premium metals, so everyone can enjoy jewellery that's trendy, lasting, and high on quality."</blockquote>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8.5. BLOGS SECTION (EXACT REFERENCE MATCH - 3 CARDS ON HOMEPAGE) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
-      <div class="flex items-center justify-between border-b border-[#E6E1D7] pb-4 text-left">
-        <div>
-          <span class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#C5A059]">CIELORIA JOURNAL & STYLE EDIT</span>
-          <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">BLOGS</h2>
-        </div>
-        <button onclick="openBlogList()" class="border border-[#1A1A1A] px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors cursor-pointer">
-          View All Articles ➔
-        </button>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-        ${BLOG_POSTS.slice(0, 3).map(post => `
-          <article onclick="openBlogPage('${post.slug}')" class="space-y-4 cursor-pointer group text-left">
-            <div class="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-sm">
-              <img src="${post.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
-              <!-- Floating Circular Date Badge -->
-              <div class="absolute top-4 right-4 w-12 h-12 rounded-full bg-white flex flex-col items-center justify-center shadow-md text-[#1A1A1A] border border-slate-100">
-                <span class="text-sm font-bold leading-none">${post.day}</span>
-                <span class="text-[9px] font-semibold tracking-wider text-slate-500 uppercase leading-none mt-0.5">${post.month}</span>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <h3 class="font-sans text-base sm:text-lg font-bold text-[#1A1A1A] group-hover:text-[#C5A059] transition-colors leading-snug line-clamp-2">${post.title}</h3>
-              <p class="text-xs text-slate-500 leading-relaxed line-clamp-2">${post.excerpt}</p>
-            </div>
-          </article>
-        `).join('')}
       </div>
     </section>
   `;
