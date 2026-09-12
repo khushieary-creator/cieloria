@@ -4187,7 +4187,7 @@ function renderHomepageView(currentHero) {
     <!-- 1. Hero Slider Banner -->
     <section class="relative overflow-hidden w-full bg-[#EAE5D9] aspect-[2.4/1] sm:aspect-[2.5/1] min-h-[220px] max-h-[600px] flex items-center justify-center">
       <div class="absolute inset-0 z-0">
-        <img onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" style="cursor:pointer;" src="${currentHero.image}" class="w-full h-full object-cover transition-all duration-700" />
+        <img onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" style="cursor:pointer;" src="${currentHero.image}" class="w-full h-full object-contain transition-all duration-700" />
         ${currentHero.cleanGraphic ? '' : `<div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>`}
       </div>
 
