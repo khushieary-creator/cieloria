@@ -4404,9 +4404,9 @@ function renderHomepageView(heroParam) {
 
   return `
     <!-- 1. Hero 3-Slide Lifestyle Offer Carousel (0 Product Closeups) -->
-    <section class="relative overflow-hidden w-full bg-[#EAE5D9] aspect-[2.4/1] sm:aspect-[2.5/1] min-h-[220px] max-h-[600px] flex items-center justify-center">
+    <section class="relative overflow-hidden w-full bg-[#EAE5D9] min-h-[380px] sm:min-h-[500px] lg:min-h-[620px] flex items-center">
       <div class="absolute inset-0 z-0">
-        <img onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" style="cursor:pointer;" src="${currentHero.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-contain object-center transition-all duration-700" />
+        <img onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" style="cursor:pointer;" src="${currentHero.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover object-center transition-all duration-700" />
         ${currentHero.cleanGraphic ? '' : `<div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>`}
       </div>
 
