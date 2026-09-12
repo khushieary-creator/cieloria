@@ -4527,8 +4527,8 @@ function renderHomepageView(heroParam) {
       </div>
     </section>
 
-        <!-- 8. Gifts For Her / Him & FOR EVERY YOU SLIDER (PALMONAS EXACT MATCH) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
+            <!-- 8. Gifts For Her / Him & FOR EVERY YOU 3D COVERFLOW SLIDER (EXACT PALMONAS MATCH) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 overflow-hidden text-center">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
         <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black shadow-xs transition-all">
           <span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span>
@@ -4540,46 +4540,99 @@ function renderHomepageView(heroParam) {
         </div>
       </div>
 
-      <div class="space-y-6 text-center relative">
+      <div class="space-y-6 text-center">
         <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR EVERY YOU</h2>
-        
-        <!-- Slider Wrapper with Left & Right Arrow Buttons -->
-        <div class="relative group">
-          <!-- Left Navigation Arrow -->
+
+        <div class="relative max-w-5xl mx-auto flex items-center justify-center min-h-[380px] sm:min-h-[500px] py-4">
+          <!-- Floating Left Arrow Button -->
           <button 
-            onclick="scrollForEveryYouSlider(-1)" 
-            class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-xl flex items-center justify-center z-30 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] focus:outline-none cursor-pointer" 
-            title="Previous Slide"
+            onclick="event.stopPropagation(); nextForEveryYouSlide(-1);" 
+            class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-2xl flex items-center justify-center z-40 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] cursor-pointer"
+            title="Previous Occasion"
           >
             <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M15 18l-6-6 6-6"/>
             </svg>
           </button>
 
-          <!-- Horizontal Scrollable Container -->
-          <div 
-            id="for-every-you-slider" 
-            class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none py-2 px-1 text-left"
-            style="-webkit-overflow-scrolling: touch; scrollbar-width: none;"
-          >
-            ${FOR_EVERY_YOU_CARDS.map(card => `
-              <div 
-                onclick="openPLPCategory('${card.cat}')" 
-                class="w-[260px] sm:w-[320px] shrink-0 snap-center relative rounded-2xl overflow-hidden cursor-pointer group/card h-[360px] sm:h-[450px] shadow-md border border-[#E6E1D7] bg-black"
-              >
-                <img src="${card.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700 ease-out opacity-90" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end items-center p-6 text-center">
-                  <span class="border-b-2 border-white pb-1 tracking-widest font-serif font-bold text-base sm:text-xl text-white uppercase group-hover/card:text-[#C5A059] group-hover/card:border-[#C5A059] transition-colors">${card.title}</span>
-                </div>
-              </div>
-            `).join('')}
+          <!-- 3D Perspective Coverflow Card Container -->
+          <div class="flex items-center justify-center relative w-full h-[360px] sm:h-[460px]">
+            ${(() => {
+              if (typeof state.forEveryYouIndex !== 'number' || isNaN(state.forEveryYouIndex)) {
+                state.forEveryYouIndex = 1;
+              }
+              const activeIdx = state.forEveryYouIndex;
+              const total = FOR_EVERY_YOU_CARDS.length;
+
+              return FOR_EVERY_YOU_CARDS.map((card, idx) => {
+                let diff = (idx - activeIdx) % total;
+                if (diff > total / 2) diff -= total;
+                if (diff < -total / 2) diff += total;
+
+                const isCenter = diff === 0;
+                const distance = Math.abs(diff);
+
+                if (distance > 2) return '';
+
+                let transformStyle = '';
+                let zIndex = 10;
+                let opacity = 1;
+                let widthClass = 'w-[230px] sm:w-[310px]';
+                let heightClass = 'h-[340px] sm:h-[420px]';
+
+                if (isCenter) {
+                  transformStyle = 'transform: translateX(-50%) scale(1.08) translateY(-10px) rotate(0deg);';
+                  zIndex = 30;
+                  opacity = 1;
+                  widthClass = 'w-[250px] sm:w-[340px]';
+                  heightClass = 'h-[360px] sm:h-[450px]';
+                } else if (diff === -1) {
+                  // Left Card - Tilted slightly right (matching Palmonas screenshot)
+                  transformStyle = 'transform: translateX(-110%) scale(0.92) translateY(10px) rotate(4deg);';
+                  zIndex = 20;
+                  opacity = 0.95;
+                } else if (diff === 1) {
+                  // Right Card - Tilted slightly left (matching Palmonas screenshot)
+                  transformStyle = 'transform: translateX(10%) scale(0.92) translateY(10px) rotate(-4deg);';
+                  zIndex = 20;
+                  opacity = 0.95;
+                } else if (diff === -2) {
+                  transformStyle = 'transform: translateX(-160%) scale(0.8) translateY(25px) rotate(7deg);';
+                  zIndex = 10;
+                  opacity = 0.6;
+                } else if (diff === 2) {
+                  transformStyle = 'transform: translateX(60%) scale(0.8) translateY(25px) rotate(-7deg);';
+                  zIndex = 10;
+                  opacity = 0.6;
+                }
+
+                return `
+                  <div 
+                    onclick="${isCenter ? `openPLPCategory('${card.cat}')` : `setForEveryYouSlide(${idx})`}" 
+                    style="${transformStyle} z-index: ${zIndex}; opacity: ${opacity}; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);" 
+                    class="absolute left-1/2 ${widthClass} ${heightClass} rounded-2xl overflow-hidden cursor-pointer group/card shadow-2xl border border-[#E6E1D7] bg-black"
+                  >
+                    <img 
+                      src="${card.image}" 
+                      onerror="this.onerror=null; this.src='/hero_banner.jpg';" 
+                      class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700 ease-out opacity-90" 
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end items-center p-6 text-center">
+                      <span class="border-b-2 border-white pb-1 tracking-widest font-serif font-bold text-sm sm:text-lg text-white uppercase group-hover/card:text-[#C5A059] group-hover/card:border-[#C5A059] transition-colors">
+                        ${card.title}
+                      </span>
+                    </div>
+                  </div>
+                `;
+              }).join('');
+            })()}
           </div>
 
-          <!-- Right Navigation Arrow -->
+          <!-- Floating Right Arrow Button -->
           <button 
-            onclick="scrollForEveryYouSlider(1)" 
-            class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-xl flex items-center justify-center z-30 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] focus:outline-none cursor-pointer" 
-            title="Next Slide"
+            onclick="event.stopPropagation(); nextForEveryYouSlide(1);" 
+            class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-13 sm:h-13 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-2xl flex items-center justify-center z-40 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] cursor-pointer"
+            title="Next Occasion"
           >
             <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M9 18l6-6-6-6"/>
@@ -5916,6 +5969,21 @@ window.addEventListener('popstate', () => {
 });
 
 
+
+
+window.nextForEveryYouSlide = function(dir) {
+  if (typeof state.forEveryYouIndex !== 'number' || isNaN(state.forEveryYouIndex)) {
+    state.forEveryYouIndex = 0;
+  }
+  const total = FOR_EVERY_YOU_CARDS.length;
+  state.forEveryYouIndex = (state.forEveryYouIndex + dir + total) % total;
+  renderApp();
+};
+
+window.setForEveryYouSlide = function(idx) {
+  state.forEveryYouIndex = idx;
+  renderApp();
+};
 
 window.scrollForEveryYouSlider = function(direction) {
   const slider = document.getElementById('for-every-you-slider');
