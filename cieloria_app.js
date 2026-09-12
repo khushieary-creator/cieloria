@@ -2973,7 +2973,7 @@ const PLP_CATEGORY_DATA = {
     title: "Date Night Collection",
     heading: "Romantic Date Night Glamour",
     tagline: "Luminous gold drops, heart pendants & sparkling diamond solitaires",
-    bannerImage: "/gifting_her.jpg",
+    bannerImage: "/for_every_you_6.jpg",
     subFilters: ["All Date Night", "Heart Pendants", "Solitaire Rings", "Drop Earrings"]
   },
   WeddingWear: {
@@ -3092,7 +3092,7 @@ const PLP_CATEGORY_DATA = {
     title: "Gifting",
     heading: "Gifting & Curated Sets",
     tagline: "Thoughtful keepsake gifts made for every bond",
-    bannerImage: "/gifting_her.jpg",
+    bannerImage: "/for_every_you_6.jpg",
     subFilters: ["All Gifts", "Gift Boxes", "Sister Gifts", "Brother Gifts", "Sets"]
   },
   Wishlist: {
@@ -3365,7 +3365,7 @@ const FOR_EVERY_YOU_CARDS = [
   { title: "DAILY WEAR", cat: "DailyWear", image: "/for_every_you_5.jpg" },
   { title: "PARTY WEAR", cat: "PartyWear", image: "/for_every_you_2.jpg" },
   { title: "DAY OUT", cat: "DayOut", image: "/for_every_you_4.jpg" },
-  { title: "DATE NIGHT", cat: "DateNight", image: "/gifting_her.jpg" },
+  { title: "DATE NIGHT", cat: "DateNight", image: "/for_every_you_6.jpg" },
   { title: "WEDDING WEAR", cat: "WeddingWear", image: "/for_every_you_1.jpg" }
 ];
 
