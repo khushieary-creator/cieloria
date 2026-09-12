@@ -3107,10 +3107,10 @@ const BLOG_POSTS = [
     slug: "lab-grown-diamonds",
     day: "03",
     month: "MAR",
-    tag: "DIAMOND CARE & STYLE",
-    title: "Lab-Grown Diamonds: The Modern Indian Woman’s Guide to Everyday Luxury",
-    image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1200&q=80",
-    excerpt: "If jewellery had a reality check, lab-grown diamonds would be it. Real, conflict-free, 100% certified, and crafted for everyday elegance.",
+    tag: "DIAMOND CARE",
+    title: "Lab-Grown Diamonds: Styling & Care for the Modern Indian Woman",
+    image: "/blog_1.jpg",
+    excerpt: "If jewellery had a reality check, lab-grown diamonds would be it. Real, pretty, conflict-free, and crafted for everyday elegance.",
     featuredProductIds: ["luxury-gold-plated-anti-tarnish-stone-bracelet", "PROD-001", "PROD-002"],
     fullContent: `
       <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
@@ -3163,10 +3163,10 @@ const BLOG_POSTS = [
     slug: "womens-day-jewellery-guide",
     day: "02",
     month: "MAR",
-    tag: "CAPSULE WARDROBE",
-    title: "The Ultimate Demifine® Capsule Jewelry Guide: 5 Essential Staples Every Woman Needs",
-    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=1200&q=80",
-    excerpt: "Beyoncé told us who runs the world. Build your 100% waterproof, anti-tarnish 18K gold capsule jewelry wardrobe for office, workouts, and dinners.",
+    tag: "WOMEN'S EDITION",
+    title: "The Women's Day Jewellery Guide Nobody Asked For, But Everybody Needed",
+    image: "/blog_2.jpg",
+    excerpt: "Beyoncé told us who runs the world. Legally Blonde proved that a woman can wear gold and dominate the boardroom.",
     featuredProductIds: ["PROD-003", "PROD-007", "PROD-010"],
     fullContent: `
       <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
@@ -3212,10 +3212,10 @@ const BLOG_POSTS = [
     slug: "gold-vs-silver-jewellery",
     day: "01",
     month: "MAR",
-    tag: "STYLING MASTERCLASS",
-    title: "Gold vs Silver: How to Find Your Metallic Signature & Master Mixed Metals",
-    image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1200&q=80",
-    excerpt: "Chai or coffee? Gold or Silver? Learn the wrist vein test to identify your skin tone and master 2026's boldest mixed-metal jewelry trend.",
+    tag: "STYLE COMPARISON",
+    title: "Gold vs Silver Jewellery: How to Choose What Suits You Best",
+    image: "/blog_3.jpg",
+    excerpt: "The great debate is always on – gold or silver? That's like asking, chai or coffee? Here is how to find your true metallic signature.",
     featuredProductIds: ["PROD-004", "PROD-008", "PROD-012"],
     fullContent: `
       <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
@@ -3248,7 +3248,7 @@ const BLOG_POSTS = [
     month: "FEB",
     tag: "BRAND HERITAGE",
     title: "Celebrating 1 Year of CIELORIA: Bringing Lucknow’s Royal Heritage to 80L+ Indian Women",
-    image: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1200&q=80",
+    image: "/hero_mangalsutras.jpg",
     excerpt: "Founded in Lucknow, Uttar Pradesh 1 year ago. Discover how royal Chikankari artistry and Nawabi elegance inspire our 100% waterproof 18K gold PVD technology.",
     featuredProductIds: ["PROD-006", "PROD-009", "PROD-011"],
     fullContent: `
@@ -4468,14 +4468,20 @@ function renderHomepageView(heroParam) {
     </section>
 
     
-        <!-- 8.5. BLOGS SECTION (EXACT REFERENCE MATCH) -->
+            <!-- 8.5. BLOGS SECTION (EXACT REFERENCE MATCH - 3 CARDS ON HOMEPAGE) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
-      <div class="text-center">
-        <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">BLOGS</h2>
+      <div class="flex items-center justify-between border-b border-[#E6E1D7] pb-4 text-left">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#C5A059]">CIELORIA JOURNAL & STYLE EDIT</span>
+          <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">BLOGS</h2>
+        </div>
+        <button onclick="openBlogList()" class="border border-[#1A1A1A] px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors cursor-pointer">
+          View All Articles ➔
+        </button>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-        ${BLOG_POSTS.map(post => `
+        ${BLOG_POSTS.slice(0, 3).map(post => `
           <article onclick="openBlogPage('${post.slug}')" class="space-y-4 cursor-pointer group text-left">
             <div class="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-100 shadow-sm">
               <img src="${post.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
