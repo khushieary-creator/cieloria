@@ -2945,6 +2945,48 @@ const PLP_CATEGORY_DATA = {
     title: "Office Wear Collection",
     heading: "Elevated Workwear Jewelry",
     tagline: "Sophisticated 18K Gold Plated & Sterling Silver essentials for the office",
+    bannerImage: "/for_every_you_3.jpg",
+    subFilters: ["All Office Wear", "Hoop Earrings", "Solitaire Rings", "Chic Chains"]
+  },
+  DailyWear: {
+    title: "Daily Wear Collection",
+    heading: "100% Waterproof Daily Wear",
+    tagline: "Durable 18K Gold Plated anti-tarnish essentials for 24/7 wear",
+    bannerImage: "/for_every_you_5.jpg",
+    subFilters: ["All Daily Wear", "Minimalist Hoops", "Stackable Rings", "Pendants"]
+  },
+  PartyWear: {
+    title: "Party Wear Collection",
+    heading: "Glamorous Party Statements",
+    tagline: "Radiant cubic zirconia & pearl drop statement pieces for evenings",
+    bannerImage: "/for_every_you_2.jpg",
+    subFilters: ["All Party Wear", "Statement Earrings", "Layered Necklaces", "Cocktail Rings"]
+  },
+  DayOut: {
+    title: "Day Out Collection",
+    heading: "Chic & Effortless Day Out Wear",
+    tagline: "Lightweight, waterproof gold & freshwater baroque pearl jewelry",
+    bannerImage: "/for_every_you_4.jpg",
+    subFilters: ["All Day Out", "Baroque Pearls", "Dainty Chains", "Ear Studs"]
+  },
+  DateNight: {
+    title: "Date Night Collection",
+    heading: "Romantic Date Night Glamour",
+    tagline: "Luminous gold drops, heart pendants & sparkling diamond solitaires",
+    bannerImage: "/gifting_her.jpg",
+    subFilters: ["All Date Night", "Heart Pendants", "Solitaire Rings", "Drop Earrings"]
+  },
+  WeddingWear: {
+    title: "Wedding Wear Collection",
+    heading: "Royal Wedding Keepsakes",
+    tagline: "Traditional mangalsutras, stone bangles & wedding ring stacks",
+    bannerImage: "/for_every_you_1.jpg",
+    subFilters: ["All Wedding Wear", "Wedding Rings", "Mangalsutras", "Bridal Sets"]
+  },
+  OfficeWear: {
+    title: "Office Wear Collection",
+    heading: "Elevated Workwear Jewelry",
+    tagline: "Sophisticated 18K Gold Plated & Sterling Silver essentials for the office",
     bannerImage: "/hero_banner.jpg",
     subFilters: ["All Office Wear", "Hoop Earrings", "Solitaire Rings", "Chic Chains"]
   },
@@ -3319,11 +3361,12 @@ const BLOG_POSTS = [
 ];
 
 const FOR_EVERY_YOU_CARDS = [
-  { title: "OFFICE WEAR", cat: "OfficeWear", image: PRODUCTS[40] ? PRODUCTS[40].image : "/hero_banner.jpg" },
-  { title: "DAILY WEAR", cat: "DailyWear", image: PRODUCTS[9] ? PRODUCTS[9].image : "/hero_rings.jpg" },
-  { title: "PARTY WEAR", cat: "PartyWear", image: PRODUCTS[30] ? PRODUCTS[30].image : "/hero_slide3.jpg" },
-  { title: "WEDDING WEAR", cat: "WeddingWear", image: PRODUCTS[0] ? PRODUCTS[0].image : "/hero_mangalsutras.jpg" },
-  { title: "CASUAL WEAR", cat: "CasualWear", image: PRODUCTS[15] ? PRODUCTS[15].image : "/hero_earrings.jpg" }
+  { title: "OFFICE WEAR", cat: "OfficeWear", image: "/for_every_you_3.jpg" },
+  { title: "DAILY WEAR", cat: "DailyWear", image: "/for_every_you_5.jpg" },
+  { title: "PARTY WEAR", cat: "PartyWear", image: "/for_every_you_2.jpg" },
+  { title: "DAY OUT", cat: "DayOut", image: "/for_every_you_4.jpg" },
+  { title: "DATE NIGHT", cat: "DateNight", image: "/gifting_her.jpg" },
+  { title: "WEDDING WEAR", cat: "WeddingWear", image: "/for_every_you_1.jpg" }
 ];
 
 const SUBHEADER_NAV = [
@@ -4610,11 +4653,12 @@ function renderPLPView() {
   const cData = PLP_CATEGORY_DATA[catKey];
 
   let plpProducts = PRODUCTS.filter(p => {
-        if (state.plpCategory === 'OfficeWear') return p.category === 'Earrings' || p.category === 'Necklaces' || p.occasion === 'Daily Wear';
+            if (state.plpCategory === 'OfficeWear') return p.category === 'Earrings' || p.category === 'Necklaces' || p.occasion === 'Daily Wear';
     if (state.plpCategory === 'DailyWear') return p.price < 1500 || p.occasion === 'Daily Wear';
     if (state.plpCategory === 'PartyWear') return p.price >= 1200 || p.category === 'Rings';
+    if (state.plpCategory === 'DayOut') return p.category === 'Necklaces' || p.category === 'Earrings';
+    if (state.plpCategory === 'DateNight') return p.category === 'Rings' || p.category === 'Necklaces';
     if (state.plpCategory === 'WeddingWear') return p.category === 'Mangalsutras' || p.category === 'Bracelets';
-    if (state.plpCategory === 'CasualWear') return p.category === 'Earrings' || p.price < 1200;
     if (state.plpCategory === 'NewArrivals') return p.isNew;
     if (state.plpCategory === 'BestSeller') return p.isBestseller;
     if (state.plpCategory === 'FineSilver') return p.isSilver || p.metal.includes("Silver");
