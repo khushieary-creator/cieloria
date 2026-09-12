@@ -4460,6 +4460,16 @@ function renderHomepageView(heroParam) {
 
     
 
+        <!-- Moving Announcement Marquee Ticker Bar (Hero to EVERYDAY DEMIFINE Divider) -->
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
+        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
+        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
+        <span>8L+ Happy Customers | Lucknow Flagship Luxury | Gifts For Her @ 50% OFF | Ships in 24 hours</span>
+      </div>
+    </div>
+
     <!-- 4. EVERYDAY DEMIFINE® COLLECTION Circle Grid -->
     <section class="py-12 sm:py-16 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8 sm:space-y-10">
