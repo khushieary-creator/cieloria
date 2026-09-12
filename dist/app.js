@@ -4591,14 +4591,35 @@ function renderHomepageView(heroParam) {
 
     <!-- 8. Gifts For Her / Him & FOR EVERY YOU 3D COVERFLOW SLIDER (EXACT PALMONAS MATCH) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8 overflow-hidden text-center">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black shadow-xs transition-all">
-          <span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span>
-          <img src="${PRODUCTS[40].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl shadow-xs" />
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+        <!-- Gifts For Her Large Portrait Lifestyle Card -->
+        <div onclick="openPLPCategory('Necklaces')" class="group bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+          <div class="w-full h-[320px] sm:h-[450px] bg-[#F6F4EF] overflow-hidden">
+            <img src="/gifting_her.jpg" onerror="this.onerror=null; this.src='${PRODUCTS[40].image}';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          </div>
+          <div class="bg-[#FAF8F5] py-4 sm:py-5 px-6 text-center flex items-center justify-center gap-2 border-t border-[#E6E1D7]">
+            <span class="font-serif text-xl sm:text-2xl text-[#1A1A1A] tracking-wide">Gifts For <strong class="font-bold">Her</strong></span>
+            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold shadow-xs ml-1 group-hover:scale-110 transition-transform">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </span>
+          </div>
         </div>
-        <div onclick="openPLPCategory('Bracelets')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black shadow-xs transition-all">
-          <span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Him</strong> ›</span>
-          <img src="${PRODUCTS[2].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl shadow-xs" />
+
+        <!-- Gifts For Him Large Portrait Lifestyle Card -->
+        <div onclick="openPLPCategory('Mens')" class="group bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl overflow-hidden cursor-pointer hover:shadow-xl transition-all duration-500 flex flex-col justify-between">
+          <div class="w-full h-[320px] sm:h-[450px] bg-[#F6F4EF] overflow-hidden">
+            <img src="/gifting_him.jpg" onerror="this.onerror=null; this.src='${PRODUCTS[2].image}';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+          </div>
+          <div class="bg-[#FAF8F5] py-4 sm:py-5 px-6 text-center flex items-center justify-center gap-2 border-t border-[#E6E1D7]">
+            <span class="font-serif text-xl sm:text-2xl text-[#1A1A1A] tracking-wide">Gifts For <strong class="font-bold">Him</strong></span>
+            <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-black text-white flex items-center justify-center text-xs font-bold shadow-xs ml-1 group-hover:scale-110 transition-transform">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18l6-6-6-6"/>
+              </svg>
+            </span>
+          </div>
         </div>
       </div>
 
