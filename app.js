@@ -3580,7 +3580,7 @@ if (typeof window !== 'undefined') {
   }, 3500);
 
   setInterval(() => {
-    if (state.viewMode === 'homepage' && !document.activeElement.tagName.includes('INPUT')) {
+    if (state.viewMode === 'homepage' && (typeof document === 'undefined' || !document.activeElement || !document.activeElement.tagName || !document.activeElement.tagName.toUpperCase().includes('INPUT'))) {
       state.heroSlideIndex = (state.heroSlideIndex + 1) % HERO_SLIDES.length;
       renderApp();
     }
@@ -5614,11 +5614,12 @@ function syncStateFromUrl() {
       state.viewMode = 'wishlist';
     } else if (path === '/order-confirmed') {
       state.viewMode = 'order_confirmed';
-        } else if (path.startsWith('/blog/')) {
+    } else if (path === '/blogs' || path === '/blog' || path === '/journal') {
+      state.viewMode = 'blog';
+    } else if (path.startsWith('/blog/')) {
       const blogSlug = path.replace('/blog/', '').toLowerCase();
       state.selectedBlogSlug = blogSlug;
       state.viewMode = 'blog_detail';
-    }
     } else if (path.startsWith('/product/')) {
       const prodId = path.replace('/product/', '');
       if (prodId) {

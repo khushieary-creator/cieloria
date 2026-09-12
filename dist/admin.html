@@ -3526,7 +3526,7 @@ if (typeof window !== 'undefined') {
   }, 3500);
 
   setInterval(() => {
-    if (state.viewMode === 'homepage' && !document.activeElement.tagName.includes('INPUT')) {
+    if (state.viewMode === 'homepage' && (typeof document === 'undefined' || !document.activeElement || !document.activeElement.tagName || !document.activeElement.tagName.toUpperCase().includes('INPUT'))) {
       state.heroSlideIndex = (state.heroSlideIndex + 1) % HERO_SLIDES.length;
       renderApp();
     }
