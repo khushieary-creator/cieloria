@@ -3236,6 +3236,82 @@ const FINE_GOLD_PRODUCTS = [
   }
 ];
 
+const FEATURED_PRODUCTS = [
+  {
+    id: "crystal-peak-9kt-gold-solitaire-studs",
+    name: "Crystal Peak 9KT Gold Laboratory Grown Solitaire Studs",
+    price: 7471.68,
+    originalPrice: 8790.21,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[10] ? PRODUCTS[10].image : "/hero_banner.jpg"
+  },
+  {
+    id: "orba-shine-9kt-gold-diamond-bracelet",
+    name: "Orba Shine 9KT Gold Laboratory Grown Diamond Bracelet",
+    price: 9504.61,
+    originalPrice: 11181.89,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[0] ? PRODUCTS[0].image : "/hero_banner.jpg"
+  },
+  {
+    id: "stellar-bloom-9kt-gold-diamond-pendant",
+    name: "Stellar Bloom 9KT Gold Laboratory Grown Diamond Pendant",
+    price: 6271.21,
+    originalPrice: 7377.90,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[40] ? PRODUCTS[40].image : "/hero_banner.jpg"
+  },
+  {
+    id: "floral-whisper-9kt-gold-diamond-earrings",
+    name: "Floral Whisper 9KT Gold Laboratory Grown Diamond Earrings",
+    price: 8666.41,
+    originalPrice: 10195.78,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[4] ? PRODUCTS[4].image : "/hero_banner.jpg"
+  },
+  {
+    id: "hexa-dazzle-9kt-gold-diamond-studs",
+    name: "Hexa Dazzle 9KT Gold Laboratory Grown Diamond Studs",
+    price: 5899.00,
+    originalPrice: 6940.00,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[15] ? PRODUCTS[15].image : "/hero_banner.jpg"
+  },
+  {
+    id: "solitaire-drop-9kt-gold-diamond-necklace",
+    name: "Solitaire Drop 9KT Gold Laboratory Grown Diamond Necklace",
+    price: 11250.00,
+    originalPrice: 13235.00,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[25] ? PRODUCTS[25].image : "/hero_banner.jpg"
+  },
+  {
+    id: "trio-blossom-9kt-gold-diamond-studs",
+    name: "Trio Blossom 9KT Gold Laboratory Grown Diamond Studs",
+    price: 6999.00,
+    originalPrice: 8234.00,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[18] ? PRODUCTS[18].image : "/hero_banner.jpg"
+  },
+  {
+    id: "bezel-sparkle-9kt-gold-diamond-studs",
+    name: "Bezel Sparkle 9KT Gold Laboratory Grown Diamond Ring",
+    price: 9299.00,
+    originalPrice: 10940.00,
+    discountTag: "Flat 15% off on MRP",
+    metalTag: "9KT Solid Gold",
+    image: PRODUCTS[12] ? PRODUCTS[12].image : "/hero_banner.jpg"
+  }
+];
+
+
 const CIRCLE_CATEGORIES = [
   { name: "Earrings", cat: "Earrings", image: PRODUCTS[30].image },
   { name: "Necklaces", cat: "Necklaces", image: PRODUCTS[40].image },
@@ -4357,6 +4433,66 @@ function renderHomepageView(currentHero) {
         </div>
       </div>
     </section>
+
+    
+    <!-- 6.5. FEATURED PRODUCTS GRID (EXACT REFERENCE MATCH) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-8">
+      <div class="flex items-center justify-between border-b border-[#E6E1D7] pb-4 text-left">
+        <div>
+          <span class="text-[11px] uppercase tracking-[0.25em] font-bold text-[#C5A059]">CURATED ELEGANCE</span>
+          <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FEATURED PRODUCTS</h2>
+        </div>
+        <button onclick="openPLPCategory('NineKTGold')" class="border border-[#1A1A1A] px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors cursor-pointer">
+          Explore All Fine Gold ➔
+        </button>
+      </div>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        ${FEATURED_PRODUCTS.map(p => {
+          const isSaved = state.wishlist.includes(p.id);
+          return `
+            <div onclick="openPDP('${p.id}')" class="group relative bg-white border border-[#E6E1D7] rounded-2xl overflow-hidden flex flex-col justify-between text-left cursor-pointer hover:shadow-xl transition-all duration-300">
+              <div class="relative aspect-square w-full bg-[#FAF8F5] flex items-center justify-center p-4 overflow-hidden">
+                <img src="${p.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                
+                <button onclick="event.stopPropagation(); toggleWishlist('${p.id}');" class="absolute top-3 right-3 text-lg transition-transform hover:scale-110 z-20 bg-white/80 backdrop-blur-xs w-8 h-8 rounded-full flex items-center justify-center shadow-xs" title="${isSaved ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                  ${isSaved ? '❤️' : '🤍'}
+                </button>
+              </div>
+
+              <div class="p-3.5 sm:p-4 flex flex-col justify-between flex-1 space-y-2.5">
+                <div class="space-y-1.5">
+                  <h3 class="font-sans text-xs sm:text-sm font-semibold text-[#1A1A1A] group-hover:text-[#C5A059] transition-colors line-clamp-1">${p.name}</h3>
+                  
+                  <div class="flex items-center gap-1.5 text-xs font-bold text-[#1A1A1A]">
+                    <span>${formatPrice(p.price)}</span>
+                    <span class="text-slate-400 line-through text-[11px] font-normal">${formatPrice(p.originalPrice)}</span>
+                  </div>
+
+                  <div>
+                    <span class="bg-[#E6F4EA] text-[#137333] text-[10px] font-semibold px-2.5 py-0.5 rounded-md inline-block">
+                      ${p.discountTag || 'Flat 15% off on MRP'}
+                    </span>
+                  </div>
+
+                  <div class="flex items-center gap-1.5 pt-1 text-[11px] text-slate-500 font-medium">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E5C158] inline-block border border-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E8A598] inline-block border border-slate-300"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#E2E8F0] inline-block border border-slate-300"></span>
+                    <span class="ml-0.5">${p.metalTag || '9KT Solid Gold'}</span>
+                  </div>
+                </div>
+
+                <button onclick="event.stopPropagation(); addToCart('${p.id}');" class="w-full border border-[#1A1A1A] bg-white text-[#1A1A1A] font-semibold py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider hover:bg-[#1A1A1A] hover:text-white transition-colors mt-2">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </section>
+
 
     <!-- 7. FOR YOU Quote -->
     <section class="py-12 sm:py-16 bg-[#FAF8F5] border-y border-[#E6E1D7]">
