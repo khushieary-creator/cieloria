@@ -4076,50 +4076,124 @@ function renderOrderConfirmedView() {
   const ord = state.lastPlacedOrder || (state.ordersList.length > 0 ? state.ordersList[0] : null);
   if (!ord) return renderHomepageView(HERO_SLIDES[0]);
 
+  const items = (ord.items && ord.items.length > 0) ? ord.items : [PRODUCTS[0]];
+  const subtotal = items.reduce((sum, item) => sum + ((item.price || 999) * (item.quantity || 1)), 0);
+  const discount = Math.round(subtotal * 0.15);
+  const finalPaid = ord.totalAmount || (subtotal > discount ? subtotal - discount : subtotal);
+
   return `
-    <div class="bg-[#FAF8F5] min-h-screen py-12 text-left text-[#1A1A1A]">
-      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-8">
+    <div class="bg-[#FAF8F5] min-h-screen py-8 sm:py-12 text-left text-[#1A1A1A]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
         
-        <div class="bg-white border border-[#E6E1D7] rounded-3xl p-8 text-center space-y-5 shadow-lg">
-          <div class="w-20 h-20 rounded-full bg-emerald-100 text-emerald-600 text-4xl flex items-center justify-center mx-auto shadow-sm">
+        <!-- Order Confirmed Header -->
+        <div class="bg-white border border-[#E6E1D7] rounded-3xl p-6 sm:p-8 text-center space-y-5 shadow-lg">
+          <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-100 text-emerald-600 text-3xl sm:text-4xl flex items-center justify-center mx-auto shadow-xs">
             ✔
           </div>
 
-          <div class="space-y-2">
-            <span class="text-xs uppercase tracking-widest font-bold text-emerald-700 block">ORDER CONFIRMED & RECEIVED</span>
-            <h1 class="font-serif text-3xl sm:text-4xl font-bold text-[#1A1A1A]">Thank You, ${ord.customerName || 'Valued Customer'}! 🎉</h1>
-            <p class="text-xs text-slate-500 max-w-md mx-auto">We have received your order <strong>${ord.orderId}</strong>. Our team in Lucknow is preparing your 18K Anti-Tarnish jewelry for dispatch!</p>
+          <div class="space-y-1.5">
+            <span class="text-[10px] sm:text-xs uppercase tracking-widest font-bold text-emerald-700 block">ORDER CONFIRMED & INVOICE GENERATED</span>
+            <h1 class="font-serif text-2xl sm:text-4xl font-bold text-[#1A1A1A]">Thank You, ${ord.customerName || 'Valued Customer'}! 🎉</h1>
+            <p class="text-xs text-slate-500 max-w-md mx-auto">Your order <strong>#${ord.orderId}</strong> has been received. Our team in Lucknow is preparing your 18K Anti-Tarnish jewelry for dispatch!</p>
           </div>
 
-          <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-5 rounded-2xl space-y-3 text-left">
+          <!-- Order Status Timeline -->
+          <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 rounded-2xl space-y-3 text-left">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Live Order Tracker</span>
+            <div class="grid grid-cols-4 gap-2 text-center text-[10px] font-bold">
+              <div class="bg-emerald-600 text-white p-2 rounded-xl border border-emerald-700">1. Placed ✔</div>
+              <div class="bg-amber-100 text-amber-900 p-2 rounded-xl border border-amber-300">2. Processing</div>
+              <div class="bg-slate-100 text-slate-400 p-2 rounded-xl border border-slate-200">3. Shipped</div>
+              <div class="bg-slate-100 text-slate-400 p-2 rounded-xl border border-slate-200">4. Delivered</div>
+            </div>
+          </div>
+
+          <!-- Printable Tax Invoice Box -->
+          <div class="bg-[#FAF8F5] border border-[#E6E1D7] p-4 sm:p-6 rounded-2xl space-y-4 text-left shadow-xs">
             <div class="flex items-center justify-between border-b border-slate-200 pb-3 text-xs">
               <div>
-                <span class="font-bold text-[#1A1A1A] block">Order ID: ${ord.orderId}</span>
-                <span class="text-slate-400">Placed on ${ord.date}</span>
+                <span class="font-bold text-[#1A1A1A] block text-sm">Tax Invoice / Bill Statement</span>
+                <span class="text-slate-500">Order ID: <strong>${ord.orderId}</strong> • Date: ${ord.date}</span>
               </div>
-              <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-3 py-1 rounded-full border border-blue-300">
-                ${ord.status}
-              </span>
+              <button onclick="window.print()" class="bg-white border border-slate-300 hover:border-black text-slate-800 font-bold px-3 py-1.5 rounded-lg text-[11px] flex items-center gap-1.5 shadow-xs transition-colors">
+                <span>🖨️</span>
+                <span>Print Bill</span>
+              </button>
             </div>
 
-            <div class="space-y-1 text-xs">
-              <span class="font-bold text-[#1A1A1A] block">Delivery Address:</span>
-              <p class="text-slate-600 font-medium">${ord.customerAddress || 'Lucknow, UP'} (Pincode: ${ord.pincode || '226001'})</p>
-              <p class="text-slate-600 font-medium">Mobile: +91 ${ord.customerPhone}</p>
+            <!-- Customer & Shipping Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs border-b border-slate-200 pb-3">
+              <div>
+                <span class="font-bold text-slate-400 text-[10px] uppercase block">Billed & Shipped To:</span>
+                <p class="font-bold text-[#1A1A1A]">${ord.customerName}</p>
+                <p class="text-slate-600">${ord.customerAddress}</p>
+                <p class="text-slate-600">Pincode: ${ord.pincode}</p>
+                <p class="text-slate-600">Mobile: +91 ${ord.customerPhone}</p>
+              </div>
+              <div class="sm:text-right">
+                <span class="font-bold text-slate-400 text-[10px] uppercase block">Shipment & Delivery:</span>
+                <span class="inline-block bg-blue-100 text-blue-800 text-[10px] font-bold px-2.5 py-0.5 rounded-full border border-blue-300 mt-1 mb-1">
+                  ${ord.status || 'Order Placed'}
+                </span>
+                <p class="text-slate-600">Courier: <strong>${ord.courier || 'Bluedart Express'}</strong></p>
+                <p class="text-slate-600">Tracking: <strong>${ord.trackingId || 'BLU98234101'}</strong></p>
+                <p class="text-emerald-700 font-bold">Est. Delivery: 2-3 Business Days</p>
+              </div>
             </div>
 
-            <div class="border-t border-slate-200 pt-3 flex justify-between items-center text-xs">
-              <span class="font-bold text-[#1A1A1A]">Courier Partner:</span>
-              <span class="font-bold text-emerald-700">${ord.courier} (${ord.trackingId})</span>
+            <!-- Itemized Ordered Products Table -->
+            <div class="space-y-3">
+              <span class="font-bold text-slate-400 text-[10px] uppercase block">Ordered Items (${items.length}):</span>
+              <div class="space-y-2">
+                ${items.map(item => `
+                  <div class="flex items-center justify-between bg-white p-3 rounded-xl border border-slate-200">
+                    <div class="flex items-center gap-3">
+                      <img src="${item.image || '/hero_banner.jpg'}" class="w-12 h-12 object-cover rounded-lg border border-slate-100 shrink-0" />
+                      <div>
+                        <h4 class="font-serif text-xs font-bold text-[#1A1A1A] line-clamp-1">${item.name}</h4>
+                        <span class="text-[10px] text-slate-500">Qty: ${item.quantity || 1} • Purity: 18K Anti-Tarnish • 1 Yr Warranty</span>
+                      </div>
+                    </div>
+                    <div class="text-right">
+                      <span class="font-bold text-xs text-[#1A1A1A]">₹${((item.price || 999) * (item.quantity || 1)).toLocaleString()}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Bill Financial Summary -->
+            <div class="border-t border-slate-200 pt-3 space-y-1.5 text-xs text-slate-600">
+              <div class="flex justify-between">
+                <span>Items Subtotal:</span>
+                <span>₹${subtotal.toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between text-emerald-700">
+                <span>Promotional Offer (CIELORIA40):</span>
+                <span>-₹${discount.toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>GST Tax (Included 3%):</span>
+                <span>₹${Math.round(finalPaid * 0.03).toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Express Insured Shipping:</span>
+                <span class="text-emerald-700 font-bold">FREE</span>
+              </div>
+              <div class="flex justify-between text-sm font-bold text-[#1A1A1A] border-t border-slate-200 pt-2">
+                <span>Total Amount Paid:</span>
+                <span class="text-emerald-700">₹${finalPaid.toLocaleString()}</span>
+              </div>
             </div>
           </div>
 
-          <div class="space-y-3 pt-2">
-            <button onclick="switchViewMode('account')" class="w-full bg-black text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md hover:bg-[#C5A059] transition-colors">
-              Track Order Live in My Account →
+          <!-- Buttons -->
+          <div class="space-y-2.5 pt-2">
+            <button onclick="switchViewMode('account')" class="w-full bg-black hover:bg-[#C5A059] text-white font-bold py-3.5 rounded-xl text-xs uppercase tracking-wider shadow-md transition-colors">
+              📦 Track Order Live in My Account →
             </button>
-            <button onclick="switchViewMode('homepage')" class="w-full border border-slate-300 text-slate-700 font-bold py-3 rounded-xl text-xs uppercase hover:bg-white">
-              Continue Shopping
+            <button onclick="switchViewMode('homepage')" class="w-full border border-slate-300 hover:border-black text-slate-700 font-bold py-3 rounded-xl text-xs uppercase hover:bg-white transition-colors">
+              🏠 Back to Home & Continue Shopping
             </button>
           </div>
         </div>
