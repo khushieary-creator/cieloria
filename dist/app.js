@@ -5738,3 +5738,34 @@ try {
   syncStateFromUrl();
   renderApp(); 
 } catch(err) { console.error('Render error:', err); }
+
+
+// Single Bulletproof App Initializer
+function safeLaunchApp() {
+  try {
+    if (typeof renderApp === 'function') {
+      renderApp();
+    }
+  } catch(err) {
+    console.error('Safe Launch Error:', err);
+  }
+}
+
+function initializeCieloriaApp() {
+  safeLaunchApp();
+  try { cleanTrackingUrl(); } catch (e) {}
+  try { syncStateFromUrl(); } catch (e) {}
+  try { syncAccountStorage(); } catch (e) {}
+  safeLaunchApp();
+}
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initializeCieloriaApp();
+  } else {
+    document.addEventListener('DOMContentLoaded', initializeCieloriaApp);
+    window.addEventListener('load', initializeCieloriaApp);
+  }
+  setTimeout(initializeCieloriaApp, 0);
+  setTimeout(initializeCieloriaApp, 20);
+}
