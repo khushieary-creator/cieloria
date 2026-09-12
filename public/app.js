@@ -2941,6 +2941,41 @@ const CUSTOMER_REVIEWS = [
 ];
 
 const PLP_CATEGORY_DATA = {
+  OfficeWear: {
+    title: "Office Wear Collection",
+    heading: "Elevated Workwear Jewelry",
+    tagline: "Sophisticated 18K Gold Plated & Sterling Silver essentials for the office",
+    bannerImage: "/hero_banner.jpg",
+    subFilters: ["All Office Wear", "Hoop Earrings", "Solitaire Rings", "Chic Chains"]
+  },
+  DailyWear: {
+    title: "Daily Wear Collection",
+    heading: "100% Waterproof Daily Wear",
+    tagline: "Durable 18K Gold Plated anti-tarnish essentials for 24/7 wear",
+    bannerImage: "/hero_rings.jpg",
+    subFilters: ["All Daily Wear", "Minimalist Hoops", "Stackable Rings", "Pendants"]
+  },
+  PartyWear: {
+    title: "Party Wear Collection",
+    heading: "Glamorous Party Statements",
+    tagline: "Radiant cubic zirconia & pearl drop statement pieces for evenings",
+    bannerImage: "/hero_slide3.jpg",
+    subFilters: ["All Party Wear", "Statement Earrings", "Layered Necklaces", "Cocktail Rings"]
+  },
+  WeddingWear: {
+    title: "Wedding Wear Collection",
+    heading: "Royal Wedding Keepsakes",
+    tagline: "Traditional mangalsutras, stone bangles & royal heritage gold",
+    bannerImage: "/hero_mangalsutras.jpg",
+    subFilters: ["All Wedding Wear", "Heritage Kadas", "Mangalsutras", "Bridal Sets"]
+  },
+  CasualWear: {
+    title: "Casual Wear Collection",
+    heading: "Effortless Casual Glam",
+    tagline: "Lightweight everyday gold & silver essentials",
+    bannerImage: "/hero_earrings.jpg",
+    subFilters: ["All Casual Wear", "Dainty Chains", "Ear Studs", "Charm Bracelets"]
+  },
   NewArrivals: {
     title: "New Arrivals",
     heading: "Fresh Luxury Additions",
@@ -3284,10 +3319,11 @@ const BLOG_POSTS = [
 ];
 
 const FOR_EVERY_YOU_CARDS = [
-  { title: "OFFICE WEAR", image: PRODUCTS[40].image },
-  { title: "DAILY WEAR", image: PRODUCTS[9].image },
-  { title: "PARTY WEAR", image: PRODUCTS[30].image },
-  { title: "WEDDING WEAR", image: PRODUCTS[0].image }
+  { title: "OFFICE WEAR", cat: "OfficeWear", image: PRODUCTS[40] ? PRODUCTS[40].image : "/hero_banner.jpg" },
+  { title: "DAILY WEAR", cat: "DailyWear", image: PRODUCTS[9] ? PRODUCTS[9].image : "/hero_rings.jpg" },
+  { title: "PARTY WEAR", cat: "PartyWear", image: PRODUCTS[30] ? PRODUCTS[30].image : "/hero_slide3.jpg" },
+  { title: "WEDDING WEAR", cat: "WeddingWear", image: PRODUCTS[0] ? PRODUCTS[0].image : "/hero_mangalsutras.jpg" },
+  { title: "CASUAL WEAR", cat: "CasualWear", image: PRODUCTS[15] ? PRODUCTS[15].image : "/hero_earrings.jpg" }
 ];
 
 const SUBHEADER_NAV = [
@@ -4448,21 +4484,64 @@ function renderHomepageView(heroParam) {
       </div>
     </section>
 
-    <!-- 8. Gifts For Her / Him & FOR EVERY YOU -->
+        <!-- 8. Gifts For Her / Him & FOR EVERY YOU SLIDER (PALMONAS EXACT MATCH) -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-        <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span><img src="${PRODUCTS[40].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl" /></div>
-        <div onclick="openPLPCategory('Bracelets')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black"><span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Him</strong> ›</span><img src="${PRODUCTS[2].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl" /></div>
+        <div onclick="openPLPCategory('Necklaces')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black shadow-xs transition-all">
+          <span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Her</strong> ›</span>
+          <img src="${PRODUCTS[40].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl shadow-xs" />
+        </div>
+        <div onclick="openPLPCategory('Bracelets')" class="bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl p-5 flex items-center justify-between cursor-pointer hover:border-black shadow-xs transition-all">
+          <span class="font-serif text-lg sm:text-xl font-bold text-[#1A1A1A]">Gifts For <strong>Him</strong> ›</span>
+          <img src="${PRODUCTS[2].image}" class="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-xl shadow-xs" />
+        </div>
       </div>
-      <div class="space-y-6 text-center">
+
+      <div class="space-y-6 text-center relative">
         <h2 class="font-serif text-xl sm:text-3xl font-bold tracking-widest text-[#1A1A1A] uppercase">FOR EVERY YOU</h2>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          ${FOR_EVERY_YOU_CARDS.map(card => `
-            <div onclick="openPLPCategory('All')" class="relative rounded-2xl overflow-hidden cursor-pointer group h-[300px] sm:h-[380px] bg-black">
-              <img src="${card.image}" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
-              <div class="absolute inset-0 p-4 flex items-end justify-center bg-gradient-to-t from-black/80 via-transparent to-transparent"><span class="font-serif text-base sm:text-lg font-bold text-white pb-1 tracking-wider uppercase">${card.title}</span></div>
-            </div>
-          `).join('')}
+        
+        <!-- Slider Wrapper with Left & Right Arrow Buttons -->
+        <div class="relative group">
+          <!-- Left Navigation Arrow -->
+          <button 
+            onclick="scrollForEveryYouSlider(-1)" 
+            class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-xl flex items-center justify-center z-30 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] focus:outline-none cursor-pointer" 
+            title="Previous Slide"
+          >
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 18l-6-6 6-6"/>
+            </svg>
+          </button>
+
+          <!-- Horizontal Scrollable Container -->
+          <div 
+            id="for-every-you-slider" 
+            class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none py-2 px-1 text-left"
+            style="-webkit-overflow-scrolling: touch; scrollbar-width: none;"
+          >
+            ${FOR_EVERY_YOU_CARDS.map(card => `
+              <div 
+                onclick="openPLPCategory('${card.cat}')" 
+                class="w-[260px] sm:w-[320px] shrink-0 snap-center relative rounded-2xl overflow-hidden cursor-pointer group/card h-[360px] sm:h-[450px] shadow-md border border-[#E6E1D7] bg-black"
+              >
+                <img src="${card.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-700 ease-out opacity-90" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end items-center p-6 text-center">
+                  <span class="border-b-2 border-white pb-1 tracking-widest font-serif font-bold text-base sm:text-xl text-white uppercase group-hover/card:text-[#C5A059] group-hover/card:border-[#C5A059] transition-colors">${card.title}</span>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Right Navigation Arrow -->
+          <button 
+            onclick="scrollForEveryYouSlider(1)" 
+            class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/95 hover:bg-white text-[#1A1A1A] shadow-xl flex items-center justify-center z-30 transition-all duration-300 hover:scale-110 border border-[#E6E1D7] focus:outline-none cursor-pointer" 
+            title="Next Slide"
+          >
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18l6-6-6-6"/>
+            </svg>
+          </button>
         </div>
       </div>
     </section>
@@ -4531,6 +4610,11 @@ function renderPLPView() {
   const cData = PLP_CATEGORY_DATA[catKey];
 
   let plpProducts = PRODUCTS.filter(p => {
+        if (state.plpCategory === 'OfficeWear') return p.category === 'Earrings' || p.category === 'Necklaces' || p.occasion === 'Daily Wear';
+    if (state.plpCategory === 'DailyWear') return p.price < 1500 || p.occasion === 'Daily Wear';
+    if (state.plpCategory === 'PartyWear') return p.price >= 1200 || p.category === 'Rings';
+    if (state.plpCategory === 'WeddingWear') return p.category === 'Mangalsutras' || p.category === 'Bracelets';
+    if (state.plpCategory === 'CasualWear') return p.category === 'Earrings' || p.price < 1200;
     if (state.plpCategory === 'NewArrivals') return p.isNew;
     if (state.plpCategory === 'BestSeller') return p.isBestseller;
     if (state.plpCategory === 'FineSilver') return p.isSilver || p.metal.includes("Silver");
@@ -5787,6 +5871,15 @@ window.addEventListener('popstate', () => {
   renderApp();
 });
 
+
+
+window.scrollForEveryYouSlider = function(direction) {
+  const slider = document.getElementById('for-every-you-slider');
+  if (slider) {
+    const scrollAmount = (slider.clientWidth * 0.75) * direction;
+    slider.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  }
+};
 
 window.changeHeroSlide = function(dir) { state.heroSlideIndex = (state.heroSlideIndex + dir + HERO_SLIDES.length) % HERO_SLIDES.length; renderApp(); };
 
