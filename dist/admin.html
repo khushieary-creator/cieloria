@@ -3188,30 +3188,40 @@ const PLP_CATEGORY_DATA = {
 
 const HERO_SLIDES = [
   {
+    id: "slide-new-arrivals",
+    image: "/hero_new_arrivals.jpg",
+    cat: "NewArrivals",
+    tag: "PREMIUM JEWELRY",
+    title: "BRAND NEW ARRIVAL",
+    subtitle: "DISCOVER THE LATEST 18K GOLD & DEMIFINE COLLECTION",
+    codeText: "NEW ARRIVALS 2026",
+    giftOffer: "✨ EXCLUSIVE NEW DESIGNS • ANTI-TARNISH • 100% WATERPROOF",
+    priceText: "Premium Jewelry • 18K Thick Gold Plated • Hypoallergenic",
+    buttonText: "SHOP NOW ➔"
+  },
+  {
     id: "slide-1",
-    image: PRODUCTS[2].image,
-    tag: "THE",
-    title: "Man of Style",
-    subtitle: "SALE",
-    priceText: "Starting at ₹999",
-    buttonText: "SHOP NOW"
+    image: "/hero_banner.jpg",
+    cat: "BestSeller",
+    tag: "✦ EXCLUSIVE FESTIVE OFFER ✦",
+    title: "LUXURY DEMI-FINE COLLECTION",
+    subtitle: "FLAT 40% OFF ON ALL ORDERS",
+    codeText: "USE CODE: CIELORIA40",
+    giftOffer: "🎁 FREE 18K GOLD STUDS (WORTH ₹1,495) ON ORDERS ABOVE ₹2,999",
+    priceText: "100% Waterproof • Anti-Tarnish • 18K Gold Plated",
+    buttonText: "EXPLORE OFFERS ➔"
   },
   {
     id: "slide-2",
-    image: PRODUCTS[9].image,
-    title: "Rakhi Sale",
-    subtitle: "Pieces starting at",
-    priceText: "₹999",
-    buttonText: "SHOP NOW"
-  },
-  {
-    id: "slide-3",
-    image: PRODUCTS[40].image,
-    tag: "CIELORIA IN STYLE",
-    title: "LUXURY COLLECTION",
-    subtitle: "FLAT 40% OFF",
-    codeText: "Code: RAKHI40",
-    buttonText: "SHOP NOW"
+    image: "/hero_slide2.jpg",
+    cat: "Gifting",
+    tag: "✦ SPECIAL LUXURY GIFTING OFFER ✦",
+    title: "CURATED LUXURY GIFT SETS",
+    subtitle: "BUY 1 GET 1 FREE + EXTRA 30% OFF",
+    codeText: "USE CODE: RAKHI50",
+    giftOffer: "🎀 FREE SIGNATURE LUXURY VELVET GIFT BOX INCLUDED",
+    priceText: "Skin Safe • 1 Year Anti-Tarnish Warranty",
+    buttonText: "SHOP LUXURY GIFTS ➔"
   }
 ];
 
@@ -3950,7 +3960,7 @@ function renderWishlistView() {
             <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Your Wishlist is Empty</h3>
             <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and tap the heart icon on any piece to save your favorite jewelry!</p>
             <div class="pt-2">
-              <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider">Browse Bestsellers</button>
+              <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider">Browse Bestsellers</button>
             </div>
           </div>
         ` : `
@@ -4086,7 +4096,7 @@ function renderAccountDashboardView() {
                     <h4 class="font-serif text-xl font-bold text-[#1A1A1A]">No Orders Placed Yet</h4>
                     <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and place your first order!</p>
                     <div class="pt-2">
-                      <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-6 py-2.5 text-xs rounded-xl uppercase">Start Shopping</button>
+                      <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="bg-black text-white font-bold px-6 py-2.5 text-xs rounded-xl uppercase">Start Shopping</button>
                     </div>
                   </div>
                 ` : state.ordersList.map(ord => `
@@ -4195,7 +4205,7 @@ function renderHomepageView(currentHero) {
     <!-- 1. Hero Slider Banner -->
     <section class="relative overflow-hidden w-full bg-[#EAE5D9] min-h-[440px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
       <div class="absolute inset-0 z-0">
-        <img src="${currentHero.image}" class="w-full h-full object-cover transition-transform duration-1000 scale-105" />
+        <img onclick="openPLPCategory(\'${currentHero.cat || \'NewArrivals\'}\')" style="cursor:pointer;" src="${currentHero.image}" class="w-full h-full object-cover transition-transform duration-1000 scale-105" />
         <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent"></div>
       </div>
 
@@ -4210,7 +4220,7 @@ function renderHomepageView(currentHero) {
           ${currentHero.priceText ? `<div class="text-2xl sm:text-4xl font-serif font-bold text-white pt-1">${currentHero.priceText}</div>` : ''}
           ${currentHero.codeText ? `<div class="inline-block bg-white/20 backdrop-blur-md border border-white/40 px-3 py-1 rounded text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white">${currentHero.codeText}</div>` : ''}
           <div class="pt-4 sm:pt-6">
-            <button onclick="openPLPCategory('BestSeller')" class="btn-palmonas-hero text-xs py-3 px-6">${currentHero.buttonText}</button>
+            <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="btn-palmonas-hero text-xs py-3 px-6">${currentHero.buttonText}</button>
           </div>
         </div>
       </div>
@@ -4325,7 +4335,7 @@ function renderHomepageView(currentHero) {
           `;
         }).join('')}
       </div>
-      <div class="text-center pt-4"><button onclick="openPLPCategory('BestSeller')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
+      <div class="text-center pt-4"><button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
     </section>
 
     

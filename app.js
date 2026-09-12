@@ -3113,8 +3113,21 @@ const PLP_CATEGORY_DATA = {
 
 const HERO_SLIDES = [
   {
+    id: "slide-new-arrivals",
+    image: "/hero_new_arrivals.jpg",
+    cat: "NewArrivals",
+    tag: "PREMIUM JEWELRY",
+    title: "BRAND NEW ARRIVAL",
+    subtitle: "DISCOVER THE LATEST 18K GOLD & DEMIFINE COLLECTION",
+    codeText: "NEW ARRIVALS 2026",
+    giftOffer: "✨ EXCLUSIVE NEW DESIGNS • ANTI-TARNISH • 100% WATERPROOF",
+    priceText: "Premium Jewelry • 18K Thick Gold Plated • Hypoallergenic",
+    buttonText: "SHOP NOW ➔"
+  },
+  {
     id: "slide-1",
     image: "/hero_banner.jpg",
+    cat: "BestSeller",
     tag: "✦ EXCLUSIVE FESTIVE OFFER ✦",
     title: "LUXURY DEMI-FINE COLLECTION",
     subtitle: "FLAT 40% OFF ON ALL ORDERS",
@@ -3126,6 +3139,7 @@ const HERO_SLIDES = [
   {
     id: "slide-2",
     image: "/hero_slide2.jpg",
+    cat: "Gifting",
     tag: "✦ SPECIAL LUXURY GIFTING OFFER ✦",
     title: "CURATED LUXURY GIFT SETS",
     subtitle: "BUY 1 GET 1 FREE + EXTRA 30% OFF",
@@ -3133,17 +3147,6 @@ const HERO_SLIDES = [
     giftOffer: "🎀 FREE SIGNATURE LUXURY VELVET GIFT BOX INCLUDED",
     priceText: "Skin Safe • 1 Year Anti-Tarnish Warranty",
     buttonText: "SHOP LUXURY GIFTS ➔"
-  },
-  {
-    id: "slide-3",
-    image: "/hero_slide3.jpg",
-    tag: "✦ DAILY LUXURY ESSENTIALS ✦",
-    title: "EVERYDAY 18K GOLD ELEGANCE",
-    subtitle: "PIECES STARTING FROM JUST ₹899",
-    codeText: "USE CODE: LUXE2026",
-    giftOffer: "🚚 FREE EXPRESS BLUEDART DELIVERY ALL OVER INDIA",
-    priceText: "PVD 18Kt Gold Plating • Hypoallergenic",
-    buttonText: "SHOP BESTSELLERS ➔"
   }
 ];
 
@@ -4168,7 +4171,7 @@ function renderWishlistView() {
             <h3 class="font-serif text-2xl font-bold text-[#1A1A1A]">Your Wishlist is Empty</h3>
             <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and tap the heart icon on any piece to save your favorite jewelry!</p>
             <div class="pt-2">
-              <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider">Browse Bestsellers</button>
+              <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="bg-black text-white font-bold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider">Browse Bestsellers</button>
             </div>
           </div>
         ` : `
@@ -4304,7 +4307,7 @@ function renderAccountDashboardView() {
                     <h4 class="font-serif text-xl font-bold text-[#1A1A1A]">No Orders Placed Yet</h4>
                     <p class="text-xs text-slate-500 max-w-sm mx-auto">Explore our 18K Anti-Tarnish Bestsellers and place your first order!</p>
                     <div class="pt-2">
-                      <button onclick="openPLPCategory('BestSeller')" class="bg-black text-white font-bold px-6 py-2.5 text-xs rounded-xl uppercase">Start Shopping</button>
+                      <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="bg-black text-white font-bold px-6 py-2.5 text-xs rounded-xl uppercase">Start Shopping</button>
                     </div>
                   </div>
                 ` : state.ordersList.map(ord => `
@@ -4421,7 +4424,7 @@ function renderHomepageView(heroParam) {
     <!-- 1. Hero 3-Slide Lifestyle Offer Carousel (0 Product Closeups) -->
     <section class="relative overflow-hidden w-full bg-[#EAE5D9] min-h-[440px] sm:min-h-[560px] lg:min-h-[640px] flex items-center">
       <div class="absolute inset-0 z-0">
-        <img src="${currentHero.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover object-center transition-transform duration-1000 scale-105" />
+        <img onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" style="cursor:pointer;" src="${currentHero.image}" onerror="this.onerror=null; this.src='/hero_banner.jpg';" class="w-full h-full object-cover object-center transition-transform duration-1000 scale-105" />
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent"></div>
       </div>
 
@@ -4443,7 +4446,7 @@ function renderHomepageView(heroParam) {
           ${currentHero.priceText ? `<div class="text-xs sm:text-sm font-medium text-slate-300 pt-1 tracking-wider uppercase">${currentHero.priceText}</div>` : ''}
 
           <div class="pt-4 sm:pt-6">
-            <button onclick="openPLPCategory('BestSeller')" class="btn-palmonas-hero text-xs sm:text-sm py-3.5 px-8 shadow-lg hover:scale-105 transition-all">${currentHero.buttonText}</button>
+            <button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="btn-palmonas-hero text-xs sm:text-sm py-3.5 px-8 shadow-lg hover:scale-105 transition-all">${currentHero.buttonText}</button>
           </div>
         </div>
       </div>
@@ -4530,7 +4533,7 @@ function renderHomepageView(heroParam) {
           `;
         }).join('')}
       </div>
-      <div class="text-center pt-4"><button onclick="openPLPCategory('BestSeller')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
+      <div class="text-center pt-4"><button onclick="openPLPCategory('${currentHero.cat || 'NewArrivals'}')" class="border border-black text-black font-semibold text-xs px-8 py-3 uppercase tracking-widest hover:bg-black hover:text-white">VIEW ALL BESTSELLERS</button></div>
     </section>
 
     
