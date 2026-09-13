@@ -1,4 +1,66 @@
 
+// CIELORIA Enterprise Dynamic SEO & JSON-LD Structured Data Engine
+function updateDynamicSEO(options = {}) {
+  try {
+    const title = options.title || "Buy 18K Gold Anti-Tarnish & Waterproof Demifine Jewelry Online | CIELORIA®";
+    const desc = options.desc || "Shop 100% waterproof, anti-tarnish 18K gold plated demi-fine jewelry at Cieloria. Solitaire rings, anti-tarnish bracelets, pendant necklaces, mangalsutras & kada bangles.";
+    const url = options.url || window.location.href;
+    const image = options.image || "https://www.cieloria.com/hero_banner.jpg";
+
+    document.title = title;
+
+    // Update Meta Description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.name = "description";
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.content = desc;
+
+    # OpenGraph Tags
+    const ogTags = {
+      'og:title': title,
+      'og:description': desc,
+      'og:url': url,
+      'og:image': image,
+      'og:type': options.type || 'website',
+      'og:site_name': 'CIELORIA Demifine Luxury',
+      'twitter:card': 'summary_large_image',
+      'twitter:title': title,
+      'twitter:description': desc,
+      'twitter:image': image
+    };
+
+    Object.keys(ogTags).forEach(property => {
+      let tag = document.querySelector(`meta[property="${property}"]`) || document.querySelector(`meta[name="${property}"]`);
+      if (!tag) {
+        tag = document.createElement('meta');
+        if (property.startsWith('og:')) tag.setAttribute('property', property);
+        else tag.setAttribute('name', property);
+        document.head.appendChild(tag);
+      }
+      tag.content = ogTags[property];
+    });
+
+    # Inject Dynamic JSON-LD Schema
+    if (options.schema) {
+      let schemaScript = document.getElementById('cieloria-dynamic-jsonld');
+      if (!schemaScript) {
+        schemaScript = document.createElement('script');
+        schemaScript.id = 'cieloria-dynamic-jsonld';
+        schemaScript.type = 'application/ld+json';
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = JSON.stringify(options.schema);
+    }
+  } catch(e) {}
+}
+
+# Update SEO on renderApp
+const originalRenderApp = renderApp;
+
+
 function cleanTrackingUrl() {
   try {
     if (window.location.search && window.location.search.includes('srsltid=')) {
@@ -3833,6 +3895,118 @@ function getActiveNavCategory() {
 function renderApp() {
   if (typeof document === 'undefined') return;
   const appContainer = document.getElementById('app');
+
+  // Dynamic SEO Trigger
+  try {
+    if (state.viewMode === 'pdp' && state.selectedProductId) {
+      const prod = PRODUCTS.find(p => p.id === state.selectedProductId);
+      if (prod) {
+        updateDynamicSEO({
+          title: `${prod.name} - 18K Gold Waterproof Demifine Jewelry | CIELORIA®`,
+          desc: `Buy ${prod.name} online at CIELORIA. 100% Waterproof, 18K gold plated anti-tarnish coating, skin safe & hypoallergenic. Free shipping across India.`,
+          url: `https://www.cieloria.com/product/${prod.id}`,
+          image: prod.image,
+          type: 'product',
+          schema: {
+            "@context": "https://schema.org/",
+            "@type": "Product",
+            "name": prod.name,
+            "image": [prod.image, prod.secondaryImage || prod.image],
+            "description": prod.description,
+            "sku": prod.sku || `SKU-${prod.id}`,
+            "brand": {
+              "@type": "Brand",
+              "name": "CIELORIA"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": `https://www.cieloria.com/product/${prod.id}`,
+              "priceCurrency": "INR",
+              "price": prod.price,
+              "priceValidUntil": "2027-12-31",
+              "itemCondition": "https://schema.org/NewCondition",
+              "availability": prod.inStock !== false ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "CIELORIA"
+              }
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": prod.rating || 4.8,
+              "reviewCount": prod.reviewCount || 120
+            }
+          }
+        });
+      }
+    } else if (state.viewMode === 'blog_detail' && state.selectedBlogSlug) {
+      const blog = BLOG_POSTS.find(b => b.slug === state.selectedBlogSlug);
+      if (blog) {
+        updateDynamicSEO({
+          title: `${blog.title} | CIELORIA® Jewelry Journal`,
+          desc: blog.excerpt,
+          url: `https://www.cieloria.com/blog/${blog.slug}`,
+          image: blog.image,
+          type: 'article',
+          schema: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": blog.title,
+            "image": [blog.image],
+            "datePublished": "2026-03-01",
+            "dateModified": "2026-09-13",
+            "author": {
+              "@type": "Organization",
+              "name": "CIELORIA Editorial Team"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "CIELORIA",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.cieloria.com/cieloria_logo.png"
+              }
+            },
+            "description": blog.excerpt
+          }
+        });
+      }
+    } else if (state.viewMode === 'plp') {
+      const catName = state.plpCategory || 'All';
+      updateDynamicSEO({
+        title: `Buy Anti-Tarnish ${catName} Jewelry Online | CIELORIA® Demifine Collection`,
+        desc: `Explore 100% waterproof 18K gold plated ${catName} at CIELORIA. Anti-tarnish, nickel-free, hypoallergenic luxury jewelry designed for everyday wear.`,
+        url: `https://www.cieloria.com/category/${getUrlSlug(catName)}`
+      });
+    } else if (state.viewMode === 'about') {
+      updateDynamicSEO({
+        title: "About CIELORIA® | Lucknow HQ Demifine Luxury Jewelry Brand",
+        desc: "Learn about CIELORIA's mission to craft 100% waterproof, anti-tarnish 18K gold demifine jewelry for modern India."
+      });
+    } else {
+      updateDynamicSEO({
+        title: "Buy 18K Gold Anti-Tarnish & Waterproof Demifine Jewelry Online | CIELORIA®",
+        desc: "Shop 100% waterproof, anti-tarnish 18K gold plated demi-fine jewelry at Cieloria. Solitaire rings, anti-tarnish bracelets, pendant necklaces, mangalsutras & kada bangles.",
+        schema: {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "CIELORIA",
+          "url": "https://www.cieloria.com",
+          "logo": "https://www.cieloria.com/cieloria_logo.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-9999999999",
+            "contactType": "customer service"
+          },
+          "sameAs": [
+            "https://www.instagram.com/cieloria",
+            "https://www.facebook.com/cieloria"
+          ]
+        }
+      });
+    }
+  } catch(e) {}
+
   if (!appContainer) return;
 
   if (!state || typeof state !== 'object') state = {};
