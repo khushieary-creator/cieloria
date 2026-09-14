@@ -3892,6 +3892,110 @@ function getActiveNavCategory() {
   return '';
 }
 
+function updateDynamicSEO() {
+  try {
+    if (typeof document === 'undefined') return;
+
+    let seoTitle = "CIELORIA | Demi-Fine Anti-Tarnish 18K Gold & 925 Silver Jewelry";
+    let seoDesc = "Shop 100% waterproof, anti-tarnish 18K gold plated & 925 fine silver demi-fine jewelry at Cieloria. Premium luxury necklaces, rings, bracelets, earrings & men's kadas. Free Shipping across India.";
+    let canonicalPath = (typeof window !== 'undefined' && window.location.pathname) ? window.location.pathname : '/';
+
+    let schemaData = null;
+
+    if (state && state.viewMode === 'pdp' && state.selectedProductId) {
+      const p = PRODUCTS.find(prod => prod.id === state.selectedProductId);
+      if (p) {
+        seoTitle = `${p.name} - 18K Anti-Tarnish Demi-Fine | Cieloria`;
+        seoDesc = `Buy ${p.name} at Cieloria. 100% waterproof, anti-tarnish 18K thick gold plated ${p.category || 'Jewelry'}. Price: ₹${p.price}. Free Shipping & 1-Year Warranty across India.`;
+        canonicalPath = `/product/${p.id}`;
+
+        schemaData = {
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cieloria.com/" },
+                { "@type": "ListItem", "position": 2, "name": p.category || "Jewelry", "item": `https://www.cieloria.com/category/${getUrlSlug(p.category || 'all')}` },
+                { "@type": "ListItem", "position": 3, "name": p.name, "item": `https://www.cieloria.com/product/${p.id}` }
+              ]
+            },
+            {
+              "@type": "Product",
+              "name": p.name,
+              "image": p.image ? `https://www.cieloria.com${p.image}` : "https://www.cieloria.com/hero_new_arrivals.jpg",
+              "description": p.description || seoDesc,
+              "sku": p.id,
+              "brand": { "@type": "Brand", "name": "Cieloria" },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "INR",
+                "price": p.price,
+                "priceValidUntil": "2027-12-31",
+                "itemCondition": "https://schema.org/NewCondition",
+                "availability": "https://schema.org/InStock",
+                "seller": { "@type": "Organization", "name": "Cieloria" }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "reviewCount": p.reviewCount || 128
+              }
+            }
+          ]
+        };
+      }
+    } else if (state && state.viewMode === 'plp' && state.plpCategory) {
+      const catName = state.plpCategory;
+      const catData = (typeof PLP_CATEGORY_DATA !== 'undefined' && PLP_CATEGORY_DATA[catName]) ? PLP_CATEGORY_DATA[catName] : { title: `${catName} Collection`, desc: `Shop anti-tarnish ${catName} at Cieloria.` };
+      const catSlug = getUrlSlug(catName);
+      seoTitle = `${catData.title || catName} - 18K Anti-Tarnish Demi-Fine | Cieloria`;
+      seoDesc = `Explore ${catData.title || catName} at Cieloria. 100% waterproof 18K gold plated & 925 fine silver jewelry. Free Shipping & 1-Year Anti-Tarnish Warranty across India.`;
+      canonicalPath = `/category/${catSlug}`;
+
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.cieloria.com/" },
+          { "@type": "ListItem", "position": 2, "name": catName, "item": `https://www.cieloria.com/category/${catSlug}` }
+        ]
+      };
+    } else if (state && state.viewMode === 'about') {
+      seoTitle = "About Cieloria - Luxury Demi-Fine Anti-Tarnish Jewelry Brand Lucknow";
+      seoDesc = "Cieloria is a premier demi-fine luxury jewelry brand in Lucknow. We craft 100% waterproof, anti-tarnish 18K gold and 925 fine silver jewelry.";
+      canonicalPath = "/about";
+    }
+
+    if (typeof window === 'undefined' || !window.isAwayFromTab) {
+      document.title = seoTitle;
+    }
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', seoDesc);
+    }
+
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', `https://www.cieloria.com${canonicalPath}`);
+    }
+
+    let schemaScript = document.getElementById('dynamic-seo-schema');
+    if (schemaData) {
+      if (!schemaScript) {
+        schemaScript = document.createElement('script');
+        schemaScript.id = 'dynamic-seo-schema';
+        schemaScript.type = 'application/ld+json';
+        document.head.appendChild(schemaScript);
+      }
+      schemaScript.textContent = JSON.stringify(schemaData);
+    } else if (schemaScript) {
+      schemaScript.remove();
+    }
+  } catch(e) {}
+}
+
 function renderApp() {
   if (typeof document === 'undefined') return;
   const appContainer = document.getElementById('app');
@@ -4016,6 +4120,8 @@ function renderApp() {
   if (typeof state.searchQuery !== 'string') state.searchQuery = '';
   if (!Array.isArray(state.wishlist)) state.wishlist = [];
   if (!Array.isArray(state.cart)) state.cart = [];
+
+  updateDynamicSEO();
 
   const currentHero = HERO_SLIDES[state.heroSlideIndex];
   const cartTotalItems = calculateCartTotalCount();
@@ -6507,6 +6613,7 @@ if (typeof document !== 'undefined') {
   ];
 
   function startTitleAnimation() {
+    window.isAwayFromTab = true;
     if (titleTimer) clearInterval(titleTimer);
     originalTitle = document.title && !awayTitles.includes(document.title) ? document.title : originalTitle;
     titleIndex = 0;
@@ -6518,11 +6625,12 @@ if (typeof document !== 'undefined') {
   }
 
   function restoreTitle() {
+    window.isAwayFromTab = false;
     if (titleTimer) {
       clearInterval(titleTimer);
       titleTimer = null;
     }
-    document.title = originalTitle;
+    updateDynamicSEO();
   }
 
   window.addEventListener('blur', startTitleAnimation);
