@@ -18,7 +18,7 @@ function updateDynamicSEO(options = {}) {
     }
     metaDesc.content = desc;
 
-    # OpenGraph Tags
+    // OpenGraph Tags
     const ogTags = {
       'og:title': title,
       'og:description': desc,
@@ -43,7 +43,7 @@ function updateDynamicSEO(options = {}) {
       tag.content = ogTags[property];
     });
 
-    # Inject Dynamic JSON-LD Schema
+    // Inject Dynamic JSON-LD Schema
     if (options.schema) {
       let schemaScript = document.getElementById('cieloria-dynamic-jsonld');
       if (!schemaScript) {
@@ -57,7 +57,7 @@ function updateDynamicSEO(options = {}) {
   } catch(e) {}
 }
 
-# Update SEO on renderApp
+// Update SEO on renderApp
 const originalRenderApp = renderApp;
 
 
