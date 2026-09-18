@@ -4058,7 +4058,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-09-13",
+            "dateModified": "2026-09-18",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"

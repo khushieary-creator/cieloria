@@ -119,7 +119,23 @@
         "name": "Is Cieloria jewelry anti-tarnish and waterproof?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, all Cieloria demi-fine jewelry is 100% waterproof, anti-tarnish, and skin-safe. Crafted with 18K thick gold plating over sterling silver or stainless steel with a 1-year anti-tarnish guarantee."
+          "text": "Yes, all Cieloria demi-fine jewelry is 100% waterproof, anti-tarnish, and skin-safe. Crafted with 18K thick gold plating over 925 sterling silver or medical-grade stainless steel with a 1-year anti-tarnish guarantee."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is demi-fine jewelry and how does Cieloria differ from imitation jewelry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Demi-fine jewelry bridges the gap between fine gold and imitation fashion jewelry. Cieloria uses solid 925 sterling silver and 3-micron 18K real gold electroplating with protective PVD coating, making it tarnish-free, hypoallergenic, and waterproof."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What warranty does Cieloria offer on anti-tarnish jewelry?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cieloria provides an unconditional 1-Year Anti-Tarnish Replacement Warranty on all 18K gold-plated and 925 silver jewelry. If your item tarnishes within 365 days, Cieloria replaces it for free."
         }
       },
       {
@@ -174,6 +190,51 @@
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "84210"
+    }
+  }
+  </script>
+
+  <!-- 5. JSON-LD Schema: MerchantReturnPolicy & ShippingDetails for Google Shopping & AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "OnlineStore",
+    "name": "Cieloria Demi-Fine Jewelry",
+    "url": "https://www.cieloria.com/",
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "IN",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 15,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 0,
+        "currency": "INR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "IN"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 2,
+          "maxValue": 4,
+          "unitCode": "DAY"
+        }
+      }
     }
   }
   </script>

@@ -1,5 +1,8 @@
 {
   "name": "cieloria",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "docx": "^9.7.1"
+  }
 }
