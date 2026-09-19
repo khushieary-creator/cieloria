@@ -20,7 +20,7 @@ const doc = new Document({
         new Paragraph({
           children: [
             new TextRun({ text: "Audit Date: ", bold: true }),
-            new TextRun("September 18, 2026 | "),
+            new TextRun("September 19, 2026 | "),
             new TextRun({ text: "Target Domain: ", bold: true }),
             new TextRun("https://www.cieloria.com/ | "),
             new TextRun({ text: "Status: ", bold: true }),
