@@ -3303,6 +3303,81 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-5",
+    slug: "why-everyone-is-switching-to-anti-tarnish-jewelry",
+    day: "07",
+    month: "OCT",
+    tag: "VIRAL TREND",
+    title: "Why Everyone Is Ditching Traditional Gold for 18K Anti-Tarnish Demi-Fine Jewelry (And Saving ₹50,000+)",
+    image: "/hero_necklaces.jpg",
+    excerpt: "With 24K gold crossing record highs in India, modern smart shoppers are choosing 100% waterproof 18K demi-fine jewelry that looks identical to solid gold without locker anxiety.",
+    featuredProductIds: ["PROD-001", "PROD-004", "luxury-gold-plated-anti-tarnish-stone-bracelet"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        With 24K gold prices crossing ₹75,000 per 10 grams, the traditional mindset of buying heavy solid gold just for daily wear has shifted dramatically. Today’s smart, fashion-conscious Indian women are switching in droves to <strong>18K Anti-Tarnish Demi-Fine Jewelry</strong>—saving tens of thousands of rupees while enjoying identical royal luster and zero safe-deposit locker stress.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The Real Cost Comparison: Solid Gold vs. CIELORIA Demi-Fine</h3>
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Feature</th>
+              <th class="p-3.5">Traditional Solid Gold</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA 18K Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Average Everyday Price</td><td class="p-3.5 text-red-600">₹45,000 – ₹1,20,000+</td><td class="p-3.5 font-bold text-emerald-700">₹999 – ₹2,999</td></tr>
+            <tr><td class="p-3.5 font-semibold">Everyday Safety / Theft Risk</td><td class="p-3.5 text-red-600">High (Locked in bank vault)</td><td class="p-3.5 font-bold text-emerald-700">Zero Anxiety (Wear 24/7)</td></tr>
+            <tr><td class="p-3.5 font-semibold">Waterproof & Sweat Resistance</td><td class="p-3.5">Waterproof but soft & dents</td><td class="p-3.5 font-bold text-emerald-700">100% Waterproof PVD Shield</td></tr>
+            <tr><td class="p-3.5 font-semibold">Design Versatility</td><td class="p-3.5">Traditional & bulky</td><td class="p-3.5 font-bold text-emerald-700">Trending Modern Minimalist</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. Why Doesn't CIELORIA Turn Green or Black?</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Cheap street jewelry uses brass and copper that oxidizes with sweat, releasing copper salts that turn skin green. CIELORIA uses an impenetrable <strong>3-micron 18K gold PVD vacuum coating</strong> bonded molecularly over hypoallergenic surgical stainless steel and 925 sterling silver. It survives showers, intense workouts, and perfumes without losing its radiant mirror shine.
+      </p>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Wear your luxury every single day—from morning cardio to client pitches and weekend brunches—without taking it off."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-6",
+    slug: "celebrity-clean-girl-jewelry-stack-guide",
+    day: "07",
+    month: "OCT",
+    tag: "STYLE GUIDE",
+    title: "The Celebrity 'Clean Girl' Jewelry Stack: How to Layer Necklaces & Bracelets Like a Stylist",
+    image: "/blog_3.jpg",
+    excerpt: "Master the quiet luxury aesthetic with 3 golden rules of layering waterproof chains, pendant necklaces, and tennis bracelets like top Bollywood fashion icons.",
+    featuredProductIds: ["PROD-002", "PROD-005", "PROD-008"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        From Alia Bhatt to Hailey Bieber, the <em>Clean Girl Aesthetic</em> has taken social media by storm. The secret isn't wearing tons of heavy jewels—it's mastering the effortless, layered <strong>Quiet Luxury Stack</strong> that looks radiant, subtle, and incredibly expensive.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">Rule #1: The 3-Length Tiered Necklace Formula</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Never wear necklaces of identical length—they will tangle throughout the day. Instead, follow the stylist formula:
+      </p>
+      <ul class="list-disc pl-6 text-base text-slate-700 space-y-3 font-sans mb-6">
+        <li><strong>Base (14 Inches):</strong> A sleek 18K herringbone or snake chain that sits right on the collarbone.</li>
+        <li><strong>Focal Point (16-18 Inches):</strong> A delicate solitaire pendant, evil eye, or birthstone drop.</li>
+        <li><strong>Anchor (20-22 Inches):</strong> A textured paperclip link or box chain that elongates your neck.</li>
+      </ul>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">Rule #2: The 'One Statement, Two Whispers' Wrist Stack</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Balance is key. Pair one structured statement piece—such as the <strong>CIELORIA Royal Kada or Tennis Bracelet</strong>—with two delicate whispering link chains. This creates depth and movement on your wrist without overwhelming your outfit.
+      </p>
+    `
+  },
+  {
     id: "blog-1",
     slug: "lab-grown-diamonds",
     day: "03",
@@ -4058,7 +4133,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-10-06",
+            "dateModified": "2026-10-07",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"
