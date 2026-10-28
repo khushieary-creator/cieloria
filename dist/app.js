@@ -3303,6 +3303,84 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-7",
+    slug: "dhanteras-diwali-jewelry-buying-guide-2026",
+    day: "28",
+    month: "OCT",
+    tag: "FESTIVE VIRAL",
+    title: "Dhanteras & Diwali 2026: Why Smart Shoppers Are Buying 18K Anti-Tarnish & Lab Solitaires Over Traditional Coins",
+    image: "/hero_banner.jpg",
+    excerpt: "Why lock ₹1,00,000+ in bank vaults this festive season? Discover how modern Indian women are choosing 100% waterproof 18K demi-fine jewelry and certified lab diamonds for auspicious glamour you can wear every day.",
+    featuredProductIds: ["PROD-001", "PROD-006", "luxury-gold-plated-anti-tarnish-stone-bracelet"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        As Dhanteras and Diwali 2026 approach, Indian jewellery markets are witnessing a massive behavioral shift. With 24K gold rates testing unprecedented highs, smart households are rethinking the age-old tradition of buying expensive gold coins that end up gathering dust inside dark bank lockers.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The New Auspicious Equation: Everyday Wearability</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        In ancient Vedic tradition, buying gold and silver on Dhanteras symbolizes inviting Goddess Lakshmi’s radiant abundance into the home. Modern Indian women are realizing that <strong>true wealth is meant to be celebrated and worn</strong>, not feared and locked away. By choosing CIELORIA 18K thick gold demi-fine and 925 sterling silver, buyers get genuine precious metal luster for Lakshmi Puja that transitions seamlessly to the office on Monday morning.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Festive Factor</th>
+              <th class="p-3.5">Traditional 24K Coin/Bar</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA 18K Demi-Fine Jewelry</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Immediate Usability</td><td class="p-3.5 text-red-600">0% (Directly into safe)</td><td class="p-3.5 font-bold text-emerald-700">100% (Wear to card parties & pujas)</td></tr>
+            <tr><td class="p-3.5 font-semibold">Festive Budget Impact</td><td class="p-3.5 text-red-600">₹80,000 – ₹1,50,000+</td><td class="p-3.5 font-bold text-emerald-700">₹1,499 – ₹4,999</td></tr>
+            <tr><td class="p-3.5 font-semibold">Durability & Waterproofing</td><td class="p-3.5">Soft 24K dents easily</td><td class="p-3.5 font-bold text-emerald-700">3-Micron PVD Anti-Tarnish Coating</td></tr>
+            <tr><td class="p-3.5 font-semibold">Gifting Joy & Impression</td><td class="p-3.5">Impersonal tiny gold coin</td><td class="p-3.5 font-bold text-emerald-700">Luxury Designer Gift Box & Certificate</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "This Diwali, don't just invest in metals. Invest in your daily confidence, radiance, and celebratory joy."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-8",
+    slug: "winter-wedding-guest-jewelry-lookbook-2026",
+    day: "28",
+    month: "OCT",
+    tag: "WEDDING TREND",
+    title: "Winter Wedding Guest Lookbook 2026: 5 Royal Nawabi Stacks That Look Like ₹2 Lakhs (Under ₹3,000)",
+    image: "/hero_new_arrivals.jpg",
+    excerpt: "Attending big-fat Indian winter weddings? Master the art of royal Lucknow-inspired chokers, kada bangles, and tennis bracelets that resist wedding sweat, mehendi stains, and heavy lehenga friction.",
+    featuredProductIds: ["PROD-003", "PROD-007", "PROD-009"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        With India's winter wedding calendar in full swing, guests and bridesmaids face a classic fashion dilemma: how to look like royalty across Mehendi, Sangeet, and Reception without spending a fortune or worrying about precious jewellery getting stolen in crowded banquet halls.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">The 5 Festive Function Stacking Formulas</h3>
+
+      <div class="space-y-6 my-6">
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">1. The Mehendi Haldi Glow (Yellow & Floral Silhouettes)</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Pair delicate 18K yellow gold floral studs with our anti-tarnish tennis bracelet. Because CIELORIA pieces are 100% waterproof, stray haldi and wet mehendi won't stain or damage the finish.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">2. The Sangeet Dancefloor Champion</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Dancing non-stop to Bollywood beats means intense perspiration. Standard imitation jewelry tarnishes instantly when mixed with sweat. CIELORIA's medical-grade stainless steel core with PVD vacuum gold plating remains completely sweatproof all night long.</p>
+        </div>
+
+        <div class="p-5 bg-[#FAF8F5] border border-[#E6E1D7] rounded-2xl">
+          <h4 class="font-serif text-xl font-bold text-[#1A1A1A] mb-2">3. The Royal Reception Grandeur</h4>
+          <p class="text-sm text-slate-600 leading-relaxed font-sans">Layer the CIELORIA Royal Lucknow Kada alongside a statement choker necklace over deep velvets, Banarasi silks, or sequin sarees for an opulent Nawabi impression.</p>
+        </div>
+      </div>
+    `
+  },
+  {
     id: "blog-5",
     slug: "why-everyone-is-switching-to-anti-tarnish-jewelry",
     day: "07",
@@ -4133,7 +4211,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-10-21",
+            "dateModified": "2026-10-28",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"
