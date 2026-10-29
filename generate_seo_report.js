@@ -20,7 +20,7 @@ const doc = new Document({
         new Paragraph({
           children: [
             new TextRun({ text: "Audit Date: ", bold: true }),
-            new TextRun("October 28, 2026 | "),
+            new TextRun("October 29, 2026 | "),
             new TextRun({ text: "Target Domain: ", bold: true }),
             new TextRun("https://www.cieloria.com/ | "),
             new TextRun({ text: "Status: ", bold: true }),
@@ -100,7 +100,7 @@ const doc = new Document({
         new Paragraph({
           children: [
             new TextRun({ text: "• Updated Sitemap.xml & Crawl Directives: ", bold: true }),
-            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with lastmod set to September 18, 2026.")
+            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with lastmod set to October 29, 2026.")
           ],
           spacing: { after: 100 }
         }),
