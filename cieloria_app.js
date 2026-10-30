@@ -3303,6 +3303,106 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-9",
+    slug: "diwali-card-party-cocktail-jewelry-stacks-2026",
+    day: "30",
+    month: "OCT",
+    tag: "VIRAL GLAM",
+    title: "Diwali Card Party & Cocktail Glam: 7 Waterproof 18K Gold Stacks That Steal the Spotlight (Under ₹2,999)",
+    image: "/hero_bracelets.jpg",
+    excerpt: "Heading to high-stakes Diwali card parties, cocktail dinners, and midnight teen patti tables? Style the viral 'Clean Girl Diwali Glam' with 100% waterproof, sweatproof, and drink-proof 18K demi-fine stacks that look like solid gold.",
+    featuredProductIds: ["luxury-gold-plated-anti-tarnish-stone-bracelet", "stainless-steel-contemporary-gold-plated-love-ad-anti-tarnish-bracelet-for-women", "the-maharani-touch-luxe-gold-sapphire-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Diwali week in India is electric—festive lights, bustling card parties, cocktail dinners, and non-stop celebration until the early dawn. But while high-stakes teen patti tables and celebrations bring sheer joy, wearing heavy solid locker jewellery carries serious anxiety: loose clasps, drink spills, crowded rooms, and sweat damaging expensive heirlooms.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The Viral 'Clean Girl Diwali Glam' Aesthetic</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Trending across Instagram and Pinterest this festive season is the <strong>Clean Girl Festive Stack</strong>: pairing modern organza kurtas, silk trousers, or cocktail sarees with minimalist, high-shine 18K gold layers. Instead of bulky sets, modern fashionistas are stacking delicate herringbone chains, clover tennis bracelets, and baguette solitaire rings that shimmer effortlessly under warm diya glow.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Party Factor</th>
+              <th class="p-3.5">Imitation / Street Jewelry</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA 18K Anti-Tarnish Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Resistance to Cocktails & Spills</td><td class="p-3.5 text-red-600">Discolors & rusts instantly</td><td class="p-3.5 font-bold text-emerald-700">100% Waterproof PVD Shield</td></tr>
+            <tr><td class="p-3.5 font-semibold">Late Night Sweat & Dancing</td><td class="p-3.5 text-red-600">Leaves green marks on wrists/neck</td><td class="p-3.5 font-bold text-emerald-700">Hypoallergenic & Nickel-Free</td></tr>
+            <tr><td class="p-3.5 font-semibold">Visual Luster Under Diya Light</td><td class="p-3.5">Dull brassy yellow tone</td><td class="p-3.5 font-bold text-emerald-700">Genuine 18K Rich Champagne Gold Finish</td></tr>
+            <tr><td class="p-3.5 font-semibold">Theft & Loss Anxiety</td><td class="p-3.5">High stress if wearing locker gold</td><td class="p-3.5 font-bold text-emerald-700">Zero Worry Luxury (Under ₹2,999)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. The 3 Must-Have Card Party Stacks</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>The Wrist Glam Stack:</strong> Pair CIELORIA's Love AD Tennis Bracelet with a sleek Gold Textured Kada for instant royal contrast.</li>
+        <li><strong>The Candlelight Neckline:</strong> Layer an 18K Snake Chain with a Floating Solitaire Pendant over deep V-neck festive kurtas or saree blouses.</li>
+        <li><strong>The Statement Cocktail Ring:</strong> Swap traditional heavy polki rings for our Maharani Luxe Sapphire or Bow Diamond Ring that won't snag on fine fabrics.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Party hard, dance freely, and shine brightly. True modern luxury means looking like a crore without having to guard your jewelry all night."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-10",
+    slug: "bhai-dooj-gifting-guide-anti-tarnish-jewelry-2026",
+    day: "30",
+    month: "OCT",
+    tag: "FESTIVE GIFTING",
+    title: "Bhai Dooj 2026 Gifting Guide: Why Modern Sisters Want 18K Anti-Tarnish Demi-Fine Over Mithai & Cash Envelopes",
+    image: "/gifting_her.jpg",
+    excerpt: "Looking for the ultimate Bhai Dooj gift for your sister? Skip generic mithai boxes and cash envelopes. Discover why enduring 18K gold-plated demi-fine jewelry and certified 925 silver are the #1 trending Bhai Dooj gifts in 2026.",
+    featuredProductIds: ["18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-kada-bracelet", "luxe-loop-18k-gold-plated-diamond-bow-ring", "stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Bhai Dooj celebrates an eternal bond of love, laughter, and lifelong protection between siblings. But every year, millions of brothers face the exact same gifting headache: handing over a paper cash envelope that feels impersonal, or buying expensive sweet boxes that simply expire in the fridge.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. Why Demi-Fine Jewelry is the Most Thoughtful Bhai Dooj Gift</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        When you give your sister a piece of CIELORIA demi-fine jewelry, you aren't just giving an accessory—you're giving her a daily reminder of your bond. Because every piece is backed by our <strong>1-Year Anti-Tarnish Replacement Warranty</strong> and crafted with 100% waterproof 18K gold plating over 925 silver or surgical stainless steel, she can wear it to college, work, workouts, and dinners without it ever fading or turning black.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Gift Option</th>
+              <th class="p-3.5">Emotional Value</th>
+              <th class="p-3.5">Longevity</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Advantage</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Cash Envelope (₹1,000 – ₹5,000)</td><td class="p-3.5 text-slate-500">Impersonal & forgotten</td><td class="p-3.5 text-slate-500">Spent within days</td><td class="p-3.5 font-bold text-emerald-700">Tangible keepsake she wears 365 days</td></tr>
+            <tr><td class="p-3.5 font-semibold">Mithai / Chocolate Box</td><td class="p-3.5 text-slate-500">Low personal touch</td><td class="p-3.5 text-slate-500">Eaten or re-gifted</td><td class="p-3.5 font-bold text-emerald-700">Luxury Royal Velvet Gift Box with personalized note</td></tr>
+            <tr><td class="p-3.5 font-semibold">Solid 22K Gold Coin</td><td class="p-3.5 text-slate-500">High financial burden</td><td class="p-3.5 text-slate-500">Locked in a bank safe</td><td class="p-3.5 font-bold text-emerald-700">Auspicious precious metal look under ₹2,499</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. Top 3 Bhai Dooj Gifting Picks for Every Sister Personality</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>For The Working Professional Sister:</strong> The Mother of Pearl Clover Wraparound Bracelet. Elegant, subtle, and elevates every blazer or formal kurta.</li>
+        <li><strong>For The Gen-Z / College Sister:</strong> The Luxe Loop Diamond Bow Ring. Playful, trendy, and viral across social media.</li>
+        <li><strong>For The Traditional Sister:</strong> The 18KT Gold Plated Waterproof Demi-Fine Kada. Timeless Indian design engineered for 24/7 durability.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "This Bhai Dooj, gift your sister something as enduring as your bond. Everyday elegance, zero tarnish, and guaranteed love."
+      </blockquote>
+    `
+  },
+  {
     id: "blog-7",
     slug: "dhanteras-diwali-jewelry-buying-guide-2026",
     day: "28",
@@ -4211,7 +4311,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-10-29",
+            "dateModified": "2026-10-30",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"

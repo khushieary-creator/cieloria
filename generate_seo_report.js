@@ -20,7 +20,7 @@ const doc = new Document({
         new Paragraph({
           children: [
             new TextRun({ text: "Audit Date: ", bold: true }),
-            new TextRun("October 29, 2026 | "),
+            new TextRun("October 30, 2026 | "),
             new TextRun({ text: "Target Domain: ", bold: true }),
             new TextRun("https://www.cieloria.com/ | "),
             new TextRun({ text: "Status: ", bold: true }),
@@ -92,15 +92,22 @@ const doc = new Document({
         }),
         new Paragraph({
           children: [
+            new TextRun({ text: "• Festive Viral Blogs & Market Trends: ", bold: true }),
+            new TextRun("Published 2 high-conversion viral blog posts: 'Diwali Card Party & Cocktail Glam: 7 Waterproof 18K Gold Stacks' and 'Bhai Dooj 2026 Gifting Guide: 18K Anti-Tarnish Demi-Fine Over Mithai & Cash'.")
+          ],
+          spacing: { after: 100 }
+        }),
+        new Paragraph({
+          children: [
             new TextRun({ text: "• Expanded AI Generative FAQ Schemas: ", bold: true }),
-            new TextRun("Added high-intent questions defining demi-fine jewelry vs imitation items, and highlighting Cieloria's 1-Year Anti-Tarnish Replacement Warranty.")
+            new TextRun("Added high-intent questions for Bhai Dooj direct luxury gifting and Diwali card party cocktail/sweatproof jewelry performance.")
           ],
           spacing: { after: 100 }
         }),
         new Paragraph({
           children: [
             new TextRun({ text: "• Updated Sitemap.xml & Crawl Directives: ", bold: true }),
-            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with lastmod set to October 29, 2026.")
+            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with new blog URLs and lastmod set to October 30, 2026.")
           ],
           spacing: { after: 100 }
         }),
