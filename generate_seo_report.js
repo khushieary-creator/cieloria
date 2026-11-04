@@ -20,7 +20,7 @@ const doc = new Document({
         new Paragraph({
           children: [
             new TextRun({ text: "Audit Date: ", bold: true }),
-            new TextRun("October 30, 2026 | "),
+            new TextRun("November 04, 2026 | "),
             new TextRun({ text: "Target Domain: ", bold: true }),
             new TextRun("https://www.cieloria.com/ | "),
             new TextRun({ text: "Status: ", bold: true }),
@@ -92,22 +92,22 @@ const doc = new Document({
         }),
         new Paragraph({
           children: [
-            new TextRun({ text: "• Festive Viral Blogs & Market Trends: ", bold: true }),
-            new TextRun("Published 2 high-conversion viral blog posts: 'Diwali Card Party & Cocktail Glam: 7 Waterproof 18K Gold Stacks' and 'Bhai Dooj 2026 Gifting Guide: 18K Anti-Tarnish Demi-Fine Over Mithai & Cash'.")
+            new TextRun({ text: "• Festive & Wedding Viral Blogs: ", bold: true }),
+            new TextRun("Published 2 high-conversion viral blog posts: 'Destination Wedding Jewelry Packing Guide 2026: Why Modern Brides & Guests Never Fly With Locker Gold' and 'Chhath Puja & Dev Deepawali 2026: Sacred Ghat Rituals & 100% Holy Dip Waterproof Jewelry Guide'.")
           ],
           spacing: { after: 100 }
         }),
         new Paragraph({
           children: [
             new TextRun({ text: "• Expanded AI Generative FAQ Schemas: ", bold: true }),
-            new TextRun("Added high-intent questions for Bhai Dooj direct luxury gifting and Diwali card party cocktail/sweatproof jewelry performance.")
+            new TextRun("Added high-intent questions for destination wedding flight travel safety and holy dip river water immersion resilience.")
           ],
           spacing: { after: 100 }
         }),
         new Paragraph({
           children: [
             new TextRun({ text: "• Updated Sitemap.xml & Crawl Directives: ", bold: true }),
-            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with new blog URLs and lastmod set to October 30, 2026.")
+            new TextRun("Updated sitemap.xml across root, public/, and dist/ directories with new blog URLs and lastmod set to November 04, 2026.")
           ],
           spacing: { after: 100 }
         }),

@@ -3303,6 +3303,103 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-11",
+    slug: "destination-wedding-jewelry-packing-guide-2026",
+    day: "04",
+    month: "NOV",
+    tag: "WEDDING VIRAL",
+    title: "Destination Wedding Jewelry Packing Guide 2026: Why Modern Brides & Guests Never Fly With Locker Gold",
+    image: "/hero_new_arrivals.jpg",
+    excerpt: "Planning for royal destination weddings in Udaipur, Jaipur, or Goa? Discover why millennial brides and wedding guests are swapping locker gold for 100% waterproof, customs-safe 18K anti-tarnish demi-fine jewelry that looks breathtaking in 4K wedding reels.",
+    featuredProductIds: ["18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-kada-bracelet", "luxury-geometric-18k-gold-plated-zircon-bangle-bracelet", "the-maharani-touch-luxe-gold-sapphire-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        With winter wedding season in full swing across royal palaces in Udaipur, beach resorts in Goa, and luxury venues in Thailand, packing fine jewellery has become the number one anxiety for Indian families. The fear of airport bag checks, hotel locker break-ins, or losing ₹5,00,000+ heirloom sets amidst high-energy Sangeet dancing can ruin the celebration.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The Destination Wedding Travel Paradox</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Modern brides and stylish bridesmaids have found a smarter, stress-free formula: <strong>keep heritage locker gold safely at home</strong>, and travel exclusively with premium 18K demi-fine anti-tarnish jewellery. Thanks to 3-micron PVD vacuum gold electroplating, CIELORIA pieces provide the exact warm champagne luster and diamond brilliance of real gold without the insurance headache.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Travel & Wedding Factor</th>
+              <th class="p-3.5">Real 22K/24K Locker Gold</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA 18K Anti-Tarnish Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Airport Security & Customs</td><td class="p-3.5 text-red-600">High scrutiny, declarations, theft risk</td><td class="p-3.5 font-bold text-emerald-700">100% Worry-Free Carry-On Travel</td></tr>
+            <tr><td class="p-3.5 font-semibold">Pool Party & Haldi Resistance</td><td class="p-3.5">Haldi & chlorine discolor soft gold</td><td class="p-3.5 font-bold text-emerald-700">100% Waterproof & Stain-Resistant</td></tr>
+            <tr><td class="p-3.5 font-semibold">Sangeet Dance Sweatproof</td><td class="p-3.5">Heavy, causes skin chaffing</td><td class="p-3.5 font-bold text-emerald-700">Hypoallergenic Surgical Stainless Steel Core</td></tr>
+            <tr><td class="p-3.5 font-semibold">4K Photo & Reel Aesthetics</td><td class="p-3.5">Royal Gold Luster</td><td class="p-3.5 font-bold text-emerald-700">Identical Opulence with 1-Year Guarantee</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. The 3 Essential Destination Function Stacks</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>Sundowner Pool Party / Mehendi:</strong> Layer a clover wraparound waterproof bracelet with lightweight zircon huggies. You can jump into the resort pool with zero fear.</li>
+        <li><strong>Royal Sangeet Night:</strong> Stack the CIELORIA Royal Kada alongside high-sparkle tennis bracelets for showstopper stage performance without loosening stones.</li>
+        <li><strong>Grand Reception:</strong> Contrast deep velvets and pastel lehengas with our Maharani Luxe Sapphire ring and emerald choker stack.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Destination weddings are meant for carefree laughter and dancing under the stars—not worrying about hotel room keys and locker safety."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-12",
+    slug: "chhath-puja-dev-deepawali-waterproof-jewelry-guide-2026",
+    day: "04",
+    month: "NOV",
+    tag: "SACRED FESTIVE",
+    title: "Chhath Puja & Dev Deepawali 2026: Sacred Ghat Rituals & 100% Holy Dip Waterproof Jewelry Guide",
+    image: "/hero_necklaces.jpg",
+    excerpt: "Stepping into holy rivers for Arghya or lighting lamps across Varanasi ghats? Avoid cheap brass jewelry that rusts and turns green in holy water. Explore CIELORIA's hypoallergenic 18K gold and 925 hallmarked silver engineered to survive river dips.",
+    featuredProductIds: ["stainless-steel-gold-plated-mother-of-pearls-clover-wraparound-anti-tarnish-bracelet-for-women", "nail-gold-plated-bracelet-rhinestones-jewelry", "infinity-grace-gold-ring-with-floating-diamonds"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        During Chhath Puja and Dev Deepawali, millions of devotees gather at sacred ghats and riverbanks across northern India to offer Arghya to the rising and setting Sun, and illuminate riverfronts with millions of earthen diyas. These rigorous water rituals require special devotion—and durable, pure adornments.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. Why Sacred Holy Water Immersion Demands PVD Anti-Tarnish Metal</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Standing waist-deep in river water for morning prayers exposes jewelry to rapid oxidation, silt, and natural minerals. Standard street jewelry or low-grade artificial plating begins corroding within minutes, leeching toxic copper salts that cause red rashes and green skin stains. In contrast, <strong>CIELORIA uses medical-grade 316L stainless steel cores and 925 fine silver</strong> with vacuum PVD real gold shielding that is completely impervious to water and mineral salts.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Puja Condition</th>
+              <th class="p-3.5">Standard Artificial Jewelry</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Anti-Tarnish Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">River Water Immersion</td><td class="p-3.5 text-red-600">Peels, rusts & discolors</td><td class="p-3.5 font-bold text-emerald-700">100% Water Immersion Proof</td></tr>
+            <tr><td class="p-3.5 font-semibold">Skin Reaction During Fasting</td><td class="p-3.5 text-red-600">Allergic itching & rashes</td><td class="p-3.5 font-bold text-emerald-700">Hypoallergenic & Nickel/Lead-Free</td></tr>
+            <tr><td class="p-3.5 font-semibold">Contact with Sindoor & Haldi</td><td class="p-3.5">Permanent yellow stains</td><td class="p-3.5 font-bold text-emerald-700">Easily wipes clean with microfiber cloth</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. Dev Deepawali Ghat Styling: Ethereal Diya Reflections</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        When thousands of diyas light up Varanasi's ghats, the reflection of candlelight on 18K yellow gold creates a surreal, divine glow. Pair handloom chanderi sarees or raw silk suits with CIELORIA's delicate gold bangles, mangalsutra chains, and clover motifs for an auspicious aura that honors age-old traditions.
+      </p>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Pure intentions deserve pure, unblemished adornment. Celebrate devotion with jewelry that stays shining as bright as the morning Sun."
+      </blockquote>
+    `
+  },
+  {
     id: "blog-9",
     slug: "diwali-card-party-cocktail-jewelry-stacks-2026",
     day: "30",
@@ -4311,7 +4408,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-10-30",
+            "dateModified": "2026-11-04",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"
