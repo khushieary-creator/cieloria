@@ -3303,6 +3303,108 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-13",
+    slug: "tulsi-vivah-shaadi-season-bridal-trousseau-stacks-2026",
+    day: "16",
+    month: "NOV",
+    tag: "BRIDAL TREND",
+    title: "Tulsi Vivah to Shaadi Season 2026: The Top 5 Auspicious Demi-Fine Bridal Trousseau Stacks That Last a Lifetime",
+    image: "/hero_slide3.jpg",
+    excerpt: "With Tulsi Vivah unlocking India's largest winter wedding muhurats, discover why modern brides are replacing fragile locker items with 100% waterproof, sweatproof 18K demi-fine bridal stacks that transition from pheras to honeymoon brunch.",
+    featuredProductIds: ["18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-kada-bracelet", "luxury-gold-plated-anti-tarnish-stone-bracelet", "the-maharani-touch-luxe-gold-sapphire-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        With the auspicious festival of Tulsi Vivah setting off the grand winter wedding season across India, over 35 lakh weddings are scheduled between mid-November and December 2026. For contemporary Indian brides, the traditional bridal trousseau box is undergoing a dramatic, elegant evolution.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. Beyond the Bank Locker: The Wearable Bridal Trousseau</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Generations of brides received heavy solid gold that was worn once on the wedding day and immediately sealed inside a bank vault. Today's working brides, travel lovers, and digital creators want pieces that carry auspicious sacred sentiment but can be comfortably worn to work, dinners, and international honeymoons. CIELORIA’s 18K thick gold plating over 925 sterling silver and surgical steel makes bridal glamour durable, waterproof, and everyday wearable.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Trousseau Factor</th>
+              <th class="p-3.5">Traditional Locker Gold</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Bridal Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Post-Wedding Frequency of Wear</td><td class="p-3.5 text-red-600">Once or twice a year</td><td class="p-3.5 font-bold text-emerald-700">Daily 365 Days a Year</td></tr>
+            <tr><td class="p-3.5 font-semibold">Honeymoon & Travel Suitability</td><td class="p-3.5 text-red-600">High theft risk, airport hassle</td><td class="p-3.5 font-bold text-emerald-700">100% Worry-Free Flight & Resort Wear</td></tr>
+            <tr><td class="p-3.5 font-semibold">Water & Perfume Exposure</td><td class="p-3.5">Requires delicate handling</td><td class="p-3.5 font-bold text-emerald-700">3-Micron PVD Anti-Tarnish Coating</td></tr>
+            <tr><td class="p-3.5 font-semibold">Total Trousseau Budget Impact</td><td class="p-3.5">₹5,00,000 – ₹15,00,000+</td><td class="p-3.5 font-bold text-emerald-700">Complete 7-Piece Stack under ₹12,999</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. The 5 Essential New-Bride Stacks</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>The Morning Pheras & Puja Stack:</strong> Waterproof black-bead mangalsutra layered with our delicate 18K herringbone chain.</li>
+        <li><strong>The Haldi-Mehendi Resistant Kada:</strong> Textured royal Lucknow kada that resists wet turmeric and mehendi dyes without staining.</li>
+        <li><strong>The Sangeet Tennis Sparkle:</strong> Double-row zircon tennis bracelet that stays securely locked even during vigorous Bollywood choreography.</li>
+        <li><strong>The Reception Solitaire Statement:</strong> Baguette cut lab solitaire rings that catch chandeliers without snagging fine bridal silks.</li>
+        <li><strong>The Airport Honeymoon Chic:</strong> Minimalist clover studs and a sleek box chain for effortless chic on flight.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Your wedding jewelry should celebrate your new life every single day—not sit forgotten in dark security vaults."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-14",
+    slug: "black-friday-2026-anti-tarnish-jewelry-buying-guide",
+    day: "16",
+    month: "NOV",
+    tag: "SHOPPING VIRAL",
+    title: "Black Friday 2026 Jewelry Buying Secrets: How to Spot Genuine 18K Anti-Tarnish Demi-Fine vs Cheap Brass Scams",
+    image: "/hero_bracelets.jpg",
+    excerpt: "Don't fall for fake 'anti-tarnish' flash plating this Black Friday! Learn how to verify 316L surgical steel, 3-micron PVD gold coating, and why CIELORIA's unconditional 1-Year Anti-Tarnish Replacement Warranty guarantees real value.",
+    featuredProductIds: ["stainless-steel-contemporary-gold-plated-love-ad-anti-tarnish-bracelet-for-women", "nail-gold-plated-bracelet-rhinestones-jewelry", "luxe-loop-18k-gold-plated-diamond-bow-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        As Black Friday and Cyber Week 2026 promotions flood Instagram feeds, thousands of online brands promise "anti-tarnish waterproof gold jewelry" at dirt-cheap prices. But within two weeks of purchase, countless buyers find green rings around their fingers, peeling flakes, and dull rusted chains.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. Flash Plating vs Physical Vapor Deposition (PVD)</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Most cheap fast-fashion brands use electro-dipping or flash plating (less than 0.1 microns of gold over base brass or zinc alloy). The moment it touches sweat, perfume, or tap water, the micro-layer disintegrates. CIELORIA utilizes vacuum <strong>Physical Vapor Deposition (PVD)</strong>—an aerospace technology that molecularly bonds 3 microns of 18K real gold onto 316L medical-grade stainless steel, creating a tarnish-proof ceramic shield.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Quality Check</th>
+              <th class="p-3.5">Cheap 'Anti-Tarnish' Copies</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Certified Demi-Fine</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Core Metal</td><td class="p-3.5 text-red-600">Toxic Brass / Copper / Zinc</td><td class="p-3.5 font-bold text-emerald-700">316L Surgical Stainless Steel & 925 Silver</td></tr>
+            <tr><td class="p-3.5 font-semibold">Gold Plating Method</td><td class="p-3.5 text-red-600">0.05 Micron Flash Dip</td><td class="p-3.5 font-bold text-emerald-700">3-Micron Vacuum PVD Real 18K Gold</td></tr>
+            <tr><td class="p-3.5 font-semibold">Allergy & Skin Green Marks</td><td class="p-3.5 text-red-600">Frequent nickel irritation</td><td class="p-3.5 font-bold text-emerald-700">100% Hypoallergenic & Nickel/Lead-Free</td></tr>
+            <tr><td class="p-3.5 font-semibold">Official Warranty Guarantee</td><td class="p-3.5 text-red-600">None / No returns</td><td class="p-3.5 font-bold text-emerald-700">365-Day Free Replacement Guarantee</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. Black Friday 2026 Smart Shopping Checklist</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>Demand the Core Material Specification:</strong> Never buy if the product description simply says "Alloy". Look explicitly for 316L Stainless Steel or 925 Sterling Silver.</li>
+        <li><strong>Check for Hallmarking & Certification:</strong> Ensure the brand provides a verified Certificate of Authenticity with every order.</li>
+        <li><strong>Verify Replacement Policies:</strong> Authentic demi-fine brands stand behind their durability with 1-Year color warranties and hassle-free returns.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Smart luxury is not about buying the cheapest piece—it is about investing in timeless craftsmanship that never loses its luster."
+      </blockquote>
+    `
+  },
+  {
     id: "blog-11",
     slug: "destination-wedding-jewelry-packing-guide-2026",
     day: "04",
@@ -4408,7 +4510,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-11-04",
+            "dateModified": "2026-11-16",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"
