@@ -3303,6 +3303,106 @@ const CIRCLE_CATEGORIES = [
 
 const BLOG_POSTS = [
   {
+    id: "blog-15",
+    slug: "black-friday-2026-viral-anti-tarnish-jewelry-deals",
+    day: "20",
+    month: "NOV",
+    tag: "BLACK FRIDAY VIRAL",
+    title: "Black Friday 2026 Early Access: 5 Viral 18K Anti-Tarnish Demi-Fine Stacks Under ₹1,999 That Look Like ₹50,000",
+    image: "/hero_banner.jpg",
+    excerpt: "Black Friday Early Access is officially live! Grab CIELORIA's 100% waterproof, sweatproof 18K gold-plated and 925 fine silver viral stacks under ₹1,999 with 1-Year Color Warranty before stock runs out.",
+    featuredProductIds: ["luxury-gold-plated-anti-tarnish-stone-bracelet", "stainless-steel-contemporary-gold-plated-love-ad-anti-tarnish-bracelet-for-women", "the-maharani-touch-luxe-gold-sapphire-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Black Friday & Cyber Week 2026 early access has officially kicked off, and smart shoppers across India are abandoning fragile fast-fashion trinkets. With precious metal prices remaining elevated, modern fashion lovers are filling their shopping carts with 18K thick gold demi-fine jewelry that delivers authentic fine-jewelry aesthetics without the exorbitant markup.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The Anti-Tarnish Black Friday Revolution</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Why buy disposable brass jewelry on discount when you can own heirloom-quality 316L medical stainless steel and 925 sterling silver? CIELORIA’s Black Friday bundles come with our signature <strong>1-Year Anti-Tarnish Replacement Warranty</strong>, royal velvet packaging, and stamped Certificate of Authenticity.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Black Friday Feature</th>
+              <th class="p-3.5">Generic Discount Jewelry</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Early Access Deal</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Price Point</td><td class="p-3.5">₹799 – ₹1,499 (Poor Quality)</td><td class="p-3.5 font-bold text-emerald-700">Under ₹1,999 (3-Micron Real Gold)</td></tr>
+            <tr><td class="p-3.5 font-semibold">Waterproof Performance</td><td class="p-3.5 text-red-600">Rusts upon shower contact</td><td class="p-3.5 font-bold text-emerald-700">100% Shower, Gym & Pool Safe</td></tr>
+            <tr><td class="p-3.5 font-semibold">Skin Reaction</td><td class="p-3.5 text-red-600">Green discoloration & itching</td><td class="p-3.5 font-bold text-emerald-700">Hypoallergenic & Lead/Nickel-Free</td></tr>
+            <tr><td class="p-3.5 font-semibold">Packaging & Gifting</td><td class="p-3.5">Cheap plastic bag</td><td class="p-3.5 font-bold text-emerald-700">Royal Velvet Designer Box & Card</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. The 3 Viral Black Friday Cart Stacks</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>The 'Clean Girl' Daily Stack:</strong> Love AD tennis bracelet paired with a textured gold bangle. Elegant minimalism for office and brunch.</li>
+        <li><strong>The Midnight Cocktail Glam:</strong> Maharani sapphire ring with layered herringbone chains for festive dinners.</li>
+        <li><strong>The Everyday Solitaire Luxury:</strong> Lab diamond solitaire bow ring paired with water-resistant zircon hoops.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Smart shoppers don't chase clearance junk—they invest in timeless waterproof elegance at Black Friday prices."
+      </blockquote>
+    `
+  },
+  {
+    id: "blog-16",
+    slug: "winter-sangeet-sweatproof-jewelry-stacks-2026",
+    day: "20",
+    month: "NOV",
+    tag: "WEDDING TREND",
+    title: "Winter Sangeet Dancefloor Secrets: 5 Sweatproof, Zero-Snag Jewelry Stacks for Heavy Lehengas & Non-Stop Dancing",
+    image: "/hero_bracelets.jpg",
+    excerpt: "Don't let sharp imitation jewelry rip your luxury lehenga or turn green from dancefloor sweat! Discover smooth-bezel, 100% sweatproof 18K demi-fine stacks designed for high-energy winter Sangeet celebrations.",
+    featuredProductIds: ["18kt-gold-plated-stainless-tarnish-free-waterproof-demi-fine-kada-bracelet", "luxury-geometric-18k-gold-plated-zircon-bangle-bracelet", "luxe-loop-18k-gold-plated-diamond-bow-ring"],
+    fullContent: `
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        Nothing beats the high voltage excitement of a winter Indian Sangeet night: endless dhol beats, family dance face-offs, and late-night revelry. But brides and bridesmaids frequently encounter two major fashion disasters: cheap metal claws snagging and ripping delicate lehenga embroidery, and heavy sweat turning imitation necklaces into dull green stains.
+      </p>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">1. The Anti-Snag & Sweatproof Solution</h3>
+      <p class="text-base text-slate-700 leading-relaxed font-sans mb-6">
+        CIELORIA’s winter Sangeet collection is crafted specifically with <strong>flush-set stones, rounded bezels, and seamless prong settings</strong>. This ensures that no matter how energetic your dance moves, your jewelry will never catch on silk dupattas or fine net sarees. Backed by medical-grade stainless steel cores, our pieces remain 100% impervious to body heat and sweat.
+      </p>
+
+      <div class="my-8 overflow-x-auto border border-[#E6E1D7] rounded-2xl bg-[#FAF8F5]">
+        <table class="w-full text-xs sm:text-sm text-left text-slate-700">
+          <thead class="bg-[#1A1A1A] text-white font-serif font-bold">
+            <tr>
+              <th class="p-3.5">Sangeet Issue</th>
+              <th class="p-3.5">Standard Imitation Sets</th>
+              <th class="p-3.5 text-[#C5A059]">CIELORIA Demi-Fine Sangeet Stacks</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#E6E1D7]">
+            <tr><td class="p-3.5 font-semibold">Lehenga Fabric Snagging</td><td class="p-3.5 text-red-600">Sharp prongs tear silk threads</td><td class="p-3.5 font-bold text-emerald-700">Smooth Flush-Bezel Zero-Snag Design</td></tr>
+            <tr><td class="p-3.5 font-semibold">Sweat Resistance (4+ Hours)</td><td class="p-3.5 text-red-600">Oxidizes, smells, discolors skin</td><td class="p-3.5 font-bold text-emerald-700">100% Sweatproof 3-Micron PVD Coating</td></tr>
+            <tr><td class="p-3.5 font-semibold">Clasp Security on Dancefloor</td><td class="p-3.5 text-red-600">Weak jump rings break easily</td><td class="p-3.5 font-bold text-emerald-700">Double Safety Clasp Technology</td></tr>
+            <tr><td class="p-3.5 font-semibold">Stage Light Brilliance</td><td class="p-3.5">Flat plastic or glass reflection</td><td class="p-3.5 font-bold text-emerald-700">5A Cubic Zirconia Optical Brilliance</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-serif text-2xl font-bold text-[#1A1A1A] mt-8 mb-4">2. Top 3 Sangeet Stacks That Slay the Dancefloor</h3>
+      <ul class="list-disc pl-6 space-y-3 text-slate-700 font-sans mb-6">
+        <li><strong>The Dancing Queen Wrist Duo:</strong> Dual kada bangles with lock clasps that won't fly off during high-spin thumkas.</li>
+        <li><strong>The Choker & Drop Earring Balance:</strong> Flush-set geometric choker that sits close to the collarbone without bouncing.</li>
+        <li><strong>The Statement Cocktail Band:</strong> Smooth bow ring that glides effortlessly over festive fabrics.</li>
+      </ul>
+
+      <blockquote class="font-serif text-lg text-[#C5A059] italic border-l-4 border-[#C5A059] pl-6 my-8 bg-[#FAF8F5] py-5 rounded-r-2xl leading-relaxed">
+        "Dance till your feet ache, not your jewelry. Sangeet elegance is built on effortless movement and zero anxiety."
+      </blockquote>
+    `
+  },
+  {
     id: "blog-13",
     slug: "tulsi-vivah-shaadi-season-bridal-trousseau-stacks-2026",
     day: "16",
@@ -4510,7 +4610,7 @@ function renderApp() {
             "headline": blog.title,
             "image": [blog.image],
             "datePublished": "2026-03-01",
-            "dateModified": "2026-11-16",
+            "dateModified": "2026-11-20",
             "author": {
               "@type": "Organization",
               "name": "CIELORIA Editorial Team"
